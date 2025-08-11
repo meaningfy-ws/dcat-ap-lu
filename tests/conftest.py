@@ -6,7 +6,7 @@ from tests import DEFAULT_RDF_FORMAT, TEST_DATA_FOLDER
 from tests.unit.shacl import FULL_SHAPES_FILE
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def ns():
     with open(f"{TEST_DATA_FOLDER}/context.jsonld") as f:
         context = json.load(f)["@context"]
