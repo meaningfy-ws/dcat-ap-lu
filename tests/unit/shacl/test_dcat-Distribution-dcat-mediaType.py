@@ -12,7 +12,7 @@ TEST_DATA_FOLDER = TEST_DATA_FOLDER / TEST_FILE_NAME
 def valid_data():
     return Graph().parse(
         TEST_DATA_FOLDER / f"{TEST_FILE_NAME}_valid.{DEFAULT_RDF_FORMAT}",
-        format="turtle",
+        format=DEFAULT_RDF_FORMAT,
     )
 
 
@@ -20,7 +20,7 @@ def valid_data():
 def invalid_data():
     return Graph().parse(
         TEST_DATA_FOLDER / f"{TEST_FILE_NAME}_invalid.{DEFAULT_RDF_FORMAT}",
-        format="turtle",
+        format=DEFAULT_RDF_FORMAT,
     )
 
 
