@@ -1,0 +1,12 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+# Distribution using accessService
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/data> ;
+    dcat:accessService ex:dataservice1 .
+
+# Wrong class: should be dcat:DataService
+ex:dataservice1 a dcat:Distribution ;
+    dcterms:title "API pretending to be a service"@en .

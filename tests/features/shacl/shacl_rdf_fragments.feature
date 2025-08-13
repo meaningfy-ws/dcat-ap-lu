@@ -11,3 +11,6 @@ Feature: Validate RDF data fragments against SHACL shapes
       | test_case                             | expected_valid_violation_count | expected_invalid_violation_count |
       | dcat-Distribution-dcat-mediaType      |                              0 |                                3 |
       | dcat-Distribution-dcatap-availability |                              0 |                                3 |
+      | dcat-Distribution-adms-status         |                              0 |                                4 |
+      | dcat-Distribution-dcat-accessService  |                              0 |                                2 |
+      | dcat-Distribution-dcat-accessURL      |                              0 |                                1 |

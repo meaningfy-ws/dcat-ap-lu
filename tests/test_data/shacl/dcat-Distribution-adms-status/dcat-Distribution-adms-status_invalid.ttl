@@ -1,0 +1,24 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+
+# Distribution with invalid adms:status values
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+
+    # 1. Literal value instead of object
+    adms:status "COMPLETED" ;
+
+    # 2. Missing skos:prefLabel (violates required label)
+    adms:status [
+        a skos:Concept
+        # Missing skos:prefLabel
+    ] ;
+
+    # 3. Extra instance (if only 1 status is allowed)
+    adms:status [
+        a ex:NonConcept ;  # Wrong class
+        skos:prefLabel "Invalid concept"@en
+    ] .
