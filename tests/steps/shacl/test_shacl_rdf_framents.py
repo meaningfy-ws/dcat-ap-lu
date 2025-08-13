@@ -5,7 +5,7 @@ from tests.unit.shacl import TEST_DATA_FOLDER, DEFAULT_RDF_FORMAT
 from pytest_bdd import given, scenarios, then, when, parsers
 
 
-scenarios("../../features/shacl/rdf_fragments.feature")
+scenarios("../../features/shacl/shacl_rdf_fragments.feature")
 
 
 @given(
