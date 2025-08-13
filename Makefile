@@ -8,6 +8,8 @@ ICON_ERROR = [x]
 ICON_WARNING = [!]
 ICON_PROGRESS = [-]
 
+TEST_DIR = tests
+
 #-----------------------------------------------------------------------------
 # Dev commands
 #-----------------------------------------------------------------------------
@@ -23,4 +25,4 @@ check-uv:
 
 test:
 	@ echo "Running tests..."
-	@ python -m pytest
+	@ uv run pytest $(TEST_DIR)
