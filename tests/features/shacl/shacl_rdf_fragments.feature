@@ -8,5 +8,6 @@ Feature: Validate RDF data fragments against SHACL shapes
     And the invalid data validation result should conform to <expected_invalid_violation_count>
 
     Examples:
-      | test_case                        | expected_valid_violation_count | expected_invalid_violation_count |
-      | dcat-Distribution-dcat-mediaType |                              0 |                                3 |
+      | test_case                             | expected_valid_violation_count | expected_invalid_violation_count |
+      | dcat-Distribution-dcat-mediaType      |                              0 |                                3 |
+      | dcat-Distribution-dcatap-availability |                              0 |                                3 |
