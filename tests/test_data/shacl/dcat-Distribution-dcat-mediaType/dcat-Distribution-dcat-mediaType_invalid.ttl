@@ -11,23 +11,22 @@ ex:mediaType1 a dcterms:MediaTypo ;
     dcterms:title "application/pdf" .
 
 # too many values
-
-ex:distribution3 a dcat:Distribution ;
+ex:distribution2 a dcat:Distribution ;
     dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcat:mediaType ex:mediaType3a, ex:mediaType3b .
+    dcat:mediaType ex:mediaType2a, ex:mediaType2b .
 
-ex:mediaType3a a dcterms:MediaType ;
+ex:mediaType2a a dcterms:MediaType ;
     dcterms:title "application/xml" .
 
-ex:mediaType3b a dcterms:MediaType ;
+ex:mediaType2b a dcterms:MediaType ;
     dcterms:title "text/csv" .
 
 # circular reference
-ex:distribution4 a dcat:Distribution ;
+ex:distribution3 a dcat:Distribution ;
     dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcat:mediaType ex:mediaType4 .
+    dcat:mediaType ex:mediaType3 .
 
-ex:mediaType4 a dcterms:MediaType ;
+ex:mediaType3 a dcterms:MediaType ;
     dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcat:mediaType ex:distribution4 ;
+    dcat:mediaType ex:distribution3 ;
     dcterms:title "image/png" .
