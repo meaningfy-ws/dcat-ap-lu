@@ -1,0 +1,35 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+###########  INVALID: Too many values (maxCount violation) ###########
+
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:packageFormat ex:format1, ex:format2 .
+
+ex:format1 a dcterms:MediaType ;
+    dcterms:title "application/gzip" .
+
+ex:format2 a dcterms:MediaType ;
+    dcterms:title "application/x-tar" .
+
+###########  INVALID: Wrong class (not dcterms:MediaType) ###########
+
+ex:distribution-2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    dcat:packageFormat ex:wrongType .
+
+ex:wrongType a skos:Concept ;  # wrong class
+    skos:prefLabel "application/rar" .
+
+########### INVALID: Circular reference (SPARQL rule violation) ###########
+
+ex:distribution-3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> ;
+    dcat:packageFormat ex:circularFormat .
+
+ex:circularFormat a dcterms:MediaType ;
+    dcat:packageFormat ex:distribution-3 ;  # circular reference back to distribution
+    dcterms:title "application/loop" .

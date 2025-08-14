@@ -14,3 +14,11 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-adms-status         |                              0 |                                4 |
       | dcat-Distribution-dcat-accessService  |                              0 |                                2 |
       | dcat-Distribution-dcat-accessURL      |                              0 |                                1 |
+      | dcat-Distribution-dcat-byteSize       |                              0 |                                3 |
+      | dcat-Distribution-dcat-compressFormat |                              0 |                                3 |
+      | dcat-Distribution-dcat-downloadURL    |                              0 |                                0 |
+      | dcat-Distribution-dcat-packageFormat  |                              0 |                                 3|
+      | dcat-Distribution-dcat-spatialResolutionInMeters  |                  0 |                                 1|
+      | dcat-Distribution-dcat-temporalResolution  |                         0 |                                 0|
+      | dcat-Distribution-dcatap-applicablelegislation  |                    0 |                                 2|
+      | dcat-Distribution-dct-conformsTo       |                             0 |                                 2|

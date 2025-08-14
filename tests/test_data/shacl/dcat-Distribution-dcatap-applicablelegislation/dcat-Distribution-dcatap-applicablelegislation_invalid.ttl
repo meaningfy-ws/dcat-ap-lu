@@ -1,0 +1,24 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix eli:    <http://data.europa.eu/eli/ontology#> .
+@prefix ex:     <http://example.org/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+###########  INVALID: wrong class (not eli:LegalResource) ###########
+
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcatap:applicablelegislation ex:notLegalResource .
+
+ex:notLegalResource a rdfs:Resource ;
+    rdfs:label "Some Label"@en .
+
+###########  INVALID: circular reference ###########
+
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    dcatap:applicablelegislation ex:loop .
+
+ex:loop a eli:LegalResource ;
+    dcatap:applicablelegislation ex:distribution2 ;
+    rdfs:label "Circular Law Ref"@en .

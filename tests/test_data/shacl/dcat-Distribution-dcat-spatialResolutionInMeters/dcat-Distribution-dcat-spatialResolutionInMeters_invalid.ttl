@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+
+
+########### INVALID: Wrong datatype (string instead of decimal) ###########
+
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:spatialResolutionInMeters "five meters" .
+
+############  INVALID: Integer instead of decimal ###########
+#
+#ex:distribution2 a dcat:Distribution ;
+#     dcat:accessURL <http://example.org/download/dataset-002> ;
+#    dcat:spatialResolutionInMeters "10"^^xsd:integer .
+#
+############  INVALID: Boolean value ###########
+#
+#ex:distribution-boolean a dcat:Distribution ;
+#    dcat:accessURL <http://example.org/download/dataset-002> ;
+#    dcat:spatialResolutionInMeters "true"^^xsd:boolean .
+#
+############  INVALID: Not a typed literal ###########
+#
+#ex:distribution3 a dcat:Distribution ;
+#    dcat:accessURL <http://example.org/download/dataset-001> ;
+#    dcat:spatialResolutionInMeters "100" .
