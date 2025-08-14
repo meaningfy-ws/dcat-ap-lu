@@ -1,0 +1,36 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+
+#  INVALID: Wrong class (not a dcterms:MediaTypeOrExtent)
+
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+     dcterms:format ex:wrongFormat .
+
+ex:wrongFormat a dcterms:TypoClass ;  # Should be dcterms:MediaTypeOrExtent
+    dcterms:title "text/csv" .
+
+#  INVALID: More than 1 value (maxCount violation)
+
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    dcterms:format ex:format1, ex:format2 .
+
+ex:format1 a dcterms:MediaTypeOrExtent ;
+    dcterms:title "application/xml" .
+
+ex:format2 a dcterms:MediaTypeOrExtent ;
+    dcterms:title "application/pdf" .
+
+#  INVALID: Circular reference
+
+
+ex:distribution3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> ;
+    dcterms:format ex:circularFormat .
+
+ex:circularFormat a dcterms:MediaTypeOrExtent ;
+    dcterms:title "application/rdf+xml" ;
+    dcterms:format ex:distribution3 .  # Circular relationship

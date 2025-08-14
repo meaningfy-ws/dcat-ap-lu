@@ -1,0 +1,15 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:     <http://example.org/> .
+
+# INVALID: Wrong datatype (string, not xsd:dateTime)
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:modified "2023-10-12T12:00:00Z" .
+
+# INVALID: Too many values
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    dcterms:modified "2023-01-01T00:00:00Z"^^xsd:dateTime ,
+                     "2024-01-01T00:00:00Z"^^xsd:dateTime .

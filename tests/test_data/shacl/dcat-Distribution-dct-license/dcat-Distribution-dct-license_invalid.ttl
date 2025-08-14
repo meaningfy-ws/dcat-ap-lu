@@ -1,0 +1,38 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex:     <http://example.org/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+# INVALID: Wrong class (should be dcterms:LicenseDocument
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:license [
+        a skos:Concept ;  # wrong class
+        skos:prefLabel "CC0 1.0"@en
+    ] .
+
+# INVALID: Too many licenses
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    dcterms:license ex:lic1, ex:lic2 .
+
+ex:lic1 a dcterms:LicenseDocument ;
+    skos:prefLabel "License A"@en .
+
+ex:lic2 a dcterms:LicenseDocument ;
+    skos:prefLabel "License B"@en .
+
+# INVALID: Circular reference
+ex:distribution3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> ;
+    dcterms:license ex:loop-license .
+
+ex:loop-license a dcterms:LicenseDocument ;
+    dcterms:license ex:distribution3 ;  # circular
+    skos:prefLabel "Recursive License"@en .
+
+#  INVALID: Literal instead of resource
+ex:distribution4 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-004> ;
+    dcterms:license "CC-BY-4.0" .  # Should be a resource, not a string

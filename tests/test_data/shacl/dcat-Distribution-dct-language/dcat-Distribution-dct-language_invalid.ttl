@@ -1,0 +1,35 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex:     <http://example.org/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+       dcterms:language [
+        a dcterms:LinguisticSystem ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG> ;
+    ] .
+
+
+# INVALID: Wrong class (missing dcterms:LinguisticSystem)
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+        dcterms:language [
+        a skos:Concept ;  # Invalid class
+        skos:prefLabel "English"@en
+    ] .
+
+# INVALID: Circular reference (violates sparql ASK rule)
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+     dcterms:language ex:lang-loop .
+
+ex:lang-loop a dcterms:LinguisticSystem ;
+    dcterms:language ex:distribution2 ;  # Circular reference
+    skos:prefLabel "English"@en .
+
+#  INVALID: Literal instead of resource
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:language "English" .  # Invalid – should be a resource with class dcterms:LinguisticSystem

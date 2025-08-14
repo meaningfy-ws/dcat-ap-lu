@@ -1,0 +1,21 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# INVALID: Wrong datatype (string instead of xsd:dateTime)
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:issued "December 1st, 2024" .
+
+
+# INVALID: Multiple issued dates (maxCount violation)
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    dcterms:issued "2024-12-01T09:30:00"^^xsd:dateTime ,
+                   "2024-12-02T10:00:00"^^xsd:dateTime .
+
+#  INVALID: Malformed xsd:dateTime literal
+ex:distribution3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> ;
+     dcterms:issued "2024-13-01T09:00:00"^^xsd:dateTime .  # Invalid month 13
