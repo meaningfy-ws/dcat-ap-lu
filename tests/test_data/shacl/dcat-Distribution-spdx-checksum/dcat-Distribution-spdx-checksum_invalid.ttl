@@ -1,0 +1,37 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+@prefix ex: <http://example.org/> .
+
+# More than one checksum (violates maxCount)
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    spdx:checksum ex:checksum1, ex:checksum2 .
+
+ex:checksum1 a spdx:Checksum ;
+    spdx:algorithm "SHA-1" ;
+    spdx:checksumValue "abc123" .
+
+ex:checksum2 a spdx:Checksum ;
+    spdx:algorithm "SHA-512" ;
+    spdx:checksumValue "def456" .
+
+
+# Wrong class (not a spdx:Checksum)
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    spdx:checksum ex:notAChecksum .
+
+ex:notAChecksum a dcat:Datas ;
+    spdx:algorithm "SHA-256" ;
+    spdx:checksumValue "zzz999" .
+
+
+# Circular reference
+ex:distribution3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> ;
+    spdx:checksum ex:circular-checksum .
+
+ex:circular-checksum a spdx:Checksum ;
+    spdx:checksum ex:distribution3 ;  # Circular reference
+    spdx:algorithm "SHA-256" ;
+    spdx:checksumValue "looplooploop" .

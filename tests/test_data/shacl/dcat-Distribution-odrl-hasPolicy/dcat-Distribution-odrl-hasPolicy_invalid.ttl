@@ -1,0 +1,32 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+# More than one hasPolicy value (violates sh:maxCount)
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:title "Too many policies"@en ;
+    odrl:hasPolicy ex:policyA, ex:policyB .
+
+ex:policyA a odrl:Policy ;
+    dcterms:title "Policy A"@en .
+
+ex:policyB a odrl:Policy ;
+    dcterms:title "Policy B"@en .
+
+# Wrong class for hasPolicy
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    odrl:hasPolicy ex:notAPolicy .
+
+ex:notAPolicy a dcat:Datas .  #  Invalid class
+
+
+###  Circular reference
+ex:distribution3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> ;
+    odrl:hasPolicy ex:policyC .
+
+ex:policyC a odrl:Policy ;
+    odrl:hasPolicy ex:distribution3 .  # Circular

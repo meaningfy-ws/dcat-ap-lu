@@ -29,3 +29,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dct-license          |                             0 |                                 4|
       | dcat-Distribution-dct-modified         |                             0 |                                 2|
       | dcat-Distribution-dct-rights           |                             0 |                                 3|
+      |dcat-Distribution-dct-title             |                              0|                                  0|
+      |dcat-Distribution-foaf-page             |                              0|                                  3|
+      |dcat-Distribution-odrl-hasPolicy        |                              0|                                  3|
+      |dcat-Distribution-spdx-checksum         |                          0|                                  3|

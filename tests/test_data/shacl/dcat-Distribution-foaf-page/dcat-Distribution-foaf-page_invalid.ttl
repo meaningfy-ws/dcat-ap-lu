@@ -1,0 +1,26 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+# Invalid: foaf:page points to a non-foaf:Document
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    foaf:page ex:notADocument .
+
+ex:notADocument a dcat:Datas .  #  Wrong class
+
+# Invalid: Circular reference
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> ;
+    foaf:page ex:circularDoc .
+
+ex:circularDoc a foaf:Document ;
+    foaf:page ex:distribution2.  #  Circular link
+
+### ⚠️ Invalid: foaf:page is missing rdf:type
+ex:distribution3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> ;
+    foaf:page ex:untaggedDoc .
+
+# ex:untaggedDoc has no rdf:type defined → violates sh:class
