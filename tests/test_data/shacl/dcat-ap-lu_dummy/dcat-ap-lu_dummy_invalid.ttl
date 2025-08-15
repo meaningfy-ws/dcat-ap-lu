@@ -1,0 +1,285 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix ns0: <http://www.w3.org/ns/hydra/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ns1: <http://data.europa.eu/r5r/> .
+@prefix ns2: <http://www.w3.org/ns/dpv#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+
+<https://metadata.demo.lnds.tech>
+  a dcat:Catalog, <http://www.w3.org/ns/hydra/core#Collection> ;
+  dc:language [
+    a dc:LinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG>
+  ] ;
+  dcat:themeTaxonomy [
+    a skos:ConceptScheme ;
+    skos:prefLabel "EU Data Theme Taxonomy"@eng ;
+    dc:title "EU Data Theme Taxonomy"@eng ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/data-theme>
+  ] ;
+  dc:publisher [
+    a foaf:Organization ;
+    foaf:name "Luxembourg National Data Service"@eng
+  ] ;
+  dcat:contactPoint [
+    a vcard:Kind, vcard:Organization ;
+    vcard:fn "Luxembourg National Data Service"@eng
+  ] ;
+  dc:title "Luxembourg National Data Catalogue"@eng ;
+  dc:description "The Luxembourg National Data Catalogue aims to provide a comprehensive overview of all data available in the public sector in Luxembourg"@eng ;
+  dc:license [
+    a dc:LicenseDocument ;
+    rdfs:seeAlso <https://creativecommons.org/publicdomain/zero/1.0/>
+  ] ;
+  ns0:totalItems 1 ;
+  ns0:view <https://metadata.demo.lnds.tech/api/v1/datasets>, <https://metadata.demo.lnds.tech/api/v1/data-services> ;
+  foaf:homepage [
+    a foaf:Document ;
+    rdfs:seeAlso <https://metadata.demo.lnds.tech>
+  ] ;
+  dc:modified "2025-07-18T13:50:02.461145"^^xsd:dateTime ;
+  dc:issued "2025-07-18T13:50:02.461221"^^xsd:dateTime ;
+  dcat:dataset <https://metadata.demo.lnds.tech/api/v1/datasets/1> .
+
+<https://metadata.demo.lnds.tech/api/v1/datasets/1>
+  a dcat:Dataset ;
+#  dc:title "Dataset title 1"@eng ;
+  dc:description "A useful dataset collected in situation x about interesting stuff y."@eng ;
+  dc:identifier "8915e686-5d72-11f0-adcc-0242c0a86005" ;
+  dc:accrualPeriodicity [
+    a dc:Frequency ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/frequency/ANNUAL>
+  ] ;
+  dc:accessRights [
+    a dc:RightsStatement ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC>
+  ] ;
+  dcat:theme <https://publications.europa.eu/resource/authority/data-theme/GOVE>, <https://publications.europa.eu/resource/authority/data-theme/HEAL> ;
+  dc:spatial [
+    a dc:Location ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/country/LUX> ;
+    skos:prefLabel "Luxembourg"@eng
+  ], [
+    a dc:Location ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/country/LTU> ;
+    skos:prefLabel "Lithuania"@eng
+  ] ;
+  ns1:applicableLegislation <http://njh.me/_law_#123,_art_5> ;
+  dc:type [
+    a skos:Concept ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/dataset-type/ARCHIVED_DATA> ;
+    skos:prefLabel "Archived data"@eng
+  ] ;
+  dc:language [
+    a dc:LinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/LTZ>
+  ], [
+    a dc:LinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/FRA>
+  ] ;
+  ns2:dataProtectionType "PersonalData"@eng ;
+  dc:publisher [
+    a foaf:Agent, foaf:Organization ;
+    foaf:name "PNED GIE"@eng
+  ] ;
+  dcat:contactPoint [
+    a vcard:Kind, vcard:Organization ;
+    vcard:fn "PNED GIE"@eng
+  ] ;
+  dc:temporal [
+    a dc:PeriodOfTime ;
+    dcat:startDate "1900-01-01"^^xsd:date ;
+    dcat:endDate "2025-01-01"^^xsd:date ;
+    dc:title "Dataset Coverage Period"@eng
+  ] ;
+  foaf:page [
+    a foaf:Document ;
+    csvw:column [
+      csvw:name "variable_1" ;
+      csvw:datatype xsd:boolean ;
+      dc:description "This is a test description for field 1"@eng
+    ], [
+      csvw:name "variable_2" ;
+      csvw:datatype xsd:boolean ;
+      dc:description "This is a test description for field 2"@eng
+    ]
+  ] ;
+  dcat:keyword "society"@eng, "interesting_stuff"@eng, "people"@eng, "policy"@eng ;
+  dcat:distribution <https://metadata.demo.lnds.tech/api/v1/distributions/3>, <https://metadata.demo.lnds.tech/api/v1/distributions/1>, <https://metadata.demo.lnds.tech/api/v1/distributions/2> ;
+  dcat:sample <https://metadata.demo.lnds.tech/api/v1/datasets/1/data-dictionaries/download> .
+
+<http://njh.me/_law_#123,_art_5>
+  a ns1:LegalResource ;
+  rdfs:label "Law #123, art 5"@eng .
+
+<https://metadata.demo.lnds.tech/api/v1/distributions/1>
+  a dcat:Distribution ;
+  dc:description "Report summarising the finding of the stuff study"@eng ;
+  dc:title "Stuff report"@eng ;
+  dc:identifier 1 ;
+  dc:format [
+    a dc:MediaTypeOrExtent ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/file-type/MAP_PRVW>
+  ] ;
+  dcat:mediaType [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dcat:compressFormat [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dcat:packageFormat [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dc:language [
+    a dc:LinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/FRA>
+  ] ;
+  dcat:accessURL [
+    a rdfs:Resource ;
+    rdfs:seeAlso <https://data.public.lu/fr/datasets/678910>
+  ] ;
+  dc:rights [
+    a dc:RightsStatement ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC>
+  ] ;
+  dc:license [
+    a dc:LicenseDocument ;
+    rdfs:seeAlso <http://spdx.org/licenses/CC0-1.0>
+  ] ;
+  ns1:availability [
+    a skos:Concept ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/planned-availability/TEMPORARY> ;
+    skos:prefLabel "Temporary"@eng
+  ] .
+
+<https://metadata.demo.lnds.tech/api/v1/datasets/1/data-dictionaries/download>
+  a dcat:Distribution, <http://www.w3.org/ns/adms#sample> ;
+  dc:title "Data Dictionary for Dataset title 1"@eng ;
+  dc:description "Machine-readable data dictionary describing the structure and contents of the dataset."@eng ;
+  dc:format [
+    a dc:MediaTypeOrExtent ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/file-type/CSV>
+  ] ;
+  dcat:mediaType [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/text/csv>
+  ] ;
+  dcat:accessURL [
+    a rdfs:Resource ;
+    rdfs:seeAlso <https://metadata.demo.lnds.tech/api/v1/datasets/1/data-dictionaries/download>
+  ] ;
+  dcat:downloadURL [
+    a rdfs:Resource ;
+    rdfs:seeAlso <https://metadata.demo.lnds.tech/api/v1/datasets/1/data-dictionaries/download>
+  ] ;
+  dc:license [
+    a dc:LicenseDocument ;
+    rdfs:seeAlso <https://creativecommons.org/publicdomain/zero/1.0/>
+  ] ;
+  ns1:availability [
+    a skos:Concept ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> ;
+    skos:prefLabel "Available"@eng
+  ] .
+
+<https://metadata.demo.lnds.tech/api/v1/distributions/2>
+  a dcat:Distribution ;
+  dc:description "Statistical analysis of the stuff study"@eng ;
+  dc:title "Stuff analysis"@eng ;
+  dc:identifier 2 ;
+  dc:format [
+    a dc:MediaTypeOrExtent ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/file-type/CSV>
+  ] ;
+  dcat:mediaType [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dcat:compressFormat [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dcat:packageFormat [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dc:language [
+    a dc:LinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/DEU>
+  ] ;
+  dcat:accessURL [
+    a rdfs:Resource ;
+    rdfs:seeAlso <https://data.public.lu/fr/datasets/12345>
+  ] ;
+  dc:rights [
+    a dc:RightsStatement ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC>
+  ] ;
+  dc:license [
+    a dc:LicenseDocument ;
+    rdfs:seeAlso <http://spdx.org/licenses/CC0-1.0>
+  ] ;
+  ns1:availability [
+    a skos:Concept ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/planned-availability/EXPERIMENTAL> ;
+    skos:prefLabel "Experimental"@eng
+  ] .
+
+<https://metadata.demo.lnds.tech/api/v1/distributions/3>
+  a dcat:Distribution ;
+  dc:description "Raw data collected as part of the stuff study"@eng ;
+  dc:title "Stuff raw data"@eng ;
+  dc:identifier 3 ;
+  dc:format [
+    a dc:MediaTypeOrExtent ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/file-type/CSV>
+  ] ;
+  dcat:mediaType [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dcat:compressFormat [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dcat:packageFormat [
+    a dc:MediaType ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/yang-data+xml>
+  ] ;
+  dc:language [
+    a dc:LinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/FRA>
+  ] ;
+  dcat:accessURL [
+    a rdfs:Resource ;
+    rdfs:seeAlso <https://www.stuff.lu/data_access_request>
+  ] ;
+  dc:rights [
+    a dc:RightsStatement ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/NON_PUBLIC>
+  ] ;
+  dc:license [
+    a dc:LicenseDocument ;
+    rdfs:seeAlso <http://spdx.org/licenses/CC0-1.0>
+  ] ;
+  ns1:availability [
+    a skos:Concept ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> ;
+    skos:prefLabel "Available"@eng
+  ] .
+
+<https://publications.europa.eu/resource/authority/data-theme/GOVE>
+  a skos:Concept ;
+  skos:prefLabel "Government and public sector"@eng .
+
+<https://publications.europa.eu/resource/authority/data-theme/HEAL>
+  a skos:Concept ;
+  skos:prefLabel "Health"@eng .
