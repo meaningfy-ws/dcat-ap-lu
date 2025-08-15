@@ -50,7 +50,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-dct-accrualPeriodicity             |                       0|                              3|
       |dcat-Dataset-dct-conformsTo             |                               0|                              2|
       |dcat-Dataset-dct-creator             |                               0|                             3|
-      |dcat-Dataset-dct-description             |                               0|                             3|
+      |dcat-Dataset-dct-description             |                               0|                             1|
       |dcat-Dataset-dct-hasVersion             |                               0|                             2|
 
 
