@@ -1,0 +1,21 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# Error 1: landingPage is an IRI instead of a foaf:Document instance
+# Error 2: Circular reference between dataset and landing page
+# Error 3: landingPage object has wrong class (skos:Concept)
+
+ex:invalidDataset a dcat:Dataset ;
+    dct:identifier "dataset-999" ;
+    dct:title "Dataset with Invalid Landing Page"@en ;
+    dct:description "Landing page structure is incorrect."@en ;
+    dcat:distribution ex:dist-1 ;
+    dcat:landingPage ex:badLandingPage .
+
+ex:badLandingPage a skos:Concept ;
+    skos:prefLabel "landingpage";
+    dcat:landingPage ex:invalidDataset .  # Circular reference
+ex:dist-1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

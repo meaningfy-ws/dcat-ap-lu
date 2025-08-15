@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier "dataset-004" ;
+    dct:title "Invalid Dataset"@en ;
+    dct:description "Dataset with broken accrual periodicity."@en ;
+    dcat:distribution ex:dist1 ;
+
+#  Too many values (maxCount violation)
+    dct:accrualPeriodicity ex:freq1, ex:freq2 .
+
+#  Wrong class (not dct:Frequency)
+ex:freq1 a dcat:Concept ;
+    dct:title "Weekly"@en .
+
+#  Circular reference
+ex:freq2 a dct:Frequency ;
+    dct:accrualPeriodicity ex:dataset-invalid .
+ex:dist1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

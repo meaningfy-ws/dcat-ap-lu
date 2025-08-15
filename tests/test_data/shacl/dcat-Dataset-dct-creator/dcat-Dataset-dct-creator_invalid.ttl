@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex:   <http://example.org/> .
+
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier "dataset-008" ;
+    dct:title "Invalid Creator Dataset"@en ;
+    dct:description "Dataset with multiple and invalid creator entries."@en ;
+    dcat:distribution ex:dist1 ;
+
+    #  Too many creators
+    dct:creator ex:wrong1, ex:wrong2 .
+
+#  Wrong class (should be foaf:Agent)
+ex:wrong1 a skos:Concept ;
+    skos:prefLabel "Wrong class as creator"@en .
+
+#  Circular reference (dataset points to creator, creator points back to dataset)
+ex:wrong2 a foaf:Agent ;
+    dct:creator ex:dataset-invalid ;
+    foaf:name "Circular Creator"@en .
+ex:dist1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex:   <http://example.org/> .
+
+ex:dataset-001 a dcat:Dataset ;
+    dct:identifier "dataset-invalid" ;
+    dct:title "Dataset With Invalid Theme"@en ;
+    dct:description "This example shows multiple SHACL violations for theme."@en ;
+    dcat:distribution ex:dist-1 ;
+
+    #  Error 1: Theme is a literal, not a skos:Concept (violates sh:class)
+    dcat:theme "Health" ;
+
+    #  Error 2: Circular reference (detected by SPARQL constraint)
+    dcat:theme ex:circularTheme .
+
+ex:circularTheme a skos:Concept ;
+    skos:prefLabel "test circular";
+    dcat:theme ex:dataset-001  .  # Circular link back to dataset
+ex:dist-1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

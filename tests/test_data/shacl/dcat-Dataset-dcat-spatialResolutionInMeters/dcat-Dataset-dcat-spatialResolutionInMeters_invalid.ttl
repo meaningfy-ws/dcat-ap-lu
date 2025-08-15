@@ -1,0 +1,18 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+ex:invalidDataset a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Dataset with Invalid Spatial Resolution"@en ;
+    dct:description "This dataset breaks multiple rules for spatial resolution."@en ;
+    dcat:distribution ex:dist-1 ;
+
+    #  Error 1: Not a decimal (string instead)
+    dcat:spatialResolutionInMeters "ten meters" ;
+
+    #  Error 2: More than one value (violates maxCount = 1)
+ dcat:spatialResolutionInMeters "10.5"^^xsd:decimal .
+ ex:dist-1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

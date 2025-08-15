@@ -1,0 +1,18 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+ex:dataset-001 a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Dataset With Invalid Temporal Resolution"@en ;
+    dct:description "This example contains all invalid situations for temporalResolution."@en ;
+    dcat:distribution ex:dist-1;
+
+    #  Error 1: Not an xsd:duration
+    dcat:temporalResolution "weekly" ;
+
+    #  Error 2: Multiple values (maxCount = 1)
+    dcat:temporalResolution "P1D"^^xsd:duration .  # P1D = 1 day
+ex:dist-1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

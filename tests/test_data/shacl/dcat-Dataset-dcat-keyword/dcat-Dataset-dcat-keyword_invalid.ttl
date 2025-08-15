@@ -1,0 +1,21 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# Issue 1: dcat:keyword is an IRI, not a literal
+# Issue 2: dcat:keyword uses skos:Concept improperly
+
+ex:validDataset a dcat:Dataset ;
+    dcterms:identifier "dataset-valid" ;
+    dcterms:title "Valid Dataset" ;
+    dcterms:description "This dataset has valid keyword(s)." ;
+    dcat:keyword ex:keywordConcept ;
+    dcat:distribution ex:distribution1.
+
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .
+
+# The object of dcat:keyword should not be a resource
+ex:keywordConcept a skos:Concept ;
+    skos:prefLabel "biodiversity"@en .

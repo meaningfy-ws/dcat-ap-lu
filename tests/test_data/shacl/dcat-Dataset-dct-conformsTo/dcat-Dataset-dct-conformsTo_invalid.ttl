@@ -1,0 +1,23 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex:   <http://example.org/> .
+
+ex:dataset-001 a dcat:Dataset ;
+    dct:identifier "dataset-006" ;
+    dct:title "Invalid Dataset"@en ;
+    dct:description "This dataset violates conformsTo rules."@en ;
+    dcat:distribution ex:dist1 ;
+
+# ❌ Multiple values (if maxCount implied or enforced elsewhere)
+    dct:conformsTo ex:bad1, ex:bad2 .
+
+# ❌ Wrong class (skos:Concept instead of dct:Standard)
+ex:bad1 a skos:Concept ;
+ skos:prefLabel "Public"@en.
+# ❌ Circular reference
+ex:bad2 a dct:Standard ;
+    dct:conformsTo ex:dataset-001 ;
+    dct:title "Circular reference"@en .
+ex:dist1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .
