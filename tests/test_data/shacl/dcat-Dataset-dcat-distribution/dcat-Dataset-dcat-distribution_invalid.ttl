@@ -1,0 +1,32 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+#### 1. Literal instead of URI node
+#ex:invalidDataset1 a dcat:Dataset ;
+#    dcterms:identifier "dataset-invalid-1" ;
+#    dcterms:title "Literal Distribution" ;
+#    dcterms:description "Invalid: dcat:distribution is a string" ;
+#    dcat:distribution "not-a-resource" .
+
+### 1. Wrong RDF type (not dcat:Distribution)
+ex:dataset-001 a dcat:Dataset ;
+    dcterms:identifier "dataset-invalid-2" ;
+    dcterms:title "Wrong Type" ;
+    dcterms:description "Invalid: distribution is not of type dcat:Distribution" ;
+    dcat:distribution [
+        a dcat:NOTDataset ;
+        dcterms:title "Wrong class"
+    ] .
+
+### 3. Circular reference
+ex:dataset-002 a dcat:Dataset ;
+    dcterms:identifier "dataset-invalid-3" ;
+    dcterms:title "Circular Distribution" ;
+    dcterms:description "Invalid: dataset and distribution reference each other" ;
+    dcat:distribution ex:circularDist .
+
+ex:circularDist a dcat:Distribution ;
+    dcat:distribution ex:dataset-002 ;
+    dcat:accessURL <http://example.org/download/dataset-001> .
+

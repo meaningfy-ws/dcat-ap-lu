@@ -32,4 +32,11 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Distribution-dct-title             |                              0|                                  0|
       |dcat-Distribution-foaf-page             |                              0|                                  3|
       |dcat-Distribution-odrl-hasPolicy        |                              0|                                  3|
-      |dcat-Distribution-spdx-checksum         |                          0|                                  3|
+      |dcat-Distribution-spdx-checksum         |                              0|                                  3|
+      |adms-Identifier-skos-notation           |                              0|                                  1|
+      |dcat-Dataset-adms-identifier            |                              0|                                 2|
+      |dcat-Dataset-adms-sample                |                              0|                                 3|
+      |dcat-Dataset-adms-versionNotes          |                              0|                                 0|
+      |dcat-Dataset-dcat-contactPoint          |                              0|                                 2|
+      |dcat-Dataset-dcat-distribution          |                              0|                                 2|
+      |dcat-Dataset-dcat-inSeries              |                              0|                                 4|

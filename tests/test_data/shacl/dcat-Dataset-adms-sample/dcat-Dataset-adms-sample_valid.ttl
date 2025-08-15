@@ -1,0 +1,20 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix ex: <http://example.org/> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+
+ex:dataset1 a dcat:Dataset ;
+    adms:identifier ex:identifier1 ;
+    dct:title           "Example DCAT Dataset" ;
+    dct:description     "A minimal dataset with only mandatory properties." ;
+    dct:identifier      "dataset-001" ;
+    dcat:distribution   ex:distribution1 ;
+    adms:sample ex:distribution1 .
+
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/sample.csv> .
+
+ex:identifier1 a adms:Identifier ;
+    skos:notation "ID-2025-001" .

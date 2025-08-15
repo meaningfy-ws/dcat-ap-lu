@@ -1,0 +1,42 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#### 1. Literal instead of Resource
+#ex:dataset-literal a dcat:Dataset ;
+#    dcterms:identifier "dataset-literal" ;
+#    dcterms:title "Dataset with Literal Contact Point" ;
+#    dcterms:description "Invalid: contactPoint is a literal" ;
+#    dcat:distribution ex:dist-1 ;
+#    dcat:contactPoint "contact@example.org" .
+
+### 1. Wrong class (foaf:Agent)
+ex:dataset-foaf a dcat:Dataset ;
+    dcterms:identifier "dataset-foaf" ;
+    dcterms:title "Dataset with foaf:Agent" ;
+    dcterms:description "Invalid: contactPoint is foaf:Agent instead of vcard:Kind" ;
+    dcat:distribution ex:dist-1 ;
+    dcat:contactPoint [
+        a foaf:Agent ;
+        foaf:name "Helpdesk"
+    ] .
+
+
+### 2. Circular reference (loop)
+ex:dataset-loop a dcat:Dataset ;
+    dcterms:identifier "dataset-loop" ;
+    dcterms:title "Dataset with Circular Contact Point" ;
+    dcterms:description "Invalid: contactPoint is circular reference" ;
+    dcat:distribution ex:dist-1 ;
+    dcat:contactPoint ex:loop-contact .
+
+ex:loop-contact a vcard:Kind ;
+    dcat:contactPoint ex:dataset-loop ;
+    vcard:fn "Circular Team" .
+
+### Dummy distribution
+ex:dist-1 a dcat:Distribution ;
+       dcat:accessURL <http://example.org/download/dataset-001> .

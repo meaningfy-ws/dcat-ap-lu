@@ -1,0 +1,18 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+ex:dataset-001 a dcat:Dataset ;
+    dcterms:identifier "dataset-001" ;
+    dcterms:title "Dataset Part of a Series" ;
+    dcterms:description "This dataset is part of a series." ;
+    dcat:distribution ex:dist-1 ;
+    dcat:inSeries ex:series1 .
+
+ex:dist-1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .
+
+ex:series1 a dcat:DatasetSeries ;
+    dcterms:title "Example Series" ;
+    dcterms:description "This DatasetSeries is example of a series." .
+

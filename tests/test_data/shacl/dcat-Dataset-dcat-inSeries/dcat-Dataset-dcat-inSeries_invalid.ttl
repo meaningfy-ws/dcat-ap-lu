@@ -1,0 +1,36 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+#### 2. inSeries is a literal (not a resource)
+#ex:invalidDataset1 a dcat:Dataset ;
+#    dcterms:identifier "dataset-invalid-1" ;
+#    dcterms:title "Literal inSeries" ;
+#    dcterms:description "Invalid: inSeries is a literal." ;
+#    dcat:distribution ex:dist-1 ;
+#    dcat:inSeries "not-a-resource" .
+
+### 1. inSeries points to something not a dcat:DatasetSeries
+ex:invalidDataset2 a dcat:Dataset ;
+    dcterms:identifier "dataset-invalid-2" ;
+    dcterms:title "Wrong Class" ;
+    dcterms:description "Invalid: inSeries is not a DatasetSeries." ;
+    dcat:distribution ex:dist-1 ;
+    dcat:inSeries [
+        a dcat:inDataset ;  # Wrong class
+        dcterms:title "Wrong type"
+    ] .
+
+### 3. Circular reference
+ex:invalidDataset3 a dcat:Dataset ;
+    dcterms:identifier "dataset-invalid-3" ;
+    dcterms:title "Circular Series" ;
+    dcterms:description "Invalid: circular reference between dataset and series." ;
+    dcat:distribution ex:dist-1 ;
+    dcat:inSeries ex:seriesLoop .
+
+ex:seriesLoop a dcat:DatasetSeries ;
+    dcat:inSeries ex:invalidDataset3 .  # Circular
+
+ex:dist-1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

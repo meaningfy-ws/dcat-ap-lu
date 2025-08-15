@@ -1,0 +1,34 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix adms:   <http://www.w3.org/ns/adms#> .
+@prefix ex:     <http://example.org/> .
+
+# Dataset with all mandatory fields
+ex:dataset-001 a dcat:Dataset ;
+    dct:identifier "dataset-001" ;
+    dct:title "Example DCAT Dataset" ;
+    dct:description "A minimal dataset with only mandatory properties." ;
+    dcat:distribution ex:dist-1 ;
+
+    adms:sample ex:notADistribution ;
+
+   adms:sample ex:circularSample ;
+
+    # Case 3: Literal value — not a URI at all
+    adms:sample "This is not a resource" .
+
+
+# Invalid sample (wrong class)
+ex:notADistribution a <http://example.org/OtherClass> .
+
+# Circular reference
+ex:circularSample a dcat:Distribution ;
+    adms:sample ex:dataset-001 ;
+    dcat:accessURL <http://example.org/sample.csv> .
+
+
+# Valid distribution to satisfy MUST property
+ex:dist-1 a dcat:Distribution ;
+    dct:title "Valid distribution" ;
+    dcat:accessURL <http://example.org/sample1.csv> .
+
