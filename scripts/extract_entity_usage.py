@@ -36,22 +36,46 @@ def load_graph_from_path(path):
 
 def get_all_properties(graph, use_prefixes=False):
     query = """
-    SELECT DISTINCT ?property WHERE {
+    SELECT DISTINCT ?property ?subject ?type WHERE {
       ?subject ?property ?object .
+      FILTER(?property != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>)
+      OPTIONAL { ?subject a ?type }
     }
     """
     results = []
+    
+    # Track combinations we've already seen
+    seen_combinations = set()
+    
     for row in graph.query(query):
         uri = str(row["property"])
+        
+        parent = None
+        if row["type"]:
+            parent = str(row["type"])
+            if use_prefixes:
+                try:
+                    prefix, _, local = graph.compute_qname(parent)
+                    parent = f"{prefix}:{local}"
+                except Exception:
+                    pass
+        
+        # Format the property URI with prefix if needed
+        prop_uri = uri
         if use_prefixes:
             try:
                 prefix, _, local = graph.compute_qname(uri)
-                results.append(f"{prefix}:{local}")
+                prop_uri = f"{prefix}:{local}"
             except Exception:
-                results.append(uri)
-        else:
-            results.append(uri)
-    return sorted(set(results))
+                pass
+        
+        # Add the combination if we haven't seen it before
+        combination = (prop_uri, parent)
+        if combination not in seen_combinations:
+            results.append(combination)
+            seen_combinations.add(combination)
+    
+    return sorted(results)
 
 def get_all_classes(graph, use_prefixes=False):
     query = """
@@ -89,34 +113,97 @@ def get_shacl_classes(graph, use_prefixes=False):
 
 def get_shacl_properties(graph, use_prefixes=False):
     results = []
+    
+    # Get all NodeShapes and their targetClasses for reference
+    node_shapes = {}
+    for shape in graph.subjects(RDF.type, SH.NodeShape):
+        for target_class in graph.objects(shape, SH.targetClass):
+            node_shapes[str(shape)] = str(target_class)
+    
+    # Track combinations we've already seen
+    seen_combinations = set()
+    
     for shape in graph.subjects(RDF.type, SH.PropertyShape):
         path = graph.value(shape, SH.path)
         if path:
             uri = str(path)
+            
+            # Find parent NodeShape that refers to this PropertyShape
+            for node_shape, props in graph.subject_objects(SH.property):
+                if props == shape and str(node_shape) in node_shapes:
+                    parent = node_shapes[str(node_shape)]
+                    if use_prefixes:
+                        try:
+                            prefix, _, local = graph.compute_qname(parent)
+                            parent = f"{prefix}:{local}"
+                        except Exception:
+                            pass
+                    
+                    # Format the property URI with prefix if needed
+                    prop_uri = uri
+                    if use_prefixes:
+                        try:
+                            prefix, _, local = graph.compute_qname(uri)
+                            prop_uri = f"{prefix}:{local}"
+                        except Exception:
+                            pass
+                    
+                    # Add the combination if we haven't seen it before
+                    combination = (prop_uri, parent)
+                    if combination not in seen_combinations:
+                        results.append(combination)
+                        seen_combinations.add(combination)
+    
+    # Also include properties without parents
+    for shape in graph.subjects(RDF.type, SH.PropertyShape):
+        path = graph.value(shape, SH.path)
+        if path:
+            uri = str(path)
+            prop_uri = uri
             if use_prefixes:
                 try:
                     prefix, _, local = graph.compute_qname(uri)
-                    results.append(f"{prefix}:{local}")
+                    prop_uri = f"{prefix}:{local}"
                 except Exception:
-                    results.append(uri)
-            else:
-                results.append(uri)
-    return sorted(set(results))
+                    pass
+            
+            # Check if we have this property without a parent
+            combination = (prop_uri, None)
+            if combination not in seen_combinations:
+                # Check if this property has any combination with a parent
+                has_parent = any(prop == prop_uri for prop, parent in seen_combinations if parent is not None)
+                # Only add properties without parents if they don't have any parent combination
+                if not has_parent:
+                    results.append(combination)
+                    seen_combinations.add(combination)
+    
+    return sorted(results)
 
 def export_to_csv(classes, properties, output_file):
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(['type', 'value'])
+        writer.writerow(['type', 'name', 'parent'])
         for cls in classes:
-            writer.writerow(['Class', cls])
-        for prop in properties:
-            writer.writerow(['Property', prop])
-    # print(f"✅ CSV saved to {output_file}")
+            writer.writerow(['class', cls, ''])
+        for prop, parent in properties:
+            writer.writerow(['property', prop, parent or ''])
 
 def export_to_json(classes, properties, output_file):
+    classes_with_structure = []
+    for cls in classes:
+        classes_with_structure.append({
+            "name": cls
+        })
+    
+    props_with_structure = []
+    for prop, parent in properties:
+        props_with_structure.append({
+            "name": prop,
+            "parent": parent
+        })
+        
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump({'classes': classes, 'properties': properties}, f, indent=2)
-    # print(f"✅ JSON saved to {output_file}")
+        json.dump({'classes': classes_with_structure, 'properties': props_with_structure}, f, indent=2)
 
 def main():
     import argparse
@@ -139,8 +226,11 @@ def main():
 
     for cls in classes:
         print(cls)
-    for prop in properties:
-        print(prop)
+    for prop, parent in properties:
+        if parent:
+            print(f"{parent} {prop}")
+        else:
+            print(f"- {prop}")
 
     if args.csv:
         export_to_csv(classes, properties, args.csv)
