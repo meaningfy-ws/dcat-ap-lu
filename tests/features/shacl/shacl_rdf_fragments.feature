@@ -40,7 +40,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-dcat-contactPoint          |                              0|                                 2|
       |dcat-Dataset-dcat-distribution          |                              0|                                 2|
       |dcat-Dataset-dcat-inSeries              |                              0|                                 4|
-      |dcat-Dataset-dcat-keyword               |                              0|                                 4|
+      |dcat-Dataset-dcat-keyword               |                              0|                                 0|
       |dcat-Dataset-dcat-landingPage           |                              0|                                 2|
       |dcat-Dataset-dcat-spatialResolutionInMeters       |                    0|                                 2|
       |dcat-Dataset-dcat-temporalResolution              |                    0|                                 1|
