@@ -1,0 +1,26 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+
+# Dataset referencing another version incorrectly
+ex:dataset-v2 a dcat:Dataset ;
+    dct:identifier "dataset-bad-v2" ;
+    dct:title "Broken Version Reference"@en ;
+    dct:description "Has issues with version linking."@en ;
+
+    # ❌ Literal instead of resource
+    dct:isVersionOf "should-be-a-dataset-resource" ;
+
+    # Still includes a distribution to avoid failing required props
+    dcat:distribution ex:dist-1 .
+
+# Circular reference
+ex:dataset-circular a dcat:Dataset ;
+    dct:identifier "dataset-circular" ;
+    dct:isVersionOf ex:dataset-circular ;
+     dct:title "circular Version Reference"@en ;
+     dct:description "Has circular issues with version linking."@en .
+
+ex:dist-1 a dcat:Distribution ;
+    dct:title "Broken Format"@en ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

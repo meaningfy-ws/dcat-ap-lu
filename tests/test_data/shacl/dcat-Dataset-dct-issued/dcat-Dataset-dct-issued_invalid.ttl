@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.org/> .
+
+# INVALID CASES:
+ex:dataset-001 a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Invalid Dataset" ;
+    dct:description "This dataset has several issues with dct:issued." ;
+
+    #  Wrong datatype: string literal, not xsd:dateTime
+    dct:issued "2023-09-01" ;
+
+    #  Second occurrence (violates sh:maxCount = 1)
+    dct:issued "2024-01-01T00:00:00"^^xsd:dateTime ;
+
+    dcat:distribution ex:dist2 .
+
+ex:dist2 a dcat:Distribution ;
+  dcat:accessURL <http://example.org/download/dataset-002> .
+
