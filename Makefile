@@ -28,6 +28,11 @@ EXTRACT_SCRIPT = $(SCRIPT_DIR)/extract_entity_usage.py
 COVERAGE_SCRIPT = $(SCRIPT_DIR)/check_entity_coverage.py
 COVERAGE_REPORT = $(REPORT_DIR)/entity_coverage_report
 
+EXTRACT_ARGS_MUST = --prefixed --filter-csv $(UML_USAGE).csv --filter-column qualifier --filter-value mandatory
+DATA_ARGS_MUST = $(DATA_USAGE).txt --csv $(DATA_USAGE).csv --json $(DATA_USAGE).json
+SHACL_ARGS_MUST = $(SHACL_USAGE).txt --csv $(SHACL_USAGE).csv --json $(SHACL_USAGE).json
+COVERAGE_ARGS_MUST = --csv $(COVERAGE_REPORT).csv --json $(COVERAGE_REPORT).json
+
 #-----------------------------------------------------------------------------
 # Dev commands
 #-----------------------------------------------------------------------------
@@ -45,6 +50,6 @@ test:
 coverage_report:
 	@ echo "Generating coverage report..."
 	@ uv run python $(UML_SCRIPT) $(XMI_FILE) --output $(UML_USAGE).csv
-	@ uv run python $(EXTRACT_SCRIPT) $(TEST_DATA_DIR) --prefixed > $(DATA_USAGE).txt --csv $(DATA_USAGE).csv --json $(DATA_USAGE).json
-	@ uv run python $(EXTRACT_SCRIPT) --shacl $(SHACL_FILE) --prefixed > $(SHACL_USAGE).txt --csv $(SHACL_USAGE).csv --json $(SHACL_USAGE).json
-	@ uv run python $(COVERAGE_SCRIPT) $(SHACL_USAGE).txt $(DATA_USAGE).txt --csv $(COVERAGE_REPORT).csv --json $(COVERAGE_REPORT).json
+	@ uv run python $(EXTRACT_SCRIPT) $(EXTRACT_ARGS_MUST) $(TEST_DATA_DIR) > $(DATA_ARGS_MUST)
+	@ uv run python $(EXTRACT_SCRIPT) $(EXTRACT_ARGS_MUST) --shacl $(SHACL_FILE) > $(SHACL_ARGS_MUST)
+	@ uv run python $(COVERAGE_SCRIPT) $(SHACL_USAGE).txt $(DATA_USAGE).txt $(COVERAGE_ARGS_MUST)

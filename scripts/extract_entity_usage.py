@@ -6,6 +6,19 @@ from pathlib import Path
 from rdflib import RDF, Graph
 from rdflib.namespace import SH
 
+# TODO: Extend support with an option to take a prefix normalization table from a configuration file
+# This would allow for more flexible prefix normalization across different datasets
+def normalize_prefix(uri):
+    """Normalize common prefixes for better matching with lookup tables"""
+    # Replace dcterms: with dct:
+    if uri.startswith('dcterms:'):
+        return 'dct:' + uri[len('dcterms:'):]
+    # Replace ns1: with dpv: 
+    elif uri.startswith('ns1:'):
+        return 'dpv:' + uri[len('ns1:'):]
+    # Add more prefix normalizations as needed
+    return uri
+
 def guess_format(file_path):
     ext = file_path.suffix.lower()
     return {
@@ -34,7 +47,35 @@ def load_graph_from_path(path):
 
     return graph
 
-def get_all_properties(graph, use_prefixes=False):
+def load_filter_entities(filter_file, filter_column, filter_value, parent_column='parent'):
+    """
+    Load entities from a CSV filter file that match the specified column and value.
+    If parent_column is provided, also track parent-property relationships.
+    """
+    filtered_entities = set()
+    property_parents = {}
+    
+    with open(filter_file, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            # TODO: make this join column also a parameter
+            # Skip rows that don't match filter criteria or don't have entity
+            if not row.get(filter_column) or not row.get('entity') or row.get(filter_column).strip() != filter_value:
+                continue
+                
+            entity = row['entity'].strip()
+            filtered_entities.add(entity)
+            
+            # If parent column is specified and has a value, record parent-property relationship
+            if parent_column and row.get(parent_column) and row[parent_column].strip():
+                parent = row[parent_column].strip()
+                if entity not in property_parents:
+                    property_parents[entity] = set()
+                property_parents[entity].add(parent)
+    
+    return filtered_entities, property_parents
+
+def get_all_properties(graph, use_prefixes=False, filter_entities=None, property_parents=None):
     query = """
     SELECT DISTINCT ?property ?subject ?type WHERE {
       ?subject ?property ?object .
@@ -57,6 +98,8 @@ def get_all_properties(graph, use_prefixes=False):
                 try:
                     prefix, _, local = graph.compute_qname(parent)
                     parent = f"{prefix}:{local}"
+                    # Normalize parent prefix
+                    parent = normalize_prefix(parent)
                 except Exception:
                     pass
         
@@ -66,9 +109,21 @@ def get_all_properties(graph, use_prefixes=False):
             try:
                 prefix, _, local = graph.compute_qname(uri)
                 prop_uri = f"{prefix}:{local}"
+                # Normalize property prefix
+                prop_uri = normalize_prefix(prop_uri)
             except Exception:
                 pass
         
+        # Filter entities based on the property name
+        if filter_entities is not None and prop_uri not in filter_entities:
+            continue
+            
+        # Filter property-parent combinations if property_parents is provided
+        if property_parents is not None and prop_uri in property_parents:
+            # Only include this combination if parent matches expected parents
+            if parent not in property_parents[prop_uri]:
+                continue
+            
         # Add the combination if we haven't seen it before
         combination = (prop_uri, parent)
         if combination not in seen_combinations:
@@ -77,7 +132,7 @@ def get_all_properties(graph, use_prefixes=False):
     
     return sorted(results)
 
-def get_all_classes(graph, use_prefixes=False):
+def get_all_classes(graph, use_prefixes=False, filter_entities=None):
     query = """
     SELECT DISTINCT ?class WHERE {
       ?instance a ?class .
@@ -89,14 +144,22 @@ def get_all_classes(graph, use_prefixes=False):
         if use_prefixes:
             try:
                 prefix, _, local = graph.compute_qname(uri)
-                results.append(f"{prefix}:{local}")
+                class_uri = f"{prefix}:{local}"
+                # Normalize class prefix
+                class_uri = normalize_prefix(class_uri)
             except Exception:
-                results.append(uri)
+                class_uri = uri
         else:
-            results.append(uri)
+            class_uri = uri
+            
+        # If filter is active, skip non-matching entities
+        if filter_entities is not None and class_uri not in filter_entities:
+            continue
+            
+        results.append(class_uri)
     return sorted(set(results))
 
-def get_shacl_classes(graph, use_prefixes=False):
+def get_shacl_classes(graph, use_prefixes=False, filter_entities=None):
     results = []
     for shape in graph.subjects(RDF.type, SH.NodeShape):
         for target_class in graph.objects(shape, SH.targetClass):
@@ -104,14 +167,22 @@ def get_shacl_classes(graph, use_prefixes=False):
             if use_prefixes:
                 try:
                     prefix, _, local = graph.compute_qname(uri)
-                    results.append(f"{prefix}:{local}")
+                    class_uri = f"{prefix}:{local}"
+                    # Normalize class prefix
+                    class_uri = normalize_prefix(class_uri)
                 except Exception:
-                    results.append(uri)
+                    class_uri = uri
             else:
-                results.append(uri)
+                class_uri = uri
+                
+            # If filter is active, skip non-matching entities
+            if filter_entities is not None and class_uri not in filter_entities:
+                continue
+                
+            results.append(class_uri)
     return sorted(set(results))
 
-def get_shacl_properties(graph, use_prefixes=False):
+def get_shacl_properties(graph, use_prefixes=False, filter_entities=None, property_parents=None):
     results = []
     
     # Get all NodeShapes and their targetClasses for reference
@@ -128,6 +199,21 @@ def get_shacl_properties(graph, use_prefixes=False):
         if path:
             uri = str(path)
             
+            # Format the property URI with prefix if needed
+            prop_uri = uri
+            if use_prefixes:
+                try:
+                    prefix, _, local = graph.compute_qname(uri)
+                    prop_uri = f"{prefix}:{local}"
+                    # Normalize property prefix
+                    prop_uri = normalize_prefix(prop_uri)
+                except Exception:
+                    prop_uri = uri
+                    
+            # If filter is active, skip non-matching entities
+            if filter_entities is not None and prop_uri not in filter_entities:
+                continue
+            
             # Find parent NodeShape that refers to this PropertyShape
             for node_shape, props in graph.subject_objects(SH.property):
                 if props == shape and str(node_shape) in node_shapes:
@@ -136,17 +222,16 @@ def get_shacl_properties(graph, use_prefixes=False):
                         try:
                             prefix, _, local = graph.compute_qname(parent)
                             parent = f"{prefix}:{local}"
+                            # Normalize parent prefix
+                            parent = normalize_prefix(parent)
                         except Exception:
                             pass
                     
-                    # Format the property URI with prefix if needed
-                    prop_uri = uri
-                    if use_prefixes:
-                        try:
-                            prefix, _, local = graph.compute_qname(uri)
-                            prop_uri = f"{prefix}:{local}"
-                        except Exception:
-                            pass
+                    # Filter property-parent combinations if property_parents is provided
+                    if property_parents is not None and prop_uri in property_parents:
+                        # Only include this combination if parent matches expected parents
+                        if parent not in property_parents[prop_uri]:
+                            continue
                     
                     # Add the combination if we haven't seen it before
                     combination = (prop_uri, parent)
@@ -164,8 +249,19 @@ def get_shacl_properties(graph, use_prefixes=False):
                 try:
                     prefix, _, local = graph.compute_qname(uri)
                     prop_uri = f"{prefix}:{local}"
+                    # Normalize property prefix
+                    prop_uri = normalize_prefix(prop_uri)
                 except Exception:
                     pass
+                    
+            # If filter is active, skip non-matching entities
+            if filter_entities is not None and prop_uri not in filter_entities:
+                continue
+                
+            # If property_parents is specified and this property has expected parents,
+            # don't include it without a parent
+            if property_parents is not None and prop_uri in property_parents:
+                continue
             
             # Check if we have this property without a parent
             combination = (prop_uri, None)
@@ -213,16 +309,45 @@ def main():
     parser.add_argument("--csv", help="Export results to CSV file")
     parser.add_argument("--json", help="Export results to JSON file")
     parser.add_argument("--shacl", action="store_true", help="Extract SHACL shapes")
+    parser.add_argument("--filter-csv", help="Path to CSV file with entities to filter by")
+    parser.add_argument("--filter-column", help="Name of the column to filter by")
+    parser.add_argument("--filter-value", help="Value in the filter column to match")
+    parser.add_argument("--parent-column", default="parent", help="Name of the column containing parent class information (default: parent)")
     args = parser.parse_args()
+
+    # Load filter entities if specified
+    filter_entities = None
+    property_parents = None
+    if args.filter_csv:
+        if not args.filter_column or not args.filter_value:
+            print("Error: When using --filter-csv, both --filter-column and --filter-value must be specified")
+            sys.exit(1)
+            
+        filter_entities, property_parents = load_filter_entities(
+            args.filter_csv, 
+            filter_column=args.filter_column, 
+            filter_value=args.filter_value,
+            parent_column=args.parent_column
+        )
+        
+        filter_msg = f"Filtering results to {len(filter_entities)} entities where {args.filter_column}={args.filter_value}"
+        if args.parent_column:
+            filter_msg += f" with parent matching column '{args.parent_column}'"
+        filter_msg += f" from {args.filter_csv}"
+        # print(filter_msg)
 
     graph = load_graph_from_path(args.input)
 
     if args.shacl:
-        classes = get_shacl_classes(graph, use_prefixes=args.prefixed)
-        properties = get_shacl_properties(graph, use_prefixes=args.prefixed)
+        classes = get_shacl_classes(graph, use_prefixes=args.prefixed, filter_entities=filter_entities)
+        properties = get_shacl_properties(graph, use_prefixes=args.prefixed, 
+                                         filter_entities=filter_entities, 
+                                         property_parents=property_parents)
     else:
-        classes = get_all_classes(graph, use_prefixes=args.prefixed)
-        properties = get_all_properties(graph, use_prefixes=args.prefixed)
+        classes = get_all_classes(graph, use_prefixes=args.prefixed, filter_entities=filter_entities)
+        properties = get_all_properties(graph, use_prefixes=args.prefixed, 
+                                       filter_entities=filter_entities,
+                                       property_parents=property_parents)
 
     for cls in classes:
         print(cls)
