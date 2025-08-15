@@ -1,0 +1,11 @@
+import pathlib
+
+PROJECT_FOLDER = pathlib.Path(__file__).parent.parent
+IMPLEMENTATION_FOLDER = PROJECT_FOLDER / "implementation" / "dcat_ap_lu"
+TEST_DATA_FOLDER = pathlib.Path(__file__).parent / "test_data"
+DEFAULT_RDF_FORMAT = "ttl"
+SHAPES_FOLDER = IMPLEMENTATION_FOLDER / "shacl_shapes"
+FULL_SHAPES_NAME = "dcat_ap_lu_CM_shapes"
+FULL_SHAPES_FORMAT = DEFAULT_RDF_FORMAT
+FULL_SHAPES_FILENAME = f"{FULL_SHAPES_NAME}.{FULL_SHAPES_FORMAT}"
+FULL_SHAPES_FILE = SHAPES_FOLDER / FULL_SHAPES_FILENAME

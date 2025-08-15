@@ -1,0 +1,3 @@
+from tests import TEST_DATA_FOLDER
+
+TEST_DATA_FOLDER = TEST_DATA_FOLDER / "shacl"

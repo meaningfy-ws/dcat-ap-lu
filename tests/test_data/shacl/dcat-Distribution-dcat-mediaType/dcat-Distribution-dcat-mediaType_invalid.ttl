@@ -1,0 +1,32 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+
+# wrong class
+ex:distribution1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:mediaType ex:mediaType1 .
+
+ex:mediaType1 a dcterms:MediaTypo ;
+    dcterms:title "application/pdf" .
+
+# too many values
+ex:distribution2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:mediaType ex:mediaType2a, ex:mediaType2b .
+
+ex:mediaType2a a dcterms:MediaType ;
+    dcterms:title "application/xml" .
+
+ex:mediaType2b a dcterms:MediaType ;
+    dcterms:title "text/csv" .
+
+# circular reference
+ex:distribution3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:mediaType ex:mediaType3 .
+
+ex:mediaType3 a dcterms:MediaType ;
+    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:mediaType ex:distribution3 ;
+    dcterms:title "image/png" .
