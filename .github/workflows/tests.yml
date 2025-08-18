@@ -25,4 +25,9 @@ jobs:
       run: make install
     - name: Run Tests
       run: |
-        make test
+        make test-report
+    - name: Upload report
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-report
+        path: report.html
