@@ -86,6 +86,7 @@ core-shape:dcat-DatasetSeries a sh:NodeShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:property core-shape:dcat-DatasetSeries-dcat-contactPoint,
         core-shape:dcat-DatasetSeries-dcatap-applicablelegislation,
+        core-shape:dcat-DatasetSeries-dct-accrualPeriodicity,
         core-shape:dcat-DatasetSeries-dct-description,
         core-shape:dcat-DatasetSeries-dct-issued,
         core-shape:dcat-DatasetSeries-dct-modified,
@@ -555,6 +556,14 @@ core-shape:dcat-DatasetSeries-dcatap-applicablelegislation a sh:PropertyShape ;
     sh:name "applicablelegislation" ;
     sh:path dcatap:applicablelegislation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicablelegislation> ?that . ?that <http://data.europa.eu/r5r/applicablelegislation> ?this .}" ] .
+
+core-shape:dcat-DatasetSeries-dct-accrualPeriodicity a sh:PropertyShape ;
+    sh:class dcterms:Frequency ;
+    sh:description "The frequency at which the Dataset series is updated." ;
+    sh:maxCount 1 ;
+    sh:name "accrual Periodicity" ;
+    sh:path dcterms:accrualPeriodicity ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/accrualPeriodicity> ?that . ?that <http://purl.org/dc/terms/accrualPeriodicity> ?this .}" ] .
 
 core-shape:dcat-DatasetSeries-dct-description a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
