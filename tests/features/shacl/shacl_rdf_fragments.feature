@@ -56,3 +56,6 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-dct-isReferencedBy             |                               0|                             0|
       |dcat-Dataset-dct-isVersionOf             |                               0|                             2|
       |dcat-Dataset-dct-issued             |                               0|                             2|
+      |dcat-Dataset-dct-language                    |                               0|                             2|
+      |dcat-Dataset-dct-modified                   |                               0|                             2|
+      |dcat-Dataset-dct-provenance                   |                               0|                             2|

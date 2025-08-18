@@ -1,0 +1,17 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:dataset-001 a dcat:Dataset ;
+    dct:identifier "dataset-001" ;
+    dct:title "A valid dataset for language" ;
+    dct:description "Dataset with valid language property." ;
+    dcat:distribution ex:dist1 ;
+    dct:language [
+        a dct:LinguisticSystem ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG>
+    ] .
+
+ex:dist1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

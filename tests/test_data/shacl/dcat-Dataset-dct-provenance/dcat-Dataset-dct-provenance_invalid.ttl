@@ -1,0 +1,35 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+ex:dataset-001 a dcat:Dataset ;
+    dct:identifier "dataset-001" ;
+    dct:title "Invalid Dataset" ;
+    dct:description "Invalid provenance usage." ;
+    dcat:distribution ex:dist1 ;
+     dct:provenance ex:provenance1 .
+
+    #  Violation 1: Class is incorrect (not dct:ProvenanceStatement)
+    ex:dist1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .
+
+    #  Violation 2: Circular link using same predicate back to dataset
+
+ex:provText a rdfs:Literal ;
+    rdfs:label "Provenance text" .
+ex:dataset-002 a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Invalid Circular Dataset" ;
+    dct:description "Invalid Circular  provenance usage." ;
+    dcat:distribution ex:dist2 ;
+
+    #  Violation 2: Circular link using same predicate back to dataset
+    dct:provenance ex:dataset-002 .
+
+ex:dist2 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .
+
+ex:provenance1 a dct:ProvenanceStatement ;
+    dct:description "Derived from 2020 national survey data." .
