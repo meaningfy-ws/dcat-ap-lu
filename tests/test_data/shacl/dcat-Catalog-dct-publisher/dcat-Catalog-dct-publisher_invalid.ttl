@@ -1,0 +1,17 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/> .
+
+#  Too many publishers (violates maxCount = 1)
+ex:catalog2 a dcat:Catalog ;
+    dcterms:publisher ex:agent2a, ex:agent2b .
+
+ex:agent2a a foaf:Agent ; foaf:name "Publisher A" .
+ex:agent2b a foaf:Agent ; foaf:name "Publisher B" .
+
+
+#  Circular reference and  Wrong class
+ex:catalog4 a dcat:Catalog ;
+    dcterms:publisher ex:catalog4 .

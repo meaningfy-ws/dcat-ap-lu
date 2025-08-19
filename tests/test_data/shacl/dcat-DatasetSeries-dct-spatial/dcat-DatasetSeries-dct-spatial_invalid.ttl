@@ -1,0 +1,23 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+
+#  Wrong class — skos:Concept instead of dct:Location
+ex:datasetSeries-invalid2 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-023" ;
+    dct:title "Wrong Class for Spatial" ;
+    dct:description "Spatial is a skos:Concept, not dct:Location" ;
+    dct:spatial [ a skos:Concept ;
+                  skos:prefLabel "Europe"@en ] .
+
+#  Circular reference using spatial
+ex:datasetSeries-invalid3 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-024" ;
+    dct:title "Circular Reference in Spatial" ;
+    dct:description "Spatial points back to the dataset series" ;
+    dct:spatial ex:datasetSeries-spatial .
+
+ ex:datasetSeries-spatial  a dct:Location ;
+         dct:spatial ex:datasetSeries-invalid3 .

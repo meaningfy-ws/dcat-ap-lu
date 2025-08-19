@@ -1,0 +1,26 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Invalid because issued is a plain string (not xsd:dateTime)
+ex:datasetSeries-invalid1 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-004" ;
+    dct:title "Invalid Issued (string)" ;
+    dct:description "Issued as string" ;
+    dct:issued "2023-01-10" .
+
+# Invalid because issued has incorrect type (e.g., xsd:string instead of xsd:dateTime)
+ex:datasetSeries-invalid2 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-005" ;
+    dct:title "Invalid Issued (wrong datatype)" ;
+    dct:description "Issued with wrong datatype" ;
+    dct:issued "2023-01-10"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+# Invalid because issued appears multiple times (violates maxCount = 1)
+ex:datasetSeries-invalid3 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-006" ;
+    dct:title "Invalid Issued (multiple values)" ;
+    dct:description "Too many issued values" ;
+    dct:issued "2023-01-10T00:00:00"^^xsd:dateTime ,
+               "2023-02-15T00:00:00"^^xsd:dateTime .

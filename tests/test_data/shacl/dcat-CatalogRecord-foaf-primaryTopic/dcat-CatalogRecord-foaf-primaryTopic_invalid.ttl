@@ -1,0 +1,21 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+#  Too many values
+ex:record2 a dcat:CatalogRecord ;
+    foaf:primaryTopic ex:dataset2a, ex:dataset2b .
+
+ex:dataset2a a dcat:Resource .
+ex:dataset2b a dcat:Resource .
+
+# Less than 1 primary
+ex:record3 a dcat:CatalogRecord .
+
+#ex:notAResource a rdfs:Class .
+
+#  Circular reference
+ex:record4 a dcat:CatalogRecord ;
+    foaf:primaryTopic ex:record4 .
+

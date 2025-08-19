@@ -1,0 +1,27 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex:   <http://example.org/> .
+
+# Invalid 1: Publisher has the wrong class (not foaf:Agent)
+ex:datasetSeries-invalid1 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-012" ;
+    dct:title "Invalid Publisher Class" ;
+    dct:description "Publisher is a foaf:Document, not a foaf:Agent" ;
+    dct:publisher [ a foaf:Document ;
+                    foaf:name "Wrong Class Publisher"@en ] .
+
+# Invalid 2: More than one publisher (violates maxCount = 1)
+ex:datasetSeries-invalid2 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-013" ;
+    dct:title "Multiple Publishers" ;
+    dct:description "Too many publishers provided" ;
+    dct:publisher [ a foaf:Agent ; foaf:name "Publisher One"@en ],
+                  [ a foaf:Agent ; foaf:name "Publisher Two"@en ] .
+
+## Invalid 3: Publisher is a string literal instead of an Agent resource
+#ex:datasetSeries-invalid3 a dcat:DatasetSeries ;
+#    dct:identifier "ds-series-014" ;
+#    dct:title "Publisher as Literal" ;
+#    dct:description "Publisher is given as a string" ;
+#    dct:publisher "Just a string, not a foaf:Agent node" .

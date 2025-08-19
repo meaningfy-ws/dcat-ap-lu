@@ -1,0 +1,14 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix ex: <http://example.org/> .
+
+# Violations:
+# 1. More than one value for time:hasBeginning → violates sh:maxCount = 1
+# 2. One value is a literal instead of a resource (should be a time:Instant)
+
+ex:period-invalid a dct:PeriodOfTime ;
+    time:hasBeginning ex:begin1, "wrong-format" .
+
+ex:begin1 a time:Instant ;
+    time:inXSDDateTime "2022-01-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .

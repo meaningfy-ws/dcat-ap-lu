@@ -1,0 +1,13 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+
+
+# - dcat:qualifiedRelation refers to a resource that is NOT a dcat:Dataset
+# - Circular reference (ex:relationship-invalid <-> ex:notADataset)
+
+ex:relationship-invalid a dcat:Relationship ;
+    dcat:qualifiedRelation ex:notADataset .
+
+ex:notADataset a dcat:Agent ;  # wrong class (should be dcat:Dataset)
+    dcat:qualifiedRelation ex:relationship-invalid .

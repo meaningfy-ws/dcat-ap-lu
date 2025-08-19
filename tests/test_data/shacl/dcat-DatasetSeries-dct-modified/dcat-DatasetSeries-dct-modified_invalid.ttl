@@ -1,0 +1,26 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Invalid 1: modified is a plain literal (should be xsd:dateTime)
+ex:datasetSeries-invalid1 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-008" ;
+    dct:title "Modified as plain string" ;
+    dct:description "Invalid modified format" ;
+    dct:modified "April 15, 2024" .
+
+# Invalid 2: wrong datatype (xsd:string instead of xsd:dateTime)
+ex:datasetSeries-invalid2 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-009" ;
+    dct:title "Modified with wrong datatype" ;
+    dct:description "Modified with incorrect datatype" ;
+    dct:modified "2024-04-15T10:00:00"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+# Invalid 3: more than one modified value (violates maxCount = 1)
+ex:datasetSeries-invalid3 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-010" ;
+    dct:title "Multiple modified values" ;
+    dct:description "Too many modified entries" ;
+    dct:modified "2024-04-15T10:00:00"^^xsd:dateTime ,
+                 "2024-05-20T12:00:00"^^xsd:dateTime .

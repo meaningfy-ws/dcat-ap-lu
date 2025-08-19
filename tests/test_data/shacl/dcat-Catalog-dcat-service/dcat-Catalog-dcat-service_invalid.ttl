@@ -1,0 +1,10 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/> .
+
+
+#  wrong class and Circular reference
+ex:catalog4 a dcat:Catalog ;
+    dcat:service ex:catalog4 .
+
+ex:catalog4 a dcat:Catalog .

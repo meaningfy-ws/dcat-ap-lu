@@ -1,0 +1,21 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/> .
+
+#  Too many licenses (violates maxCount = 1)
+ex:catalog2 a dcat:Catalog ;
+    dcterms:license ex:license2a, ex:license2b .
+
+ex:license2a a dcterms:LicenseDocument .
+ex:license2b a dcterms:LicenseDocument .
+
+##  Wrong class (not a LicenseDocument)
+#ex:catalog3 a dcat:Catalog ;
+#    dcterms:license ex:notALicense .
+#
+#ex:notALicense a rdfs:Class .
+
+#  Circular reference and  Wrong class
+ex:catalog4 a dcat:Catalog ;
+    dcterms:license ex:catalog4 .

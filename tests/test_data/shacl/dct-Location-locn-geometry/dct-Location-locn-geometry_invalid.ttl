@@ -1,0 +1,17 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+
+# Violations:
+# 1. Multiple values (violates sh:maxCount = 1)
+# 2. One value has wrong class (not locn:Geometry)
+# 3. Circular reference (geometry points to location, which points back)
+
+ex:location-invalid a dct:Location ;
+    locn:geometry ex:geometry1, ex:geometry2 .
+
+ex:geometry1 a locn:Geometry .
+
+ex:geometry2 a foaf:Document ;  #  Invalid class
+    locn:geometry ex:location-invalid .  #  Circular reference

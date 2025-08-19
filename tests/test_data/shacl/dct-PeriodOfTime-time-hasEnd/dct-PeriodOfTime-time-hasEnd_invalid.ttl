@@ -1,0 +1,15 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix ex: <http://example.org/> .
+
+# Violations:
+# 1. More than one value for time:hasEnd (violates sh:maxCount 1)
+# 2. One of the values is a literal instead of a resource
+
+ex:period-invalid a dct:PeriodOfTime ;
+    time:hasEnd ex:end1, "not-a-valid-end", ex:end2 .
+
+ex:end1 a time:Instant ;
+    time:inXSDDateTime "2023-12-31T23:59:59"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:end2 a time:Instant ;
+    time:inXSDDateTime "2024-12-31T23:59:59"^^<http://www.w3.org/2001/XMLSchema#dateTime> .

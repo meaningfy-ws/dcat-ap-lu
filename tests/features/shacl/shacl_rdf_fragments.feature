@@ -73,3 +73,27 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-prov-qualifiedRelation               |                               0|                         2|
       |dcat-Dataset-prov-wasGeneratedBy               |                               0|                         2|
       |dcat-DatasetSeries-dcat-contactPoint               |                               0|                         2|
+      |dcat-DatasetSeries-dcatap-applicablelegislation               |                               0|                         2|
+      |dcat-DatasetSeries-dct-description               |                               0|                         1|
+      |dcat-DatasetSeries-dct-issued               |                               0|                         1|
+      |dcat-DatasetSeries-dct-modified               |                               0|                         1|
+      |dcat-DatasetSeries-dct-publisher               |                               0|                         2|
+      |dcat-DatasetSeries-dct-spatial               |                               0|                         2|
+      |dcat-DatasetSeries-dct-title               |                               0|                         1|
+      |dcat-Relationship-dcat-qualifiedRelation              |                               0|                         2|
+      |dct-LicenseDocument-dct-type              |                               0|                         2|
+      |dct-Location-dcat-bbox              |                               0|                        1|
+      |dct-Location-dcat-centroid             |                               0|                        1|
+      |dct-Location-locn-geometry            |                               0|                        3|
+      |dct-PeriodOfTime-dcat-endDate          |                               0|                        1|
+      |dct-PeriodOfTime-time-hasBeginning         |                               0|                        1|
+      |dct-PeriodOfTime-time-hasEnd         |                               0|                        1|
+      |foaf-Agent-dct-type         |                               0|                        3|
+      |foaf-Agent-foaf-name       |                               0|                        1|
+      |skos-Concept-skos-prefLabel       |                               0|                        2|
+      |dcat-Catalog-dcat-record    |                               0|                        2|
+      |dcat-CatalogRecord-foaf-primaryTopic    |                               0|                       4|
+      |dcat-Catalog-dcat-service    |                               0|                      2|
+      |dcat-Catalog-dct-creator   |                               0|                      3|
+      |dcat-Catalog-dct-license   |                               0|                      3|
+      |dcat-Catalog-dct-publisher  |                               0|                      3|
