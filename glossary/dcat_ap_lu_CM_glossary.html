@@ -45,6 +45,14 @@
                      <td></td>
                   </tr>
                   <tr>
+                     <td>dcat:Catalog</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>dcat:CatalogRecord</td>
+                     <td></td>
+                  </tr>
+                  <tr>
                      <td>dcat:DataService</td>
                      <td>A collection of operations that provides access to one or more datasets or data processing
                         functions.
@@ -474,6 +482,21 @@
                      <td>dcat:Relationship -&gt; dcat:Dataset []</td>
                   </tr>
                   <tr>
+                     <td>dcat:record</td>
+                     <td></td>
+                     <td>dcat:Catalog -&gt; dcat:CatalogRecord [0..*]</td>
+                  </tr>
+                  <tr>
+                     <td>dcat:servesDataset</td>
+                     <td></td>
+                     <td>dcat:Dataset -&gt; dcat:DataService [0..*]</td>
+                  </tr>
+                  <tr>
+                     <td>dcat:service</td>
+                     <td></td>
+                     <td>dcat:Catalog -&gt; dcat:DataService [0..*]</td>
+                  </tr>
+                  <tr>
                      <td>dcat:theme</td>
                      <td>A category of the Dataset.
                         Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI
@@ -526,10 +549,8 @@
                      <td>The frequency at which the Dataset is updated.
                         
                         The frequency at which the Dataset is updated.
-                         The frequency at which the Dataset series is updated.The frequency at which the Dataset
-                        series is updated.
                         </td>
-                     <td>dcat:Dataset -&gt; dct:Frequency [0..1]<br>dcat:DatasetSeries -&gt; dct:Frequency [0..1]<br></td>
+                     <td>dcat:Dataset -&gt; dct:Frequency [0..1]</td>
                   </tr>
                   <tr>
                      <td>dct:conformsTo</td>
@@ -545,9 +566,9 @@
                   </tr>
                   <tr>
                      <td>dct:creator</td>
-                     <td>An entity responsible for producing the dataset.An entity responsible for producing
+                     <td> An entity responsible for producing the dataset.An entity responsible for producing
                         the dataset.</td>
-                     <td>dcat:Dataset -&gt; foaf:Agent [0..1]</td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:format</td>
@@ -574,9 +595,9 @@
                   </tr>
                   <tr>
                      <td>dct:license</td>
-                     <td>A licence under which the Distribution is made available.A licence under which the
+                     <td> A licence under which the Distribution is made available.A licence under which the
                         Distribution is made available.</td>
-                     <td>dcat:Distribution -&gt; dct:LicenseDocument [0..1]</td>
+                     <td>dcat:Catalog -&gt; dct:LicenseDocument [0..1]<br>dcat:Distribution -&gt; dct:LicenseDocument [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:provenance</td>
@@ -588,7 +609,7 @@
                   </tr>
                   <tr>
                      <td>dct:publisher</td>
-                     <td>An entity (organisation) responsible for making the Dataset available.
+                     <td> An entity (organisation) responsible for making the Dataset available.
                         Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.An
                         entity (organisation) responsible for making the Dataset available.
                         Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.
@@ -599,7 +620,7 @@
                         
                         Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for
                         publishers.</td>
-                     <td>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:rights</td>
@@ -658,6 +679,11 @@
                         A page or document about this Dataset.
                          A page or document about this Distribution.A page or document about this Distribution.</td>
                      <td>dcat:Dataset -&gt; foaf:Document [0..*]<br>dcat:Distribution -&gt; foaf:Document [0..*]<br></td>
+                  </tr>
+                  <tr>
+                     <td>foaf:primaryTopic</td>
+                     <td></td>
+                     <td>dcat:CatalogRecord -&gt; dcat:Resource [1..1]</td>
                   </tr>
                   <tr>
                      <td>locn:geometry</td>
