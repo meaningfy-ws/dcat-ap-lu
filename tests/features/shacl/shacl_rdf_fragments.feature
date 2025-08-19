@@ -60,10 +60,10 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-dct-modified                   |                               0|                             2|
       |dcat-Dataset-dct-provenance                   |                               0|                             2|
       |dcat-Dataset-dct-publisher                  |                               0|                             3|
-      |ddcat-Dataset-dct-relation                  |                               0|                             0|
+      |dcat-Dataset-dct-relation                  |                               0|                             0|
       |dcat-Dataset-dct-source                  |                               0|                             2|
       |dcat-Dataset-dct-spatial                 |                               0|                             2|
       |dcat-Dataset-dct-temporal                |                               0|                             2|
       |dcat-Dataset-dct-title               |                               0|                                 1|
-      |dcat-Dataset-dct-type               |                               0|                                 1|
+      |dcat-Dataset-dct-type               |                               0|                                 3|
       |dcat-Dataset-dpv-hasData               |                               0|                                2|
