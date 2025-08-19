@@ -1,0 +1,30 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex:   <http://example.org/> .
+
+# Invalid dataset with all errors
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Invalid Dataset with Type" ;
+    dct:description "Describes Invalid Dataset with Type." ;
+
+    # Too many values (violates maxCount 1)
+    dct:type ex:type2,ex:dataset-invalid ;
+
+    # Circular reference: dataset refers to itself via type
+    dct:type ex:dataset-invalid ;
+
+    dcat:distribution ex:dist-invalid .
+
+##  type1 is not a skos:Concept
+#ex:type1 a foaf:Document ;
+#    foaf:name "Wrong Class" .
+
+#  type2 is missing class altogether (not a skos:Concept)
+ex:type2 a skos:Concept ;
+    skos:prefLabel "Archived Data"@en .
+
+ex:dist-invalid a dcat:Distribution ;
+     dcat:accessURL <http://example.org/download/dataset-001> .

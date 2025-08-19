@@ -1,0 +1,13 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+
+ex:dataset-002 a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Dataset with invalid relation" ;
+    dct:description "Uses a literal instead of a URI for dct:relation." ;
+    dcat:distribution ex:dist-1 ;
+    dct:relation "just a string" .
+
+ex:dist-1 a dcat:Distribution ;
+   dcat:accessURL <http://example.org/download/dataset-001> .

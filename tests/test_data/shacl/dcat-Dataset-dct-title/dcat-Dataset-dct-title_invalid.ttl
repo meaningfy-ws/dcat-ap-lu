@@ -1,0 +1,27 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex:   <http://example.org/> .
+
+#  No title
+ex:dataset-no-title a dcat:Dataset ;
+    dct:identifier "dataset-001" ;
+    dct:description "No title provided." ;
+    dcat:distribution ex:dist-a .
+
+#  Title used as a resource instead of a literal
+ex:dataset-title-as-resource a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title ex:SomeTitleResource ;
+    dct:description "Title given as a URI instead of a literal." ;
+    dcat:distribution ex:dist-b .
+
+ex:SomeTitleResource a foaf:Document .
+
+# Distributions (to meet dcat:distribution minCount)
+ex:dist-a a dcat:Distribution ;
+      dcat:accessURL <http://example.org/download/dataset-001> .
+
+ex:dist-b a dcat:Distribution ;
+          dcat:accessURL <http://example.org/download/dataset-002> .
+

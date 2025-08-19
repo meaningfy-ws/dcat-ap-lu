@@ -1,0 +1,41 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ex:   <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+
+# Case 1: Wrong class (not dcat:Dataset)
+ex:dataset-invalid1 a dcat:Dataset ;
+    dct:identifier "dataset-invalid-001" ;
+    dct:title "Dataset with wrong class as source" ;
+    dct:description "Invalid due to source not being dcat:Dataset." ;
+    dcat:distribution ex:dist-1 ;
+    dct:source ex:not-a-dataset .
+
+ex:not-a-dataset a foaf:Document .
+
+##  Case 2: Literal instead of IRI
+#ex:dataset-invalid2 a dcat:Dataset ;
+#    dct:identifier "dataset-invalid-002" ;
+#    dct:title "Dataset with literal source" ;
+#    dct:description "Invalid due to source being a literal." ;
+#    dcat:distribution ex:dist-2 ;
+#    dct:source "Some literal source" .
+
+#  Case 3: Circular reference
+ex:dataset-invalid3 a dcat:Dataset ;
+    dct:identifier "dataset-invalid-003" ;
+    dct:title "Dataset with circular source" ;
+    dct:description "Invalid due to circular reference." ;
+    dcat:distribution ex:dist-3 ;
+    dct:source ex:dataset-invalid3 .
+
+ex:dist-1 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-002> .
+
+ex:dist-2 a dcat:Distribution ;
+   dcat:accessURL <http://example.org/download/dataset-002> .
+ex:dist-3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-003> .
+
