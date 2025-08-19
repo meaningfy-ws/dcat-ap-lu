@@ -1,0 +1,34 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+
+#  Invalid: Wrong class (foaf:Agent instead of prov:Activity)
+ex:dataset-wrong-class a dcat:Dataset ;
+    dct:identifier "dataset-006" ;
+    dct:title "Invalid wasGeneratedBy - wrong class" ;
+    dct:description "Links to foaf:Agent instead of prov:Activity." ;
+    dcat:distribution ex:dist-2 ;
+    prov:wasGeneratedBy ex:agent1 .
+
+ex:agent1 a foaf:Agent ;
+    foaf:name "Some Person" .
+
+#  Invalid: Circular reference
+ex:dataset-circular a dcat:Dataset ;
+    dct:identifier "dataset-007" ;
+    dct:title "Invalid wasGeneratedBy - circular" ;
+    dct:description "Circular reference with wasGeneratedBy." ;
+    dcat:distribution ex:dist-3 ;
+    prov:wasGeneratedBy ex:circular-activity .
+
+ex:circular-activity a prov:Activity ;
+    prov:wasGeneratedBy ex:dataset-circular .
+
+ex:dist-2 a dcat:Distribution ;
+   dcat:accessURL <http://example.org/download/dataset-001> .
+
+ex:dist-3 a dcat:Distribution ;
+    dcat:accessURL <http://example.org/download/dataset-001> .
+

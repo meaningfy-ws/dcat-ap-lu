@@ -1,0 +1,15 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier "dataset-004" ;
+    dct:title "Dataset with Invalid Qualified Relation" ;
+    dct:description "Uses wrong class and circular reference for qualifiedRelation." ;
+    dcat:distribution ex:dist-2 ;
+        prov:qualifiedRelation ex:dataset-invalid .  #  Circular reference and  Wrong class
+
+ex:dist-2 a dcat:Distribution ;
+       dcat:accessURL <http://example.org/download/dataset-001> .

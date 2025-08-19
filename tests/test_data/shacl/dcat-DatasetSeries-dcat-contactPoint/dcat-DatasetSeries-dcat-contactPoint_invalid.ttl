@@ -1,0 +1,26 @@
+
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+
+#  Wrong class (foaf:Agent instead of vcard:Kind)
+ex:datasetSeries-wrong-class a dcat:DatasetSeries ;
+    dct:identifier "ds-series-002" ;
+    dct:title "Invalid Dataset Series - Wrong Class" ;
+    dct:description "Contact point uses foaf:Agent instead of vcard:Kind." ;
+    dcat:contactPoint ex:contact-foaf .
+
+ex:contact-foaf a foaf:Agent ;
+    foaf:name "Wrong Class Person" .
+
+#  Circular reference
+ex:datasetSeries-circular a dcat:DatasetSeries ;
+    dct:identifier "ds-series-003" ;
+    dct:title "Invalid Dataset Series - Circular" ;
+    dct:description "Circular reference in contact point." ;
+    dcat:contactPoint ex:contact-circular .
+
+    ex:contact-circular a vcard:Kind ;
+        dcat:contactPoint ex:datasetSeries-circular .

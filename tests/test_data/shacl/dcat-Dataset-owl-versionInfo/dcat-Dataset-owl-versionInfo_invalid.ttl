@@ -1,0 +1,17 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix ex:   <http://example.org/> .
+
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Invalid Dataset with Multiple Versions" ;
+    dct:description "This dataset has multiple version info values, violating sh:maxCount 1." ;
+    dcat:distribution ex:dist-2 ;
+  # More than one value
+    owl:versionInfo "v1.0" ;
+    owl:versionInfo "v2.0" .
+
+ex:dist-2 a dcat:Distribution ;
+      dcat:accessURL <http://example.org/download/dataset-001> .
+

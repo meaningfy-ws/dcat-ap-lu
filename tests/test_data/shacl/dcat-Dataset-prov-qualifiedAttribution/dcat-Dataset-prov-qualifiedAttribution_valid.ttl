@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+
+ex:dataset-valid a dcat:Dataset ;
+    dct:identifier "dataset-001" ;
+    dct:title "Dataset with Valid Attribution" ;
+    dct:description "This dataset has a proper qualified attribution." ;
+    dcat:distribution ex:dist-1 ;
+    prov:qualifiedAttribution ex:attrib-1 .
+
+ex:attrib-1 a prov:Attribution ;
+    prov:agent ex:agent-1 .
+
+ex:agent-1 a foaf:Agent ;
+    foaf:name "Valid Agent" .
+
+ex:dist-1 a dcat:Distribution ;
+   dcat:accessURL <http://example.org/download/dataset-001> .
+

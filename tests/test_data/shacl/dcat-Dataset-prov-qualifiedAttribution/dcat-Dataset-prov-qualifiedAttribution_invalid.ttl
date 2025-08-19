@@ -1,0 +1,17 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+
+# Dataset with incorrect attribution (not of class prov:Attribution) and circular reference
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Dataset with Invalid Attribution" ;
+    dct:description "This dataset has a circular attribution reference and wrong class." ;
+    dcat:distribution ex:dist-2 ;
+    prov:qualifiedAttribution ex:dataset-invalid .  #  Circular reference
+
+ex:dist-2 a dcat:Distribution ;
+       dcat:accessURL <http://example.org/download/dataset-001> .
+
