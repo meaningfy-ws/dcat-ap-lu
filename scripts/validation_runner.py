@@ -1,8 +1,13 @@
+#!/usr/bin/env python3
+"""
+A simple SHACL test runner to validate a given data file against a given SHACL
+shapes file.
+"""
+
 import argparse
 from pyshacl import validate
 from rdflib import Graph
 import glob
-import os
 
 
 def find_test_file(search_str, test_type="valid"):
