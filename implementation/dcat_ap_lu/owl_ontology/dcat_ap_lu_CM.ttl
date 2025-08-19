@@ -25,15 +25,15 @@
 
 :core a owl:Ontology ;
     rdfs:label "This artefact provides the definitions for the DCAT-AP-LU.         This artefact excludes the restrictions.         The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency."@en ;
-    dcterms:created "2025-08-18"^^xsd:date ;
+    dcterms:created "2025-08-19"^^xsd:date ;
     dcterms:description "This artefact provides the definitions for the DCAT-AP-LU.         This artefact excludes the restrictions.         DCAT-AP-LU is a Luxembourg-specific extension of the DCAT-AP profile used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe. It was created as part of the national implementation of the Data Governance Act (DGA) to support the creation of a single national dataset catalogue for all public sector data. The DCAT-AP-LU reuses large parts of the DCAT-AP-v3.0 standard, with a set of minor adaptations to support specific requirements for Luxembourg."@en ;
-    dcterms:issued "2025-08-18"^^xsd:date ;
+    dcterms:issued "2025-08-19"^^xsd:date ;
     dcterms:license "The Commission’s reuse policy is implemented by Commission Decision2011/833/EU of 12 December 2011 on the reuse of Commission documents          (OJ L 330,14.12.2011, p. 39 – https://eur-lex.europa.eu/eli/dec/2011/833/oj). Unlessotherwise noted, the reuse of this document is authorised under the          CreativeCommons Attribution 4.0 International (CC BY 4.0) licence (https://creativecommons.org/licenses/by/4.0/).This means that reuse is allowed, provided          that appropriate credit is given and any changes are indicated." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "DCAT-AP-LU"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-08-18" ;
+    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-08-19" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/EPO/latest/index.html>,
         <https://github.com/eprocurementontology/eprocurementontology>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -119,7 +119,7 @@ dcterms:accessRights a owl:ObjectProperty ;
     skos:prefLabel "access Rights"@en .
 
 dcterms:accrualPeriodicity a owl:ObjectProperty ;
-    skos:definition "The frequency at which the Dataset is updated. The frequency at which the Dataset series is updated."@en ;
+    skos:definition "The frequency at which the Dataset is updated."@en ;
     skos:prefLabel "accrual Periodicity"@en .
 
 dcterms:conformsTo a owl:ObjectProperty ;
@@ -251,6 +251,12 @@ adms:versionNotes a owl:ObjectProperty ;
     skos:definition "A description of the differences between this version and a previous version of the Dataset. (dcat:Dataset)"@en ;
     skos:prefLabel "version Notes"@en .
 
+dcat:Catalog a owl:Class ;
+    skos:prefLabel "Catalog"@en .
+
+dcat:CatalogRecord a owl:Class ;
+    skos:prefLabel "Catalog Record"@en .
+
 dcat:DataService a owl:Class ;
     skos:definition "A collection of operations that provides access to one or more datasets or data processing functions."@en ;
     skos:prefLabel "Data Service"@en .
@@ -330,6 +336,15 @@ dcat:qualifiedRelation a owl:ObjectProperty ;
     skos:definition "A description of a relat.ionship with another resource"@en ;
     skos:prefLabel "qualified Relation"@en .
 
+dcat:record a owl:ObjectProperty ;
+    skos:prefLabel "record"@en .
+
+dcat:servesDataset a owl:ObjectProperty ;
+    skos:prefLabel "serves Dataset"@en .
+
+dcat:service a owl:ObjectProperty ;
+    skos:prefLabel "service"@en .
+
 dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
     skos:definition "The minimum spatial separation resolvable in a dataset, measured in meters. (dcat:Dataset) The minimum spatial separation resolvable in a dataset distribution, measured in meters. (dcat:Distribution)"@en ;
     skos:prefLabel "spatial Resolution In Meters"@en .
@@ -391,6 +406,9 @@ foaf:name a owl:ObjectProperty ;
 foaf:page a owl:ObjectProperty ;
     skos:definition "A page or document about this Dataset. A page or document about this Distribution."@en ;
     skos:prefLabel "page"@en .
+
+foaf:primaryTopic a owl:ObjectProperty ;
+    skos:prefLabel "primary Topic"@en .
 
 <https://w3id.org/dpv#Data> a owl:Class ;
     rdfs:subClassOf skos:Concept ;
