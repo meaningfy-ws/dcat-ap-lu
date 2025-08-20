@@ -1,8 +1,16 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ex:   <http://example.org/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 # Invalid: Missing dct:title (violates sh:minCount 1)
 ex:datasetSeries-invalid a dcat:DatasetSeries ;
     dct:identifier "ds-series-032" ;
     dct:description "This dataset series is missing the required title." .
+# Invalid: wrong dataType
+ex:datasetSeries-invalid1 a dcat:DatasetSeries ;
+    dct:identifier "ds-series-032" ;
+    dct:title ex:wrongData ;
+    dct:description "This dataset series is missing the required title." .
+
+ex:wrongData a dcat:WrongClass.

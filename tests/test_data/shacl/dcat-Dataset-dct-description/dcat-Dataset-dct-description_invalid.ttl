@@ -1,12 +1,17 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
 
-ex:dataset-001 a dcat:Dataset ;
+#  Missing dcterms:description (violates sh:minCount = 1)
+ex:dataset1 a dcat:Dataset ;
     dct:identifier "dataset-001" ;
-    dct:title "Example Dataset"@en ;
-#      dct:description "This dataset includes a proper description as required."@en ;
-    dcat:distribution ex:dist1 .
+    dct:title "Example Dataset"@en .
 
-ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+#  Wrong datatype (non-literal)
+ex:dataset2 a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Example Dataset2"@en ;
+    dcterms:description ex:NonLiteral .
+
+ex:NonLiteral a dcat:Datase .

@@ -40,7 +40,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-dcat-contactPoint          |                              0|                                 2|
       |dcat-Dataset-dcat-distribution          |                              0|                                 2|
       |dcat-Dataset-dcat-inSeries              |                              0|                                 4|
-      |dcat-Dataset-dcat-keyword               |                              0|                                 0|
+      |dcat-Dataset-dcat-keyword               |                              1|                                 0|
       |dcat-Dataset-dcat-landingPage           |                              0|                                 2|
       |dcat-Dataset-dcat-spatialResolutionInMeters       |                    0|                                 2|
       |dcat-Dataset-dcat-temporalResolution              |                    0|                                 1|
@@ -50,9 +50,9 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-dct-accrualPeriodicity             |                       0|                              3|
       |dcat-Dataset-dct-conformsTo             |                               0|                              2|
       |dcat-Dataset-dct-creator             |                               0|                             3|
-      |dcat-Dataset-dct-description             |                               0|                             1|
+      |dcat-Dataset-dct-description             |                               0|                             2|
       |dcat-Dataset-dct-hasVersion             |                               0|                             2|
-      |dcat-Dataset-dct-identifier             |                               0|                             1|
+      |dcat-Dataset-dct-identifier             |                               0|                             2|
       |dcat-Dataset-dct-isReferencedBy             |                               0|                             0|
       |dcat-Dataset-dct-isVersionOf             |                               0|                             2|
       |dcat-Dataset-dct-issued             |                               0|                             2|
@@ -64,22 +64,22 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-dct-source                  |                               0|                             2|
       |dcat-Dataset-dct-spatial                 |                               0|                             2|
       |dcat-Dataset-dct-temporal                |                               0|                             2|
-      |dcat-Dataset-dct-title               |                               0|                                 1|
+      |dcat-Dataset-dct-title               |                               0|                                 2|
       |dcat-Dataset-dct-type               |                               0|                                 3|
       |dcat-Dataset-dpv-hasData               |                               0|                                2|
       |dcat-Dataset-foaf-page               |                               0|                                2|
-      |dcat-Dataset-owl-versionInfo               |                               0|                               1|
+      |dcat-Dataset-owl-versionInfo               |                               0|                               2|
       |dcat-Dataset-prov-qualifiedAttribution               |                               0|                         2|
       |dcat-Dataset-prov-qualifiedRelation               |                               0|                         2|
       |dcat-Dataset-prov-wasGeneratedBy               |                               0|                         2|
       |dcat-DatasetSeries-dcat-contactPoint               |                               0|                         2|
       |dcat-DatasetSeries-dcatap-applicablelegislation               |                               0|                         2|
-      |dcat-DatasetSeries-dct-description               |                               0|                         1|
+      |dcat-DatasetSeries-dct-description               |                               0|                         2|
       |dcat-DatasetSeries-dct-issued               |                               0|                         1|
       |dcat-DatasetSeries-dct-modified               |                               0|                         1|
       |dcat-DatasetSeries-dct-publisher               |                               0|                         2|
       |dcat-DatasetSeries-dct-spatial               |                               0|                         2|
-      |dcat-DatasetSeries-dct-title               |                               0|                         1|
+      |dcat-DatasetSeries-dct-title               |                               0|                         2|
       |dcat-Relationship-dcat-qualifiedRelation              |                               0|                         2|
       |dct-LicenseDocument-dct-type              |                               0|                         2|
       |dct-Location-dcat-bbox              |                               0|                        1|
