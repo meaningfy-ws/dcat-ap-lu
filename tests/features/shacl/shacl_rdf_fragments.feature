@@ -85,7 +85,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dct-Location-dcat-bbox                    |                               0|                        2|
       |dct-Location-dcat-centroid             |                               0|                        2|
       |dct-Location-locn-geometry            |                               0|                        3|
-      |dct-PeriodOfTime-dcat-endDate          |                               0|                        1|
+      |dct-PeriodOfTime-dcat-endDate          |                               0|                        2|
       |dct-PeriodOfTime-time-hasBeginning         |                               0|                        2|
       |dct-PeriodOfTime-time-hasEnd         |                               0|                        2|
       |foaf-Agent-dct-type         |                               0|                        3|

@@ -1,15 +1,13 @@
-@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.org/> .
 
-# Violations:
-# 1. More than one value for dcat:centroid (violates sh:maxCount 1)
-# 2. One of the centroids has the wrong type
+# Violates multiple constraints
+ex:locationInvalid a dct:Location ;
 
-ex:location-invalid a dct:Location ;
-    dcat:centroid ex:centroid1, ex:centroid2 .
+    #  Not a literal — using an IRI instead
+    dcat:centroid ex:notALiteral ;
 
-ex:centroid1 a dcat:Centroid .
-
-ex:centroid2 a foaf:Document .  #  Invalid class
+    #  Too many values — violates sh:maxCount 1
+    dcat:centroid "POINT(6.13 49.61)" ;
+    dcat:centroid "POINT(6.14 49.62)" .
