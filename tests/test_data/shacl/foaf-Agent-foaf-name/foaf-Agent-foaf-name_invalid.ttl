@@ -1,5 +1,11 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ex: <http://example.org/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
 
 # Missing required foaf:name → violates sh:minCount 1
 ex:agent2 a foaf:Agent .
+
+ex:agent1 a foaf:Agent ;
+    foaf:name ex:WrongType.
+ex:WrongType a dcat:Wrong.

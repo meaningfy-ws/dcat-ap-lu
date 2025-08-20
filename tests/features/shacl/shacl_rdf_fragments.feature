@@ -19,31 +19,31 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dcat-downloadURL    |                              0 |                                0 |
       | dcat-Distribution-dcat-packageFormat  |                              0 |                                 3|
       | dcat-Distribution-dcat-spatialResolutionInMeters  |                  0 |                                 1|
-      | dcat-Distribution-dcat-temporalResolution  |                         0 |                                 0|
+      | dcat-Distribution-dcat-temporalResolution  |                         0 |                                 1|
       | dcat-Distribution-dcatap-applicablelegislation  |                    0 |                                 2|
       | dcat-Distribution-dct-conformsTo       |                             0 |                                 2|
-      | dcat-Distribution-dct-description      |                             0 |                                 0|
+      | dcat-Distribution-dct-description      |                             0 |                                 1|
       | dcat-Distribution-dct-format           |                             0 |                                 3|
       | dcat-Distribution-dct-issued           |                             0 |                                 3|
       | dcat-Distribution-dct-language         |                             0 |                                 3|
       | dcat-Distribution-dct-license          |                             0 |                                 4|
       | dcat-Distribution-dct-modified         |                             0 |                                 2|
       | dcat-Distribution-dct-rights           |                             0 |                                 3|
-      |dcat-Distribution-dct-title             |                              0|                                  0|
+      |dcat-Distribution-dct-title             |                              0|                                  1|
       |dcat-Distribution-foaf-page             |                              0|                                  3|
       |dcat-Distribution-odrl-hasPolicy        |                              0|                                  3|
       |dcat-Distribution-spdx-checksum         |                              0|                                  3|
-      |adms-Identifier-skos-notation           |                              0|                                  1|
+      |adms-Identifier-skos-notation           |                              0|                                  2|
       |dcat-Dataset-adms-identifier            |                              0|                                 2|
       |dcat-Dataset-adms-sample                |                              0|                                 3|
-      |dcat-Dataset-adms-versionNotes          |                              0|                                 0|
+      |dcat-Dataset-adms-versionNotes          |                              0|                                 1|
       |dcat-Dataset-dcat-contactPoint          |                              0|                                 2|
       |dcat-Dataset-dcat-distribution          |                              0|                                 2|
       |dcat-Dataset-dcat-inSeries              |                              0|                                 4|
       |dcat-Dataset-dcat-keyword               |                              1|                                 0|
       |dcat-Dataset-dcat-landingPage           |                              0|                                 2|
       |dcat-Dataset-dcat-spatialResolutionInMeters       |                    0|                                 2|
-      |dcat-Dataset-dcat-temporalResolution              |                    0|                                 1|
+      |dcat-Dataset-dcat-temporalResolution              |                    0|                                 2|
       |dcat-Dataset-dcat-theme              |                0|                              2|
       |dcat-Dataset-dcatap-applicablelegislation             |                0|                              2|
       |dcat-Dataset-dct-accessRights             |                0|                              2|
@@ -82,14 +82,14 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-DatasetSeries-dct-title               |                               0|                         2|
       |dcat-Relationship-dcat-qualifiedRelation              |                               0|                         2|
       |dct-LicenseDocument-dct-type              |                               0|                         2|
-      |dct-Location-dcat-bbox              |                               0|                        1|
-      |dct-Location-dcat-centroid             |                               0|                        1|
+      |dct-Location-dcat-bbox                    |                               0|                        2|
+      |dct-Location-dcat-centroid             |                               0|                        2|
       |dct-Location-locn-geometry            |                               0|                        3|
       |dct-PeriodOfTime-dcat-endDate          |                               0|                        1|
-      |dct-PeriodOfTime-time-hasBeginning         |                               0|                        1|
-      |dct-PeriodOfTime-time-hasEnd         |                               0|                        1|
+      |dct-PeriodOfTime-time-hasBeginning         |                               0|                        2|
+      |dct-PeriodOfTime-time-hasEnd         |                               0|                        2|
       |foaf-Agent-dct-type         |                               0|                        3|
-      |foaf-Agent-foaf-name       |                               0|                        1|
+      |foaf-Agent-foaf-name       |                               0|                        2|
       |skos-Concept-skos-prefLabel       |                               0|                        2|
       |dcat-Catalog-dcat-record    |                               0|                        2|
       |dcat-CatalogRecord-foaf-primaryTopic    |                               0|                       4|
@@ -97,3 +97,4 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Catalog-dct-creator   |                               0|                      3|
       |dcat-Catalog-dct-license   |                               0|                      3|
       |dcat-Catalog-dct-publisher  |                               0|                      3|
+      |dct-PeriodOfTime-dcat-startDate  |                               0|                      2|
