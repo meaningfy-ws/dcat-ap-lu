@@ -62,7 +62,8 @@ dcterms:PeriodOfTime a owl:Class ;
     skos:prefLabel "Period Of Time"@en .
 
 dcterms:ProvenanceStatement a owl:Class ;
-    skos:definition "Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
+    skos:definition "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en,
+        "Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
     skos:prefLabel "Provenance Statement"@en .
 
 dcterms:RightsStatement a owl:Class ;
@@ -96,10 +97,6 @@ dcterms:format a owl:ObjectProperty ;
     skos:definition "The file format of the Distribution."@en ;
     skos:prefLabel "format"@en .
 
-dcterms:hasVersion a owl:ObjectProperty ;
-    skos:definition "A related Dataset that is a version, edition, or adaptation of the described Dataset."@en ;
-    skos:prefLabel "has Version"@en .
-
 dcterms:identifier a owl:DatatypeProperty ;
     skos:definition "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue. Usage Note: The use of persistent dereferenceable URIs is mandatory in this profile. (dcat:Dataset)"@en ;
     skos:prefLabel "identifier"@en .
@@ -107,9 +104,6 @@ dcterms:identifier a owl:DatatypeProperty ;
 dcterms:isReferencedBy a rdf:Property ;
     skos:definition "A related resource, such as a publication, that references, cites, or otherwise points to the dataset. (dcat:Dataset)"@en ;
     skos:prefLabel "is Referenced By"@en .
-
-dcterms:isVersionOf a owl:ObjectProperty ;
-    skos:prefLabel "is Version Of"@en .
 
 dcterms:issued a owl:DatatypeProperty ;
     skos:definition "The date of formal issuance (e.g., publication) of the Dataset. (dcat:Dataset) The date of formal issuance (e.g., publication) of the Dataset Series. (dcat:DatasetSeries) The date of formal issuance (e.g., publication) of the Distribution. (dcat:Distribution)"@en ;
@@ -216,6 +210,7 @@ dcat:CatalogRecord a owl:Class ;
     skos:prefLabel "Catalog Record"@en .
 
 dcat:DataService a owl:Class ;
+    rdfs:subClassOf dcat:Resource ;
     skos:definition "A collection of operations that provides access to one or more datasets or data processing functions."@en ;
     skos:prefLabel "Data Service"@en .
 
@@ -224,6 +219,7 @@ dcat:Dataset a owl:Class ;
     skos:prefLabel "Dataset"@en .
 
 dcat:DatasetSeries a owl:Class ;
+    rdfs:subClassOf dcat:Resource ;
     skos:definition "A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries)."@en ;
     skos:prefLabel "Dataset Series"@en .
 
@@ -270,6 +266,10 @@ dcat:downloadURL a rdf:Property ;
 dcat:endDate a owl:DatatypeProperty ;
     skos:prefLabel "end Date"@en .
 
+dcat:hasVersion a owl:ObjectProperty ;
+    skos:definition "A related Dataset that is a version, edition, or adaptation of the described Dataset."@en ;
+    skos:prefLabel "has Version"@en .
+
 dcat:inSeries a owl:ObjectProperty ;
     skos:definition "A dataset series of which the dataset is part. Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided"@en ;
     skos:prefLabel "in Series"@en .
@@ -291,7 +291,7 @@ dcat:packageFormat a owl:ObjectProperty ;
     skos:prefLabel "package Format"@en .
 
 dcat:qualifiedRelation a owl:ObjectProperty ;
-    skos:definition "A description of a relat.ionship with another resource"@en ;
+    skos:definition "A description of a relationship with another resource."@en ;
     skos:prefLabel "qualified Relation"@en .
 
 dcat:record a owl:ObjectProperty ;

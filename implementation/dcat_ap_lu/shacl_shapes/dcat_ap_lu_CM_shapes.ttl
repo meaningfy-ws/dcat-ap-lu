@@ -15,7 +15,6 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -61,9 +60,11 @@ core-shape:dcat-Dataset a sh:NodeShape ;
         core-shape:dcat-Dataset-adms-versionNotes,
         core-shape:dcat-Dataset-dcat-contactPoint,
         core-shape:dcat-Dataset-dcat-distribution,
+        core-shape:dcat-Dataset-dcat-hasVersion,
         core-shape:dcat-Dataset-dcat-inSeries,
         core-shape:dcat-Dataset-dcat-keyword,
         core-shape:dcat-Dataset-dcat-landingPage,
+        core-shape:dcat-Dataset-dcat-qualifiedRelation,
         core-shape:dcat-Dataset-dcat-servesDataset,
         core-shape:dcat-Dataset-dcat-spatialResolutionInMeters,
         core-shape:dcat-Dataset-dcat-temporalResolution,
@@ -74,10 +75,8 @@ core-shape:dcat-Dataset a sh:NodeShape ;
         core-shape:dcat-Dataset-dct-conformsTo,
         core-shape:dcat-Dataset-dct-creator,
         core-shape:dcat-Dataset-dct-description,
-        core-shape:dcat-Dataset-dct-hasVersion,
         core-shape:dcat-Dataset-dct-identifier,
         core-shape:dcat-Dataset-dct-isReferencedBy,
-        core-shape:dcat-Dataset-dct-isVersionOf,
         core-shape:dcat-Dataset-dct-issued,
         core-shape:dcat-Dataset-dct-language,
         core-shape:dcat-Dataset-dct-modified,
@@ -93,7 +92,6 @@ core-shape:dcat-Dataset a sh:NodeShape ;
         core-shape:dcat-Dataset-foaf-page,
         core-shape:dcat-Dataset-owl-versionInfo,
         core-shape:dcat-Dataset-prov-qualifiedAttribution,
-        core-shape:dcat-Dataset-prov-qualifiedRelation,
         core-shape:dcat-Dataset-prov-wasGeneratedBy ;
     sh:targetClass dcat:Dataset .
 
@@ -144,7 +142,6 @@ core-shape:dcat-Distribution a sh:NodeShape ;
 core-shape:dcat-Relationship a sh:NodeShape ;
     rdfs:label "Relationship" ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:dcat-Relationship-dcat-qualifiedRelation ;
     sh:targetClass dcat:Relationship .
 
 core-shape:dcat-Resource a sh:NodeShape ;
@@ -203,7 +200,8 @@ core-shape:dct-PeriodOfTime a sh:NodeShape ;
 
 core-shape:dct-ProvenanceStatement a sh:NodeShape ;
     rdfs:label "Provenance Statement" ;
-    rdfs:comment "Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation." ;
+    rdfs:comment "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.",
+        "Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation." ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:targetClass dcterms:ProvenanceStatement .
 
@@ -368,6 +366,13 @@ core-shape:dcat-Dataset-dcat-distribution a sh:PropertyShape ;
     sh:path dcat:distribution ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#distribution> ?that . ?that <http://www.w3.org/ns/dcat#distribution> ?this .}" ] .
 
+core-shape:dcat-Dataset-dcat-hasVersion a sh:PropertyShape ;
+    sh:class dcat:Dataset ;
+    sh:description "A related Dataset that is a version, edition, or adaptation of the described Dataset." ;
+    sh:name "has Version" ;
+    sh:path dcat:hasVersion ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#hasVersion> ?that . ?that <http://www.w3.org/ns/dcat#hasVersion> ?this .}" ] .
+
 core-shape:dcat-Dataset-dcat-inSeries a sh:PropertyShape ;
     sh:class dcat:DatasetSeries ;
     sh:description "A dataset series of which the dataset is part. Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided" ;
@@ -388,6 +393,13 @@ core-shape:dcat-Dataset-dcat-landingPage a sh:PropertyShape ;
     sh:name "landing Page" ;
     sh:path dcat:landingPage ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#landingPage> ?that . ?that <http://www.w3.org/ns/dcat#landingPage> ?this .}" ] .
+
+core-shape:dcat-Dataset-dcat-qualifiedRelation a sh:PropertyShape ;
+    sh:class dcat:Relationship ;
+    sh:description "A description of a relationship with another resource." ;
+    sh:name "qualified Relation" ;
+    sh:path dcat:qualifiedRelation ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#qualifiedRelation> ?that . ?that <http://www.w3.org/ns/dcat#qualifiedRelation> ?this .}" ] .
 
 core-shape:dcat-Dataset-dcat-servesDataset a sh:PropertyShape ;
     sh:class dcat:DataService ;
@@ -464,13 +476,6 @@ core-shape:dcat-Dataset-dct-description a sh:PropertyShape ;
     sh:name "description" ;
     sh:path dcterms:description .
 
-core-shape:dcat-Dataset-dct-hasVersion a sh:PropertyShape ;
-    sh:class dcat:Dataset ;
-    sh:description "A related Dataset that is a version, edition, or adaptation of the described Dataset." ;
-    sh:name "has Version" ;
-    sh:path dcterms:hasVersion ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/hasVersion> ?that . ?that <http://purl.org/dc/terms/hasVersion> ?this .}" ] .
-
 core-shape:dcat-Dataset-dct-identifier a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:datatype rdfs:Literal ;
@@ -484,12 +489,6 @@ core-shape:dcat-Dataset-dct-isReferencedBy a sh:PropertyShape ;
     sh:description "A related resource, such as a publication, that references, cites, or otherwise points to the dataset." ;
     sh:name "is Referenced By" ;
     sh:path dcterms:isReferencedBy .
-
-core-shape:dcat-Dataset-dct-isVersionOf a sh:PropertyShape ;
-    sh:class dcat:Dataset ;
-    sh:name "is Version Of" ;
-    sh:path dcterms:isVersionOf ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/isVersionOf> ?that . ?that <http://purl.org/dc/terms/isVersionOf> ?this .}" ] .
 
 core-shape:dcat-Dataset-dct-issued a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -599,13 +598,6 @@ core-shape:dcat-Dataset-prov-qualifiedAttribution a sh:PropertyShape ;
     sh:name "qualified Attribution" ;
     sh:path prov:qualifiedAttribution ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/prov#qualifiedAttribution> ?that . ?that <http://www.w3.org/ns/prov#qualifiedAttribution> ?this .}" ] .
-
-core-shape:dcat-Dataset-prov-qualifiedRelation a sh:PropertyShape ;
-    sh:class dcat:Relationship ;
-    sh:description "A description of a relationship with another resource." ;
-    sh:name "qualified Relation" ;
-    sh:path prov:qualifiedRelation ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/prov#qualifiedRelation> ?that . ?that <http://www.w3.org/ns/prov#qualifiedRelation> ?this .}" ] .
 
 core-shape:dcat-Dataset-prov-wasGeneratedBy a sh:PropertyShape ;
     sh:class prov:Activity ;
@@ -852,13 +844,6 @@ core-shape:dcat-Distribution-spdx-checksum a sh:PropertyShape ;
     sh:path spdx:checksum ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://spdx.org/rdf/terms#checksum> ?that . ?that <http://spdx.org/rdf/terms#checksum> ?this .}" ] .
 
-core-shape:dcat-Relationship-dcat-qualifiedRelation a sh:PropertyShape ;
-    sh:class dcat:Dataset ;
-    sh:description "A description of a relationship with another resource." ;
-    sh:name "qualified Relation" ;
-    sh:path dcat:qualifiedRelation ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#qualifiedRelation> ?that . ?that <http://www.w3.org/ns/dcat#qualifiedRelation> ?this .}" ] .
-
 core-shape:dct-LicenseDocument-dct-type a sh:PropertyShape ;
     sh:class skos:Concept ;
     sh:description "A type of licence, e.g. indicating 'public domain' or 'royalties required'." ;
@@ -931,9 +916,9 @@ core-shape:foaf-Agent-foaf-name a sh:PropertyShape ;
 
 core-shape:skos-Concept-skos-prefLabel a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:datatype rdfs:Literal ;
     sh:minCount 1 ;
     sh:name "pref Label" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
     sh:path skos:prefLabel .
 
 core-shape:core-shape a owl:Ontology ;
