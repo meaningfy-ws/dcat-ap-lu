@@ -1,0 +1,108 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix adms:   <http://www.w3.org/ns/adms#> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix vcard:  <http://www.w3.org/2006/vcard/ns#> .
+@prefix spdx:   <http://spdx.org/rdf/terms#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix :       <https://example.org/dcat-ap-lu-examples/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################################
+# Dataset Series (mandatory dct:title and dct:description)
+#################################################################
+
+:series-001
+    a dcat:DatasetSeries ;
+    dct:title "Example Dataset Series"@en ;
+    dct:description "This series groups related datasets including different versions."@en .
+
+#################################################################
+# Dataset with required properties and link to series
+#################################################################
+
+:dataset-full
+    a dcat:Dataset ;
+    dct:identifier "dataset-full" ;
+    dct:title "Full Dataset Example"@en ;
+    dct:description "A fully populated dataset using controlled vocabularies with rdfs:seeAlso."@en ;
+       dcat:inSeries :series-001 ;
+        dct:type [ a skos:Concept ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/dataset-type/ARCHIVED_DATA> ;
+        skos:prefLabel "Archived data"@en ] ;
+    dcat:theme
+        [ a skos:Concept ;
+          rdfs:seeAlso <https://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+          skos:prefLabel "Government"@en ],
+        [ a skos:Concept ;
+          rdfs:seeAlso <https://publications.europa.eu/resource/authority/data-theme/TECH> ;
+          skos:prefLabel "Technology"@en ] ;
+    dct:language [ a dct:LinguisticSystem ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG> ;
+        skos:prefLabel "English"@en ] ;
+       dcat:distribution :dist-full-csv, :dist-full-json ;
+    adms:versionNotes "Version 1"@en ;
+    dct:isVersionOf :dataset-001 ;
+    dct:hasVersion :dataset-full-v2 ;
+    dct:isReferencedBy <https://example.org/pub/1> .
+
+
+
+#################################################################
+# Other Dataset resources
+#################################################################
+
+
+:dataset-001
+    a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Parent Dataset"@en ;
+    dct:description "A parent version of dataset-full."@en .
+
+:dataset-full-v2
+    a dcat:Dataset ;
+    dct:identifier "dataset-full-v2" ;
+    dct:title "Next Version of Full Dataset"@en ;
+    dct:description "A newer version of dataset-full."@en .
+
+#################################################################
+# Distributions
+#################################################################
+
+:dist-full-csv
+    a dcat:Distribution ;
+    dct:title "Full CSV Export"@en ;
+    dct:description "CSV format of dataset-full."@en ;
+    dct:identifier "dist-full-csv" ;
+    dct:language [ a dct:LinguisticSystem ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG> ;
+        skos:prefLabel "English"@en ] ;
+    dct:license [ a dct:LicenseDocument ;
+        rdfs:seeAlso <http://publications.europa.eu/resource/authority/licence/CC0> ;
+        skos:prefLabel "CC0"@en ] ;
+        dcat:accessURL <https://example.org/data/full.csv> ;
+    dcat:downloadURL <https://example.org/data/full.csv/download> ;
+    dcat:mediaType [ a dct:MediaType ;
+        rdfs:seeAlso <https://www.iana.org/assignments/media-types/text/csv> ;
+        skos:prefLabel "text/csv"@en ] ;
+    dcat:compressFormat [ a dct:MediaType ;
+        rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/gzip> ;
+        skos:prefLabel "application/gzip"@en ] ;
+    dcat:keyword"CSV format"@en ;
+    dcat:packageFormat [ a dct:MediaType ;
+        rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/zip> ;
+        skos:prefLabel "application/zip"@en ].
+
+:dist-full-json
+    a dcat:Distribution ;
+    dct:title "Full JSON Export"@en ;
+    dct:description "JSON format of dataset-full."@en ;
+    dct:identifier "dist-full-json" ;
+    dcat:accessURL <https://example.org/data/full.json> ;
+    dcat:downloadURL <https://example.org/data/full.json/download> ;
+    dcat:mediaType [ a dct:MediaType ;
+        rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/json> ;
+        skos:prefLabel "application/json"@en ] .

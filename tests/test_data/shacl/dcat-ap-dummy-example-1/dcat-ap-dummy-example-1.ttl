@@ -1,0 +1,38 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix :       <https://example.org/dcat-ap-lu-examples/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+
+:dataset-1
+    a                   dcat:Dataset ;
+    dct:identifier      "dataset-001" ;
+    dct:title           "Example DCAT Dataset" ;
+    dct:description     "A minimal dataset with only mandatory properties." ;
+    dcat:distribution   :dist-1 .
+
+
+:dist-1
+  a dcat:Distribution ;
+
+  dcat:accessURL <http://example.org/dataset-001.json> ;
+
+  # mediaType must be a dcterms:MediaType
+  dcat:mediaType [
+    a dct:MediaType ;
+    owl:sameAs <https://www.iana.org/assignments/media-types/application/json>
+  ] ;
+
+  # packageFormat must be a dcterms:MediaType
+  dcat:packageFormat [
+    a dct:MediaType ;
+    owl:sameAs <https://www.iana.org/assignments/media-types/application/y3gppHal+json>
+  ] ;
+
+  # availability must be a skos:Concept
+dcatap:availability [
+    a skos:Concept ;
+   owl:sameAs <http://publications.europa.eu/resource/authority/planned-availability/TEMPORARY> ;
+    skos:prefLabel "Temporary"@eng
+  ] .
