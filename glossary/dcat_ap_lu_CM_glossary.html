@@ -45,6 +45,14 @@
                      <td></td>
                   </tr>
                   <tr>
+                     <td>dcat:Catalog</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>dcat:CatalogRecord</td>
+                     <td></td>
+                  </tr>
+                  <tr>
                      <td>dcat:DataService</td>
                      <td>A collection of operations that provides access to one or more datasets or data processing
                         functions.
@@ -248,7 +256,7 @@
                      <td>dct:PeriodOfTime</td>
                      <td>dcat:endDate</td>
                      <td></td>
-                     <td>TemporalLiteral [0..1]</td>
+                     <td>xsd:dateTime [0..1]</td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset</td>
@@ -260,25 +268,25 @@
                   <tr>
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
                      <td>dcat:spatialResolutionInMeters</td>
-                     <td>The minimum spatial separation resolvable in a dataset, measured in meters.  The minimum spatial separation resolvable in a dataset distribution, measured in meters.</td>
+                     <td>The minimum spatial separation resolvable in a dataset, measured in meters.	 The minimum spatial separation resolvable in a dataset distribution, measured in meters.</td>
                      <td>xsd:decimal [0..1]<br>xsd:decimal [0..*]<br></td>
                   </tr>
                   <tr>
                      <td>dct:PeriodOfTime</td>
                      <td>dcat:startDate</td>
                      <td></td>
-                     <td>TemporalLiteral [0..1]</td>
+                     <td>xsd:dateTime [0..1]</td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
                      <td>dcat:temporalResolution</td>
-                     <td>The minimum time period resolvable in the dataset.  The minimum time period resolvable in the dataset distribution.</td>
+                     <td>The minimum time period resolvable in the dataset.	 The minimum time period resolvable in the dataset distribution.</td>
                      <td>xsd:duration [0..1]<br>xsd:duration [0..*]<br></td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset<br>dcat:DatasetSeries<br>dcat:Distribution<br></td>
                      <td>dct:description</td>
-                     <td>A free-text account of the Dataset. A free-text account of the Dataset Series. A free-text account of the Distribution. </td>
+                     <td>A free-text account of the Dataset. A free-text account of the Dataset Series. A free-text account of the Distribution.	</td>
                      <td>rdfs:Literal [1..*]<br>rdfs:Literal [1..*]<br>rdfs:Literal [0..*]<br></td>
                   </tr>
                   <tr>
@@ -349,13 +357,13 @@
                      <td>dct:PeriodOfTime</td>
                      <td>time:hasBeginning</td>
                      <td></td>
-                     <td>TimeInstant [0..1]</td>
+                     <td>xsd:dateTime [0..1]</td>
                   </tr>
                   <tr>
                      <td>dct:PeriodOfTime</td>
                      <td>time:hasEnd</td>
                      <td></td>
-                     <td>TimeInstant [0..1]</td>
+                     <td>xsd:dateTime [0..1]</td>
                   </tr>
                </tbody>
             </table>
@@ -474,6 +482,21 @@
                      <td>dcat:Relationship -&gt; dcat:Dataset []</td>
                   </tr>
                   <tr>
+                     <td>dcat:record</td>
+                     <td></td>
+                     <td>dcat:Catalog -&gt; dcat:CatalogRecord [0..*]</td>
+                  </tr>
+                  <tr>
+                     <td>dcat:servesDataset</td>
+                     <td></td>
+                     <td>dcat:Dataset -&gt; dcat:DataService [0..*]</td>
+                  </tr>
+                  <tr>
+                     <td>dcat:service</td>
+                     <td></td>
+                     <td>dcat:Catalog -&gt; dcat:DataService [0..*]</td>
+                  </tr>
+                  <tr>
                      <td>dcat:theme</td>
                      <td>A category of the Dataset.
                         Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI
@@ -526,10 +549,8 @@
                      <td>The frequency at which the Dataset is updated.
                         
                         The frequency at which the Dataset is updated.
-                         The frequency at which the Dataset series is updated.The frequency at which the Dataset
-                        series is updated.
                         </td>
-                     <td>dcat:Dataset -&gt; dct:Frequency [0..1]<br>dcat:DatasetSeries -&gt; dct:Frequency [0..1]<br></td>
+                     <td>dcat:Dataset -&gt; dct:Frequency [0..1]</td>
                   </tr>
                   <tr>
                      <td>dct:conformsTo</td>
@@ -545,9 +566,9 @@
                   </tr>
                   <tr>
                      <td>dct:creator</td>
-                     <td>An entity responsible for producing the dataset.An entity responsible for producing
+                     <td> An entity responsible for producing the dataset.An entity responsible for producing
                         the dataset.</td>
-                     <td>dcat:Dataset -&gt; foaf:Agent [0..1]</td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:format</td>
@@ -561,11 +582,6 @@
                      <td>dcat:Dataset -&gt; dcat:Dataset [0..*]</td>
                   </tr>
                   <tr>
-                     <td>dct:isVersionOf</td>
-                     <td></td>
-                     <td>dcat:Dataset -&gt; dcat:Dataset [0..*]</td>
-                  </tr>
-                  <tr>
                      <td>dct:language</td>
                      <td>A language of the Dataset.
                         A language of the Dataset. A language used in the Distribution.
@@ -574,9 +590,9 @@
                   </tr>
                   <tr>
                      <td>dct:license</td>
-                     <td>A licence under which the Distribution is made available.A licence under which the
+                     <td> A licence under which the Distribution is made available.A licence under which the
                         Distribution is made available.</td>
-                     <td>dcat:Distribution -&gt; dct:LicenseDocument [0..1]</td>
+                     <td>dcat:Catalog -&gt; dct:LicenseDocument [0..1]<br>dcat:Distribution -&gt; dct:LicenseDocument [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:provenance</td>
@@ -588,7 +604,7 @@
                   </tr>
                   <tr>
                      <td>dct:publisher</td>
-                     <td>An entity (organisation) responsible for making the Dataset available.
+                     <td> An entity (organisation) responsible for making the Dataset available.
                         Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.An
                         entity (organisation) responsible for making the Dataset available.
                         Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.
@@ -599,7 +615,7 @@
                         
                         Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for
                         publishers.</td>
-                     <td>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:rights</td>
@@ -631,11 +647,11 @@
                      <td>dct:type</td>
                      <td>A type of the Dataset.
                         Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this
-                        properties provided by DCAT-AP. 
+                        properties provided by DCAT-AP.	
                         
                         A type of the Dataset.
                         Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this
-                        properties provided by DCAT-AP. 
+                        properties provided by DCAT-AP.	
                          A type of licence, e.g. indicating 'public domain' or 'royalties required'.A type
                         of licence, e.g. indicating 'public domain' or 'royalties required'.
                          </td>
@@ -660,6 +676,11 @@
                      <td>dcat:Dataset -&gt; foaf:Document [0..*]<br>dcat:Distribution -&gt; foaf:Document [0..*]<br></td>
                   </tr>
                   <tr>
+                     <td>foaf:primaryTopic</td>
+                     <td></td>
+                     <td>dcat:CatalogRecord -&gt; dcat:Resource [1..1]</td>
+                  </tr>
+                  <tr>
                      <td>locn:geometry</td>
                      <td></td>
                      <td>dct:Location -&gt; locn:Geometry [0..1]</td>
@@ -676,7 +697,7 @@
                   </tr>
                   <tr>
                      <td>prov:qualifiedAttribution</td>
-                     <td>An Agent having some form of responsibility for the resource. An Agent having some
+                     <td>An Agent having some form of responsibility for the resource.	An Agent having some
                         form of responsibility for the resource.</td>
                      <td>dcat:Dataset -&gt; prov:Attribution [0..*]</td>
                   </tr>
