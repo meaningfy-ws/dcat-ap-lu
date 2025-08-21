@@ -110,7 +110,7 @@
     <xsl:variable name="conventionReportAuthor" select="'Ministère de la Digitalisation and LNDS'"/>
     <xsl:variable name="conventionReportAuthorLocation" select="'Luxembourg'"/>
     <xsl:variable name="conventionReportAuthorWebsite" select="'https://www.lnds.lu/'"/>
-    <xsl:variable name="conventionReportUMLModelName" select="'dcat-ap-lu'"/>
+    <xsl:variable name="conventionReportUMLModelName" select="'dcat-lu'"/>
     <!-- URIs list of UML versions supported by model2owl -->
     <xsl:variable name="supportedUmlVersions"
         select="('http://www.omg.org/spec/UML/20131001',
