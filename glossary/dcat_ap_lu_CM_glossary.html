@@ -123,7 +123,8 @@
                      <td>Any changes in ownership and custody of a resource since its creation that are significant
                         for its authenticity, integrity, and interpretation.
                         
-                        </td>
+                        A statement of any changes in ownership and custody of a resource since its creation
+                        that are significant for its authenticity, integrity, and interpretation.</td>
                   </tr>
                   <tr>
                      <td>dct:RightsStatement</td>
@@ -351,7 +352,7 @@
                      <td>skos:Concept</td>
                      <td>skos:prefLabel</td>
                      <td></td>
-                     <td>rdf:PlainLiteral [1..*]</td>
+                     <td>rdfs:Literal [1..*]</td>
                   </tr>
                   <tr>
                      <td>dct:PeriodOfTime</td>
@@ -424,6 +425,7 @@
                      <td>dcat:contactPoint</td>
                      <td>Contact information that can be used for sending comments about the Dataset.
                         
+                        Contact information that can be used for sending comments about the Dataset.
                          Contact information that can be used for sending comments about the DatasetSeries.
                         
                         Contact information that can be used for sending comments about the DatasetSeries.</td>
@@ -433,6 +435,12 @@
                      <td>dcat:distribution</td>
                      <td>An available Distribution for the Dataset.An available Distribution for the Dataset.</td>
                      <td>dcat:Dataset -&gt; dcat:Distribution [0..*]</td>
+                  </tr>
+                  <tr>
+                     <td>dcat:hasVersion</td>
+                     <td>A related Dataset that is a version, edition, or adaptation of the described Dataset.A
+                        related Dataset that is a version, edition, or adaptation of the described Dataset.</td>
+                     <td>dcat:Dataset -&gt; dcat:Dataset [0..*]</td>
                   </tr>
                   <tr>
                      <td>dcat:inSeries</td>
@@ -476,10 +484,10 @@
                   </tr>
                   <tr>
                      <td>dcat:qualifiedRelation</td>
-                     <td>A description of a relat.ionship with another resourceA description of a relationship
-                        with another resource.
-                        </td>
-                     <td>dcat:Relationship -&gt; dcat:Dataset []</td>
+                     <td>A description of a relationship with another resource.
+                        
+                        A description of a relationship with another resource.</td>
+                     <td>dcat:Dataset -&gt; dcat:Relationship [0..*]</td>
                   </tr>
                   <tr>
                      <td>dcat:record</td>
@@ -574,17 +582,6 @@
                      <td>dct:format</td>
                      <td>The file format of the Distribution.The file format of the Distribution.</td>
                      <td>dcat:Distribution -&gt; dct:MediaTypeOrExtent [0..1]</td>
-                  </tr>
-                  <tr>
-                     <td>dct:hasVersion</td>
-                     <td>A related Dataset that is a version, edition, or adaptation of the described Dataset.A
-                        related Dataset that is a version, edition, or adaptation of the described Dataset.</td>
-                     <td>dcat:Dataset -&gt; dcat:Dataset [0..*]</td>
-                  </tr>
-                  <tr>
-                     <td>dct:isVersionOf</td>
-                     <td></td>
-                     <td>dcat:Dataset -&gt; dcat:Dataset [0..*]</td>
                   </tr>
                   <tr>
                      <td>dct:language</td>
@@ -711,7 +708,6 @@
                      <td>A description of a relationship with another resource.
                         
                         A description of a relationship with another resource.</td>
-                     <td>dcat:Dataset -&gt; dcat:Relationship []</td>
                   </tr>
                   <tr>
                      <td>prov:wasGeneratedBy</td>
