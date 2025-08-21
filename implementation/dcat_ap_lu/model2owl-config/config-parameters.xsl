@@ -30,7 +30,7 @@
 
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter
         like in the namespace definition-->
-    <!--<xsl:variable name="base-uri" select="'http://www.w3.org/ns/dcat-lu'"/>-->
+    <!--<xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>-->
     <xsl:variable name="base-ontology-uri" select="'http://www.w3.org/ns/dcat-lu'"/>
     <xsl:variable name="base-shape-uri" select="'http://www.w3.org/ns/dcat-lu/data-shape'"/>
     <xsl:variable name="base-restriction-uri" select="$base-ontology-uri"/>
@@ -106,11 +106,11 @@
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>
 <!--    Set of variables for convention report-->
-    <xsl:variable name="conventionReportCopyrightText" select="'Ministère de la Digitalisation and LNDS, 2025'"/>
-    <xsl:variable name="conventionReportAuthor" select="'Ministère de la Digitalisation and LNDS'"/>
+    <xsl:variable name="conventionReportCopyrightText" select="'Publications Office of the European Union, 2023'"/>
+    <xsl:variable name="conventionReportAuthor" select="'Publications Office of the European Union'"/>
     <xsl:variable name="conventionReportAuthorLocation" select="'Luxembourg'"/>
-    <xsl:variable name="conventionReportAuthorWebsite" select="'https://www.lnds.lu/'"/>
-    <xsl:variable name="conventionReportUMLModelName" select="'dcat-lu'"/>
+    <xsl:variable name="conventionReportAuthorWebsite" select="'https://op.europa.eu'"/>
+    <xsl:variable name="conventionReportUMLModelName" select="'eProcurement'"/>
     <!-- URIs list of UML versions supported by model2owl -->
     <xsl:variable name="supportedUmlVersions"
         select="('http://www.omg.org/spec/UML/20131001',
@@ -197,7 +197,7 @@
     <!--    vann:preferredNamespaceUri -->
     <xsl:variable name="preferredNamespaceUri" select="'http://data.europa.eu/a4g/ontology#'"/>
     <!--    vann:preferredNamespacePrefix -->
-    <xsl:variable name="preferredNamespacePrefix" select="dcat-ap'"/>
+    <xsl:variable name="preferredNamespacePrefix" select="'epo'"/>
 
 <!--    dct:license-->
     <xsl:variable name="licenseLiteral" select="'The Commission’s reuse policy is implemented by Commission Decision2011/833/EU of 12 December 2011 on the reuse of Commission documents 
