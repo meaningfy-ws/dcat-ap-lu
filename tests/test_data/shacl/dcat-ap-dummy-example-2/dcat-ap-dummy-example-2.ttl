@@ -12,14 +12,46 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 
 #################################################################
+# Catalog
+#################################################################
+:Catalog-full
+  a dcat:Catalog;
+  dct:language [
+    a dct:tLinguisticSystem ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/language/ENG>
+  ] ;
+dct:publisher [
+    a foaf:Agent, foaf:Organization ;
+    foaf:name "meaningfy"@eng ;
+  ] .
+#################################################################
+# dcat:CatalogRecord
+#################################################################
+:CatalogRecord-full
+  a dcat:CatalogRecord ;
+  dct:language [
+    a dct:tLinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG>
+  ] ;
+    foaf:primaryTopic :dataset-full .
+
+#################################################################
 # Dataset Series (mandatory dct:title and dct:description)
 #################################################################
 
 :series-001
     a dcat:DatasetSeries ;
     dct:title "Example Dataset Series"@en ;
-    dct:description "This series groups related datasets including different versions."@en .
-
+    dct:description "This series groups related datasets including different versions."@en ;
+    dct:publisher [
+    a foaf:Agent, foaf:Organization ;
+    foaf:name "team"@eng
+  ];
+    dct:spatial [
+    a dct:Location ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/country/LUX> ;
+    skos:prefLabel "Luxembourg"@eng
+  ].
 #################################################################
 # Dataset with required properties and link to series
 #################################################################

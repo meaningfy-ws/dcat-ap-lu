@@ -34,7 +34,14 @@ dct:PeriodOfTime,time:hasEnd,optional,0..1,attribute
 foaf:Agent,foaf:name,mandatory,1..n,attribute
 skos:Concept,skos:prefLabel,mandatory,1..n,attribute
 dcat:Dataset,adms:identifier,optional,0..n,relationship
+dcat:Catalog,dct:publisher,recommended,0..1,relationship
+dcat:Catalog,dcat:service,optional,0..n,relationship
+dcat:Catalog,dct:license,optional,0..1,relationship
+dcat:Catalog,dct:creator,optional,0..1,relationship
+dcat:Catalog,dcat:record,None,0..n,relationship
+dcat:CatalogRecord,foaf:primaryTopic,mandatory,1..1,relationship
 dcat:Distribution,dcat:accessService,optional,0..n,relationship
+dcat:Dataset,dcat:servesDataset,recommended,0..n,relationship
 dcat:Dataset,dct:hasVersion,optional,0..n,relationship
 dcat:Dataset,adms:sample,optional,0..n,relationship
 dcat:Dataset,dcat:distribution,recommended,0..n,relationship
@@ -47,7 +54,6 @@ dcat:Dataset,dct:provenance,optional,0..n,relationship
 dcat:Dataset,dcat:inSeries,recommended,0..n,relationship
 dcat:Dataset,dct:source,optional,0..n,relationship
 dcat:Dataset,prov:qualifiedRelation,optional,0..1,relationship
-dcat:Dataset,dct:isVersionOf,optional,0..n,relationship
 dcat:Dataset,prov:wasGeneratedBy,optional,0..n,relationship
 dcat:Dataset,dcat:theme,recommended,0..n,relationship
 dcat:Dataset,dct:spatial,recommended,0..n,relationship
@@ -61,11 +67,10 @@ dcat:Dataset,dcat:contactPoint,recommended,0..n,relationship
 dcat:Dataset,dct:accrualPeriodicity,optional,0..1,relationship
 dcat:Dataset,dcatap:applicablelegislation,optional,0..n,relationship
 dcat:Relationship,dcat:qualifiedRelation,mandatory,0..1,relationship
-dcat:DatasetSeries,dct:publisher,None,0..1,relationship
+dcat:DatasetSeries,dct:publisher,recommended,0..1,relationship
 dcat:DatasetSeries,dcat:contactPoint,None,0..n,relationship
-dcat:DatasetSeries,dcatap:applicablelegislation,None,0..n,relationship
-dcat:DatasetSeries,dct:spatial,None,0..n,relationship
-dcat:DatasetSeries,dct:accrualPeriodicity,None,0..1,relationship
+dcat:DatasetSeries,dcatap:applicablelegislation,optional,0..n,relationship
+dcat:DatasetSeries,dct:spatial,recommended,0..n,relationship
 dcat:Distribution,dcat:packageFormat,optional,0..1,relationship
 dcat:Distribution,odrl:hasPolicy,optional,0..1,relationship
 dcat:Distribution,dct:conformsTo,optional,0..n,relationship

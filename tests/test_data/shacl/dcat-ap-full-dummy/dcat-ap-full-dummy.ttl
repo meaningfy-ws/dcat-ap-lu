@@ -12,6 +12,29 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
 
+#################################################################
+# Catalog
+#################################################################
+:Catalog-full
+  a dcat:Catalog;
+  dct:language [
+    a dct:tLinguisticSystem ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/language/ENG>
+  ] ;
+dct:publisher [
+    a foaf:Agent, foaf:Organization ;
+    foaf:name "meaningfy"@eng ;
+  ] .
+#################################################################
+# dcat:CatalogRecord
+#################################################################
+:CatalogRecord-full
+  a dcat:CatalogRecord ;
+  dct:language [
+    a dct:tLinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG>
+  ] ;
+    foaf:primaryTopic :dataset-full .
 
 #################################################################
 # Dataset Series (mandatory dct:title and dct:description)
@@ -20,7 +43,16 @@
 :series-001
     a dcat:DatasetSeries ;
     dct:title "Example Dataset Series"@en ;
-    dct:description "This series groups related datasets including different versions."@en .
+    dct:description "This series groups related datasets including different versions."@en ;
+    dct:publisher [
+    a foaf:Agent, foaf:Organization ;
+    foaf:name "team"@eng
+  ];
+    dct:spatial [
+    a dct:Location ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/country/LUX> ;
+    skos:prefLabel "Luxembourg"@eng
+  ].
 
 #################################################################
 # Dataset with required properties and link to series
@@ -54,8 +86,18 @@
         skos:prefLabel "English"@en ] ;
     dct:issued "2025-08-01T12:00:00"^^xsd:dateTime ;
     dct:modified "2025-08-06T12:00:00"^^xsd:dateTime ;
-    dct:publisher [ a foaf:Agent ; foaf:name "Publishing Org"@en ] ;
-    dct:creator [ a foaf:Agent ; foaf:name "Creating Org"@en ] ;
+    dct:publisher [ a foaf:Agent ; foaf:name "Publishing Org"@en ;
+                   dct:type [
+    a skos:Concept ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/corporate-body/WP_DP> ;
+    skos:prefLabel "WP_DP"@eng
+  ] ] ;
+    dct:creator [ a foaf:Agent ; foaf:name "Creating Org"@en ;
+                dct:type [
+    a skos:Concept ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/corporate-body/WP_DP> ;
+    skos:prefLabel "WP_DP"@eng
+  ] ] ;
     dcat:distribution :dist-full-csv, :dist-full-json ;
     dcatap:availability [
         a skos:Concept ;

@@ -12,14 +12,46 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 
 #################################################################
+# Catalog
+#################################################################
+:Catalog-full
+  a dcat:Catalog;
+  dct:language [
+    a dct:tLinguisticSystem ;
+    rdfs:seeAlso <http://publications.europa.eu/resource/authority/language/ENG>
+  ] ;
+dct:publisher [
+    a foaf:Agent, foaf:Organization ;
+    foaf:name "meaningfy"@eng ;
+  ] .
+#################################################################
+# dcat:CatalogRecord
+#################################################################
+:CatalogRecord-full
+  a dcat:CatalogRecord ;
+  dct:language [
+    a dct:tLinguisticSystem ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/language/ENG>
+  ] ;
+    foaf:primaryTopic :dataset-full .
+
+#################################################################
 # Dataset Series (mandatory dct:title and dct:description)
 #################################################################
 
 :series-001
     a dcat:DatasetSeries ;
     dct:title "Example Dataset Series"@en ;
-    dct:description "This series groups related datasets including different versions."@en .
-
+    dct:description "This series groups related datasets including different versions."@en ;
+    dct:publisher [
+    a foaf:Agent, foaf:Organization ;
+    foaf:name "team"@eng
+  ];
+    dct:spatial [
+    a dct:Location ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/country/LUX> ;
+    skos:prefLabel "Luxembourg"@eng
+  ].
 #################################################################
 # Dataset with required properties and link to series
 #################################################################
@@ -47,7 +79,17 @@
     adms:versionNotes "Version 1"@en ;
     dct:isVersionOf :dataset-001 ;
     dct:hasVersion :dataset-full-v2 ;
-    dct:isReferencedBy <https://example.org/pub/1> .
+    dct:isReferencedBy <https://example.org/pub/1> ;
+    adms:identifier :identifier-001 ;
+ dct:publisher [ a foaf:Agent ; foaf:name "Publishing Org"@en ;
+                   dct:type [
+    a skos:Concept ;
+    rdfs:seeAlso <https://publications.europa.eu/resource/authority/corporate-body/WP_DP> ;
+    skos:prefLabel "WP_DP"@eng
+  ] ] .
+:identifier-001
+    a adms:Identifier ;
+    skos:notation "ID-001" .
 
 
 
