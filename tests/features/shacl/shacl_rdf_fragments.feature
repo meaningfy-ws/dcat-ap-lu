@@ -88,7 +88,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dct-PeriodOfTime-time-hasEnd         |                               0|                        2|
       |foaf-Agent-dct-type         |                               0|                        3|
       |foaf-Agent-foaf-name       |                               0|                        2|
-      |skos-Concept-skos-prefLabel       |                               0|                        2|
+      |skos-Concept-skos-prefLabel       |                               0|                        1|
       |dcat-Catalog-dcat-record    |                               0|                        2|
       |dcat-CatalogRecord-foaf-primaryTopic    |                               0|                       4|
       |dcat-Catalog-dcat-service    |                               0|                      2|
