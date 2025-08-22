@@ -11,6 +11,7 @@
 @prefix :       <https://example.org/dcat-ap-lu-examples/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dpv: <http://www.w3.org/ns/dpv#> .
 
 #################################################################
 # Catalog
@@ -110,8 +111,8 @@ dct:publisher [
         vcard:fn "Help Desk"@en ;
         vcard:hasEmail <mailto:help@example.org>
     ] ;
-    dct:isVersionOf :dataset-002 ;
-    dct:hasVersion :dataset-full-v2 ;
+#    dct:isVersionOf :dataset-002 ;
+    dcat:hasVersion :dataset-full-v2 ;
     dct:source :dataset-001 ;
     adms:identifier :identifier-001 ;
     dct:isReferencedBy <https://example.org/pub/1> ;
@@ -141,7 +142,10 @@ dct:publisher [
     a dct:Location ;
     rdfs:seeAlso <https://publications.europa.eu/resource/authority/country/LTU> ;
     skos:prefLabel "Lithuania"@eng
-  ] .
+  ] ;
+  dpv:hasData [ a dpv:Data ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/data/personal> ;
+        skos:prefLabel "personal"@en ] ;.
 
 :identifier-001
     a adms:Identifier ;
