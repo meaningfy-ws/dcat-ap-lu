@@ -7,84 +7,38 @@
    xmlns:sh="http://www.w3.org/ns/shacl#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-ProvenanceStatement">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
-    <rdfs:label>Provenance Statement</rdfs:label>
-    <rdfs:comment>Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</rdfs:comment>
-    <rdfs:comment>A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dct-license">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Ne1d8bd09f4b346399ac818f0b12d98c7"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
-    <sh:name>license</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-temporalResolution">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#temporalResolution"/>
-    <sh:name>temporal Resolution</sh:name>
-    <sh:description>The minimum time period resolvable in the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasEnd">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/2006/time#hasEnd"/>
-    <sh:name>has End</sh:name>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accrualPeriodicity">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Frequency"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N2928c511441642cd93f78ff67a74cc4f"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/accrualPeriodicity"/>
-    <sh:name>accrual Periodicity</sh:name>
-    <sh:description>The frequency at which the Dataset is updated.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-publisher">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-creator">
     <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N92c911062a1c49aa9114a9dc73d50c26"/>
+    <sh:sparql rdf:nodeID="N5858aea55a834a7392fe7e2193f283c7"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
-    <sh:name>publisher</sh:name>
-    <sh:description>An entity (organisation) responsible for making the Dataset available. Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
+    <sh:name>creator</sh:name>
+    <sh:description>An entity responsible for producing the dataset.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dpv-hasData">
-    <sh:class rdf:resource="https://w3id.org/dpv#Data"/>
-    <sh:sparql rdf:nodeID="N3ccbb662c74f43a8aae8b6b86e520639"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-spatial">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
+    <sh:sparql rdf:nodeID="N80fc62b8925c4affa442968c6a8004be"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="https://w3id.org/dpv#hasData"/>
-    <sh:name>has Data</sh:name>
-    <sh:description>The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset. Usage:A list of accepted types, based on the Data Privacy Vocabulary</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
+    <sh:name>spatial</sh:name>
+    <sh:description>A geographic region that is covered by the Dataet Series.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accessRights">
-    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N2a86b1a3de60427ebe6c2af2d2074af1"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-spatial">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
+    <sh:sparql rdf:nodeID="N3cd732bab0464eaa88e940af933f305d"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/accessRights"/>
-    <sh:name>access Rights</sh:name>
-    <sh:description>Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public. Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
+    <sh:name>spatial</sh:name>
+    <sh:description>A geographic region that is covered by the Dataset.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
-    <rdfs:label>Dataset Series</rdfs:label>
-    <rdfs:comment>A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries).</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-publisher"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcat-contactPoint"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcatap-applicablelegislation"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-spatial"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcatap-applicablelegislation">
+    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <sh:sparql rdf:nodeID="Ndbfafa4e3953456f98bd70f7390aeddf"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/applicablelegislation"/>
+    <sh:name>applicablelegislation</sh:name>
+    <sh:description>The legislation that mandates the creation or management of the Dataset. Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA context.</sh:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
@@ -117,148 +71,83 @@
     <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-compressFormat"/>
     <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-license"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-issued">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/issued"/>
-    <sh:name>issued</sh:name>
-    <sh:description>The date of formal issuance (e.g., publication) of the Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-format">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-language">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-    <sh:sparql rdf:nodeID="N99c4bc90efa44c04a8ebe1b832535ace"/>
+    <sh:sparql rdf:nodeID="Nac8cf2c923bd49fb80385f38bc94ccdd"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
-    <sh:name>language</sh:name>
-    <sh:description>A language of the Dataset.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/format"/>
+    <sh:name>format</sh:name>
+    <sh:description>The file format of the Distribution.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-byteSize">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#byteSize"/>
-    <sh:name>byte Size</sh:name>
-    <sh:description>The size of a Distribution in bytes.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-type">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nafb55a84e69646f487708094cee061a5"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
-    <sh:name>type</sh:name>
-    <sh:description>A type of the Dataset. Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this properties provided by DCAT-AP.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-creator">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N7955cee69a0f439f8ab505b8f5ea9eec"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
-    <sh:name>creator</sh:name>
-    <sh:description>An entity responsible for producing the dataset.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Relationship">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-    <rdfs:label>Dataset</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-versionNotes"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-keyword"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-spatialResolutionInMeters"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-temporalResolution"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-description"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-identifier"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-isReferencedBy"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-issued"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-modified"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-relation"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-title"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-owl-versionInfo"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-identifier"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-servesDataset"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-hasVersion"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-sample"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-distribution"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-type"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accessRights"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-language"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dpv-hasData"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-landingPage"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-provenance"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-inSeries"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-source"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-qualifiedRelation"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-wasGeneratedBy"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-theme"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-spatial"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-temporal"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-creator"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-foaf-page"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-conformsTo"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-qualifiedAttribution"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-publisher"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-contactPoint"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accrualPeriodicity"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcatap-applicablelegislation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Location-locn-geometry">
-    <sh:class rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N9d3c3dd716c64f81943a0608960d69a5"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/locn#geometry"/>
-    <sh:name>geometry</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-mediaType">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Na933415dfad94d2793e22e32c41f66d4"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#mediaType"/>
-    <sh:name>media Type</sh:name>
-    <sh:description>The media type of the Distribution as defined in the official register of media types managed by IANA. Usage note: DCAT-AP-LU provides additional usage guidance for this property.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-CatalogRecord-foaf-primaryTopic">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="N4745720d9a1f489b8e4c7b43fb0788bc"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/primaryTopic"/>
-    <sh:name>primary Topic</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-RightsStatement">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
-    <rdfs:label>Rights Statement</rdfs:label>
-    <rdfs:comment>A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights.</rdfs:comment>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Relationship"/>
+    <rdfs:label>Relationship</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-identifier">
-    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
-    <sh:sparql rdf:nodeID="N71fea87f750f4befafa1c04b56912d04"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-conformsTo">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Standard"/>
+    <sh:sparql rdf:nodeID="Nde850026a4894f348729478372108236"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#identifier"/>
-    <sh:name>identifier</sh:name>
-    <sh:description>A secondary identifier of the Dataset.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/conformsTo"/>
+    <sh:name>conforms To</sh:name>
+    <sh:description>An implementing rule or other specification.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcatap-applicablelegislation">
-    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <sh:sparql rdf:nodeID="N5870939ae9094dcda42fefabd690bc22"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-source">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <sh:sparql rdf:nodeID="Nabf01898500c40dbb5ac0b13c444c6eb"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/applicablelegislation"/>
-    <sh:name>applicablelegislation</sh:name>
-    <sh:description>The legislation that mandates the creation or management of the Dataset. Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA context.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/source"/>
+    <sh:name>source</sh:name>
+    <sh:description>A related Dataset from which the described Dataset is derived.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#prov-Attribution">
+  <rdf:Description rdf:nodeID="N80efb911e17b42c19d0372b7d3d4b011">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?that . ?that &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#spdx-Checksum">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
-    <rdfs:label>Attribution</rdfs:label>
-    <rdfs:comment>Attribution is the ascribing of an entity to an agent.</rdfs:comment>
+    <sh:targetClass rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
+    <rdfs:label>Checksum</rdfs:label>
+    <rdfs:comment>A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Location">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Location"/>
+    <rdfs:label>Location</rdfs:label>
+    <rdfs:comment>A temporal period that the Dataset covers.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-Location-locn-geometry"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dcat-service">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <sh:sparql rdf:nodeID="Na23991f49c414b9785bf8220b13020f9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#service"/>
+    <sh:name>service</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-servesDataset">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <sh:sparql rdf:nodeID="N33443ffd98a646fda7716965fc9024a4"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#servesDataset"/>
+    <sh:name>serves Dataset</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-rights">
+    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N7e0903a346ee4acb9700dce9e00c094e"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/rights"/>
+    <sh:name>rights</sh:name>
+    <sh:description>A statement that specifies rights associated with the Distribution.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#vcard-Kind">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <rdfs:label>Kind</rdfs:label>
+    <rdfs:comment>A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#core-shape">
@@ -306,62 +195,156 @@
     <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
     <dcterms:license>The Commission’s reuse policy is implemented by Commission Decision2011/833/EU of 12 December 2011 on the reuse of Commission documents          (OJ L 330,14.12.2011, p. 39 – https://eur-lex.europa.eu/eli/dec/2011/833/oj). Unlessotherwise noted, the reuse of this document is authorised under the          CreativeCommons Attribution 4.0 International (CC BY 4.0) licence (https://creativecommons.org/licenses/by/4.0/).This means that reuse is allowed, provided          that appropriate credit is given and any changes are indicated.</dcterms:license>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-publisher">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasBeginning">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/2006/time#hasBeginning"/>
+    <sh:name>has Beginning</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nad5771beae2042428d2a3068ec6ced42">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-byteSize">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#byteSize"/>
+    <sh:name>byte Size</sh:name>
+    <sh:description>The size of a Distribution in bytes.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf0c3cba5467c4a4e8c1795f9c6aa8f55">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-description">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/description"/>
+    <sh:name>description</sh:name>
+    <sh:description>A free-text account of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#eli-LegalResource">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <rdfs:label>Legal Resource</rdfs:label>
+    <rdfs:comment>This class represents the legislation, policy or policies that lie behind the Rules that govern the service. Usage Note The definition and properties of the Legal Resource class are aligned with the ontology included in "Council conclusions inviting the introduction of the European Legislation Identifier (ELI)". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology. In this data specification the use is restricted to instances of this class that follow the ELI URI guidelines</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-publisher">
     <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N1ca39a2096354585b501f7f39ef78c20"/>
+    <sh:sparql rdf:nodeID="N6ea68954676b4ce2acaaaa54ea65e282"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
     <sh:name>publisher</sh:name>
-    <sh:description>An entity (organisation) responsible for making the Dataset available. Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.</sh:description>
+    <sh:description>An entity (organisation) responsible for making the Dataset available. Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Location">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Location"/>
-    <rdfs:label>Location</rdfs:label>
-    <rdfs:comment>A temporal period that the Dataset covers.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-Location-locn-geometry"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-startDate">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-issued">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#startDate"/>
-    <sh:name>start Date</sh:name>
+    <sh:path rdf:resource="http://purl.org/dc/terms/issued"/>
+    <sh:name>issued</sh:name>
+    <sh:description>The date of formal issuance (e.g., publication) of the Dataset.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-language">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <sh:sparql rdf:nodeID="Nf4c1c94740cf4adeb0a0fc3fbb7c71f1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
+    <sh:name>language</sh:name>
+    <sh:description>A language of the Dataset.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#prov-Attribution">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
+    <rdfs:label>Attribution</rdfs:label>
+    <rdfs:comment>Attribution is the ascribing of an entity to an agent.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-qualifiedRelation">
     <sh:class rdf:resource="http://www.w3.org/ns/dcat#Relationship"/>
-    <sh:sparql rdf:nodeID="Nb62e0cd9973f45a4abea0792aaa06ad6"/>
+    <sh:sparql rdf:nodeID="N480588945ba44e75b3962e2ffc87dd79"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://www.w3.org/ns/dcat#qualifiedRelation"/>
     <sh:name>qualified Relation</sh:name>
     <sh:description>A description of a relationship with another resource.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-compressFormat">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N77c56c1600784617aa4b869d269a1e01"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-temporal">
+    <sh:class rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+    <sh:sparql rdf:nodeID="N654e17250aff4046a9ecca22f2a1f084"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#compressFormat"/>
-    <sh:name>compress Format</sh:name>
-    <sh:description>compressed form, e.g. to reduce the size of the downloadable file. Usage Note: It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/temporal"/>
+    <sh:name>temporal</sh:name>
+    <sh:description>A temporal period that the Dataset covers.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-adms-status">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N2998c810f3a74bf39cdd6f733a48bd1b"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#status"/>
-    <sh:name>status</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dpv-Data">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="https://w3id.org/dpv#Data"/>
-    <rdfs:label>Data</rdfs:label>
-    <rdfs:comment>A broad concept representing 'data' or 'information'</rdfs:comment>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label>Dataset</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-versionNotes"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-keyword"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-spatialResolutionInMeters"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-temporalResolution"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-description"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-identifier"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-isReferencedBy"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-issued"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-modified"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-relation"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-title"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-owl-versionInfo"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-identifier"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-servesDataset"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-hasVersion"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-sample"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-distribution"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-type"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accessRights"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-language"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dpv-hasData"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-landingPage"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-provenance"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-inSeries"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-source"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-qualifiedRelation"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-wasGeneratedBy"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-theme"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-spatial"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-temporal"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-creator"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-foaf-page"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-conformsTo"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-qualifiedAttribution"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-publisher"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-contactPoint"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accrualPeriodicity"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcatap-applicablelegislation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N46e37cdf57fe4e49a2b89451b6de0c48">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-identifier">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:sparql rdf:nodeID="N4d5b5be7a37d46788bfc7b96bda220b5"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#identifier"/>
+    <sh:name>identifier</sh:name>
+    <sh:description>A secondary identifier of the Dataset.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dct-publisher">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N8d2a41433cd4476f865f5e6befe698aa"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
+    <sh:name>publisher</sh:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-spatialResolutionInMeters">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -372,101 +355,161 @@
     <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasBeginning">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/2006/time#hasBeginning"/>
-    <sh:name>has Beginning</sh:name>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
+    <rdfs:label>Dataset Series</rdfs:label>
+    <rdfs:comment>A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries).</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-publisher"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcat-contactPoint"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcatap-applicablelegislation"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-spatial"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-foaf-page">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <sh:sparql rdf:nodeID="Na520151dea7b488ca274ad912f30bbfb"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-title">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
-    <sh:name>page</sh:name>
-    <sh:description>A page or document about this Distribution.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N5583a9335b164a45a83365a2a78cb102">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#skos-Concept-skos-prefLabel">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#prefLabel"/>
-    <sh:name>pref Label</sh:name>
+    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
+    <sh:name>title</sh:name>
+    <sh:description>A name given to the Dataset</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dct-publisher">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-owl-versionInfo">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/2002/07/owl#versionInfo"/>
+    <sh:name>version Info</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N108cdd355c78435ca4b8c71e9d70e77d"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
-    <sh:name>publisher</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-versionNotes">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-spatialResolutionInMeters">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#versionNotes"/>
-    <sh:name>version Notes</sh:name>
-    <sh:description>A description of the differences between this version and a previous version of the Dataset.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#spatialResolutionInMeters"/>
+    <sh:name>spatial Resolution In Meters</sh:name>
+    <sh:description>The minimum spatial separation resolvable in a dataset distribution, measured in meters.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcat-contactPoint">
-    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
-    <sh:sparql rdf:nodeID="N5bdb1ec64e95454a9571db5cc1fbb116"/>
+  <rdf:Description rdf:nodeID="N80fc62b8925c4affa442968c6a8004be">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcatap-applicablelegislation">
+    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <sh:sparql rdf:nodeID="Nad5771beae2042428d2a3068ec6ced42"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
-    <sh:name>contact Point</sh:name>
-    <sh:description>Contact information that can be used for sending comments about the DatasetSeries.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/applicablelegislation"/>
+    <sh:name>applicablelegislation</sh:name>
+    <sh:description>The legislation that mandates the creation or management of the Dataset Series.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-MediaTypeOrExtent">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
-    <rdfs:label>Media Type Or Extent</rdfs:label>
-    <rdfs:comment>A media type or dataset distribution.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-title">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-modified">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
-    <sh:name>title</sh:name>
-    <sh:description>A name given to the Distribution.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/modified"/>
+    <sh:name>modified</sh:name>
+    <sh:description>The most recent date on which the Dataset was changed or modified.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcatap-availability">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-type">
     <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N495b04879cb247fe882252ad4a8c6296"/>
+    <sh:sparql rdf:nodeID="Nf0c3cba5467c4a4e8c1795f9c6aa8f55"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/availability"/>
-    <sh:name>availability</sh:name>
-    <sh:description>An indication how long it is planned to keep the Distribution of the Dataset available.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
+    <sh:name>type</sh:name>
+    <sh:description>A type of the Dataset. Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this properties provided by DCAT-AP.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-provenance">
-    <sh:class rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
-    <sh:sparql rdf:nodeID="N6eac01809eac4202a5277694f75bc44e"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dct-creator">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Naec1f5c328bf480289dbe34c223144e5"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/provenance"/>
-    <sh:name>provenance</sh:name>
-    <sh:description>A statement about the lineage of a Dataset. DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details.</sh:description>
+    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
+    <sh:name>creator</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#spdx-Checksum">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Standard">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
-    <rdfs:label>Checksum</rdfs:label>
-    <rdfs:comment>A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.</rdfs:comment>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Standard"/>
+    <rdfs:label>Standard</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-MediaType">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-downloadURL">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#downloadURL"/>
+    <sh:name>download URL</sh:name>
+    <sh:description>A URL that is a direct link to a downloadable file in a given format.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#adms-Identifier">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/MediaType"/>
-    <rdfs:label>Media Type</rdfs:label>
-    <rdfs:comment>A file format or physical medium.</rdfs:comment>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <rdfs:label>Identifier</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-distribution">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <sh:sparql rdf:nodeID="Ndbe2480c597a4e199e03209218730be0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#distribution"/>
+    <sh:name>distribution</sh:name>
+    <sh:description>An available Distribution for the Dataset.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+    <rdfs:label>Period Of Time</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-endDate"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-startDate"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasBeginning"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasEnd"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DataService">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <rdfs:label>Data Service</rdfs:label>
+    <rdfs:comment>A collection of operations that provides access to one or more datasets or data processing functions.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-ProvenanceStatement">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
+    <rdfs:label>Provenance Statement</rdfs:label>
+    <rdfs:comment>Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</rdfs:comment>
+    <rdfs:comment>A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-conformsTo">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Standard"/>
+    <sh:sparql rdf:nodeID="N3b2381a4213a4c0eabfe21d1b4af63c3"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/conformsTo"/>
+    <sh:name>conforms To</sh:name>
+    <sh:description>An implementing rule or other specification.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-mediaType">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N84202ea765fe43d3bebc3099d3f5c00b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#mediaType"/>
+    <sh:name>media Type</sh:name>
+    <sh:description>The media type of the Distribution as defined in the official register of media types managed by IANA. Usage note: DCAT-AP-LU provides additional usage guidance for this property.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-compressFormat">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N0ac48fd51b624acf804f7bd0092c7bac"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#compressFormat"/>
+    <sh:name>compress Format</sh:name>
+    <sh:description>compressed form, e.g. to reduce the size of the downloadable file. Usage Note: It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-LinguisticSystem">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <rdfs:label>Linguistic System</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog">
@@ -480,35 +523,21 @@
     <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dct-creator"/>
     <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dcat-record"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#odrl-Policy">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
-    <rdfs:label>Policy</rdfs:label>
-    <rdfs:comment>A non-empty group of Permissions and/or Prohibitions.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-conformsTo">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Standard"/>
-    <sh:sparql rdf:nodeID="N3a0c38716b4949c7a087616bb6150202"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcatap-applicablelegislation">
+    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <sh:sparql rdf:nodeID="Nb41e55aef1d94fe0b63c20f0aea973de"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/conformsTo"/>
-    <sh:name>conforms To</sh:name>
-    <sh:description>An implementing rule or other specification.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/applicablelegislation"/>
+    <sh:name>applicablelegislation</sh:name>
+    <sh:description>The legislation that mandates the creation or management of the Dataset. Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA context.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-spatial">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
-    <sh:sparql rdf:nodeID="N2fcf83ad79c642cabdc8b0e677914f41"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-hasVersion">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <sh:sparql rdf:nodeID="N28e5068a17094b2987226a859feb5efe"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
-    <sh:name>spatial</sh:name>
-    <sh:description>A geographic region that is covered by the Dataset.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#skos-Concept">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <rdfs:label>Concept</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#skos-Concept-skos-prefLabel"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#hasVersion"/>
+    <sh:name>has Version</sh:name>
+    <sh:description>A related Dataset that is a version, edition, or adaptation of the described Dataset.</sh:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-LicenseDocument">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
@@ -518,24 +547,53 @@
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-LicenseDocument-dct-type"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dcat-service">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
-    <sh:sparql rdf:nodeID="N61a375e5950f46a988a64414f87909ed"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-startDate">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#service"/>
-    <sh:name>service</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N92c911062a1c49aa9114a9dc73d50c26">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-packageFormat">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#startDate"/>
+    <sh:name>start Date</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N4112d9a3f2d243d69d3d0f0284669870"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dpv-Data">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="https://w3id.org/dpv#Data"/>
+    <rdfs:label>Data</rdfs:label>
+    <rdfs:comment>A broad concept representing 'data' or 'information'</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcatap-availability">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N25135b647ea54ec0817fdd9ef6b902f8"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#packageFormat"/>
-    <sh:name>package Format</sh:name>
-    <sh:description>The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/availability"/>
+    <sh:name>availability</sh:name>
+    <sh:description>An indication how long it is planned to keep the Distribution of the Dataset available.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-versionNotes">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#versionNotes"/>
+    <sh:name>version Notes</sh:name>
+    <sh:description>A description of the differences between this version and a previous version of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Agent-dct-type">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ncd3aabef91834aa9b34314573d1214d9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
+    <sh:name>type</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#skos-Concept-skos-prefLabel">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    <sh:name>pref Label</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-temporalResolution">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -545,93 +603,180 @@
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-format">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-packageFormat">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N884166885be54564b337914fad3a6c5e"/>
+    <sh:sparql rdf:nodeID="Nc7df19f3b5c84ac681884bb5af6366bb"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/format"/>
-    <sh:name>format</sh:name>
-    <sh:description>The file format of the Distribution.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#packageFormat"/>
+    <sh:name>package Format</sh:name>
+    <sh:description>The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-modified">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-accessURL">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/modified"/>
-    <sh:name>modified</sh:name>
-    <sh:description>The most recent date on which the Distribution was changed or modified.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessURL"/>
+    <sh:name>access URL</sh:name>
+    <sh:description>A URL that gives access to a Distribution of the Dataset.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-publisher">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-servesDataset">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
-    <sh:sparql rdf:nodeID="Nfa93adb6f7ab4b68a0f3235196345fd7"/>
+    <sh:sparql rdf:nodeID="Ndc6bce687fdf4aea81db5823e7e22c7f"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#servesDataset"/>
-    <sh:name>serves Dataset</sh:name>
+    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
+    <sh:name>publisher</sh:name>
+    <sh:description>An entity (organisation) responsible for making the Dataset available. Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-LicenseDocument-dct-type">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dcat-record">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
+    <sh:sparql rdf:nodeID="Na38a7fbb7a494a23a306e86f827e7765"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#record"/>
+    <sh:name>record</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-title">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
+    <sh:name>title</sh:name>
+    <sh:description>A name given to the Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-adms-status">
     <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:sparql rdf:nodeID="N2fd0c21d64d143b48c5348a68e4b8295"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Na758815391144e80b23d6aeefdcc0386"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
-    <sh:name>type</sh:name>
-    <sh:description>A type of licence, e.g. indicating 'public domain' or 'royalties required'.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#status"/>
+    <sh:name>status</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-issued">
+  <rdf:Description rdf:nodeID="N4d5b5be7a37d46788bfc7b96bda220b5">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#identifier&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#identifier&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-odrl-hasPolicy">
+    <sh:class rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nac8cd3e4370f4cd59192c74086464d34"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/odrl/2/hasPolicy"/>
+    <sh:name>has Policy</sh:name>
+    <sh:description>The policy expressing the rights associated with the distribution if using the [ODRL] vocabulary. DCAT-AP-LU provides additional usage guidance on the use of this property for expressing data use restrictions.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-issued">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://purl.org/dc/terms/issued"/>
     <sh:name>issued</sh:name>
-    <sh:description>The date of formal issuance (e.g., publication) of the Dataset.</sh:description>
+    <sh:description>The date of formal issuance (e.g., publication) of the Distribution.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-foaf-page">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <sh:sparql rdf:nodeID="Nf7799c891e664f1abdf583b220ff8fff"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
-    <sh:name>page</sh:name>
-    <sh:description>A page or document about this Dataset.</sh:description>
+  <rdf:Description rdf:nodeID="N18a56c2085aa4bbd86020805ac5cfb0c">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/locn#geometry&gt; ?that . ?that &lt;http://www.w3.org/ns/locn#geometry&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#vcard-Kind">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
-    <rdfs:label>Kind</rdfs:label>
-    <rdfs:comment>A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.</rdfs:comment>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dpv-hasData">
+    <sh:class rdf:resource="https://w3id.org/dpv#Data"/>
+    <sh:sparql rdf:nodeID="Nb2a03967897a4d28b4d59e4954d90e98"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="https://w3id.org/dpv#hasData"/>
+    <sh:name>has Data</sh:name>
+    <sh:description>The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset. Usage:A list of accepted types, based on the Data Privacy Vocabulary</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-qualifiedAttribution">
+    <sh:class rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
+    <sh:sparql rdf:nodeID="Nf33518320f3f4ac18cd0fdea09706ad7"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/prov#qualifiedAttribution"/>
+    <sh:name>qualified Attribution</sh:name>
+    <sh:description>An Agent having some form of responsibility for the resource.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-inSeries">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
+    <sh:sparql rdf:nodeID="N6aa88931e7aa43c0901ce302d5551a60"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#inSeries"/>
+    <sh:name>in Series</sh:name>
+    <sh:description>A dataset series of which the dataset is part. Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-temporalResolution">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#temporalResolution"/>
+    <sh:name>temporal Resolution</sh:name>
+    <sh:description>The minimum time period resolvable in the dataset.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-LinguisticSystem">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-    <rdfs:label>Linguistic System</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-theme">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:sparql rdf:nodeID="N7f4e64b3330347b0b3a8acf214956f13"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#theme"/>
-    <sh:name>theme</sh:name>
-    <sh:description>A category of the Dataset. Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI not URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dct-spatial">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
-    <sh:sparql rdf:nodeID="Nc2b746215ccf4a02b4ecc080541184f3"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
-    <sh:name>spatial</sh:name>
-    <sh:description>A geographic region that is covered by the Dataet Series.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-rights">
-    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N5b9bb7c1d8054637b36d30f813de35fa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-spdx-checksum">
+    <sh:class rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N203c658be3b64eb0919ac834ab7d69f7"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/rights"/>
-    <sh:name>rights</sh:name>
-    <sh:description>A statement that specifies rights associated with the Distribution.</sh:description>
+    <sh:path rdf:resource="http://spdx.org/rdf/terms#checksum"/>
+    <sh:name>checksum</sh:name>
+    <sh:description>A mechanism that can be used to verify that the contents of a distribution have not changed.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#prov-Activity">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    <rdfs:label>Activity</rdfs:label>
+    <rdfs:comment>An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#odrl-Policy">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
+    <rdfs:label>Policy</rdfs:label>
+    <rdfs:comment>A non-empty group of Permissions and/or Prohibitions.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#skos-Concept">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label>Concept</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#skos-Concept-skos-prefLabel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accrualPeriodicity">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Frequency"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N80efb911e17b42c19d0372b7d3d4b011"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/accrualPeriodicity"/>
+    <sh:name>accrual Periodicity</sh:name>
+    <sh:description>The frequency at which the Dataset is updated.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne64d9d59a18c464cb02a4409f2ff758f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#accessService&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#accessService&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dct-license">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N03817d66fda84999a36332d061689fb7"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
+    <sh:name>license</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf4c1c94740cf4adeb0a0fc3fbb7c71f1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-wasGeneratedBy">
+    <sh:class rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    <sh:sparql rdf:nodeID="N6aee3c5bec524793a718cb91f2559adf"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+    <sh:name>was Generated By</sh:name>
+    <sh:description>provides the business context for, the creation of the dataset.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-landingPage">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <sh:sparql rdf:nodeID="N5639157808bc46ffa0399cd016bf114f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#landingPage"/>
+    <sh:name>landing Page</sh:name>
+    <sh:description>A web page that provides access to the Dataset, its Distributions and/or additional information.</sh:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-description">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -641,48 +786,48 @@
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N2928c511441642cd93f78ff67a74cc4f">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?that . ?that &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-distribution">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
-    <sh:sparql rdf:nodeID="Ndb1cbae99bca477c99d204316df53b16"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcat-contactPoint">
+    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <sh:sparql rdf:nodeID="Na045cf09cb0e40f6a997b9983bc0a63b"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#distribution"/>
-    <sh:name>distribution</sh:name>
-    <sh:description>An available Distribution for the Dataset.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
+    <sh:name>contact Point</sh:name>
+    <sh:description>Contact information that can be used for sending comments about the DatasetSeries.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#locn-Geometry">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-endDate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#endDate"/>
+    <sh:name>end Date</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N99c49d84756e46e4937d10336b820e91">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-license">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N4508cf76ae3c4d08bfc7b4d6e281fec1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
+    <sh:name>license</sh:name>
+    <sh:description>A licence under which the Distribution is made available.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-foaf-page">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <sh:sparql rdf:nodeID="N99c49d84756e46e4937d10336b820e91"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <sh:name>page</sh:name>
+    <sh:description>A page or document about this Distribution.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Frequency">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
-    <rdfs:label>Geometry</rdfs:label>
-    <rdfs:comment>The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System.</rdfs:comment>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Frequency"/>
+    <rdfs:label>Frequency</rdfs:label>
+    <rdfs:comment>A rate at which something recurs, e.g. the publication of a Dataset.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-description">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/description"/>
-    <sh:name>description</sh:name>
-    <sh:description>A free-text account of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcatap-applicablelegislation">
-    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <sh:sparql rdf:nodeID="N5583a9335b164a45a83365a2a78cb102"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/applicablelegislation"/>
-    <sh:name>applicablelegislation</sh:name>
-    <sh:description>The legislation that mandates the creation or management of the Dataset. Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA context.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DatasetSeries-dcatap-applicablelegislation">
-    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <sh:sparql rdf:nodeID="Nb99c366f42734d9588fd0f169a17d66d"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/applicablelegislation"/>
-    <sh:name>applicablelegislation</sh:name>
-    <sh:description>The legislation that mandates the creation or management of the Dataset Series.</sh:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-identifier">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -693,115 +838,16 @@
     <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-qualifiedAttribution">
-    <sh:class rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
-    <sh:sparql rdf:nodeID="N0671e893e32743c980823c3e92f99e3d"/>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-theme">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:sparql rdf:nodeID="N2f735ca70b6a46ccb375694c5ffe68c6"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/prov#qualifiedAttribution"/>
-    <sh:name>qualified Attribution</sh:name>
-    <sh:description>An Agent having some form of responsibility for the resource.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#theme"/>
+    <sh:name>theme</sh:name>
+    <sh:description>A category of the Dataset. Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI not URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API.</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf7799c891e664f1abdf583b220ff8fff">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-DataService">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
-    <rdfs:label>Data Service</rdfs:label>
-    <rdfs:comment>A collection of operations that provides access to one or more datasets or data processing functions.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-endDate">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#endDate"/>
-    <sh:name>end Date</sh:name>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-language">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-    <sh:sparql rdf:nodeID="Nbfb012b964214836b43fae01f78e764a"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
-    <sh:name>language</sh:name>
-    <sh:description>A language used in the Distribution.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-spatialResolutionInMeters">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#spatialResolutionInMeters"/>
-    <sh:name>spatial Resolution In Meters</sh:name>
-    <sh:description>The minimum spatial separation resolvable in a dataset distribution, measured in meters.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N61a375e5950f46a988a64414f87909ed">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#service&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#service&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-odrl-hasPolicy">
-    <sh:class rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N45bb9e974bef4541803b41eac9ae0d89"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/odrl/2/hasPolicy"/>
-    <sh:name>has Policy</sh:name>
-    <sh:description>The policy expressing the rights associated with the distribution if using the [ODRL] vocabulary. DCAT-AP-LU provides additional usage guidance on the use of this property for expressing data use restrictions.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-conformsTo">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Standard"/>
-    <sh:sparql rdf:nodeID="Nb6b48e17bf0c4224b1a8548ddc121608"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/conformsTo"/>
-    <sh:name>conforms To</sh:name>
-    <sh:description>An implementing rule or other specification.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nb62e0cd9973f45a4abea0792aaa06ad6">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Neade26b60deb454890343bd5c0dfe8a8">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf8f39539513541b6a5772bd2e21a7ced">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-sample">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
-    <sh:sparql rdf:nodeID="N2bf9f1d0d2944dea9c338b06a1e24574"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#sample"/>
-    <sh:name>sample</sh:name>
-    <sh:description>A sample distribution of the dataset. Usage: DCAT-AP-LU provides additional usage guidance for the use of this property in providing data dictionaries as part of dataset descriptions.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-accessService">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
-    <sh:sparql rdf:nodeID="Nfc45fb0869444f389eae5535dd878898"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessService"/>
-    <sh:name>access Service</sh:name>
-    <sh:description>A data service that gives access to the distribution of the dataset.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-contactPoint">
-    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
-    <sh:sparql rdf:nodeID="Nf8f39539513541b6a5772bd2e21a7ced"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
-    <sh:name>contact Point</sh:name>
-    <sh:description>Contact information that can be used for sending comments about the Dataset.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dct-creator">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nbfed3bde6e2c4202b7148c22d182230f"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
-    <sh:name>creator</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Resource">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
-    <rdfs:label>Resource</rdfs:label>
-    <rdfs:comment>Resource published or curated by a single agent.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  <rdf:Description rdf:nodeID="N10d2428417634d2fa0d4b234fa459f59">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#sample&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#sample&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-CatalogRecord">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
@@ -810,84 +856,16 @@
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dcat-CatalogRecord-foaf-primaryTopic"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Catalog-dcat-record">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
-    <sh:sparql rdf:nodeID="N9854794ae6084aa9a76cc947a7d2a733"/>
+  <rdf:Description rdf:nodeID="N03817d66fda84999a36332d061689fb7">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/license&gt; ?that . ?that &lt;http://purl.org/dc/terms/license&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-adms-sample">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <sh:sparql rdf:nodeID="N10d2428417634d2fa0d4b234fa459f59"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#record"/>
-    <sh:name>record</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-prov-wasGeneratedBy">
-    <sh:class rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-    <sh:sparql rdf:nodeID="Nf9de5eb4a3d346c89bf4d041d7a38e99"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
-    <sh:name>was Generated By</sh:name>
-    <sh:description>provides the business context for, the creation of the dataset.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-temporal">
-    <sh:class rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
-    <sh:sparql rdf:nodeID="N0f7b211035594d5483b106ed89bf597c"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/temporal"/>
-    <sh:name>temporal</sh:name>
-    <sh:description>A temporal period that the Dataset covers.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Agent">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <rdfs:label>Agent</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Agent-dct-type"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-downloadURL">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#downloadURL"/>
-    <sh:name>download URL</sh:name>
-    <sh:description>A URL that is a direct link to a downloadable file in a given format.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-modified">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/modified"/>
-    <sh:name>modified</sh:name>
-    <sh:description>The most recent date on which the Dataset was changed or modified.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Document">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <rdfs:label>Document</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf4d2b71d88b44e5ba027e1a425608540">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/source&gt; ?that . ?that &lt;http://purl.org/dc/terms/source&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-spdx-checksum">
-    <sh:class rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N5783729100c040958945327834e714ed"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://spdx.org/rdf/terms#checksum"/>
-    <sh:name>checksum</sh:name>
-    <sh:description>A mechanism that can be used to verify that the contents of a distribution have not changed.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-relation">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/relation"/>
-    <sh:name>relation</sh:name>
-    <sh:description>A related resource.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-landingPage">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <sh:sparql rdf:nodeID="Nf2d95bc160be4fa7b04cb5d007a3f96d"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#landingPage"/>
-    <sh:name>landing Page</sh:name>
-    <sh:description>A web page that provides access to the Dataset, its Distributions and/or additional information.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#sample"/>
+    <sh:name>sample</sh:name>
+    <sh:description>A sample distribution of the dataset. Usage: DCAT-AP-LU provides additional usage guidance for the use of this property in providing data dictionaries as part of dataset descriptions.</sh:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-isReferencedBy">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -896,22 +874,164 @@
     <sh:description>A related resource, such as a publication, that references, cites, or otherwise points to the dataset.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#locn-Geometry">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
-    <rdfs:label>Period Of Time</rdfs:label>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
+    <rdfs:label>Geometry</rdfs:label>
+    <rdfs:comment>The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-endDate"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-dcat-startDate"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasBeginning"/>
-    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasEnd"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#prov-Activity">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-    <rdfs:label>Activity</rdfs:label>
-    <rdfs:comment>An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</rdfs:comment>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-CatalogRecord-foaf-primaryTopic">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Ne6a6fa7074ae44438222e579a6527e3a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/primaryTopic"/>
+    <sh:name>primary Topic</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-relation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/relation"/>
+    <sh:name>relation</sh:name>
+    <sh:description>A related resource.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf33518320f3f4ac18cd0fdea09706ad7">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc10198b2e15648b78b0d8cc81d25cdf4">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-accessService">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <sh:sparql rdf:nodeID="Ne64d9d59a18c464cb02a4409f2ff758f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessService"/>
+    <sh:name>access Service</sh:name>
+    <sh:description>A data service that gives access to the distribution of the dataset.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-RightsStatement">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <rdfs:label>Rights Statement</rdfs:label>
+    <rdfs:comment>A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-foaf-page">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <sh:sparql rdf:nodeID="N3cf3ed5c6a254365930a0eff002844dc"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <sh:name>page</sh:name>
+    <sh:description>A page or document about this Dataset.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-MediaTypeOrExtent">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+    <rdfs:label>Media Type Or Extent</rdfs:label>
+    <rdfs:comment>A media type or dataset distribution.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-provenance">
+    <sh:class rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
+    <sh:sparql rdf:nodeID="N8a1d11d0f4d144ecbb8c58991a270184"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/provenance"/>
+    <sh:name>provenance</sh:name>
+    <sh:description>A statement about the lineage of a Dataset. DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nac8cf2c923bd49fb80385f38bc94ccdd">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/format&gt; ?that . ?that &lt;http://purl.org/dc/terms/format&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Location-locn-geometry">
+    <sh:class rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N18a56c2085aa4bbd86020805ac5cfb0c"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/locn#geometry"/>
+    <sh:name>geometry</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-accessRights">
+    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nf3e590bd82bc45ec98586ee4c058d0e5"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/accessRights"/>
+    <sh:name>access Rights</sh:name>
+    <sh:description>Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public. Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-modified">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/modified"/>
+    <sh:name>modified</sh:name>
+    <sh:description>The most recent date on which the Distribution was changed or modified.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-PeriodOfTime-time-hasEnd">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/2006/time#hasEnd"/>
+    <sh:name>has End</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Document">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:label>Document</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne6a6fa7074ae44438222e579a6527e3a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6aee3c5bec524793a718cb91f2559adf">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Agent">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:label>Agent</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+    <sh:property rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Agent-dct-type"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-contactPoint">
+    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <sh:sparql rdf:nodeID="N46e37cdf57fe4e49a2b89451b6de0c48"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
+    <sh:name>contact Point</sh:name>
+    <sh:description>Contact information that can be used for sending comments about the Dataset.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nde850026a4894f348729478372108236">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nabf01898500c40dbb5ac0b13c444c6eb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/source&gt; ?that . ?that &lt;http://purl.org/dc/terms/source&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-LicenseDocument-dct-type">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:sparql rdf:nodeID="Nee0f14dabf4747399051b540372ab70e"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
+    <sh:name>type</sh:name>
+    <sh:description>A type of licence, e.g. indicating 'public domain' or 'royalties required'.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-language">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <sh:sparql rdf:nodeID="Nc10198b2e15648b78b0d8cc81d25cdf4"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
+    <sh:name>language</sh:name>
+    <sh:description>A language used in the Distribution.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf3e590bd82bc45ec98586ee4c058d0e5">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/accessRights&gt; ?that . ?that &lt;http://purl.org/dc/terms/accessRights&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6aa88931e7aa43c0901ce302d5551a60">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-keyword">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -921,237 +1041,117 @@
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
     <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#foaf-Agent-dct-type">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N997619d30af44b028888f01dd3a3e4aa"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
-    <sh:name>type</sh:name>
+  <rdf:Description rdf:nodeID="Naec1f5c328bf480289dbe34c223144e5">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/creator&gt; ?that . ?that &lt;http://purl.org/dc/terms/creator&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-owl-versionInfo">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/2002/07/owl#versionInfo"/>
-    <sh:name>version Info</sh:name>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  <rdf:Description rdf:nodeID="Ncd3aabef91834aa9b34314573d1214d9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N9854794ae6084aa9a76cc947a7d2a733">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#record&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#record&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N3cd732bab0464eaa88e940af933f305d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#adms-Identifier">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
-    <rdfs:label>Identifier</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
+  <rdf:Description rdf:nodeID="Ndc6bce687fdf4aea81db5823e7e22c7f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-title">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
-    <sh:name>title</sh:name>
-    <sh:description>A name given to the Dataset</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N4f08ec80b75847a9855b3a998ad312be">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/license&gt; ?that . ?that &lt;http://purl.org/dc/terms/license&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-hasVersion">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-    <sh:sparql rdf:nodeID="Nccdc43a1319c4cefb9a09728254cd047"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#hasVersion"/>
-    <sh:name>has Version</sh:name>
-    <sh:description>A related Dataset that is a version, edition, or adaptation of the described Dataset.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dct-license">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N4f08ec80b75847a9855b3a998ad312be"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
-    <sh:name>license</sh:name>
-    <sh:description>A licence under which the Distribution is made available.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N45bb9e974bef4541803b41eac9ae0d89">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?that . ?that &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N2bf9f1d0d2944dea9c338b06a1e24574">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#sample&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#sample&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N4745720d9a1f489b8e4c7b43fb0788bc">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#eli-LegalResource">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <rdfs:label>Legal Resource</rdfs:label>
-    <rdfs:comment>This class represents the legislation, policy or policies that lie behind the Rules that govern the service. Usage Note The definition and properties of the Legal Resource class are aligned with the ontology included in "Council conclusions inviting the introduction of the European Legislation Identifier (ELI)". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology. In this data specification the use is restricted to instances of this class that follow the ELI URI guidelines</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N4112d9a3f2d243d69d3d0f0284669870">
+  <rdf:Description rdf:nodeID="Nc7df19f3b5c84ac681884bb5af6366bb">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#packageFormat&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#packageFormat&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N997619d30af44b028888f01dd3a3e4aa">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Na38a7fbb7a494a23a306e86f827e7765">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#record&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#record&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dct-source">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-    <sh:sparql rdf:nodeID="Nf4d2b71d88b44e5ba027e1a425608540"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/source"/>
-    <sh:name>source</sh:name>
-    <sh:description>A related Dataset from which the described Dataset is derived.</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N77c56c1600784617aa4b869d269a1e01">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N7955cee69a0f439f8ab505b8f5ea9eec">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/creator&gt; ?that . ?that &lt;http://purl.org/dc/terms/creator&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nc2b746215ccf4a02b4ecc080541184f3">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Na933415dfad94d2793e22e32c41f66d4">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Dataset-dcat-inSeries">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
-    <sh:sparql rdf:nodeID="Neade26b60deb454890343bd5c0dfe8a8"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#inSeries"/>
-    <sh:name>in Series</sh:name>
-    <sh:description>A dataset series of which the dataset is part. Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided</sh:description>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nafb55a84e69646f487708094cee061a5">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N1ca39a2096354585b501f7f39ef78c20">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N495b04879cb247fe882252ad4a8c6296">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/availability&gt; ?that . ?that &lt;http://data.europa.eu/r5r/availability&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf9de5eb4a3d346c89bf4d041d7a38e99">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N2fd0c21d64d143b48c5348a68e4b8295">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Distribution-dcat-accessURL">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessURL"/>
-    <sh:name>access URL</sh:name>
-    <sh:description>A URL that gives access to a Distribution of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Standard">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-MediaType">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Standard"/>
-    <rdfs:label>Standard</rdfs:label>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <rdfs:label>Media Type</rdfs:label>
+    <rdfs:comment>A file format or physical medium.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N7f4e64b3330347b0b3a8acf214956f13">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#theme&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#theme&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N5870939ae9094dcda42fefabd690bc22">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N3a0c38716b4949c7a087616bb6150202">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Relationship">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Relationship"/>
-    <rdfs:label>Relationship</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N108cdd355c78435ca4b8c71e9d70e77d">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N0671e893e32743c980823c3e92f99e3d">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Na520151dea7b488ca274ad912f30bbfb">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nccdc43a1319c4cefb9a09728254cd047">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N71fea87f750f4befafa1c04b56912d04">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#identifier&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#identifier&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N9d3c3dd716c64f81943a0608960d69a5">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/locn#geometry&gt; ?that . ?that &lt;http://www.w3.org/ns/locn#geometry&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N2fcf83ad79c642cabdc8b0e677914f41">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N99c4bc90efa44c04a8ebe1b832535ace">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nb99c366f42734d9588fd0f169a17d66d">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Ne1d8bd09f4b346399ac818f0b12d98c7">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/license&gt; ?that . ?that &lt;http://purl.org/dc/terms/license&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N884166885be54564b337914fad3a6c5e">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/format&gt; ?that . ?that &lt;http://purl.org/dc/terms/format&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nb6b48e17bf0c4224b1a8548ddc121608">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N5bdb1ec64e95454a9571db5cc1fbb116">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nfc45fb0869444f389eae5535dd878898">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#accessService&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#accessService&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dct-Frequency">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Frequency"/>
-    <rdfs:label>Frequency</rdfs:label>
-    <rdfs:comment>A rate at which something recurs, e.g. the publication of a Dataset.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nfa93adb6f7ab4b68a0f3235196345fd7">
+  <rdf:Description rdf:nodeID="N33443ffd98a646fda7716965fc9024a4">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#servesDataset&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#servesDataset&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N5b9bb7c1d8054637b36d30f813de35fa">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/rights&gt; ?that . ?that &lt;http://purl.org/dc/terms/rights&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N6ea68954676b4ce2acaaaa54ea65e282">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N2998c810f3a74bf39cdd6f733a48bd1b">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#status&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#status&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Nee0f14dabf4747399051b540372ab70e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N5783729100c040958945327834e714ed">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://spdx.org/rdf/terms#checksum&gt; ?that . ?that &lt;http://spdx.org/rdf/terms#checksum&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N0ac48fd51b624acf804f7bd0092c7bac">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N3ccbb662c74f43a8aae8b6b86e520639">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;https://w3id.org/dpv#hasData&gt; ?that . ?that &lt;https://w3id.org/dpv#hasData&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N25135b647ea54ec0817fdd9ef6b902f8">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/availability&gt; ?that . ?that &lt;http://data.europa.eu/r5r/availability&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N0f7b211035594d5483b106ed89bf597c">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/temporal&gt; ?that . ?that &lt;http://purl.org/dc/terms/temporal&gt; ?this .}</sh:select>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat-lu/data-shape#dcat-Resource">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+    <rdfs:label>Resource</rdfs:label>
+    <rdfs:comment>Resource published or curated by a single agent.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/dcat-lu/data-shape#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N2a86b1a3de60427ebe6c2af2d2074af1">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/accessRights&gt; ?that . ?that &lt;http://purl.org/dc/terms/accessRights&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nbfed3bde6e2c4202b7148c22d182230f">
+  <rdf:Description rdf:nodeID="N5858aea55a834a7392fe7e2193f283c7">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/creator&gt; ?that . ?that &lt;http://purl.org/dc/terms/creator&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Ndb1cbae99bca477c99d204316df53b16">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#distribution&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#distribution&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Nac8cd3e4370f4cd59192c74086464d34">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?that . ?that &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nbfb012b964214836b43fae01f78e764a">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N203c658be3b64eb0919ac834ab7d69f7">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://spdx.org/rdf/terms#checksum&gt; ?that . ?that &lt;http://spdx.org/rdf/terms#checksum&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf2d95bc160be4fa7b04cb5d007a3f96d">
+  <rdf:Description rdf:nodeID="N7e0903a346ee4acb9700dce9e00c094e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/rights&gt; ?that . ?that &lt;http://purl.org/dc/terms/rights&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N84202ea765fe43d3bebc3099d3f5c00b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5639157808bc46ffa0399cd016bf114f">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#landingPage&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#landingPage&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N6eac01809eac4202a5277694f75bc44e">
+  <rdf:Description rdf:nodeID="N8d2a41433cd4476f865f5e6befe698aa">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3b2381a4213a4c0eabfe21d1b4af63c3">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na23991f49c414b9785bf8220b13020f9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#service&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#service&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8a1d11d0f4d144ecbb8c58991a270184">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/provenance&gt; ?that . ?that &lt;http://purl.org/dc/terms/provenance&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N480588945ba44e75b3962e2ffc87dd79">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N28e5068a17094b2987226a859feb5efe">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na045cf09cb0e40f6a997b9983bc0a63b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb41e55aef1d94fe0b63c20f0aea973de">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N654e17250aff4046a9ecca22f2a1f084">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/temporal&gt; ?that . ?that &lt;http://purl.org/dc/terms/temporal&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndbfafa4e3953456f98bd70f7390aeddf">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicablelegislation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2f735ca70b6a46ccb375694c5ffe68c6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#theme&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#theme&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb2a03967897a4d28b4d59e4954d90e98">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;https://w3id.org/dpv#hasData&gt; ?that . ?that &lt;https://w3id.org/dpv#hasData&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3cf3ed5c6a254365930a0eff002844dc">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4508cf76ae3c4d08bfc7b4d6e281fec1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/license&gt; ?that . ?that &lt;http://purl.org/dc/terms/license&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndbe2480c597a4e199e03209218730be0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#distribution&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#distribution&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na758815391144e80b23d6aeefdcc0386">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#status&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#status&gt; ?this .}</sh:select>
   </rdf:Description>
 </rdf:RDF>
