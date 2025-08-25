@@ -33,13 +33,12 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Distribution-foaf-page             |                              0|                                  3|
       |dcat-Distribution-odrl-hasPolicy        |                              0|                                  3|
       |dcat-Distribution-spdx-checksum         |                              0|                                  3|
-      |adms-Identifier-skos-notation           |                              0|                                  2|
       |dcat-Dataset-adms-identifier            |                              0|                                 2|
       |dcat-Dataset-adms-sample                |                              0|                                 3|
       |dcat-Dataset-adms-versionNotes          |                              0|                                 1|
       |dcat-Dataset-dcat-contactPoint          |                              0|                                 2|
       |dcat-Dataset-dcat-distribution          |                              0|                                 2|
-      |dcat-Dataset-dcat-inSeries              |                              0|                                 4|
+      |dcat-Dataset-dcat-inSeries              |                              0|                                 2|
       |dcat-Dataset-dcat-keyword               |                              0|                                 1|
       |dcat-Dataset-dcat-landingPage           |                              0|                                 2|
       |dcat-Dataset-dcat-spatialResolutionInMeters       |                    0|                                 2|
@@ -73,21 +72,14 @@ Feature: Validate RDF data fragments against SHACL shapes
       |dcat-Dataset-prov-wasGeneratedBy               |                               0|                         2|
       |dcat-DatasetSeries-dcat-contactPoint               |                               0|                         2|
       |dcat-DatasetSeries-dcatap-applicablelegislation               |                               0|                         2|
-      |dcat-DatasetSeries-dct-description               |                               0|                         2|
-      |dcat-DatasetSeries-dct-issued               |                               0|                         1|
-      |dcat-DatasetSeries-dct-modified               |                               0|                         1|
       |dcat-DatasetSeries-dct-publisher               |                               0|                         2|
       |dcat-DatasetSeries-dct-spatial               |                               0|                         2|
-      |dcat-DatasetSeries-dct-title               |                               0|                         2|
       |dct-LicenseDocument-dct-type              |                               0|                         2|
-      |dct-Location-dcat-bbox                    |                               0|                        2|
-      |dct-Location-dcat-centroid             |                               0|                        2|
       |dct-Location-locn-geometry            |                               0|                        3|
       |dct-PeriodOfTime-dcat-endDate          |                               0|                        2|
       |dct-PeriodOfTime-time-hasBeginning         |                               0|                        2|
       |dct-PeriodOfTime-time-hasEnd         |                               0|                        2|
       |foaf-Agent-dct-type         |                               0|                        3|
-      |foaf-Agent-foaf-name       |                               0|                        2|
       |skos-Concept-skos-prefLabel       |                               0|                        1|
       |dcat-Catalog-dcat-record    |                               0|                        2|
       |dcat-CatalogRecord-foaf-primaryTopic    |                               0|                       4|

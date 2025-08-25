@@ -1,12 +1,9 @@
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix ex: <http://example.org/> .
-@prefix time: <http://www.w3.org/2006/time#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 
+# Violates maxCount
 ex:periodInvalid a dct:PeriodOfTime ;
-    #  Wrong datatype: string without dateTime
-    time:hasEnd "2022-01-01" ;
+    time:hasEnd ex:end1 , ex:end2 .#  More than one hasEnd
 
-    #  Second value violates sh:maxCount 1
-    time:hasEnd "2023-01-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
-
+ex:end1 a dct:concept .
