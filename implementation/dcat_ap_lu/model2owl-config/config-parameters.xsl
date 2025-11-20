@@ -9,7 +9,7 @@
 
     <xd:doc scope="stylesheet">
         <xd:desc>
-            <xd:p><xd:b>Created on:</xd:b> Aug 28, 2025</xd:p>
+            <xd:p><xd:b>Created on:</xd:b> Mar 22, 2020</xd:p>
             <xd:p><xd:b>Author:</xd:b> lps</xd:p>
             <xd:p>This module defines project level variables and parameters</xd:p>
         </xd:desc>
@@ -24,6 +24,9 @@
 
     <!-- XSD datatypes that conform to OWL2 requirements   -->
     <xsl:variable name="xsdAndRdfDataTypes" select="fn:doc('xsdAndRdfDataTypes.xml')"/>
+
+    <!-- JSON metadata configuration -->
+    <xsl:variable name="metadataJson" select="fn:json-doc('metadata.json')"/>
     <!--    set default namespace interpretation for lexical Qnames that are not prefix:localSegment or :localSegment. If this
     is set to true localSegment will transform to :localSegment-->
     <xsl:variable name="defaultNamespaceInterpretation" select="fn:true()"/>
@@ -46,6 +49,9 @@
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
+
+    <!-- suffix for URIs of sh:NodeShape instances in the SHACL artefact -->
+    <xsl:variable name="nodeShapeURIsuffix" select="'Shape'"/>
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
@@ -84,13 +90,34 @@
     <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:true()"/>
 
-<!--    This set of variables controls generation of comments and how they will generate in the output -->
+    <!--    This set of variables controls generation of comments and how they will generate in the output -->
     <xsl:variable name="commentsGeneration" select="fn:true()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
 
      <!--    Tag names/keys that are excluded from output -->
     <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty)"/>
+
+    <!-- Tag name/key that is used to describe a usage note of a class or property-->
+    <xsl:variable name="usageNoteTagName" select="'skos:note'"/>
+
+    <!-- Tag name/key that is used to indicate if a property is mandatory or
+         optional. If the tag is missing then cardinality will be used to
+         determine if a property is mandatory or optional-->
+    <xsl:variable name="mandatoryStatusTagName" select="'cfg:usage'"/>
+
+    <!-- Tag name/key that is used to provide reference links/reuse information for a class or property-->
+    <xsl:variable name="referenceTagName" select="'dct:references'"/>
+    <!-- Label that will be used in the ReSpec docs to describe values of `referenceTagName` for properties -->
+    <xsl:variable name="propertyReferenceRespecLabel" select="'Reuse'"/>
+    <!-- Label that will be used in the ReSpec docs to describe values of `referenceTagName` for classes -->
+    <xsl:variable name="classReferenceRespecLabel" select="'Reference'"/>
+    <!-- A flag to control whether references/reuse information is shown in the ReSpec docs -->
+    <xsl:variable name="showReferencesInRespec" select="fn:true()"/>
+
+    <!-- Tag name/key that is used as custom label for terms in the ReSpec documentation-->
+    <xsl:variable name="customTermLabelTagName" select="'skos:prefLabel'"/>
 
     <!-- Variables for status filtering:
      - The property used to indicate the status
@@ -105,12 +132,7 @@
 
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>
-<!--    Set of variables for convention report-->
-    <xsl:variable name="conventionReportCopyrightText" select="'Ministère de la Digitalisation and Luxembourg National Data Service, 2025'"/>
-    <xsl:variable name="conventionReportAuthor" select="'Ministère de la Digitalisation and Luxembourg National Data Service'"/>
-    <xsl:variable name="conventionReportAuthorLocation" select="'Luxembourg'"/>
-    <xsl:variable name="conventionReportAuthorWebsite" select="'https://mindigital.gouvernement.lu/'"/>
-    <xsl:variable name="conventionReportUMLModelName" select="'DCAT-AP-LU'"/>
+
     <!-- URIs list of UML versions supported by model2owl -->
     <xsl:variable name="supportedUmlVersions"
         select="('http://www.omg.org/spec/UML/20131001',
@@ -125,92 +147,12 @@
     -->
     <xsl:variable name="translatePlainLiteralToStringTypesInSHACL" select="fn:true()"/>
 
-    <!-- _______________________________________________________________________   -->
-    <!--                            METADATA SECTION                               -->
-    <!-- _______________________________________________________________________   -->
-    <!--    This section contains the variables used to build the ontology metadata-->
+    <!-- If true, this option will annotate all SHACL concepts in the shapes
+    artefact with the ontology IRI defined therein, using rdfs:isDefinedBy. -->
+
+    <xsl:variable name="annotateShaclConceptsWithOntology" select="fn:true()"/>
+
     <xsl:variable name="moduleReference" select="'core'"/>
-    <!--    dct:title -->
-    <xsl:variable name="ontologyTitleCore" select="'DCAT-AP-LU'"/>
-    <xsl:variable name="ontologyTitleRestrictions" select="'DCAT-AP-LU restrictions'"/>
-    <xsl:variable name="ontologyTitleShapes" select="'DCAT-AP-LU shapes'"/>
-    <!--    dct:description-->
-    <xsl:variable name="ontologyDescriptionCore"
-        select="
-        'This artefact provides the definitions for the DCAT-AP-LU.
-        This artefact excludes the restrictions.
-        DCAT-AP-LU is a Luxembourg-specific extension of the DCAT-AP profile used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe. It was created as part of the national implementation of the Data Governance Act (DGA) to support the creation of a single national dataset catalogue for all public sector data. The DCAT-AP-LU reuses large parts of the DCAT-AP-v3.0 standard, with a set of minor adaptations to support specific requirements for Luxembourg.'"/>
 
-        <xsl:variable name="ontologyDescriptionRestrictions"
-        select="
-        'This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.
-        This artefact excludes the definitions of concepts.
-        The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
-        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
-
-    <xsl:variable name="ontologyDescriptionShapes"
-        select="
-        'This artefact provides the generic datashape specifications for the DCAT-AP-LU.
-        The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
-        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
-
-
-    <!--    rdfs:label-->
-    <xsl:variable name="ontologyLabelCore"
-        select="
-        'This artefact provides the definitions for the DCAT-AP-LU.
-        This artefact excludes the restrictions.
-        The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
-        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
-
-    <xsl:variable name="ontologyLabelRestrictions"
-        select="
-        'This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.
-        This artefact excludes the definitions of concepts.
-        The eDCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
-        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
-
-    <xsl:variable name="ontologyLabelShapes"
-        select="
-        'This artefact provides the generic datashape specifications for the eProcurement Ontology Core.
-        The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
-        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
-
-    <!--    rdfs:seeAlso -->
-    <xsl:variable name="seeAlsoResources"
-        select="
-            ('https://mindig_lu.gitlab.io/DCAT-AP-LU/')"/>
-    <!--    dct:issued-->
-    <xsl:variable name="issuedDate" select="format-date(current-date(), '[Y0001]-[M01]-[D01]')"/>
-    <!--    dct:created-->
-    <xsl:variable name="createdDate" select="format-date(current-date(), '[Y0001]-[M01]-[D01]')"/>
-    <!--    owl:incompatibleWith -->
-    <xsl:variable name="incompatibleWith" select="''"/>
-    <!--    owl:versionInfo -->
-    <xsl:variable name="versionInfo" select="'1'"/>
-    <!--    bibo:status-->
-    <xsl:variable name="ontologyStatus" select="'Semantic Specification Realease'"/>
-    <!--    owl:priorVersion -->
-    <xsl:variable name="priorVersion" select="''"/>
-    <!--    vann:preferredNamespaceUri -->
-    <xsl:variable name="preferredNamespaceUri" select="'https://mindig_lu.gitlab.io/DCAT-AP-LU/#'"/>
-    <!--    vann:preferredNamespacePrefix -->
-    <xsl:variable name="preferredNamespacePrefix" select="'dal'"/>
-
-<!--    dct:license-->
-    <xsl:variable name="licenseLiteral" select="'Copyright 2025 Ministère de la Digitalisation, Luxembourg. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned. '"/>
-
-    <!--    dct:publisher-->
-    <xsl:variable name="publisher" select="'https://mindig_lu.gitlab.io/DCAT-AP-LU'"/>
-    
-            <!-- _______________________________________________________________________   -->
-    <!--                            RESPEC SECTION                               -->
-    <!-- _______________________________________________________________________   -->
-
-    <xsl:variable name="githubURL" select="'https://github.com/meaningfy-ws/dcat-ap-lu'"/>
-    <xsl:variable name="respecDescription" select="$ontologyDescriptionCore"/>
-    <xsl:variable name="feedbackURL" select="fn:concat($githubURL, '/issues')"/>
-    <xsl:variable name="authors" select="('Denis Bérenger', 'Danielle Welter', 'Marilyn Marx')"/>
-    <xsl:variable name="editors" select="('Danielle Welter', 'Carolina Cisterna', 'Marilyn Marx')"/>
 
 </xsl:stylesheet>
