@@ -370,18 +370,14 @@ jobs:
               mkdir -p respec-resources/templates
             fi
             
-            # Step 2: Copy all custom templates from repository (except base.j2)
+            # Step 2: Copy all custom templates from repository (including base.j2 if it exists)
             echo "Copying all custom templates from repository..."
             if [ -d "../implementation/${implementation}/respec_resources/templates" ]; then
               for template_file in "../implementation/${implementation}/respec_resources/templates"/*.j2; do
                 if [ -f "$template_file" ]; then
                   template_name=$(basename "$template_file")
-                  if [ "$template_name" != "base.j2" ]; then
-                    echo "Copying template: $template_name"
-                    cp -f "$template_file" "respec-resources/templates/"
-                  else
-                    echo "Skipping base.j2 (keeping Model2OWL version)"
-                  fi
+                  echo "Copying template: $template_name"
+                  cp -f "$template_file" "respec-resources/templates/"
                 fi
               done
             else
