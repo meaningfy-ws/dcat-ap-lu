@@ -427,6 +427,12 @@ jobs:
             fi
             echo "SHACL shapes copied to assets/shacl directory"
             
+            echo "-------------------Listing generated ReSpec files---------------------------------"
+            echo "Contents of $OUTPUT_PATH_RESPEC:"
+            ls -lah ../$OUTPUT_PATH_RESPEC
+            echo ""
+            echo "HTML files generated:"
+            find ../$OUTPUT_PATH_RESPEC -name "*.html" -type f
             echo "-------------------end ReSpec generation---------------------------------"
 
             sed -i "s/..\/implementation\/${implementation}\/model2owl-config/test\/ePO-default-config/g" config-proxy.xsl
@@ -486,15 +492,34 @@ jobs:
           # Copy ReSpec documentation directly to _site root
           if [ -d "implementation/$IMPLEMENTATION/respec" ]; then
             echo "Found ReSpec documentation for $IMPLEMENTATION, copying to _site root..."
+            
+            echo "Files in implementation/$IMPLEMENTATION/respec before copy:"
+            ls -lah "implementation/$IMPLEMENTATION/respec/"
+            
             cp -r "implementation/$IMPLEMENTATION/respec/"* "_site/"
-            echo "Successfully copied documentation to GitHub Pages site"
+            
+            # Verify index.html exists
+            if [ -f "_site/index.html" ]; then
+              echo "✓ index.html found in _site/"
+            else
+              echo "✗ ERROR: index.html not found in _site/"
+              echo "Files in _site:"
+              ls -lah "_site/"
+              exit 1
+            fi
+            
+            echo "Successfully prepared documentation for GitHub Pages"
           else
             echo "ERROR: No ReSpec documentation found for $IMPLEMENTATION"
             exit 1
           fi
           
-          echo "Site structure:"
+          echo ""
+          echo "Final site structure:"
           find _site -type f -name "*.html" | head -10
+          echo ""
+          echo "Total files in _site:"
+          find _site -type f | wc -l
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
