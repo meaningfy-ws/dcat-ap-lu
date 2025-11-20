@@ -58,8 +58,8 @@ core-res:dcat-DatasetSeriesShape a sh:NodeShape ;
 core-res:dcat-DatasetShape a sh:NodeShape ;
     rdfs:label "Dataset" ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:property core-res:dcat-Dataset-adms-identifier,
-        core-res:dcat-Dataset-adms-sample,
+    sh:property core-res:dcat-Dataset-adms-sample,
+        core-res:dcat-Dataset-adms-structuredIdentifier,
         core-res:dcat-Dataset-adms-versionNotes,
         core-res:dcat-Dataset-dcat-contactPoint,
         core-res:dcat-Dataset-dcat-distribution,
@@ -314,14 +314,6 @@ core-res:dcat-CatalogRecord-foaf-primaryTopic a sh:PropertyShape ;
     sh:path foaf:primaryTopic ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://xmlns.com/foaf/0.1/primaryTopic> ?that . ?that <http://xmlns.com/foaf/0.1/primaryTopic> ?this .}" ] .
 
-core-res:dcat-Dataset-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "A secondary identifier of the Dataset." ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
 core-res:dcat-Dataset-adms-sample a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcat:Distribution ;
@@ -329,6 +321,14 @@ core-res:dcat-Dataset-adms-sample a sh:PropertyShape ;
     sh:name "Sample" ;
     sh:path adms:sample ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#sample> ?that . ?that <http://www.w3.org/ns/adms#sample> ?this .}" ] .
+
+core-res:dcat-Dataset-adms-structuredIdentifier a sh:PropertyShape ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:class adms:Identifier ;
+    sh:description "A secondary identifier of the Dataset." ;
+    sh:name "Structured identifier" ;
+    sh:path adms:structuredIdentifier ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#structuredIdentifier> ?that . ?that <http://www.w3.org/ns/adms#structuredIdentifier> ?this .}" ] .
 
 core-res:dcat-Dataset-adms-versionNotes a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
