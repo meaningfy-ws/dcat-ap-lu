@@ -156,7 +156,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..1",
+          "cardinality": "1..1",
           "description": {
             "en": ""
           },
@@ -436,35 +436,6 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details."
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Access rights"
-          },
-          "name": "dct:accessRights",
-          "range": [
-            {
-              "range_curie": "dct:RightsStatement",
-              "range_label": {
-                "en": "Rights statement"
-              },
-              "range_puri": "http://purl.org/dc/terms/RightsStatement",
-              "range_uri": "http://purl.org/dc/terms/RightsStatement"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/accessRights",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
             "en": "The frequency at which the Dataset is updated."
           },
           "domain": [
@@ -579,7 +550,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "description": {
             "en": "An entity responsible for producing the dataset."
           },
@@ -755,6 +726,35 @@
         {
           "cardinality": "0..*",
           "description": {
+            "en": "A secondary identifier of the Dataset."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "Identifier X"
+          },
+          "name": "adms:identifierX",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {},
+          "uri": "http://www.w3.org/ns/adms#identifierX",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
             "en": "A dataset series of which the dataset is part.Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided"
           },
           "domain": [
@@ -827,12 +827,12 @@
           "name": "dct:issued",
           "range": [
             {
-              "range_curie": "xsd:dateTime",
+              "range_curie": "dal:TemporalLiteral",
               "range_label": {
-                "en": "Date time"
+                "en": "Temporal literal"
               },
-              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+              "range_puri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral",
+              "range_uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
             }
           ],
           "tags": {},
@@ -943,12 +943,12 @@
           "name": "dct:modified",
           "range": [
             {
-              "range_curie": "xsd:dateTime",
+              "range_curie": "dal:TemporalLiteral",
               "range_label": {
-                "en": "Date time"
+                "en": "Temporal literal"
               },
-              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+              "range_puri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral",
+              "range_uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
             }
           ],
           "tags": {},
@@ -1130,6 +1130,35 @@
           "usage": {}
         },
         {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "Rights"
+          },
+          "name": "dct:rights",
+          "range": [
+            {
+              "range_curie": "dct:RightsStatement",
+              "range_label": {
+                "en": "Rights statement"
+              },
+              "range_puri": "http://purl.org/dc/terms/RightsStatement",
+              "range_uri": "http://purl.org/dc/terms/RightsStatement"
+            }
+          ],
+          "tags": {},
+          "uri": "http://purl.org/dc/terms/rights",
+          "usage": {}
+        },
+        {
           "cardinality": "0..*",
           "description": {
             "en": "A sample distribution of the dataset.Usage: DCAT-AP-LU provides additional usage guidance for the use of this property in providing data dictionaries as part of dataset descriptions."
@@ -1277,35 +1306,6 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A secondary identifier of the Dataset."
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Structured identifier"
-          },
-          "name": "adms:structuredIdentifier",
-          "range": [
-            {
-              "range_curie": "adms:Identifier",
-              "range_label": {
-                "en": "Identifier"
-              },
-              "range_puri": "http://www.w3.org/ns/adms#Identifier",
-              "range_uri": "http://www.w3.org/ns/adms#Identifier"
-            }
-          ],
-          "tags": {},
-          "uri": "http://www.w3.org/ns/adms#structuredIdentifier",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
             "en": "A temporal period that the Dataset covers."
           },
           "domain": [
@@ -1446,35 +1446,6 @@
           ],
           "tags": {},
           "uri": "http://purl.org/dc/terms/type",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": ""
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Version info"
-          },
-          "name": "owl:versionInfo",
-          "range": [
-            {
-              "range_curie": "rdfs:Literal",
-              "range_label": {
-                "en": "Literal"
-              },
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
-            }
-          ],
-          "tags": {},
-          "uri": "http://www.w3.org/2002/07/owl#versionInfo",
           "usage": {}
         },
         {
@@ -1700,35 +1671,6 @@
       "parents": [],
       "properties": [
         {
-          "cardinality": "1..*",
-          "description": {
-            "en": "A URL that gives access to a Distribution of the Dataset."
-          },
-          "domain": [
-            {
-              "name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "label": {
-            "en": "Access URL"
-          },
-          "name": "dcat:accessURL",
-          "range": [
-            {
-              "range_curie": "rdfs:Resource",
-              "range_label": {
-                "en": "Resource"
-              },
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Resource"
-            }
-          ],
-          "tags": {},
-          "uri": "http://www.w3.org/ns/dcat#accessURL",
-          "usage": {}
-        },
-        {
           "cardinality": "0..*",
           "description": {
             "en": "A data service that gives access to the distribution of the dataset."
@@ -1934,35 +1876,6 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A free-text account of the Distribution."
-          },
-          "domain": [
-            {
-              "name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "label": {
-            "en": "Description"
-          },
-          "name": "dct:description",
-          "range": [
-            {
-              "range_curie": "rdfs:Literal",
-              "range_label": {
-                "en": "Literal"
-              },
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/description",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
             "en": "A URL that is a direct link to a downloadable file in a given format."
           },
           "domain": [
@@ -1992,36 +1905,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "The file format of the Distribution."
-          },
-          "domain": [
-            {
-              "name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "label": {
-            "en": "Format"
-          },
-          "name": "dct:format",
-          "range": [
-            {
-              "range_curie": "dct:MediaTypeOrExtent",
-              "range_label": {
-                "en": "Media type or extent"
-              },
-              "range_puri": "http://purl.org/dc/terms/MediaTypeOrExtent",
-              "range_uri": "http://purl.org/dc/terms/MediaTypeOrExtent"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/format",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "The policy expressing the rights associated with the distribution if using the [ODRL] vocabulary.DCAT-AP-LU provides additional usage guidance on the use of this property for expressing data use restrictions."
+            "en": "The policy expressing the rights associated with the distribution if using the <xref scope=\"external\" href=\"\"https://mindig_lu.gitlab.io/DCAT-AP-LU/#bib-odrl\"\">ODRL</xref>vocabulary."
           },
           "domain": [
             {
@@ -2043,7 +1927,11 @@
               "range_uri": "http://www.w3.org/ns/odrl/2/Policy"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "E",
+            "dct:references": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy",
+            "skos:note": "DCAT-AP-LU provides <a href=\u201chttps://mindig_lu.gitlab.io/DCAT-AP-LU/#policy_guidance\u201d>additional usage guidance</a> on the use of this property for expressing data use restrictions."
+          },
           "uri": "http://www.w3.org/ns/odrl/2/hasPolicy",
           "usage": {}
         },
@@ -2394,6 +2282,105 @@
           "tags": {},
           "uri": "http://purl.org/dc/terms/title",
           "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "A URL that gives access to a Distribution of the Dataset."
+          },
+          "domain": [
+            {
+              "name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "label": {
+            "en": "access URL"
+          },
+          "name": "dcat:accessURL",
+          "range": [
+            {
+              "range_curie": "rdfs:Resource",
+              "range_label": {
+                "en": "Resource"
+              },
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Resource"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url\">link</a>",
+            "skos:note": "The resource at the access URL may contain information about how to get the Dataset. ",
+            "skos:prefLabel": "access URL"
+          },
+          "uri": "http://www.w3.org/ns/dcat#accessURL",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "A free-text account of the Distribution."
+          },
+          "domain": [
+            {
+              "name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "label": {
+            "en": "description"
+          },
+          "name": "dct:description",
+          "range": [
+            {
+              "range_curie": "rdfs:Literal",
+              "range_label": {
+                "en": "Literal"
+              },
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_description",
+            "skos:note": "This property can be repeated for parallel language versions of the description. ",
+            "skos:prefLabel": "description"
+          },
+          "uri": "http://purl.org/dc/terms/description",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The file format of the Distribution."
+          },
+          "domain": [
+            {
+              "name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "label": {
+            "en": "format"
+          },
+          "name": "dct:format",
+          "range": [
+            {
+              "range_curie": "dct:MediaTypeOrExtent",
+              "range_label": {
+                "en": "Media type or extent"
+              },
+              "range_puri": "http://purl.org/dc/terms/MediaTypeOrExtent",
+              "range_uri": "http://purl.org/dc/terms/MediaTypeOrExtent"
+            }
+          ],
+          "tags": {
+            "skos:prefLabel": "format"
+          },
+          "uri": "http://purl.org/dc/terms/format",
+          "usage": {}
         }
       ],
       "rawTags": {
@@ -2668,7 +2655,10 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "dal:vocabname": "EU Vocabularies File Type Named Authority List",
+        "dal:vocaburi": "http://publications.europa.eu/resource/authority/file-type"
+      },
       "uri": "http://purl.org/dc/terms/MediaTypeOrExtent",
       "usage": {
         "en": "A media type or dataset distribution."
@@ -2701,12 +2691,12 @@
           "name": "dcat:endDate",
           "range": [
             {
-              "range_curie": "xsd:dateTime",
+              "range_curie": "dal:TemporalLiteral",
               "range_label": {
-                "en": "Date time"
+                "en": "Temporal literal"
               },
-              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+              "range_puri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral",
+              "range_uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
             }
           ],
           "tags": {},
@@ -2788,12 +2778,12 @@
           "name": "dcat:startDate",
           "range": [
             {
-              "range_curie": "xsd:dateTime",
+              "range_curie": "dal:TemporalLiteral",
               "range_label": {
-                "en": "Date time"
+                "en": "Temporal literal"
               },
-              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+              "range_puri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral",
+              "range_uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
             }
           ],
           "tags": {},
@@ -2998,7 +2988,7 @@
     },
     {
       "description": {
-        "en": "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The &#183;value space&#183; of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n &gt;= 0."
+        "en": "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n &gt;= 0."
       },
       "label": {
         "en": "Decimal"
@@ -3139,10 +3129,6 @@
     {
       "name": "time",
       "uri": "http://www.w3.org/2006/time#"
-    },
-    {
-      "name": "owl",
-      "uri": "http://www.w3.org/2002/07/owl#"
     }
   ]
 }
