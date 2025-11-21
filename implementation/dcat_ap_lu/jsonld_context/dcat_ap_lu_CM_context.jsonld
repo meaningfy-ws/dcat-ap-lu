@@ -54,10 +54,6 @@
     "dcat:DataService": "http://www.w3.org/ns/dcat#DataService",
     "dcat:Dataset": {
       "@context": {
-        "accessRights": {
-          "@id": "http://purl.org/dc/terms/accessRights",
-          "@type": "@id"
-        },
         "accrualPeriodicity": {
           "@id": "http://purl.org/dc/terms/accrualPeriodicity",
           "@type": "@id"
@@ -78,6 +74,7 @@
           "@type": "@id"
         },
         "creator": {
+          "@container": "@set",
           "@id": "http://purl.org/dc/terms/creator",
           "@type": "@id"
         },
@@ -106,6 +103,11 @@
           "@id": "http://purl.org/dc/terms/identifier",
           "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
         },
+        "identifierX": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/adms#identifierX",
+          "@type": "@id"
+        },
         "inSeries": {
           "@container": "@set",
           "@id": "http://www.w3.org/ns/dcat#inSeries",
@@ -118,7 +120,7 @@
         },
         "issued": {
           "@id": "http://purl.org/dc/terms/issued",
-          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "@type": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
         },
         "keyword": {
           "@container": "@set",
@@ -137,7 +139,7 @@
         },
         "modified": {
           "@id": "http://purl.org/dc/terms/modified",
-          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "@type": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
         },
         "page": {
           "@container": "@set",
@@ -168,6 +170,10 @@
           "@id": "http://purl.org/dc/terms/relation",
           "@type": "http://www.w3.org/2000/01/rdf-schema#Resource"
         },
+        "rights": {
+          "@id": "http://purl.org/dc/terms/rights",
+          "@type": "@id"
+        },
         "sample": {
           "@container": "@set",
           "@id": "http://www.w3.org/ns/adms#sample",
@@ -192,11 +198,6 @@
           "@id": "http://www.w3.org/ns/dcat#spatialResolutionInMeters",
           "@type": "http://www.w3.org/2001/XMLSchema#decimal"
         },
-        "structuredIdentifier": {
-          "@container": "@set",
-          "@id": "http://www.w3.org/ns/adms#structuredIdentifier",
-          "@type": "@id"
-        },
         "temporal": {
           "@container": "@set",
           "@id": "http://purl.org/dc/terms/temporal",
@@ -219,10 +220,6 @@
         "type": {
           "@id": "http://purl.org/dc/terms/type",
           "@type": "@id"
-        },
-        "versionInfo": {
-          "@id": "http://www.w3.org/2002/07/owl#versionInfo",
-          "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
         },
         "versionNotes": {
           "@container": "@set",
@@ -404,7 +401,7 @@
       "@context": {
         "endDate": {
           "@id": "http://www.w3.org/ns/dcat#endDate",
-          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "@type": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
         },
         "hasBeginning": {
           "@id": "http://www.w3.org/2006/time#hasBeginning",
@@ -416,7 +413,7 @@
         },
         "startDate": {
           "@id": "http://www.w3.org/ns/dcat#startDate",
-          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "@type": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
         }
       },
       "@id": "http://purl.org/dc/terms/PeriodOfTime"
