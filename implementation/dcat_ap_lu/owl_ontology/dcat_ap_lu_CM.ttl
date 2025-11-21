@@ -52,7 +52,9 @@ dcterms:MediaType a owl:Class ;
 
 dcterms:MediaTypeOrExtent a owl:Class ;
     skos:definition "A media type or dataset distribution."@en ;
-    skos:prefLabel "Media Type Or Extent"@en .
+    skos:prefLabel "Media Type Or Extent"@en ;
+    :vocabname "EU Vocabularies File Type Named Authority List"@en ;
+    :vocaburi "http://publications.europa.eu/resource/authority/file-type"@en .
 
 dcterms:PeriodOfTime a owl:Class ;
     skos:prefLabel "Period Of Time"@en .
@@ -67,10 +69,6 @@ dcterms:RightsStatement a owl:Class ;
 
 dcterms:Standard a owl:Class ;
     skos:prefLabel "Standard"@en .
-
-dcterms:accessRights a owl:ObjectProperty ;
-    skos:definition "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public. Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details."@en ;
-    skos:prefLabel "access Rights"@en .
 
 dcterms:accrualPeriodicity a owl:ObjectProperty ;
     skos:definition "The frequency at which the Dataset is updated."@en ;
@@ -100,7 +98,7 @@ dcterms:isReferencedBy a owl:DatatypeProperty ;
     skos:definition "A related resource, such as a publication, that references, cites, or otherwise points to the dataset. (dcat:Dataset)"@en ;
     skos:prefLabel "is Referenced By"@en .
 
-dcterms:issued a owl:DatatypeProperty ;
+dcterms:issued a rdf:Property ;
     skos:definition "The date of formal issuance (e.g., publication) of the Dataset. (dcat:Dataset) The date of formal issuance (e.g., publication) of the Distribution. (dcat:Distribution)"@en ;
     skos:prefLabel "issued"@en .
 
@@ -112,7 +110,7 @@ dcterms:license a owl:ObjectProperty ;
     skos:definition "A licence under which the Distribution is made available."@en ;
     skos:prefLabel "license"@en .
 
-dcterms:modified a owl:DatatypeProperty ;
+dcterms:modified a rdf:Property ;
     skos:definition "The most recent date on which the Dataset was changed or modified. (dcat:Dataset) The most recent date on which the Distribution was changed or modified. (dcat:Distribution)"@en ;
     skos:prefLabel "modified"@en .
 
@@ -129,7 +127,7 @@ dcterms:relation a owl:DatatypeProperty ;
     skos:prefLabel "relation"@en .
 
 dcterms:rights a owl:ObjectProperty ;
-    skos:definition "A statement that specifies rights associated with the Distribution."@en ;
+    skos:definition "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public. Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details. A statement that specifies rights associated with the Distribution."@en ;
     skos:prefLabel "rights"@en .
 
 dcterms:source a owl:ObjectProperty ;
@@ -177,7 +175,7 @@ xsd:dateTime a rdfs:Datatype ;
     skos:prefLabel "date Time"@en .
 
 xsd:decimal a rdfs:Datatype ;
-    skos:definition "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The &#183;value space&#183; of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n &gt;= 0."@en ;
+    skos:definition "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n &gt;= 0."@en ;
     skos:prefLabel "decimal"@en .
 
 xsd:duration a rdfs:Datatype ;
@@ -199,9 +197,6 @@ xsd:nonNegativeInteger a rdfs:Datatype ;
 
 xsd:string a rdfs:Datatype ;
     skos:prefLabel "string"@en .
-
-owl:versionInfo a owl:DatatypeProperty ;
-    skos:prefLabel "version Info"@en .
 
 skos:Concept a owl:Class ;
     skos:prefLabel "Concept"@en .
@@ -226,16 +221,16 @@ vcard:Kind a owl:Class ;
 adms:Identifier a owl:Class ;
     skos:prefLabel "Identifier"@en .
 
+adms:identifierX a owl:ObjectProperty ;
+    skos:definition "A secondary identifier of the Dataset."@en ;
+    skos:prefLabel "identifier X"@en .
+
 adms:sample a owl:ObjectProperty ;
     skos:definition "A sample distribution of the dataset. Usage: DCAT-AP-LU provides additional usage guidance for the use of this property in providing data dictionaries as part of dataset descriptions."@en ;
     skos:prefLabel "sample"@en .
 
 adms:status a owl:ObjectProperty ;
     skos:prefLabel "status"@en .
-
-adms:structuredIdentifier a owl:ObjectProperty ;
-    skos:definition "A secondary identifier of the Dataset."@en ;
-    skos:prefLabel "structured Identifier"@en .
 
 adms:versionNotes a owl:DatatypeProperty ;
     skos:definition "A description of the differences between this version and a previous version of the Dataset. (dcat:Dataset)"@en ;
@@ -272,8 +267,11 @@ dcat:accessService a owl:ObjectProperty ;
     skos:prefLabel "access Service"@en .
 
 dcat:accessURL a owl:DatatypeProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url\">link</a>"@en ;
     skos:definition "A URL that gives access to a Distribution of the Dataset. (dcat:Distribution)"@en ;
-    skos:prefLabel "access URL"@en .
+    skos:note "The resource at the access URL may contain information about how to get the Dataset. "@en ;
+    skos:prefLabel "access URL"@en ;
+    :reuse "A"@en .
 
 dcat:byteSize a owl:DatatypeProperty ;
     skos:definition "The size of a Distribution in bytes. (dcat:Distribution)"@en ;
@@ -295,7 +293,7 @@ dcat:downloadURL a owl:DatatypeProperty ;
     skos:definition "A URL that is a direct link to a downloadable file in a given format. (dcat:Distribution)"@en ;
     skos:prefLabel "download URL"@en .
 
-dcat:endDate a owl:DatatypeProperty ;
+dcat:endDate a rdf:Property ;
     skos:prefLabel "end Date"@en .
 
 dcat:hasVersion a owl:ObjectProperty ;
@@ -339,7 +337,7 @@ dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
     skos:definition "The minimum spatial separation resolvable in a dataset, measured in meters. (dcat:Dataset) The minimum spatial separation resolvable in a dataset distribution, measured in meters. (dcat:Distribution)"@en ;
     skos:prefLabel "spatial Resolution In Meters"@en .
 
-dcat:startDate a owl:DatatypeProperty ;
+dcat:startDate a rdf:Property ;
     skos:prefLabel "start Date"@en .
 
 dcat:temporalResolution a owl:DatatypeProperty ;
@@ -362,7 +360,10 @@ odrl:Policy a owl:Class ;
     skos:prefLabel "Policy"@en .
 
 odrl:hasPolicy a owl:ObjectProperty ;
-    skos:prefLabel "has Policy"@en .
+    dcterms:references "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy"@en ;
+    skos:note "DCAT-AP-LU provides <a href=“https://mindig_lu.gitlab.io/DCAT-AP-LU/#policy_guidance”>additional usage guidance</a> on the use of this property for expressing data use restrictions."@en ;
+    skos:prefLabel "has Policy"@en ;
+    :reuse "E"@en .
 
 prov:Activity a owl:Class ;
     skos:definition "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities."@en ;
