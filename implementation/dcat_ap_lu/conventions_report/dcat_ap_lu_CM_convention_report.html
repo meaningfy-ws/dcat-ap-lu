@@ -56,7 +56,7 @@
                   Generalisations</em>. Each major section lists model items that need correction of errors
                or consideration of warnings.</p>
             <p>The UML model in file <em>dcat_ap_lu_CM.xml</em> 
-               was tested at 12:49 on November 21, 2025.</p>
+               was tested at 12:56 on November 21, 2025.</p>
          </div>
          <h1 xmlns:f="http://https://github.com/costezki/model2owl#" id="nomenclature">Nomenclature</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="classNames">Class names</h2>
@@ -116,11 +116,11 @@
             <li><a href="#attribute-dct:identifier">dct:identifier</a></li>
             <li><a href="#attribute-dct:isReferencedBy">dct:isReferencedBy</a></li>
             <li><a href="#attribute-dct:issued-usage">dct:issued (2)</a><ul><em>
-                     <li>dcat:Dataset (xsd:dateTime) [0..1]</li>
+                     <li>dcat:Dataset (dal:TemporalLiteral) [0..1]</li>
                      <li>dcat:Distribution (xsd:dateTime) [0..1]</li></em></ul>
             </li>
             <li><a href="#attribute-dct:modified-usage">dct:modified (2)</a><ul><em>
-                     <li>dcat:Dataset (xsd:dateTime) [0..1]</li>
+                     <li>dcat:Dataset (dal:TemporalLiteral) [0..1]</li>
                      <li>dcat:Distribution (xsd:dateTime) [0..1]</li></em></ul>
             </li>
             <li><a href="#attribute-dct:relation">dct:relation</a></li>
@@ -128,16 +128,15 @@
                      <li>dcat:Dataset (rdfs:Literal) [1..*]</li>
                      <li>dcat:Distribution (rdfs:Literal) [0..*]</li></em></ul>
             </li>
-            <li><a href="#attribute-owl:versionInfo">owl:versionInfo</a></li>
             <li><a href="#attribute-skos:prefLabel">skos:prefLabel</a></li>
             <li><a href="#attribute-time:hasBeginning">time:hasBeginning</a></li>
             <li><a href="#attribute-time:hasEnd">time:hasEnd</a></li>
          </ul>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="connectorNames">Connector names</h2>
          <ul xmlns:f="http://https://github.com/costezki/model2owl#">
+            <li>adms:identifierX</li>
             <li>adms:sample</li>
             <li>adms:status</li>
-            <li>adms:structuredIdentifier</li>
             <li>dcat:accessService</li>
             <li>dcat:compressFormat</li>
             <li><a href="#connector-dcat:contactPoint">dcat:contactPoint (2)</a><ul><em>
@@ -161,7 +160,6 @@
                      <li>dcat:Distribution -&gt; eli:LegalResource [0..*]</li></em></ul>
             </li>
             <li>dcatap:availability</li>
-            <li>dct:accessRights</li>
             <li>dct:accrualPeriodicity</li>
             <li><a href="#connector-dct:conformsTo">dct:conformsTo (2)</a><ul><em>
                      <li>dcat:Dataset -&gt; dct:Standard [0..*]</li>
@@ -169,7 +167,7 @@
             </li>
             <li><a href="#connector-dct:creator">dct:creator (2)</a><ul><em>
                      <li>dcat:Catalog -&gt; foaf:Agent [0..1]</li>
-                     <li>dcat:Dataset -&gt; foaf:Agent [0..1]</li></em></ul>
+                     <li>dcat:Dataset -&gt; foaf:Agent [0..*]</li></em></ul>
             </li>
             <li>dct:format</li>
             <li><a href="#connector-dct:language">dct:language (2)</a><ul><em>
@@ -182,11 +180,14 @@
             </li>
             <li>dct:provenance</li>
             <li><a href="#connector-dct:publisher">dct:publisher (3)</a><ul><em>
-                     <li>dcat:Catalog -&gt; foaf:Agent [0..1]</li>
+                     <li>dcat:Catalog -&gt; foaf:Agent [1..1]</li>
                      <li>dcat:Dataset -&gt; foaf:Agent [0..1]</li>
                      <li>dcat:DatasetSeries -&gt; foaf:Agent [0..1]</li></em></ul>
             </li>
-            <li>dct:rights</li>
+            <li><a href="#connector-dct:rights">dct:rights (2)</a><ul><em>
+                     <li>dcat:Dataset -&gt; dct:RightsStatement [0..1]</li>
+                     <li>dcat:Distribution -&gt; dct:RightsStatement [0..1]</li></em></ul>
+            </li>
             <li>dct:source</li>
             <li><a href="#connector-dct:spatial">dct:spatial (2)</a><ul><em>
                      <li>dcat:Dataset -&gt; dct:Location [0..*]</li>
@@ -286,25 +287,23 @@
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The name (adms:versionNotes) is possibly in plural grammatical number. Names shall
                   be usually provided in singular number.</dd>
             </dl>
-            <dl id="attribute-owl:versionInfo">
-               <dt>owl:versionInfo</dt>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>owl:versionInfo is missing a description. All concepts should be defined or described.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The optional stereotype is applied to owl:versionInfo. Stereotypes are discouraged
-                  in the current practice with some exceptions. </dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The optional stereotype applied to owl:versionInfois not known and will be ignored.
-                  </dd>
-            </dl>
             <dl id="attribute-dct:issued">
                <dt>dct:issued</dt>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The optional stereotype is applied to dct:issued. Stereotypes are discouraged in the
                   current practice with some exceptions. </dd>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The optional stereotype applied to dct:issuedis not known and will be ignored. </dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type dal:TemporalLiteral type is invalid. Attributes must use types
+                  that are either: (a) XSD or RDF datatypes or (b) belonging to a shortlist of custom
+                  URIs (datatypes or classes).</dd>
             </dl>
             <dl id="attribute-dct:modified">
                <dt>dct:modified</dt>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The optional stereotype is applied to dct:modified. Stereotypes are discouraged in
                   the current practice with some exceptions. </dd>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The optional stereotype applied to dct:modifiedis not known and will be ignored. </dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type dal:TemporalLiteral type is invalid. Attributes must use types
+                  that are either: (a) XSD or RDF datatypes or (b) belonging to a shortlist of custom
+                  URIs (datatypes or classes).</dd>
             </dl>
             <dl id="attribute-dcat:temporalResolution">
                <dt>dcat:temporalResolution</dt>
@@ -486,6 +485,9 @@
                   in the current practice with some exceptions. </dd>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The recommended stereotype applied to dcat:endDateis not known and will be ignored.
                   </dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type dal:TemporalLiteral type is invalid. Attributes must use types
+                  that are either: (a) XSD or RDF datatypes or (b) belonging to a shortlist of custom
+                  URIs (datatypes or classes).</dd>
             </dl>
             <dl id="attribute-dcat:startDate">
                <dt>dcat:startDate</dt>
@@ -494,6 +496,9 @@
                   in the current practice with some exceptions. </dd>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The recommended stereotype applied to dcat:startDateis not known and will be ignored.
                   </dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type dal:TemporalLiteral type is invalid. Attributes must use types
+                  that are either: (a) XSD or RDF datatypes or (b) belonging to a shortlist of custom
+                  URIs (datatypes or classes).</dd>
             </dl>
             <dl id="attribute-time:hasBeginning">
                <dt>time:hasBeginning</dt>
@@ -814,12 +819,12 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Dataset -&gt; skos:Concept (+dct:type). Stereotypes
                are discouraged in the current practice with some exceptions. </dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Dataset -&gt; dct:RightsStatement (+dct:accessRights)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Dataset -&gt; dct:RightsStatement (+dct:rights)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet association conventions </dt>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The stereotype applied to dcat:Dataset -&gt; dct:RightsStatement (+dct:accessRights)is
-               not known and will be ignored. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Dataset -&gt; dct:RightsStatement (+dct:accessRights).
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The stereotype applied to dcat:Dataset -&gt; dct:RightsStatement (+dct:rights)is not
+               known and will be ignored. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Dataset -&gt; dct:RightsStatement (+dct:rights).
                Stereotypes are discouraged in the current practice with some exceptions. </dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Dataset -&gt; dct:LinguisticSystem (+dct:language)</h2>
@@ -1144,15 +1149,14 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
                define and describe all the relations.</dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">adms:structuredIdentifier</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">adms:identifierX</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet association conventions </dt>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The stereotype applied to adms:structuredIdentifieris not known and will be ignored.
-               </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to adms:structuredIdentifier. Stereotypes are discouraged
-               in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The connector has a general name (adms:structuredIdentifier), and it should not. The
-               names must be provided as connector source and target roles, not as connector name.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The stereotype applied to adms:identifierXis not known and will be ignored. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to adms:identifierX. Stereotypes are discouraged in
+               the current practice with some exceptions. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The connector has a general name (adms:identifierX), and it should not. The names
+               must be provided as connector source and target roles, not as connector name.</dd>
          </dl>
          <h1 class="selector-heading" id="dependencies">Dependencies</h1>
          <h1 class="selector-heading" id="realisations">Realisations</h1>
@@ -1208,6 +1212,8 @@
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-dct:creator">
             <dt>dct:creator</dt>
          </dl>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts the multiplicity is expected to be
+            the same.</dd>
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
@@ -1242,6 +1248,8 @@
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-dct:publisher">
             <dt>dct:publisher</dt>
          </dl>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts the multiplicity is expected to be
+            the same.</dd>
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
@@ -1253,6 +1261,22 @@
                   
                   Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for
                   publishers (dcat:DatasetSeries -&gt; foaf:Agent (+dct:publisher)) </li>
+            </ul>
+         </dd>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-dct:rights">
+            <dt>dct:rights</dt>
+         </dl>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: 
+            <ul>
+               <li>Information that indicates whether the Dataset is publicly accessible, has access
+                  restrictions or is not public.
+                  
+                  Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended
+                  in DCAT-AP. See section 10. Controlled Vocabularies for details. (dcat:Dataset -&gt;
+                  dct:RightsStatement (+dct:rights)) </li>
+               <li>A statement that specifies rights associated with the Distribution. (dcat:Distribution
+                  -&gt; dct:RightsStatement (+dct:rights)) </li>
             </ul>
          </dd>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-dct:spatial">
@@ -1370,6 +1394,14 @@
                      </li>
                </ul>
             </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The attribute dct:issued has different datatypes in reuse contexts.When a property
+               is reused in multiple contexts, the data-type is expected to be the same.In this case,
+               multiple data-types are found: 
+               <ul>
+                  <li>dal:TemporalLiteral (dcat:Dataset) </li>
+                  <li>xsd:dateTime (dcat:Distribution) </li>
+               </ul>
+            </dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="attribute-dct:modified-usage">
             <dt>dct:modified</dt>
@@ -1381,6 +1413,14 @@
                      </li>
                   <li>The most recent date on which the Distribution was changed or modified. (dcat:Distribution)
                      </li>
+               </ul>
+            </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The attribute dct:modified has different datatypes in reuse contexts.When a property
+               is reused in multiple contexts, the data-type is expected to be the same.In this case,
+               multiple data-types are found: 
+               <ul>
+                  <li>dal:TemporalLiteral (dcat:Dataset) </li>
+                  <li>xsd:dateTime (dcat:Distribution) </li>
                </ul>
             </dd>
          </dl>
