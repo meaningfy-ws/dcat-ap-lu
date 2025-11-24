@@ -1130,35 +1130,6 @@
           "usage": {}
         },
         {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details."
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Rights"
-          },
-          "name": "dct:rights",
-          "range": [
-            {
-              "range_curie": "dct:RightsStatement",
-              "range_label": {
-                "en": "Rights statement"
-              },
-              "range_puri": "http://purl.org/dc/terms/RightsStatement",
-              "range_uri": "http://purl.org/dc/terms/RightsStatement"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/rights",
-          "usage": {}
-        },
-        {
           "cardinality": "0..*",
           "description": {
             "en": "A sample distribution of the dataset.Usage: DCAT-AP-LU provides additional usage guidance for the use of this property in providing data dictionaries as part of dataset descriptions."
@@ -1505,6 +1476,40 @@
           "tags": {},
           "uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
           "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "rights"
+          },
+          "name": "dct:rights",
+          "range": [
+            {
+              "range_curie": "dct:RightsStatement",
+              "range_label": {
+                "en": "Rights statement"
+              },
+              "range_puri": "http://purl.org/dc/terms/RightsStatement",
+              "range_uri": "http://purl.org/dc/terms/RightsStatement"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "E",
+            "dct:references": "< a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">link</a>",
+            "skos:note": "DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details.",
+            "skos:prefLabel": "rights"
+          },
+          "uri": "http://purl.org/dc/terms/rights",
+          "usage": {}
         }
       ],
       "rawTags": {
@@ -1789,35 +1794,6 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "A mechanism that can be used to verify that the contents of a distribution have not changed."
-          },
-          "domain": [
-            {
-              "name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "label": {
-            "en": "Checksum"
-          },
-          "name": "spdx:checksum",
-          "range": [
-            {
-              "range_curie": "spdx:Checksum",
-              "range_label": {
-                "en": "Checksum"
-              },
-              "range_puri": "http://spdx.org/rdf/terms#Checksum",
-              "range_uri": "http://spdx.org/rdf/terms#Checksum"
-            }
-          ],
-          "tags": {},
-          "uri": "http://spdx.org/rdf/terms#checksum",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
             "en": "compressed form, e.g. to reduce the size of the downloadable file.Usage Note: It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA."
           },
           "domain": [
@@ -1996,35 +1972,6 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "A licence under which the Distribution is made available."
-          },
-          "domain": [
-            {
-              "name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "label": {
-            "en": "License"
-          },
-          "name": "dct:license",
-          "range": [
-            {
-              "range_curie": "dct:LicenseDocument",
-              "range_label": {
-                "en": "License document"
-              },
-              "range_puri": "http://purl.org/dc/terms/LicenseDocument",
-              "range_uri": "http://purl.org/dc/terms/LicenseDocument"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/license",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
             "en": "The media type of the Distribution as defined in the official register of media types managed by IANA.Usage note: DCAT-AP-LU provides additional usage guidance for this property."
           },
           "domain": [
@@ -2136,35 +2083,6 @@
           ],
           "tags": {},
           "uri": "http://xmlns.com/foaf/0.1/page",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "A statement that specifies rights associated with the Distribution."
-          },
-          "domain": [
-            {
-              "name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "label": {
-            "en": "Rights"
-          },
-          "name": "dct:rights",
-          "range": [
-            {
-              "range_curie": "dct:RightsStatement",
-              "range_label": {
-                "en": "Rights statement"
-              },
-              "range_puri": "http://purl.org/dc/terms/RightsStatement",
-              "range_uri": "http://purl.org/dc/terms/RightsStatement"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/rights",
           "usage": {}
         },
         {
@@ -2318,6 +2236,40 @@
           "usage": {}
         },
         {
+          "cardinality": "0..1",
+          "description": {
+            "en": "A mechanism that can be used to verify that the contents of a distribution have not changed."
+          },
+          "domain": [
+            {
+              "name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "label": {
+            "en": "checksum"
+          },
+          "name": "spdx:checksum",
+          "range": [
+            {
+              "range_curie": "spdx:Checksum",
+              "range_label": {
+                "en": "Checksum"
+              },
+              "range_puri": "http://spdx.org/rdf/terms#Checksum",
+              "range_uri": "http://spdx.org/rdf/terms#Checksum"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum\">link</a>",
+            "skos:note": "The checksum is related to the download URL",
+            "skos:prefLabel": "checksum"
+          },
+          "uri": "http://spdx.org/rdf/terms#checksum",
+          "usage": {}
+        },
+        {
           "cardinality": "0..*",
           "description": {
             "en": "A free-text account of the Distribution."
@@ -2380,6 +2332,73 @@
             "skos:prefLabel": "format"
           },
           "uri": "http://purl.org/dc/terms/format",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "A licence under which the Distribution is made available."
+          },
+          "domain": [
+            {
+              "name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "label": {
+            "en": "license"
+          },
+          "name": "dct:license",
+          "range": [
+            {
+              "range_curie": "dct:LicenseDocument",
+              "range_label": {
+                "en": "License document"
+              },
+              "range_puri": "http://purl.org/dc/terms/LicenseDocument",
+              "range_uri": "http://purl.org/dc/terms/LicenseDocument"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "E",
+            "dct:references": "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">link</a>",
+            "skos:note": "Licence object should only come from <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Licence - EU Vocabularies - Publications Office of the EU </a>.",
+            "skos:prefLabel": "license"
+          },
+          "uri": "http://purl.org/dc/terms/license",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "A statement that specifies rights associated with the Distribution."
+          },
+          "domain": [
+            {
+              "name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "label": {
+            "en": "rights"
+          },
+          "name": "dct:rights",
+          "range": [
+            {
+              "range_curie": "dct:RightsStatement",
+              "range_label": {
+                "en": "Rights statement"
+              },
+              "range_puri": "http://purl.org/dc/terms/RightsStatement",
+              "range_uri": "http://purl.org/dc/terms/RightsStatement"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights\">link</a>\n",
+            "skos:prefLabel": "rights"
+          },
+          "uri": "http://purl.org/dc/terms/rights",
           "usage": {}
         }
       ],
@@ -2918,26 +2937,6 @@
   "datatypes": [
     {
       "description": {
-        "en": "rdfs:Literal encoded using the relevant [ISO8601] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime). "
-      },
-      "label": {
-        "en": "Temporal literal"
-      },
-      "scopeduri": "dal:TemporalLiteral",
-      "uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
-    },
-    {
-      "description": {
-        "en": ""
-      },
-      "label": {
-        "en": "Plain literal"
-      },
-      "scopeduri": "rdf:PlainLiteral",
-      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-    },
-    {
-      "description": {
         "en": ""
       },
       "label": {
@@ -2951,46 +2950,6 @@
         "en": ""
       },
       "label": {
-        "en": "Resource"
-      },
-      "scopeduri": "rdfs:Resource",
-      "uri": "http://www.w3.org/2000/01/rdf-schema#Resource"
-    },
-    {
-      "description": {
-        "en": "A temporal entity with zero extent or duration. "
-      },
-      "label": {
-        "en": "Instant"
-      },
-      "scopeduri": "time:Instant",
-      "uri": "http://www.w3.org/2006/time#Instant"
-    },
-    {
-      "description": {
-        "en": ""
-      },
-      "label": {
-        "en": "Date"
-      },
-      "scopeduri": "xsd:date",
-      "uri": "http://www.w3.org/2001/XMLSchema#date"
-    },
-    {
-      "description": {
-        "en": "Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property. "
-      },
-      "label": {
-        "en": "Date time"
-      },
-      "scopeduri": "xsd:dateTime",
-      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    {
-      "description": {
-        "en": "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n &gt;= 0."
-      },
-      "label": {
         "en": "Decimal"
       },
       "scopeduri": "xsd:decimal",
@@ -2998,7 +2957,7 @@
     },
     {
       "description": {
-        "en": "Duration represents a duration of time. The &#183;value space&#183; of duration is a six-dimensional space where the coordinates designate the Gregorian year, month, day, hour, minute, and second components defined in &#167; 5.5.3.2 of [ISO8601], respectively."
+        "en": ""
       },
       "label": {
         "en": "Duration"
@@ -3011,34 +2970,24 @@
         "en": ""
       },
       "label": {
-        "en": "G year"
+        "en": "Resource"
       },
-      "scopeduri": "xsd:gYear",
-      "uri": "http://www.w3.org/2001/XMLSchema#gYear"
+      "scopeduri": "rdfs:Resource",
+      "uri": "http://www.w3.org/2000/01/rdf-schema#Resource"
     },
     {
       "description": {
         "en": ""
       },
       "label": {
-        "en": "G year month"
+        "en": "Temporal literal"
       },
-      "scopeduri": "xsd:gYearMonth",
-      "uri": "http://www.w3.org/2001/XMLSchema#gYearMonth"
+      "scopeduri": "dal:TemporalLiteral",
+      "uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
     },
     {
       "description": {
         "en": ""
-      },
-      "label": {
-        "en": "Integer"
-      },
-      "scopeduri": "xsd:integer",
-      "uri": "http://www.w3.org/2001/XMLSchema#integer"
-    },
-    {
-      "description": {
-        "en": "Number derived from integer by setting the value of minInclusive to be 0. "
       },
       "label": {
         "en": "Non negative integer"
@@ -3051,21 +3000,23 @@
         "en": ""
       },
       "label": {
-        "en": "String"
+        "en": "Date time"
       },
-      "scopeduri": "xsd:string",
-      "uri": "http://www.w3.org/2001/XMLSchema#string"
+      "scopeduri": "xsd:dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Instant"
+      },
+      "scopeduri": "time:Instant",
+      "uri": "http://www.w3.org/2006/time#Instant"
     }
   ],
   "prefixes": [
-    {
-      "name": "xsd",
-      "uri": "http://www.w3.org/2001/XMLSchema#"
-    },
-    {
-      "name": "dal",
-      "uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#"
-    },
     {
       "name": "adms",
       "uri": "http://www.w3.org/ns/adms#"
@@ -3117,14 +3068,6 @@
     {
       "name": "locn",
       "uri": "http://www.w3.org/ns/locn#"
-    },
-    {
-      "name": "rdf",
-      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    },
-    {
-      "name": "rdfs",
-      "uri": "http://www.w3.org/2000/01/rdf-schema#"
     },
     {
       "name": "time",
