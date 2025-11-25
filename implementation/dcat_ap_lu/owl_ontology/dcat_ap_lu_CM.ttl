@@ -107,9 +107,9 @@ dcterms:language a owl:ObjectProperty ;
     skos:prefLabel "language"@en .
 
 dcterms:license a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">link</a>"@en ;
+    dcterms:references "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Link</a>"@en ;
     skos:definition "A licence under which the Distribution is made available."@en ;
-    skos:note "Licence object should only come from <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Licence - EU Vocabularies - Publications Office of the EU </a>."@en ;
+    skos:note "Licence object should only come from <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Licence - EU Vocabularies - Publications Office of the EU.</a>"@en ;
     skos:prefLabel "license"@en ;
     :reuse "E"@en .
 
@@ -130,10 +130,10 @@ dcterms:relation a owl:DatatypeProperty ;
     skos:prefLabel "relation"@en .
 
 dcterms:rights a owl:ObjectProperty ;
-    dcterms:references "< a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">link</a>"@en,
-        """<a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights">link</a>
+    dcterms:references "< a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">Link</a>"@en,
+        """<a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights">Link</a>
 """@en ;
-    skos:definition "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public. A statement that specifies rights associated with the Distribution."@en ;
+    skos:definition "Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public. A statement that specifies rights associated with the Distribution."@en ;
     skos:note "DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details."@en ;
     skos:prefLabel "rights"@en ;
     :reuse "A"@en,
@@ -156,8 +156,10 @@ dcterms:title a owl:DatatypeProperty ;
     skos:prefLabel "title"@en .
 
 dcterms:type a owl:ObjectProperty ;
-    skos:definition "A type of the Dataset. Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this properties provided by DCAT-AP. A type of licence, e.g. indicating 'public domain' or 'royalties required'."@en ;
-    skos:prefLabel "type"@en .
+    skos:definition "A type of the Dataset. A type of licence, e.g. indicating 'public domain' or 'royalties required'."@en ;
+    skos:note "DCAT-AP-LU extends the recommendations for controlled vocabularies for this property provided by DCAT-AP."@en ;
+    skos:prefLabel "type"@en ;
+    :reuse "E"@en .
 
 spdx:Checksum a owl:Class ;
     skos:definition "A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented."@en ;
@@ -281,8 +283,11 @@ dcat:landingPage a owl:ObjectProperty ;
     skos:prefLabel "landing Page"@en .
 
 dcat:mediaType a owl:ObjectProperty ;
-    skos:definition "The media type of the Distribution as defined in the official register of media types managed by IANA. Usage note: DCAT-AP-LU provides additional usage guidance for this property."@en ;
-    skos:prefLabel "media Type"@en .
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type\">Link</a>"@en ;
+    skos:definition "The media type of the Distribution as defined in the official register of media types managed by &lt;a href=\"https://www.iana.org/\"&gt;IANA&lt;/a&gt;."@en ;
+    skos:note "DCAT-AP-LU provides additional usage guidance for this property."@en ;
+    skos:prefLabel "media Type"@en ;
+    :reuse "E"@en .
 
 dcat:packageFormat a owl:ObjectProperty ;
     skos:definition "The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together."@en ;
@@ -302,7 +307,7 @@ dcat:service a owl:ObjectProperty ;
     skos:prefLabel "service"@en .
 
 dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
-    skos:definition "The minimum spatial separation resolvable in a dataset, measured in meters. (dcat:Dataset) The minimum spatial separation resolvable in a dataset distribution, measured in meters. (dcat:Distribution)"@en ;
+    skos:definition "The minimum spatial separation resolvable in a dataset, measured in metres. (dcat:Dataset) The minimum spatial separation resolvable in a dataset distribution, measured in meters. (dcat:Distribution)"@en ;
     skos:prefLabel "spatial Resolution In Meters"@en .
 
 dcat:startDate a rdf:Property ;
@@ -313,8 +318,11 @@ dcat:temporalResolution a owl:DatatypeProperty ;
     skos:prefLabel "temporal Resolution"@en .
 
 dcat:theme a owl:ObjectProperty ;
-    skos:definition "A category of the Dataset. Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI not URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API."@en ;
-    skos:prefLabel "theme"@en .
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme\">Link</a>"@en ;
+    skos:definition "A category of the Dataset."@en ;
+    skos:note "A Dataset may be associated with multiple themes. Note: the theme is a URI not a URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API."@en ;
+    skos:prefLabel "theme"@en ;
+    :reuse "A"@en .
 
 locn:Geometry a owl:Class ;
     skos:definition "The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System."@en ;
@@ -393,8 +401,11 @@ core-res:core a owl:Ontology ;
     skos:prefLabel "Data"@en .
 
 <https://w3id.org/dpv#hasData> a owl:ObjectProperty ;
+    dcterms:references "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">link</a>"@en ;
     skos:definition "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset. Usage:A list of accepted types, based on the Data Privacy Vocabulary."@en ;
-    skos:prefLabel "has Data"@en .
+    skos:note "A list of accepted types, based on the Data Privacy Vocabulary, is defined in 10. Controlled Vocabularies. For additional usage guidance, refer to section 11."@en ;
+    skos:prefLabel "has Data"@en ;
+    :reuse "P"@en .
 
 dcat:Resource a owl:Class ;
     skos:definition "Resource published or curated by a single agent."@en ;
