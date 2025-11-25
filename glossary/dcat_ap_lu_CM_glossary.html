@@ -242,7 +242,7 @@
                      <td>dct:PeriodOfTime</td>
                      <td>dcat:endDate</td>
                      <td></td>
-                     <td>xsd:dateTime [0..1]</td>
+                     <td>dal:TemporalLiteral [0..1]</td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset</td>
@@ -261,7 +261,7 @@
                      <td>dct:PeriodOfTime</td>
                      <td>dcat:startDate</td>
                      <td></td>
-                     <td>xsd:dateTime [0..1]</td>
+                     <td>dal:TemporalLiteral [0..1]</td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
@@ -294,13 +294,13 @@
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
                      <td>dct:issued</td>
                      <td>The date of formal issuance (e.g., publication) of the Dataset. The date of formal issuance (e.g., publication) of the Distribution.</td>
-                     <td>xsd:dateTime [0..1]<br>xsd:dateTime [0..1]<br></td>
+                     <td>dal:TemporalLiteral [0..1]<br>xsd:dateTime [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
                      <td>dct:modified</td>
                      <td>The most recent date on which the Dataset was changed or modified. The most recent date on which the Distribution was changed or modified.</td>
-                     <td>xsd:dateTime [0..1]<br>xsd:dateTime [0..1]<br></td>
+                     <td>dal:TemporalLiteral [0..1]<br>xsd:dateTime [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset</td>
@@ -313,12 +313,6 @@
                      <td>dct:title</td>
                      <td>A name given to the Dataset A name given to the Distribution.</td>
                      <td>rdfs:Literal [1..*]<br>rdfs:Literal [0..*]<br></td>
-                  </tr>
-                  <tr>
-                     <td>dcat:Dataset</td>
-                     <td>owl:versionInfo</td>
-                     <td></td>
-                     <td>rdfs:Literal [0..1]</td>
                   </tr>
                   <tr>
                      <td>skos:Concept</td>
@@ -351,7 +345,7 @@
                </thead>
                <tbody>
                   <tr>
-                     <td>adms:identifier</td>
+                     <td>adms:identifierX</td>
                      <td>A secondary identifier of the Dataset.
                         
                         A secondary identifier of the Dataset.</td>
@@ -515,15 +509,6 @@
                      <td>dcat:Distribution -&gt; skos:Concept [0..1]</td>
                   </tr>
                   <tr>
-                     <td>dct:accessRights</td>
-                     <td>Information that indicates whether the Dataset is publicly accessible, has access
-                        restrictions or is not public.
-                        
-                        Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended
-                        in DCAT-AP. See section 10. Controlled Vocabularies for details.</td>
-                     <td>dcat:Dataset -&gt; dct:RightsStatement [0..1]</td>
-                  </tr>
-                  <tr>
                      <td>dct:accrualPeriodicity</td>
                      <td>The frequency at which the Dataset is updated.
                         
@@ -547,7 +532,7 @@
                      <td>dct:creator</td>
                      <td> An entity responsible for producing the dataset.An entity responsible for producing
                         the dataset.</td>
-                     <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br></td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..*]<br></td>
                   </tr>
                   <tr>
                      <td>dct:format</td>
@@ -588,14 +573,15 @@
                         
                         Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for
                         publishers.</td>
-                     <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [1..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:rights</td>
-                     <td>A statement that specifies rights associated with the Distribution.A statement that
+                     <td>Information that indicates whether the Dataset is publicly accessible, has access
+                        restrictions or is not public. A statement that specifies rights associated with the Distribution.A statement that
                         specifies rights associated with the Distribution.
                         </td>
-                     <td>dcat:Distribution -&gt; dct:RightsStatement [0..1]</td>
+                     <td>dcat:Dataset -&gt; dct:RightsStatement [0..1]<br>dcat:Distribution -&gt; dct:RightsStatement [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:source</td>
@@ -660,10 +646,8 @@
                   </tr>
                   <tr>
                      <td>odrl:hasPolicy</td>
-                     <td>The policy expressing the rights associated with the distribution if using the [ODRL]
-                        vocabulary.
-                        DCAT-AP-LU provides additional usage guidance on the use of this property for expressing
-                        data use restrictions.
+                     <td>The policy expressing the rights associated with the distribution if using the &lt;xref
+                        scope="external" href="https://mindig_lu.gitlab.io/DCAT-AP-LU/#bib-odrl"&gt;ODRL&lt;/xref&gt;vocabulary.
                         
                         </td>
                      <td>dcat:Distribution -&gt; odrl:Policy [0..1]</td>
