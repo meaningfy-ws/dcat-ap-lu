@@ -639,35 +639,6 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset.Usage:A list of accepted types, based on the Data Privacy Vocabulary"
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Has data"
-          },
-          "name": "dpv:hasData",
-          "range": [
-            {
-              "range_curie": "dpv:Data",
-              "range_label": {
-                "en": "Data"
-              },
-              "range_puri": "https://w3id.org/dpv#Data",
-              "range_uri": "https://w3id.org/dpv#Data"
-            }
-          ],
-          "tags": {},
-          "uri": "https://w3id.org/dpv#hasData",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
             "en": "A related Dataset that is a version, edition, or adaptation of the described Dataset."
           },
           "domain": [
@@ -1248,7 +1219,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "The minimum spatial separation resolvable in a dataset, measured in meters."
+            "en": "The minimum spatial separation resolvable in a dataset, measured in metres."
           },
           "domain": [
             {
@@ -1333,35 +1304,6 @@
           "usage": {}
         },
         {
-          "cardinality": "0..*",
-          "description": {
-            "en": "A category of the Dataset.Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI not URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API."
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Theme"
-          },
-          "name": "dcat:theme",
-          "range": [
-            {
-              "range_curie": "skos:Concept",
-              "range_label": {
-                "en": "Concept"
-              },
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "tags": {},
-          "uri": "http://www.w3.org/ns/dcat#theme",
-          "usage": {}
-        },
-        {
           "cardinality": "1..*",
           "description": {
             "en": "A name given to the Dataset"
@@ -1388,35 +1330,6 @@
           ],
           "tags": {},
           "uri": "http://purl.org/dc/terms/title",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "A type of the Dataset.Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this properties provided by DCAT-AP."
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Type"
-          },
-          "name": "dct:type",
-          "range": [
-            {
-              "range_curie": "skos:Concept",
-              "range_label": {
-                "en": "Concept"
-              },
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/type",
           "usage": {}
         },
         {
@@ -1478,9 +1391,43 @@
           "usage": {}
         },
         {
+          "cardinality": "0..*",
+          "description": {
+            "en": "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset.Usage:A list of accepted types, based on the Data Privacy Vocabulary"
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "has Data"
+          },
+          "name": "dpv:hasData",
+          "range": [
+            {
+              "range_curie": "dpv:Data",
+              "range_label": {
+                "en": "Data"
+              },
+              "range_puri": "https://w3id.org/dpv#Data",
+              "range_uri": "https://w3id.org/dpv#Data"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "P",
+            "dct:references": "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">link</a>",
+            "skos:note": "A list of accepted types, based on the Data Privacy Vocabulary, is defined in 10. Controlled Vocabularies. For additional usage guidance, refer to section 11.",
+            "skos:prefLabel": "has Data"
+          },
+          "uri": "https://w3id.org/dpv#hasData",
+          "usage": {}
+        },
+        {
           "cardinality": "0..1",
           "description": {
-            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
+            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public."
           },
           "domain": [
             {
@@ -1504,11 +1451,79 @@
           ],
           "tags": {
             "dal:reuse": "E",
-            "dct:references": "< a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">link</a>",
+            "dct:references": "< a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">Link</a>",
             "skos:note": "DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details.",
             "skos:prefLabel": "rights"
           },
           "uri": "http://purl.org/dc/terms/rights",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "A category of the Dataset.Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI not URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "theme"
+          },
+          "name": "dcat:theme",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme\">Link</a>",
+            "skos:note": "A Dataset may be associated with multiple themes. Note: the theme is a URI not a URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API.",
+            "skos:prefLabel": "theme"
+          },
+          "uri": "http://www.w3.org/ns/dcat#theme",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "A type of the Dataset.Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this properties provided by DCAT-AP."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "type"
+          },
+          "name": "dct:type",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "E",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type\">Link</a>",
+            "skos:note": "DCAT-AP-LU extends the recommendations for controlled vocabularies for this property provided by DCAT-AP.",
+            "skos:prefLabel": "type"
+          },
+          "uri": "http://purl.org/dc/terms/type",
           "usage": {}
         }
       ],
@@ -1972,35 +1987,6 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "The media type of the Distribution as defined in the official register of media types managed by IANA.Usage note: DCAT-AP-LU provides additional usage guidance for this property."
-          },
-          "domain": [
-            {
-              "name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "label": {
-            "en": "Media type"
-          },
-          "name": "dcat:mediaType",
-          "range": [
-            {
-              "range_curie": "dct:MediaType",
-              "range_label": {
-                "en": "Media type"
-              },
-              "range_puri": "http://purl.org/dc/terms/MediaType",
-              "range_uri": "http://purl.org/dc/terms/MediaType"
-            }
-          ],
-          "tags": {},
-          "uri": "http://www.w3.org/ns/dcat#mediaType",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
             "en": "The most recent date on which the Distribution was changed or modified."
           },
           "domain": [
@@ -2361,11 +2347,45 @@
           ],
           "tags": {
             "dal:reuse": "E",
-            "dct:references": "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">link</a>",
-            "skos:note": "Licence object should only come from <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Licence - EU Vocabularies - Publications Office of the EU </a>.",
+            "dct:references": "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Link</a>",
+            "skos:note": "Licence object should only come from <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Licence - EU Vocabularies - Publications Office of the EU.</a>",
             "skos:prefLabel": "license"
           },
           "uri": "http://purl.org/dc/terms/license",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The media type of the Distribution as defined in the official register of media types managed by IANA.Usage note: DCAT-AP-LU provides additional usage guidance for this property."
+          },
+          "domain": [
+            {
+              "name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "label": {
+            "en": "media Type"
+          },
+          "name": "dcat:mediaType",
+          "range": [
+            {
+              "range_curie": "dct:MediaType",
+              "range_label": {
+                "en": "Media type"
+              },
+              "range_puri": "http://purl.org/dc/terms/MediaType",
+              "range_uri": "http://purl.org/dc/terms/MediaType"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "E",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type\">Link</a>",
+            "skos:note": "DCAT-AP-LU provides additional usage guidance for this property.",
+            "skos:prefLabel": "media Type"
+          },
+          "uri": "http://www.w3.org/ns/dcat#mediaType",
           "usage": {}
         },
         {
@@ -2395,7 +2415,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights\">link</a>\n",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights\">Link</a>\n",
             "skos:prefLabel": "rights"
           },
           "uri": "http://purl.org/dc/terms/rights",
