@@ -58,7 +58,7 @@ core-res:dcat-DatasetSeriesShape a sh:NodeShape ;
 core-res:dcat-DatasetShape a sh:NodeShape ;
     rdfs:label "Dataset" ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:property core-res:dcat-Dataset-adms-identifier,
+    sh:property core-res:dcat-Dataset-adms-identifierX,
         core-res:dcat-Dataset-adms-sample,
         core-res:dcat-Dataset-adms-versionNotes,
         core-res:dcat-Dataset-dcat-contactPoint,
@@ -73,7 +73,6 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dcat-temporalResolution,
         core-res:dcat-Dataset-dcat-theme,
         core-res:dcat-Dataset-dcatap-applicablelegislation,
-        core-res:dcat-Dataset-dct-accessRights,
         core-res:dcat-Dataset-dct-accrualPeriodicity,
         core-res:dcat-Dataset-dct-conformsTo,
         core-res:dcat-Dataset-dct-creator,
@@ -86,6 +85,7 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dct-provenance,
         core-res:dcat-Dataset-dct-publisher,
         core-res:dcat-Dataset-dct-relation,
+        core-res:dcat-Dataset-dct-rights,
         core-res:dcat-Dataset-dct-source,
         core-res:dcat-Dataset-dct-spatial,
         core-res:dcat-Dataset-dct-temporal,
@@ -93,7 +93,6 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dct-type,
         core-res:dcat-Dataset-dpv-hasData,
         core-res:dcat-Dataset-foaf-page,
-        core-res:dcat-Dataset-owl-versionInfo,
         core-res:dcat-Dataset-prov-qualifiedAttribution,
         core-res:dcat-Dataset-prov-wasGeneratedBy ;
     sh:targetClass dcat:Dataset .
@@ -301,6 +300,7 @@ core-res:dcat-Catalog-dct-publisher a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class foaf:Agent ;
     sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:name "Publisher" ;
     sh:path dcterms:publisher ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/publisher> ?that . ?that <http://purl.org/dc/terms/publisher> ?this .}" ] .
@@ -314,13 +314,13 @@ core-res:dcat-CatalogRecord-foaf-primaryTopic a sh:PropertyShape ;
     sh:path foaf:primaryTopic ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://xmlns.com/foaf/0.1/primaryTopic> ?that . ?that <http://xmlns.com/foaf/0.1/primaryTopic> ?this .}" ] .
 
-core-res:dcat-Dataset-adms-identifier a sh:PropertyShape ;
+core-res:dcat-Dataset-adms-identifierX a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class adms:Identifier ;
     sh:description "A secondary identifier of the Dataset." ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
+    sh:name "Identifier X" ;
+    sh:path adms:identifierX ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifierX> ?that . ?that <http://www.w3.org/ns/adms#identifierX> ?this .}" ] .
 
 core-res:dcat-Dataset-adms-sample a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -431,15 +431,6 @@ core-res:dcat-Dataset-dcatap-applicablelegislation a sh:PropertyShape ;
     sh:path dcatap:applicablelegislation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicablelegislation> ?that . ?that <http://data.europa.eu/r5r/applicablelegislation> ?this .}" ] .
 
-core-res:dcat-Dataset-dct-accessRights a sh:PropertyShape ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:class dcterms:RightsStatement ;
-    sh:description "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public. Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details." ;
-    sh:maxCount 1 ;
-    sh:name "Access rights" ;
-    sh:path dcterms:accessRights ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/accessRights> ?that . ?that <http://purl.org/dc/terms/accessRights> ?this .}" ] .
-
 core-res:dcat-Dataset-dct-accrualPeriodicity a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcterms:Frequency ;
@@ -461,7 +452,6 @@ core-res:dcat-Dataset-dct-creator a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class foaf:Agent ;
     sh:description "An entity responsible for producing the dataset." ;
-    sh:maxCount 1 ;
     sh:name "Creator" ;
     sh:path dcterms:creator ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/creator> ?that . ?that <http://purl.org/dc/terms/creator> ?this .}" ] .
@@ -491,7 +481,6 @@ core-res:dcat-Dataset-dct-isReferencedBy a sh:PropertyShape ;
 
 core-res:dcat-Dataset-dct-issued a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:datatype xsd:dateTime ;
     sh:description "The date of formal issuance (e.g., publication) of the Dataset." ;
     sh:maxCount 1 ;
     sh:name "Issued" ;
@@ -507,7 +496,6 @@ core-res:dcat-Dataset-dct-language a sh:PropertyShape ;
 
 core-res:dcat-Dataset-dct-modified a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:datatype xsd:dateTime ;
     sh:description "The most recent date on which the Dataset was changed or modified." ;
     sh:maxCount 1 ;
     sh:name "Modified" ;
@@ -536,6 +524,15 @@ core-res:dcat-Dataset-dct-relation a sh:PropertyShape ;
     sh:description "A related resource." ;
     sh:name "Relation" ;
     sh:path dcterms:relation .
+
+core-res:dcat-Dataset-dct-rights a sh:PropertyShape ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:class dcterms:RightsStatement ;
+    sh:description "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public." ;
+    sh:maxCount 1 ;
+    sh:name "Rights" ;
+    sh:path dcterms:rights ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/rights> ?that . ?that <http://purl.org/dc/terms/rights> ?this .}" ] .
 
 core-res:dcat-Dataset-dct-source a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -593,13 +590,6 @@ core-res:dcat-Dataset-foaf-page a sh:PropertyShape ;
     sh:name "Page" ;
     sh:path foaf:page ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://xmlns.com/foaf/0.1/page> ?that . ?that <http://xmlns.com/foaf/0.1/page> ?this .}" ] .
-
-core-res:dcat-Dataset-owl-versionInfo a sh:PropertyShape ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:datatype rdfs:Literal ;
-    sh:maxCount 1 ;
-    sh:name "Version info" ;
-    sh:path owl:versionInfo .
 
 core-res:dcat-Dataset-prov-qualifiedAttribution a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -831,7 +821,7 @@ core-res:dcat-Distribution-foaf-page a sh:PropertyShape ;
 core-res:dcat-Distribution-odrl-hasPolicy a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class odrl:Policy ;
-    sh:description "The policy expressing the rights associated with the distribution if using the [ODRL] vocabulary. DCAT-AP-LU provides additional usage guidance on the use of this property for expressing data use restrictions." ;
+    sh:description "The policy expressing the rights associated with the distribution if using the <a href=\"https://mindig_lu.gitlab.io/DCAT-AP-LU/#bib-odrl\">ODRL</a>vocabulary." ;
     sh:maxCount 1 ;
     sh:name "Has policy" ;
     sh:path odrl:hasPolicy ;
@@ -864,14 +854,12 @@ core-res:dct-Location-locn-geometry a sh:PropertyShape ;
 
 core-res:dct-PeriodOfTime-dcat-endDate a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:datatype xsd:dateTime ;
     sh:maxCount 1 ;
     sh:name "End date" ;
     sh:path dcat:endDate .
 
 core-res:dct-PeriodOfTime-dcat-startDate a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:datatype xsd:dateTime ;
     sh:maxCount 1 ;
     sh:name "Start date" ;
     sh:path dcat:startDate .
