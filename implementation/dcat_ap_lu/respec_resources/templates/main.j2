@@ -1,7 +1,7 @@
 {% extends "base.j2" %}
 
-{# Override renderEntity macro to add DCAT column #}
-{% macro renderEntity(entity) %}
+{# Custom macro with DCAT column - different name to avoid conflicts #}
+{% macro renderEntityOverwrite(entity) %}
     <section>
         <h3 id="{{ entity.label[language]| replace(' ','') |urlencode | title }}">
             <a href="{{ entity.uri }}"
@@ -226,7 +226,7 @@
     {% block mainEntitiesGen %}
         {% for entity in classes | sort(attribute=sortattr) %}
             {% if entity.rawTags['class-usage-scope'] == "main"   %}
-                {{ renderEntity(entity) }}
+                {{ renderEntityOverwrite(entity) }}
             {% endif %}
         {% endfor %}
     {% endblock %}
@@ -235,13 +235,13 @@
 
 {% block supportiveEntities %}
 <section>
-    <h2>Supportive Entities</h2>
+    <h2>Supportive Entities - test</h2>
     The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
 
     {% block supportiveEntitiesGen %}
         {% for entity in classes | sort(attribute=sortattr) %}
             {% if entity.rawTags['class-usage-scope'] != "main"   %}
-                {{ renderEntity(entity) }}
+                {{ renderEntityOverwrite(entity) }}
             {% endif %}
         {% endfor %}
     {% endblock %}
