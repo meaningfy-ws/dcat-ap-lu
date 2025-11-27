@@ -136,16 +136,26 @@
                                     {{ prop.tags[config.usageNoteTagName] | safe }}
                                 </td>
                                 <td>
-                                    {{ prop.tags["dct:references"] | safe }}
+                                    {% if prop.tags["dct:references"] %}
+                                        {{ prop.tags["dct:references"] | safe }}
+                                    {% else %}
+                                        &nbsp;
+                                    {% endif %}
                                 </td>
                                 {% if config.showReferencesInRespec %}
                                 <td>
-                                    {{ prop.tags[config.referenceTagName] | safe }}
+                                    {% if prop.tags[config.referenceTagName] %}
+                                        {{ prop.tags[config.referenceTagName] | safe }}
+                                    {% else %}
+                                        &nbsp;
+                                    {% endif %}
                                 </td>
                                 {% endif %}
+                                {% if metadata.openGithubIssue %}
                                 <td>
                                     {{ renderFeedbackButton(entity, prop) }}
                                 </td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -235,7 +245,7 @@
 
 {% block supportiveEntities %}
 <section>
-    <h2>Supportive Entities - test</h2>
+    <h2>Supportive Entities</h2>
     The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
 
     {% block supportiveEntitiesGen %}
