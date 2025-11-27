@@ -1,5 +1,170 @@
 {% extends "base.j2" %}
 
+{# Custom macro with DCAT column - different name to avoid conflicts #}
+{% macro renderEntityOverwrite(entity) %}
+    <section>
+        <h3 id="{{ entity.label[language]| replace(' ','') |urlencode | title }}">
+            <a href="{{ entity.uri }}"
+                data-toggle="tooltip"
+                data-content="{{ entity.uri }}"
+                data-placement="right">{{ entity.label[language] }}</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">{{ renderFeedbackButton(entity) }}</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                {{ entity.description[language] | safe }}
+            </dd>
+            {% if entity.tags[config.usageNoteTagName] %}
+                <dt>
+                    Usage Note
+                </dt>
+                <dd>
+                    {{ entity.tags[config.usageNoteTagName] | safe }}
+                </dd>
+            {% endif %}
+            {% if ((entity.parents | length) > 0 ) %}
+                <dt>
+                    Subclass of
+                </dt>
+                <dd>
+                    {%- for parent in entity['parents'] %} <a href="{{ parent.scoped_uri | replace(' ','') }}">{{ parent.label[language] }}</a>
+                    {% if not loop.last %},{% endif %}
+                    {%- endfor %}
+                </dd>
+            {% endif %}
+            {% if config.showReferencesInRespec and entity.tags[config.referenceTagName] %}
+                <dt>
+                    {{ config.classReferenceRespecLabel if config.classReferenceRespecLabel else 'References' }}
+                </dt>
+                <dd>
+                    {{ entity.tags[config.referenceTagName] | safe }}
+                </dd>
+            {% endif %}
+            <dt>
+                Properties
+            </dt>
+            {% if ((entity.properties | length) > 0 ) %}
+                <dd>
+                    For this entity the following properties are defined: 
+                    {%- for prop in entity['properties'] | sort(attribute='label[language]') %}
+                        {# lower the first letter in case it's uppercase #}
+                        {% set propertyLabel = prop.label[language][:1]|lower ~ prop.label[language][1:]  %}
+                        <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ','') | urlencode | title }}">{{ propertyLabel }}</a>
+                    {%- if not loop.last %},{% endif %}
+                    {%- endfor %}.
+                </dd>
+            {% else %}
+                <dd>
+                    This specification does not impose any additional requirements to properties for this entity.
+                </dd>
+            {% endif %}
+        </dl>
+        {% if ((entity.properties | length) > 0 ) %}
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:25%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:25%">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:20%">
+                                DCAT
+                            </th>
+                            {% if config.showReferencesInRespec %}
+                            <th class="data-table__header-title--sortable" style="width:20%">
+                                {{ config.propertyReferenceRespecLabel if config.propertyReferenceRespecLabel else 'Reuse' }}
+                            </th>
+                            {% endif %}
+                            {% if metadata.openGithubIssue %}
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    {{ metadata.openGithubIssue.columnLabel if metadata.openGithubIssue.columnLabel else 'Open an issue'}}
+                                </th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                            <tr id="{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ','') |urlencode | title }}"
+                                typeof="rdf:Property"
+                                resource="{{ prop.uri }}"
+                                class="class mandatory">
+                                <td>
+                                        {# lower the first letter in case it's uppercase #}
+                                        {% set propertyLabel = prop.label[language][:1]|lower ~ prop.label[language][1:]  %}
+                                        <a href="{{ prop.uri }}"
+                                        data-toggle="tooltip"
+                                        data-content="{{ prop.uri }}"
+                                        data-placement="right">
+                                        {{ propertyLabel }}</a>
+                                </td>
+                                <td>
+                                    {% for range in prop.range %}
+                                        {% if range['range_uri'] == range['range_puri'] %}
+                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
+                                            data-toggle="tooltip"
+                                            data-content="{{ range['range_puri'] }}"
+                                            data-placement="right">{{ range['range_label'][language] }}</a>
+                                        {% else %}
+                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}" data-placement="right">{{ range['range_label'][language] }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ prop.cardinality }}
+                                </td>
+                                <td>
+                                    {{ prop.description[language] | safe }}
+                                </td>
+                                <td>
+                                    {{ prop.tags[config.usageNoteTagName] | safe }}
+                                </td>
+                                <td>
+                                    {% if prop.tags["dct:references"] %}
+                                        {{ prop.tags["dct:references"] | safe }}
+                                    {% else %}
+                                        &nbsp;
+                                    {% endif %}
+                                </td>
+                                {% if config.showReferencesInRespec %}
+                                <td>
+                                    {% if prop.tags[config.referenceTagName] %}
+                                        {{ prop.tags[config.referenceTagName] | safe }}
+                                    {% else %}
+                                        &nbsp;
+                                    {% endif %}
+                                </td>
+                                {% endif %}
+                                {% if metadata.openGithubIssue %}
+                                <td>
+                                    {{ renderFeedbackButton(entity, prop) }}
+                                </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </section>
+{% endmacro %}
+
 
 {% block pageContent %}
     {% block abstract %}
@@ -62,13 +227,36 @@
         {{ super() }}
     {% endblock %}
 
-    {% block mainEntities %}
-        {{ super() }}
-    {% endblock %}
+{% block mainEntities %}
+<section>
+    <h2>Main Entities</h2>
+    The main entities are those that form the core of the vocabulary. 
+    Properties of entities are listed in a tabular form.
 
-    {% block supportiveEntities %}
-        {{ super() }}
+    {% block mainEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] == "main"   %}
+                {{ renderEntityOverwrite(entity) }}
+            {% endif %}
+        {% endfor %}
     {% endblock %}
+</section>
+{% endblock %}
+
+{% block supportiveEntities %}
+<section>
+    <h2>Supportive Entities</h2>
+    The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
+
+    {% block supportiveEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] != "main"   %}
+                {{ renderEntityOverwrite(entity) }}
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+</section>
+{% endblock %}
 
     {% block datatypes %}
         {{ super() }}
