@@ -218,11 +218,32 @@
     {% endblock %}
 
     {% block mainEntities %}
-        {{ super() }}
+        <section id="classes" data-include-format="markdown" data-include="sections/overview-classes.md">
+            <h2>Classes</h2>
+        </section>
+        <section id="classes-mandatory">
+            <h3>Main Entities</h3>
+            {% block mainEntitiesGen %}
+                {% for entity in classes | sort(attribute=sortattr) %}
+                    {% if entity.rawTags['class-usage-scope'] == "main"   %}
+                        {{ renderEntity(entity) }}
+                    {% endif %}
+                {% endfor %}
+            {% endblock %}
+        </section>
     {% endblock %}
 
     {% block supportiveEntities %}
-        {{ super() }}
+        <section id="classes-optional">
+            <h3>Supporting Entities</h3>
+            {% block supportiveEntitiesGen %}
+                {% for entity in classes | sort(attribute=sortattr) %}
+                    {% if entity.rawTags['class-usage-scope'] != "main"   %}
+                        {{ renderEntity(entity) }}
+                    {% endif %}
+                {% endfor %}
+            {% endblock %}
+        </section>
     {% endblock %}
 
     {% block datatypes %}
