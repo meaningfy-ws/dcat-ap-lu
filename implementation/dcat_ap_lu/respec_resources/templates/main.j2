@@ -217,34 +217,36 @@
         {{ super() }}
     {% endblock %}
 
-    {% block mainEntities %}
-        <section id="classes" data-include-format="markdown" data-include="sections/overview-classes.md">
-            <h2>Classes</h2>
-        </section>
-        <section id="classes-mandatory">
-            <h3>Main Entities</h3>
-            {% block mainEntitiesGen %}
-                {% for entity in classes | sort(attribute=sortattr) %}
-                    {% if entity.rawTags['class-usage-scope'] == "main"   %}
-                        {{ renderEntity(entity) }}
-                    {% endif %}
-                {% endfor %}
-            {% endblock %}
-        </section>
-    {% endblock %}
+{% block mainEntities %}
+<section>
+    <h2>Main Entities</h2>
+    The main entities are those that form the core of the vocabulary. 
+    Properties of entities are listed in a tabular form.
 
-    {% block supportiveEntities %}
-        <section id="classes-optional">
-            <h3>Supporting Entities</h3>
-            {% block supportiveEntitiesGen %}
-                {% for entity in classes | sort(attribute=sortattr) %}
-                    {% if entity.rawTags['class-usage-scope'] != "main"   %}
-                        {{ renderEntity(entity) }}
-                    {% endif %}
-                {% endfor %}
-            {% endblock %}
-        </section>
+    {% block mainEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] == "main"   %}
+                {{ renderEntity(entity) }}
+            {% endif %}
+        {% endfor %}
     {% endblock %}
+</section>
+{% endblock %}
+
+{% block supportiveEntities %}
+<section>
+    <h2>Supportive Entities</h2>
+    The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
+
+    {% block supportiveEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] != "main"   %}
+                {{ renderEntity(entity) }}
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+</section>
+{% endblock %}
 
     {% block datatypes %}
         {{ super() }}
