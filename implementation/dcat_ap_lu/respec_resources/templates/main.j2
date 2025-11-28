@@ -383,14 +383,268 @@
 
     {% block usages %}
         <section class="informative">
-            <h2>Usage Guidelines - change </h2>
+        <h2>General usage guidelines</h2>
 
-            <h3>Basic Usage</h3>
-            <p>To use this vocabulary, follow these guidelines:</p>
+        The DCAT-AP-LU profile was developed in the context of the national DGA implementation but is intended to be
+        usable in other contexts. The usage guidance is subdivided accordingly.
 
-            {# You can include examples anywhere #}
-            <div class="h3 examples" id="example1">Example 1</div>
+        <h3>Usage guide on Datasets and Distributions </h3>
 
+        The
+        <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#usage-guide-on-datasets-distributions-and-data-services">general
+            usage guide</a> for [[DCAT-AP-v3.0]] applies for most of DCAT-AP-LU. The main differences for this profile
+        include:
+
+        <ul>
+            <li><a href="#Dataset.identifier">Dataset.identifier</a>: This property is mandatory to promote
+                interoperability and data governance best practice. For the Luxembourg public sector, an identifier
+                strategy is under development.
+            </li>
+            <li><a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>: This new property is applicable in
+                the DGA context only (see below).
+            </li>
+            <li><a href="#Dataset.inseries">Dataset.inSeries</a>: This property was upgraded from optional to
+                recommended. More guidance to follow.
+            </li>
+            <li><a href="#Dataset.accessrights">Dataset.accessRights</a>: The accepted values for this property are
+                restricted to "public" and "non-public".
+            </li>
+            <li><a href="#Dataset.type">Dataset.type</a>: The accepted values for this property have been adapted as
+                described in [[[#controlled-vocs]]].
+            </li>
+            <li><a href="#Distribution.mediatype">Distribution.mediaType</a>: This property was upgraded from optional
+                to recommended due to the greater granularity of the associated vocabulary compared to <a
+                        href="#Distribution.mediatype">Distribution.mediaType</a>.
+            </li>
+            <li><a href="#Distribution.haspolicy">Distribution.hasPolicy</a>: DCAT-AP-LU provides extended usage
+                guidance for expressing data use restrictions using [[ODRL]] and [[DUO]].
+            </li>
+        </ul>
+
+        Except for the properties in the list above, the property type (mandatory, recommended or optional) was adopted
+        as-is from [[DCAT-AP-v3.0]]. Unfortunately, the overall format of this specification only expressly highlights
+        whether a property is mandatory or not, via the `Card` column in the
+        <a href="#main-entities">Main Entities tables</a>. The further distinction between recommended and optional
+        properties, while widely used in DCAT-AP, is not considered. Please refer to the <a href="
+        " https://semiceu.github.io/DCAT-AP/releases/3.0.0/#quick-reference>Quick reference table in Appendix A</a> in
+        [[DCAT-AP-v3.0]] for an overview of recommended and optional properties.
+
+
+        <h3>Usage guide for the DGA context</h3>
+
+        <h4 id="dataprotection_guidance">
+            <a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>
+        </h4>
+
+        Any metadata record for a protected dataset published in the context of the DGA must include at least one of the
+        6 controlled vocabulary terms listed in [[[#controlled-vocs]]] (:PersonalData, :CommerciallyConfidentialData,
+        :IntellectualPropertyData, :StatisticallyConfidentialData, :SpecialCategoryPersonalData,
+        :ProfessionalConfidentialData). These properties originate from and are maintained by the Data Privacy
+        Vocubulary.
+
+        <h4 id="legislation_guidance"><a href="#Dataset.applicablelegislation">Dataset.applicableLegislation</a></h4>
+
+        Any metadata record for a dataset published in the context of the DGA must include a reference to the relevant
+        law articles (links tbc) to define whether the dataset may be reused under the definition of "TITRE V –
+        Traitement ultérieur de données à caractère personnel par les entités publiques" (short: TUDP), "TITRE VI –Accès
+        et réutilisation des données détenues par des organismes du secteur public par des réutilisateurs dedonnées"
+        (short: ARD) or both. A metadata record that does not include at least one of these references will notbe
+        considered valid. Exact [[ELI]] compliant URIs for the different contexts will be included here once the lawtext
+        has been officially adopted and published.
+
+
+        <h4 id="sample_guidance"><a href="#Dataset.sample">Dataset.sample</a></h4>
+
+        In order to facilitate the creation and assessment of data access requests for datasets in the DGA context, the
+        associated metadata record should include data dictionaries whenever possible. Data dictionaries should be
+        included via a special type of distribution referenced from the <a href="#Dataset.sample">Dataset.sample</a>
+        property. This guidance reuses the implementation model proposed by the
+        <a href="https://healthdcat-ap.github.io/#sample-distribution">HealthDCAT-AP</a> metadata profile.
+        <br>
+        No specific format is imposed for the data dictionary. Machine-readable tabular formats such as CSV or TSV are
+        preferred. A minimal set of properties to be included in a data dictionary is under development and will be made
+        available in due course.
+
+        <h4 id="policy_guidance"><a href="#Distribution.haspolicy">Distribution.hasPolicy</a></h4>
+
+        DCAT-AP-LU leverages existing mechanisms from [[ODRL]] and [[DUO]] to enable data holders to specify additional
+        restrictions on data reuse in a consistent and machine-readable fashion.
+
+        The following points are expressed:
+
+        <ul>
+            <li>Restrictions can be expressed as either permissions or prohibitions.</li>
+            <li>The default odrl:policy type is odrl:Set but policies of type odrl:Offer may also be used.</li>
+            <li>The default odrl:action for all scenarios is odrl:use</li>
+            <li>Permitted constraint types (odrl:leftOperand) for constraints are odrl:Purpose/dpv:Purpose, dateTime,
+                spatial and industry.
+            </li>
+            <li>Permitted constraint modifiers (odrl:rightOperand) are:
+                <ul>
+                    <li>Temporal restrictions: an [[ISO8601]] compliant Date and Time value.</li>
+                    <li>Spatial restrictions: a valid geospatial area expression such as an [[ISO3166]]
+                        Country Code.
+                    </li>
+                    <li>Purpose restrictions: one of the data use restrictions specified in the table below.</li>
+                    <li>Industry restrictions: <i>list under development</i></li>
+                </ul>
+            </li>
+        </ul>
+
+        <table class="data-table simple">
+            <thead>
+                <tr class="data-table__header">
+                    <th class="data-table__header-title" style="width:15%">
+                        Property
+                    </th>
+                    <th class="data-table__header-title" style="width:25%">
+                        Label (shorthand)
+                    </th>
+                    <th class="data-table__header-title" style="width:30%">
+                        Definition
+                    </th>
+                    <th class="data-table__header-title" style="width:30%">
+                        Comment
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DUO:0000018</td>
+                    <td>not for profit, non commercial use only (NPUNCU)</td>
+                    <td>This data use modifier indicates that use of the data is limited to not-for-profit organizations and
+                        not-for-profit use, non-commercial use.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000046</td>
+                    <td>non-commercial use only (NCU)</td>
+                    <td>This data use modifier indicates that use of the data is limited to not-for-profit use.</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000045</td>
+                    <td>not for profit organisation use only (NPU)</td>
+                    <td>This data use modifier indicates that use of the data is limited to not-for-profit organizations.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000015</td>
+                    <td>no general methods research (NMDS)</td>
+                    <td>This data use modifier indicates that use does not allow methods development research (e.g.,
+                        development of software or algorithms).
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000019</td>
+                    <td>publication required (PUB)</td>
+                    <td>This data use modifier indicates that requestor agrees to make results of studies using the data
+                        available to the larger scientific community.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000024</td>
+                    <td>publication moratorium (MOR)</td>
+                    <td>This data use modifier indicates that requestor agrees not to publish results of studies until a
+                        specific date.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000021</td>
+                    <td>ethics approval required (IRB)</td>
+                    <td>This data use modifier indicates that the requestor must provide documentation of local IRB/ERB
+                        approval.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000020</td>
+                    <td>collaboration required (COL)</td>
+                    <td>This data use modifier indicates that the requestor must agree to collaboration with the primary
+                        study investigator(s).
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000012</td>
+                    <td>research specific restrictions (RS)</td>
+                    <td>This data use modifier indicates that use is limited to studies of a certain research type.</td>
+                    <td>Requires specification of permitted research types, e.g. structured as a sub-term of <a
+                            href="http://edamontology.org/topic_0003">Topic (EDAM:0003)</a> or free text
+                    </td>
+                </tr>
+                <tr>
+                    <td>DUO:0000029</td>
+                    <td>return to database or resource (RTN)</td>
+                    <td>This data use modifier indicates that the requestor must return derived/enriched data to the
+                        database/resource.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000042</td>
+                    <td>general research use (GRU)</td>
+                    <td>This data use permission indicates that use is allowed for general research use for any research
+                        purpose.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000043</td>
+                    <td>clinical care use (CC)</td>
+                    <td>This data use modifier indicates that use is allowed for clinical use and care.</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000007</td>
+                    <td>disease specific research (DS)</td>
+                    <td>This data use permission indicates that use is allowed provided it is related to the specified
+                        disease.
+                    </td>
+                    <td>Requires specification of permitted diseases, e.g. structured as a sub-term of <a
+                            href="http://purl.obolibrary.org/obo/MONDO_0000001">disease (MONDO:0000001)</a> or free text
+                    </td>
+                </tr>
+                <tr>
+                    <td>DUO:0000016</td>
+                    <td>genetic studies only (GSO)</td>
+                    <td>This data use modifier indicates that use is limited to genetic studies only (i.e., studies that
+                        include genotype research alone or both genotype and phenotype research, but not phenotype research
+                        exclusively)
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000006</td>
+                    <td>health or medical or biomedical research (HMB)</td>
+                    <td>This data use permission indicates that use is allowed for health/medical/biomedical purposes; does
+                        not include the study of population origins or ancestry.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000011</td>
+                    <td>population origins or ancestry research only (POA)</td>
+                    <td>This data use permission indicates that use of the data is limited to the study of population
+                        origins or ancestry.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DUO:0000044</td>
+                    <td>population origins or ancestry research prohibited (NPOA)</td>
+                    <td>This data use modifier indicates use for purposes of population, origin, or ancestry research is
+                        prohibited.
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
         </section>
     {% endblock %}
 
