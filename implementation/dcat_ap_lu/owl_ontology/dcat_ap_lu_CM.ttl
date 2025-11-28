@@ -47,7 +47,9 @@ dcterms:Frequency a owl:Class ;
 
 dcterms:LicenseDocument a owl:Class ;
     skos:definition "A legal document giving official permission to do something with a resource."@en ;
-    skos:prefLabel "License Document"@en .
+    skos:prefLabel "License Document"@en ;
+    :vocabname "ADMS licence type vocabulary"@en ;
+    :vocaburi "http://purl.org/adms/licencetype/1.0"@en .
 
 dcterms:LinguisticSystem a owl:Class ;
     skos:prefLabel "Linguistic System"@en ;
@@ -58,11 +60,19 @@ dcterms:Location a owl:Class ;
     skos:definition "A temporal period that the Dataset covers."@en ;
     skos:prefLabel "Location"@en ;
     :vocabname " EU Vocabularies Countries Named Authority List"@en,
+        "Admistrative territorial unit - EU Vocabularies - Publications Office of the EU"@en,
+        "Countries and territories - EU Vocabularies - Publications Office of the EU"@en,
         "EU Vocabularies Continents Named Authority List"@en,
-        "EU Vocabularies Places Named Authority List, Geonames"@en ;
-    :vocaburi "https://publications.europa.eu/resource/authority/continent/"@en,
+        "EU Vocabularies Places Named Authority List, Geonames"@en,
+        "Place - EU Vocabularies - Publications Office of the EU"@en,
+        "geonames"@en ;
+    :vocaburi "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/atu"@en,
+        "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/country"@en,
+        "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/place"@en,
+        "https://publications.europa.eu/resource/authority/continent/"@en,
         "https://publications.europa.eu/resource/authority/country"@en,
-        "https://publications.europa.eu/resource/authority/place/"@en .
+        "https://publications.europa.eu/resource/authority/place/"@en,
+        "https://sws.geonames.org/"@en .
 
 dcterms:MediaType a owl:Class ;
     skos:definition "A file format or physical medium."@en ;
@@ -88,7 +98,11 @@ dcterms:ProvenanceStatement a owl:Class ;
 
 dcterms:RightsStatement a owl:Class ;
     skos:definition "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en ;
-    skos:prefLabel "Rights Statement"@en .
+    skos:prefLabel "Rights Statement"@en ;
+    :vocabname "Access Rights Named Authority List"@en,
+        "Access right - EU Vocabularies - Publications Office of the EU"@en ;
+    :vocaburi "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right"@en,
+        "https://publications.europa.eu/resource/authority/access-right"@en .
 
 dcterms:Standard a owl:Class ;
     skos:prefLabel "Standard"@en .
@@ -129,7 +143,7 @@ dcterms:format a owl:ObjectProperty ;
     :reuse "A"@en .
 
 dcterms:identifier a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier>Link</a>"@en ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier\">Link</a>"@en ;
     skos:definition "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue. (dcat:Dataset)"@en ;
     skos:note "The use of persistent dereferenceable URIs is mandatory in this profile."@en ;
     skos:prefLabel "identifier"@en ;
@@ -143,7 +157,7 @@ dcterms:isReferencedBy a owl:DatatypeProperty ;
     :reuse "A"@en .
 
 dcterms:issued a rdf:Property ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date>Link</a>"@en ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date\">Link</a>"@en ;
     skos:definition "The date of formal issuance (e.g., publication) of the Dataset. (dcat:Dataset) The date of formal issuance (e.g., publication) of the Distribution. (dcat:Distribution)"@en ;
     skos:prefLabel "issued"@en,
         "release date"@en ;
@@ -249,7 +263,14 @@ spdx:checksum a owl:ObjectProperty ;
     :reuse "A"@en .
 
 skos:Concept a owl:Class ;
-    skos:prefLabel "Concept"@en .
+    skos:prefLabel "Concept"@en ;
+    :vocabname "Data theme - EU Vocabularies - Publications Office of the EU"@en,
+        "Dataset Theme Vocabulary"@en,
+        "Distribution availability vocabulary"@en,
+        "EU Vocabularies Distribution Status"@en ;
+    :vocaburi "https://publications.europa.eu/resource/authority/data-theme"@en,
+        "https://publications.europa.eu/resource/authority/distribution-status"@en,
+        "https://publications.europa.eu/resource/authority/planned-availability"@en .
 
 skos:prefLabel a owl:DatatypeProperty ;
     skos:note "This property can be repeated for parallel language versions of the label."@en ;
@@ -544,7 +565,7 @@ core-res:core a owl:Ontology ;
     dcterms:title "DCAT-AP-LU"@en ;
     vann:preferredNamespacePrefix "dal" ;
     vann:preferredNamespaceUri "https://mindig_lu.gitlab.io/DCAT-AP-LU/#" ;
-    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-11-27" ;
+    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-11-28" ;
     rdfs:seeAlso <https://mindig_lu.gitlab.io/DCAT-AP-LU/> ;
     owl:imports dcterms:,
         skos:,
@@ -557,7 +578,9 @@ core-res:core a owl:Ontology ;
 
 <https://w3id.org/dpv#Data> a owl:Class ;
     skos:definition "A broad concept representing 'data' or 'information'."@en ;
-    skos:prefLabel "Data"@en .
+    skos:prefLabel "Data"@en ;
+    :vocabname "Data"@en ;
+    :vocaburi "https://w3c.github.io/dpv/2.2/dpv/#Data"@en .
 
 <https://w3id.org/dpv#hasData> a owl:ObjectProperty ;
     dcterms:references "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">link</a>"@en ;
