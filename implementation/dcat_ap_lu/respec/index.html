@@ -8373,6 +8373,143 @@
     
 
     
+        <section id="controlled-vocs">
+            <h2>Controlled vocabularies</h2>
+            <p><i>This section is non-normative.</i></p>
+
+            <h3>Controlled vocabularies to be used</h3>
+
+            <p>In the table below, a number of properties are listed with controlled vocabularies that MUST be used for the listed properties. The declaration of the following controlled vocabularies as mandatory ensures a minimum level of interoperability.</p>
+
+            <table class="data-table simple">
+                <thead>
+                    <tr class="data-table__header">
+                        <th class="data-table__header-title" style="width:20%">Property URI</th>
+                        <th class="data-table__header-title" style="width:15%">Used for Class</th>
+                        <th class="data-table__header-title" style="width:30%">Vocabulary name</th>
+                        <th class="data-table__header-title" style="width:35%">Usage note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>dcat:mediaType</td>
+                        <td><a href="#Distribution">Distribution</a></td>
+                        <td><a href="http://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type">File type - EU Vocabularies - Publications Office of the EU</a></td>
+                        <td>Indicating the type of file(s) in a distribution, including any compression or packaging format for compressing/grouping files, facilitates the machine-actionability of the dataset. Use the IANA media types in preference to the EU file types list due to the former's greater precision. Both lists may be used in full.</td>
+                    </tr>
+                    <tr>
+                        <td>dcat:theme</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/data-theme">Dataset Theme Vocabulary</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/data-theme">Data theme - EU Vocabularies - Publications Office of the EU</a></td>
+                        <td>The values to be used for this property are the URIs of the concepts in the vocabulary.</td>
+                    </tr>
+                    <tr>
+                        <td>dct:accrualPeriodicity</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/frequency">EU Vocabularies Frequency Named Authority List</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency">Frequency - EU Vocabularies - Publications Office of the EU</a></td>
+                        <td>Use "irreg" in preference to "unknown" if there is no set frequency but updates will definitely occur.</td>
+                    </tr>
+                    <tr>
+                        <td>dct:format</td>
+                        <td><a href="#Distribution">Distribution</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/file-type">EU Vocabularies File Type Named Authority List</a></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>dct:language</td>
+                        <td><a href="#Dataset">Dataset</a>, <a href="#Distribution">Distribution</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/language">EU Vocabularies Languages Named Authority List</a></td>
+                        <td>For the Luxembourg public sector, use only the following values (:FRA, :DEU, :LTZ, :ENG, :POR)</td>
+                    </tr>
+                    <tr>
+                        <td>dct:publisher</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/corporate-body">EU Vocabularies Corporate bodies Named Authority List</a></td>
+                        <td>The Corporate bodies NAL must be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</td>
+                    </tr>
+                    <tr>
+                        <td>dct:spatial</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/continent/">EU Vocabularies Continents Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/country">EU Vocabularies Countries Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/place/">EU Vocabularies Places Named Authority List</a>, <a href="http://sws.geonames.org/">Geonames</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/country">Countries and territories - EU Vocabularies - Publications Office of the EU</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/atu">Administrative territorial unit - EU Vocabularies - Publications Office of the EU</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/place">Place - EU Vocabularies - Publications Office of the EU</a></td>
+                        <td>The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, Geonames URIs must be used. Use "Luxembourg" for any data that applies to the entire country. Use more fine grained location information where applicable.</td>
+                    </tr>
+                    <tr>
+                        <td>adms:status</td>
+                        <td><a href="#Distribution">Distribution</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/distribution-status">EU Vocabularies Distribution Status</a></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>dct:type</td>
+                        <td><a href="#LicenceDocument">Licence Document</a></td>
+                        <td><a href="http://purl.org/adms/licencetype/1.0">ADMS licence type vocabulary</a></td>
+                        <td>The list of terms in the ADMS licence type vocabulary is included in the ADMS specification</td>
+                    </tr>
+                    <tr>
+                        <td>dcatap:availability</td>
+                        <td><a href="#Distribution">Distribution</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/planned-availability">Distribution availability vocabulary</a></td>
+                        <td>The list of terms for the availability levels of a dataset distribution in the DCAT-AP specification.</td>
+                    </tr>
+                    <tr>
+                        <td>dct:accessRights</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/access-right">Access Rights Named Authority List</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right">Access right - EU Vocabularies - Publications Office of the EU</a></td>
+                        <td>Use one of the following values (:PUBLIC, :NON_PUBLIC). Any dataset labelled as "non-public" should specify all applicable data protections under "dataProtectionType".</td>
+                    </tr>
+                    <tr>
+                        <td>dpv:hasData</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="https://w3id.org/dpv#Data">Data</a></td>
+                        <td>Use only the following subtypes (:PersonalData, :CommerciallyConfidentialData, :IntellectualPropertyData, :StatisticallyConfidentialData, :SpecialCategoryPersonalData, :ProfessionalConfidentialData).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Recommended controlled vocabularies</h3>
+
+            <p>In the table below, a number of properties are listed with controlled vocabularies that MAY be used for the listed properties. The declaration of the following controlled vocabularies as recommended stimulates interoperability.</p>
+
+            <table class="data-table simple">
+                <thead>
+                    <tr class="data-table__header">
+                        <th class="data-table__header-title" style="width:20%">Property URI</th>
+                        <th class="data-table__header-title" style="width:15%">Used for Class</th>
+                        <th class="data-table__header-title" style="width:30%">Vocabulary name</th>
+                        <th class="data-table__header-title" style="width:35%">Usage note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>dct:type</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/dataset-type">EU Dataset Types</a>, <a href="https://gfzpublic.gfz-potsdam.de/rest/items/item_1397899_10/component/file_1398549/content">RE3 metadata schema - item 15 contentType (page 19/20)</a>, <a href="https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/resourcetype/#a-resourcetypegeneral">Datacite Metadata Schema</a></td>
+                        <td>DCAT-AP-LU supports several vocabularies for this context. A defined list of preferred terms is provided in column I of ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm">an external xlsm file.</a> Select all terms that apply.</td>
+                    </tr>
+                    <tr>
+                        <td>dct:publisher</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td>&nbsp;</td>
+                        <td>For Luxembourg public sector entities, a defined list of preferred terms is provided in column B of ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm">an external xlsm file.</a> If an expected entity is not listed, an extension of the list should be requested.</td>
+                    </tr>
+                    <tr>
+                        <td>dct:accessRights</td>
+                        <td><a href="#Distribution">Distribution</a></td>
+                        <td><a href="http://publications.europa.eu/resource/authority/access-right">Access Rights Named Authority List</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right">Access right - EU Vocabularies - Publications Office of the EU</a></td>
+                        <td>Use one of the following values (:PUBLIC, :NON_PUBLIC) to provide additional information on access rights to distributions.</td>
+                    </tr>
+                    <tr>
+                        <td>dpv:hasData</td>
+                        <td><a href="#Dataset">Dataset</a></td>
+                        <td><a href="https://w3id.org/dpv#Data">Data</a></td>
+                        <td>Use only the following subtypes (:PersonalData, :CommerciallyConfidentialData, :IntellectualPropertyData, :StatisticallyConfidentialData, :SpecialCategoryPersonalData, :ProfessionalConfidentialData).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    
+
+    
         <section class="informative">
         <h2>General usage guidelines</h2>
 
