@@ -169,53 +169,77 @@
 {% block pageContent %}
     {% block abstract %}
         <section id="abstract">
-        <p> This artefact provides the definitions for the DCAT-AP-LU. This artefact excludes the restrictions.
-            DCAT-AP-LU is a Luxembourg-specific extension of the DCAT-AP profile used for sharing information about
-            Catalogues containing Datasets and Data Services descriptions in Europe. It was created as part of the
-            national implementation of the Data Governance Act (DGA) to support the creation of a single national
-            dataset catalogue for all public sector data. The DCAT-AP-LU reuses large parts of the DCAT-AP-v3.0
-            standard, with a set of minor adaptations to support specific requirements for Luxembourg.</p>
+        <p>  DCAT-AP-LU is a Luxembourg-specific extension of the DCAT-AP profile used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe. It was created as part of the national implementation of the Data Governance Act (DGA) to support the creation of a single national dataset catalogue for all public sector data. The DCAT-AP-LU reuses large parts of the DCAT-AP-v3.0 standard, with a set of minor adaptations to support specific requirements for Luxembourg.</p>
         </section>
     {% endblock %}
 
     {% block introduction %}
-        {{ super() }}
+<section id="specintro">
+    <h2>Introduction</h2>
+<h3>Context</h3>
+
+        DCAT-AP-LU is a Luxembourg-specific extension of the [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>] profile used for sharing information about Catalogues containing Datasets descriptions in Europe. It was created as part of the national implementation of the Data Governance Act (DGA) to support the creation of a single national dataset catalogue for all public sector data. The DCAT-AP-LU reuses large parts of the [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>] standard, with a set of minor adaptations to support specific requirements for Luxembourg. 
+
+        <h3>Scope of the Application Profile</h3>
+        
+        This document provides guidelines for how to use DCAT-AP-LU to describe datasets in the context of the DGA national implementation but that are also interoperable with other national and international dataset catalogues following the [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>] specification. 
+
+        <h3>Revision history</h3>
+        The first DCAT-AP-LU specification was released in March 2025. It focuses exclusively on the Dataset and Distribution concepts, as well as the most relevant supportive entities where these are reused "as is" from [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>] or where their specification differs for DCAT-AP-LU. A more complete version, including additional entities such as Catalogue, Data Service, DatasetSeries and further main and supportive entities will be released in Q2-2025.
+</section>
     {% endblock %}
 
     {% block status %}
-        {{ super() }}
+<section id="specstatus">
+    <h2>Status</h2>
+        <p>
+            
+        This application profile is published by a collaboration of the Luxembourg National Data Service (LNDS) and the Ministère de la Digitalisation, Luxembourg. It is developed with input and feedback from relevant national stakeholders. </p>
+        
+        <p>
+        It has no official standing of any kind and does not represent the support or consensus of any standards organisation.  
+</section>
     {% endblock %}
 
     {% block license %}
         <section id="speclicence">
             <h2>License</h2>
             <p>
-                {% if metadata.license %}
-                    This specification of {{ metadata.title }} is published under {{ metadata.license }}.
-                {% endif %}
+ Copyright © 2025 Ministère de la Digitalisation, Luxembourg. All material in this repository is published under the license CC-BY 4.0,
+            unless explicitly otherwise mentioned.
             </p>
         </section>
     {% endblock %}
 
     {% block conformance %}
-        {{ super() }}
+<section id="conformance">    
+<p>
+
+As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.
+
+The key words MAY, MUST, and SHOULD in this document are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> [<a href="#bib-rfc2119">RFC2119</a>] [<a href="#bib-rfc8174">RFC8174</a>] when, and only when, they appear in all capitals, as shown here. 
+</p>
+
+
+<h3>Conformance Statement</h3>
+<p>
+        In order for applications to conform to DCAT-AP-LU, it MUST conform to [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>]. 
+In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specified in [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>].
+</p>
+</section>
     {% endblock %}
 
     {% block terminology %}
         <section id="specterminology">
             <h2>Terminology</h2>
             <p>
-                An <strong>Application Profile</strong> is a specification that reuses terms from one or more base
-                standards, adding more specificity by identifying mandatory, recommended and optional elements to be
-                used for a particular application, as well as recommendations for controlled vocabularies to be used.
-            </p>
-            <p>
-                A <strong>Dataset</strong> is a collection of data, published or curated by a single source, and
-                available for access or download in one or more formats.
-                A <strong>Data Portal</strong> is a Web-based system that contains a data catalogue with descriptions of
-                datasets and provides services enabling discovery and reuse of the datasets.
-
-
+        An <strong>Application Profile</strong> is a specification that reuses terms from one or more base standards, and adds more specificity by identifying mandatory, recommended and optional elements for a particular application, as well as advising on the use of controlled vocabularies.
+        </p>
+        <p>
+        A <strong>Dataset</strong> is a collection of data featured in a data catalogue that describes datasets and offers services to facilitate their discovery and reuse.
+        </p>
+        <p>A <strong>Distribution</strong> is a specific available form of a dataset. If a dataset is published in multiple formats (e.g. Excel, CSV, Data Cube) these are described as separate distributions.
+        </p>
 
                 {% block usedPrefixesGen %}
                     {{ super() }}
@@ -224,14 +248,69 @@
     {% endblock %}
 
     {% block overview %}
-        {{ super() }}
+<section id="specoverview">
+    <h2>Overview</h2>
+    
+    <p>
+            DCAT-AP-LU is a DCAT application profile for sharing information about Catalogues containing Datasets descriptions in Luxembourg, compatible with the [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>] profile used in Europe. The core classes of the Application Profile are thus the classes Dataset and Distribution, with Catalogue and Data Service to be added in the second iteration.
+        </p>
+    
+    <div id="overview">
+        {% block overviewClassesGen %}
+            {% if ( ( classes | length > 0)   ) %}
+                    <p>
+                        This document describes the usage of the following main entities for a correct usage of the vocabulary:
+                        <br />
+                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                {%- if class.rawTags['class-usage-scope'] == "main" %}
+                <a href="#{{ class.label[language] | replace(' ','') |urlencode | title }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                    </p>
+                    <p>
+                        The main entities are supported by:
+                        <br />
+                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                {%- if class.rawTags['class-usage-scope'] != "main" %}
+                <a href="#{{ class.label[language] | replace(' ','') |urlencode | title }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                    </p>
+            {% endif %}
+        {% endblock %}
+        {% block overviewDatatypesGen %}
+            {% if ( ( datatypes | length ) > 0 ) %}
+                    <p>
+                        And supported by these datatypes:
+                        <br />
+                        | {%- for datatype in datatypes |sort(attribute=sortattr) %} <a href="#{{ datatype.label[language] | replace(' ','') |urlencode | title }}">{{ datatype.label[language] }}</a> | {%- endfor %}
+                    </p>
+            {% endif %}
+        {% endblock %}
+    </div>
+    <div>
+        <a href="{{ assetsRoot }}/overview.png"
+           target="_blank">
+            <img src="{{ assetsRoot }}/overview.png"
+                onerror="this.style.display='none'"/>
+        </a>
+    </div>
+</section>
     {% endblock %}
 
 {% block mainEntities %}
 <section>
     <h2>Main Entities</h2>
-    The main entities are those that form the core of the vocabulary. 
-    Properties of entities are listed in a tabular form.
+        <p>
+            The main entities are those that form the core of the Application Profile.
+            The properties and their associated constraints that apply in the context of this profile are listed in a
+            tabular form.
+            Each row corresponds to one property.
+            In addition to the constraints also cross-references are provided to [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>].
+            <br><br>The <strong>Usage</strong> field is used to
+            indicate usage constraint:
+            <ul>
+                <li>A: reused as-is defined and expressed in [<a href="#bib-dcat-ap-v3.0">DCAT-AP-v3.0</a>]</li>
+                <li>E: reused with additional usage notes or additional restrictions compared to [[DCAT-AP-v3.0]]</li>
+                <li>P: DCAT-AP-LU profile specific extension where DCAT had no requirements earlier on specified</li>
+            </ul>
+        </p>
 
     {% block mainEntitiesGen %}
         {% for entity in classes | sort(attribute=sortattr) %}
@@ -246,7 +325,7 @@
 {% block supportiveEntities %}
 <section>
     <h2>Supportive Entities</h2>
-    The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
+The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties. 
 
     {% block supportiveEntitiesGen %}
         {% for entity in classes | sort(attribute=sortattr) %}
@@ -262,29 +341,255 @@
         {{ super() }}
     {% endblock %}
 
+    {% block customSection %}
+        <section>
+            <h2>Controlled vocabularies</h2>
+
+<i>This section is non-normative.</i>
+
+        <h3>Controlled vocabularies to be used</h3>
+        <p>In the table below, a number of properties are listed with controlled vocabularies that MUST be used for the listed properties. The declaration of the following controlled vocabularies as mandatory ensures a minimum level of interoperability. </p>
+        
+        <table id="table-cv" class="simple">
+            <thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
+            <tbody>
+                <tr><td>dcat:mediaType</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type"> File type - EU Vocabularies - Publications Office of the EU. </a></td><td> Indicating the type of file(s) in a distribution, including any compression or packaging format for compressing/grouping files, facilitates the machine-actionability of the dataset. Use the IANA media types in preference to the EU file types list due to the former's greater precision. Both lists may be used in full.</td></tr>
+                <!-- <tr><td>dcat:theme</td><td><a href="#Dataset">Dataset</a>, <a href="#DataService">Data Service</a>, <a href="#Catalogue">Catalogue</a></td><td><a href="http://publications.europa.eu/resource/authority/data-theme">Dataset Theme Vocabulary</a></td><td>The values to be used for this property are the URIs of the concepts in the vocabulary.</td></tr> -->
+                <tr><td>dcat:theme</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/data-theme">Dataset Theme Vocabulary</a>,<a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/data-theme">Data theme - EU Vocabularies - Publications Office of the EU</a> </td><td>The values to be used for this property are the URIs of the concepts in the vocabulary.</td></tr>
+                <!-- <tr><td>dct:accrualPeriodicity</td><td><a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a></td><td><a href="http://publications.europa.eu/resource/authority/frequency">EU Vocabularies Frequency Named Authority List</a></td><td></td></tr> -->
+                <tr><td>dct:accrualPeriodicity</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/frequency">EU Vocabularies Frequency Named Authority List</a>,<a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency"> Frequency - EU Vocabularies -Publications Office of the EU </a></td><td>Use "irreg" in preference to "unknown" if there is no set frequency but updates will definitely occur.</td></tr>
+                <!-- <tr><td>dct:format</td><td><a href="#Distribution">Distribution</a>,<a href="#DataService">Data Service </a></td><td><a href="http://publications.europa.eu/resource/authority/file-type">EU Vocabularies File Type Named Authority List</a></td><td></td></tr>
+                <tr><td>dct:language</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>, <a href="#CatalogueRecord">Catalogue Records</a>, <a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/language">EU Vocabularies Languages Named Authority List</a></td><td></td></tr>
+                <tr><td>dct:publisher</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a>,<a href="#DataService">Data Service</a></td><td><a href="http://publications.europa.eu/resource/authority/corporate-body">EU Vocabularies Corporate bodies Named Authority List</a></td><td>The Corporate bodies NAL must be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</td></tr>
+                <tr><td>dct:spatial</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a></td><td><a href="http://publications.europa.eu/resource/authority/continent/">EU Vocabularies Continents Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/country">EU Vocabularies Countries Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/place/">EU Vocabularies Places Named Authority List</a>, <a href="http://sws.geonames.org/">Geonames</a></td><td> The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, Geonames URIs must be used.</td></tr> -->
+                <tr><td>dct:format</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/file-type">EU Vocabularies File Type Named Authority List</a></td><td></td></tr>
+                <tr><td>dct:language</td><td><a href="#Dataset">Dataset</a>, <a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/language">EU Vocabularies Languages Named Authority List</a></td><td>For the Luxembourg public sector, use only the following values (:FRA, :DEU, :LTZ, :ENG, :POR)</td></tr> 
+                <tr><td>dct:publisher</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/corporate-body">EU Vocabularies Corporate bodies Named Authority List</a></td><td>The Corporate bodies NAL must be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</td></tr>
+                <tr><td>dct:spatial</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/continent/">EU Vocabularies Continents Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/country">EU Vocabularies Countries Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/place/">EU Vocabularies Places Named Authority List</a>, <a href="http://sws.geonames.org/"> Geonames</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/country">Countries and territories - EU Vocabularies - Publications Office of the EU </a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/atu"> Admistrative territorial unit - EU Vocabularies - Publications Office of the EU</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/place"> Place - EU Vocabularies - Publications Office of the EU </a> </td><td> The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, Geonames URIs must be used. Use "Luxembourg" for any data that applies to the entire country. Use more fine grained location information where applicable. </td></tr>              
+                <tr><td>adms:status</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/distribution-status">EU Vocabularies Distribution Status</a></td><td></td></tr>
+                <!-- <tr><td>dct:type</td><td><a href="#Agent">Agent</a></td><td><a href="http://purl.org/adms/publishertype/1.0">ADMS publisher type</a> vocabulary</td><td> The list of terms in the ADMS publisher type vocabulary is included in the ADMS specification</td></tr> -->
+                <tr><td>dct:type</td><td><a href="#LicenceDocument">Licence Document</a></td><td><a href="http://purl.org/adms/licencetype/1.0">ADMS licence type vocabulary</a></td><td> The list of terms in the ADMS licence type vocabulary is included in the ADMS specification</td></tr>
+                <tr><td>dcatap:availability</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/planned-availability">Distribution availability vocabulary</a></td><td>The list of terms for the avalability levels of a dataset distribution in the DCAT-AP  specification.</td></tr>
+                <!-- <tr><td>spdx:algorithm</td><td><a href="#Checksum">Checksum</a></td><td><a href="https://spdx.org/rdf/terms/#d4e2129">Checksum algorithm members</a></td><td>The members listed are considered a controlled vocabulary of supported checksum algorithms.</td></tr> -->
+                <!-- <tr><td>dct:accessRights</td><td><a href="#Dataset">Dataset</a>, <a href="#DataService">Data Service</a></td><td><a href="http://publications.europa.eu/resource/authority/access-right">Access Rights Named Authority List</td><td>Use one of the following values (:PUBLIC, :RESTRICTED, :NON_PUBLIC).</td></tr> -->
+                <tr><td>dct:accessRights</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/access-right">Access Rights Named Authority List</a>,
+                    <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right">Access right - EU Vocabularies - Publications Office of the EU </a></td><td>Use one of the following values (:PUBLIC, :NON_PUBLIC). Any dataset labelled as "non-public" should specify all applicable data protections under "dataProtectionType". </td></tr>
+                <tr><td>dpv:hasData</td><td><a href="#Dataset">Dataset</a></td><td><a href="https://w3id.org/dpv#Data">Data</td><td>Use only the following subtypes (:PersonalData, :CommerciallyConfidentialData, :IntellectualPropertyData, :StatisticallyConfidentialData, :SpecialCategoryPersonalData, :ProfessionalConfidentialData).</td></tr>
+              </tbody>
+        </table>
+
+        		
+        
+        <p>In the table below, a number of properties are listed with controlled vocabularies that MAY be used for the listed properties. The declaration of the following controlled vocabularies as recommended stimulates interoperability.</p>
+
+        <table id="table-cv" class="simple">
+            <thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
+            <tbody>
+        <tr><td>dct:type</td><td><a href="#Dataset">Dataset</a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/dataset-type">EU Dataset Types</a>, <a href="https://gfzpublic.gfz-potsdam.de/rest/items/item_1397899_10/component/file_1398549/content">RE3 metadata schema - item 15 contentType (page 19/20)</a>, <a href="https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/resourcetype/#a-resourcetypegeneral">Datacite Metadata Schema</a> 
+        </td><td>DCAT-AP-LU supports several vocabularies for this context. A defined list of preferred terms is provided in column I of ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm"> an external xlsm file.</a> Select all terms that apply.</td></tr>
+        <tr><td>dct:publisher</td><td><a href="#Dataset">Dataset</a></td><td></td><td>For Luxembourg public sector entities, a defined list of preferred terms is provided in column B of ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm" > an external xlsm file.</a>  If an expected entity is not listed, an extension of the list should be requested.</td></tr>
+        <tr><td>dct:accessRights</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/access-right">Access Rights Named Authority List</a>,
+                <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right">Access right - EU Vocabularies - Publications Office of the EU </a></td><td>Use one of the following values (:PUBLIC, :NON_PUBLIC) to provide additional information on access rights to distributions. </td></tr>
+            </tbody>
+        </table>
+    
+        
+        </section>
+
+        <!-- Include custom template content -->
+        {% include "custom.j2" ignore missing %}
+    {% endblock %}
+
     {% block usages %}
         <section class="informative">
-            <h2>Usage Guidelines - change </h2>
+            <h2>General usage guidelines</h2>
 
-            <h3>Basic Usage</h3>
-            <p>To use this vocabulary, follow these guidelines:</p>
+       The DCAT-AP-LU profile was developed in the context of the national DGA implementation but is intended to be usable in other contexts. The usage guidance is subdivided accordingly.
 
-            {# You can include examples anywhere #}
-            <div class="h3 examples" id="example1">Example 1</div>
+        <h3>Usage guide on Datasets and Distributions </h3>
+
+        The <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#usage-guide-on-datasets-distributions-and-data-services">general usage guide</a> for [[DCAT-AP-v3.0]] applies for most of DCAT-AP-LU. The main differences for this profile include:
+
+        <ul>
+            <li><a href="#Dataset.identifier">Dataset.identifier</a>: This property is mandatory to promote interoperability and data governance best practice. For the Luxembourg public sector, an identifier strategy is under development.
+            </li>
+            <li><a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>: This new property is applicable in the DGA context only (see below).</li>
+            <li><a href="#Dataset.inseries">Dataset.inSeries</a>: This property was upgraded from optional to recommended. More guidance to follow.</li>
+            <li><a href="#Dataset.accessrights">Dataset.accessRights</a>: The accepted values for this property are restricted to "public" and "non-public".</li>
+            <li><a href="#Dataset.type">Dataset.type</a>: The accepted values for this property have been adapted as described in [[[#controlled-vocs]]].</li>
+            <li><a href="#Distribution.mediatype">Distribution.mediaType</a>: This property was upgraded from optional to recommended due to the greater granularity of the associated vocabulary compared to <a href="#Distribution.mediatype">Distribution.mediaType</a>.</li>
+            <li><a href="#Distribution.haspolicy">Distribution.hasPolicy</a>: DCAT-AP-LU provides extended usage guidance for expressing data use restrictions using [[ODRL]] and [[DUO]].</li>
+        </ul>
+
+        Except for the properties in the list above, the property type (mandatory, recommended or optional) was adopted as-is from [[DCAT-AP-v3.0]]. Unfortunately, the overall format of this specification only expressly highlights whether a property is mandatory or not, via the `Card` column in the <a href="#main-entities">Main Entities tables</a>. The further distinction between recommended and optional properties, while widely used in DCAT-AP, is not considered. Please refer to the <a href="
+        "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#quick-reference>Quick reference table in Appendix A</a> in [[DCAT-AP-v3.0]] for an overview of recommended and optional properties.
+
+
+        <h3>Usage guide for the DGA context</h3>
+
+        <h4 id="dataprotection_guidance">
+            <a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>
+        </h4>
+
+           Any metadata record for a protected dataset published in the context of the DGA must include at least one of the 6 controlled vocabulary terms listed in [[[#controlled-vocs]]] (:PersonalData, :CommerciallyConfidentialData, :IntellectualPropertyData, :StatisticallyConfidentialData, :SpecialCategoryPersonalData, :ProfessionalConfidentialData). These properties originate from and are maintained by the Data Privacy Vocubulary.
+
+        <h4 id="legislation_guidance"><a href="#Dataset.applicablelegislation">Dataset.applicableLegislation</a></h4>
+        
+        Any metadata record for a dataset published in the context of the DGA must include a reference to the relevant law articles (links tbc) to define whether the dataset may be reused under the definition of "TITRE V – Traitement ultérieur de données à caractère personnel par les entités publiques" (short: TUDP), "TITRE VI – Accès et réutilisation des données détenues par des organismes du secteur public par des réutilisateurs de données" (short: ARD) or both. A metadata record that does not include at least one of these references will not be considered valid. Exact [[ELI]] compliant URIs for the different contexts will be included here once the law text has been officially adopted and published.
+
+
+        <h4 id="sample_guidance"><a href="#Dataset.sample">Dataset.sample</a></h4>
+
+        In order to facilitate the creation and assessment of data access requests for datasets in the DGA context, the associated metadata record should include data dictionaries whenever possible. Data dictionaries should be included via a special type of distribution referenced from the <a href="#Dataset.sample">Dataset.sample</a> property. This guidance reuses the implementation model proposed by the <a href="https://healthdcat-ap.github.io/#sample-distribution">HealthDCAT-AP</a> metadata profile.
+        <br>
+        No specific format is imposed for the data dictionary. Machine-readable tabular formats such as CSV or TSV are preferred. A minimal set of properties to be included in a data dictionary is under development and will be made available in due course.
+
+        <h4 id="policy_guidance"><a href="#Distribution.haspolicy">Distribution.hasPolicy</a></h4>
+
+        DCAT-AP-LU leverages existing mechanisms from [[ODRL]] and [[DUO]] to enable data holders to specify additional restrictions on data reuse in a consistent and machine-readable fashion.
+        
+        The following points are expressed:
+
+        <ul>
+            <li>Restrictions can be expressed as either permissions or prohibitions.</li>
+            <li>The default odrl:policy type is odrl:Set but policies of type odrl:Offer may also be used.</li>
+            <li>The default odrl:action for all scenarios is odrl:use</li>               
+            <li>Permitted constraint types (odrl:leftOperand) for constraints are odrl:Purpose/dpv:Purpose, dateTime, spatial and industry.</li>
+            <li>Permitted constraint modifiers (odrl:rightOperand) are:
+                <ul>
+                    <li>Temporal restrictions: an [[ISO8601]] compliant Date and Time value.</li>
+                    <li>Spatial restrictions: a valid geospatial area expression such as an [[ISO3166]]
+                        Country Code.</li>
+                    <li>Purpose restrictions: one of the data use restrictions specified in the table below. </li>
+                    <li>Industry restrictions: <i>list under development</i> </li>
+                </ul>
+            </li>
+        </ul>
+         
+        <table class="simple">
+            <thead>
+                <tr class="data-table__header">
+                    <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:15%">Property</th>
+                    <th class="data-table__header-title--sortable" style="width:25%">Label (short hand)</th>
+                    <th class="data-table__header-title--sortable" style="width:30%">Definition</th>
+                    <th class="data-table__header-title--sortable" style="width:30%">Comment</th>
+            </tr></thead>
+            <tbody><tr>
+            <td>DUO:0000018</td>
+            <td>not for profit, non commercial use only (NPUNCU)</td>
+            <td>This data use modifier indicates that use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000046</td>
+            <td>non-commercial use only (NCU)</td>
+            <td>This data use modifier indicates that use of the data is limited to not-for-profit use.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000045</td>
+            <td>not for profit organisation use only (NPU)</td>
+            <td>This data use modifier indicates that use of the data is limited to not-for-profit organizations.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000015</td>
+            <td>no general methods research (NMDS)</td>
+            <td>This data use modifier indicates that use does not allow methods development research (e.g., development of software or algorithms).</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000019</td>
+            <td>publication required (PUB)</td>
+            <td>This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000024</td>
+            <td>publication moratorium (MOR)</td>
+            <td>This data use modifier indicates that requestor agrees not to publish results of studies until a specific date.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000021</td>
+            <td>ethics approval required (IRB)</td>
+            <td>This data use modifier indicates that the requestor must provide documentation of local IRB/ERB approval.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000020</td>
+            <td>collaboration required (COL)</td>
+            <td>This data use modifier indicates that the requestor must agree to collaboration with the primary study investigator(s).</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000012</td>
+            <td>research specific restrictions (RS)</td>
+            <td>This data use modifier indicates that use is limited to studies of a certain research type.</td>
+            <td>Requires specification of permitted research types, e.g. structured as a sub-term of <a href="http://edamontology.org/topic_0003">Topic (EDAM:0003)</a> or free text</td>
+            </tr>
+            <tr>
+            <td>DUO:0000029</td>
+            <td>return to database or resource (RTN)</td>
+            <td>This data use modifier indicates that the requestor must return derived/enriched data to the database/resource.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000042</td>
+            <td>general research use (GRU)</td>
+            <td>This data use permission indicates that use is allowed for general research use for any research purpose.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000043</td>
+            <td>clinical care use (CC)</td>
+            <td>This data use modifier indicates that use is allowed for clinical use and care.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000007</td>
+            <td>disease specific research (DS)</td>
+            <td>This data use permission indicates that use is allowed provided it is related to the specified disease.</td>
+            <td>Requires specification of permitted diseases, e.g. structured as a sub-term of <a href="http://purl.obolibrary.org/obo/MONDO_0000001">disease (MONDO:0000001)</a> or free text</td>
+            </tr>
+            <tr>
+            <td>DUO:0000016</td>
+            <td>genetic studies only (GSO)</td>
+            <td>This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively)</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000006</td>
+            <td>health or medical or biomedical research (HMB)</td>
+            <td>This data use permission indicates that use is allowed for health/medical/biomedical purposes; does not include the study of population origins or ancestry.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000011</td>
+            <td>population origins or ancestry research only (POA)</td>
+            <td>This data use permission indicates that use of the data is limited to the study of population origins or ancestry.</td>
+            <td> </td>
+            </tr>
+            <tr>
+            <td>DUO:0000044</td>
+            <td>population origins or ancestry research prohibited (NPOA)</td>
+            <td>This data use modifier indicates use for purposes of population, origin, or ancestry research is prohibited.</td>
+            <td> </td>
+            </tr>
+            </tbody></table>
+
+
+        <!-- <h3>Usage guide on Dataset Series</h3> -->
 
         </section>
     {% endblock %}
 
-    {% block governance %}
-        <section class="informative">
-            <h2>Governance</h2>
-        </section>
-    {% endblock %}
+
 
     {% block customSection %}
-        <section class="informative">
-            <h2>Custom section - TEMPLATE_CUSTOM_2024</h2>
-            <p>A custom section introduced in main template</p>
+        <section>
+            <h2>Acknowledgments</h2>
+            <p>The editors gratefully acknowledge the contributions made to this document by all members of the working group.</p>
         </section>
 
         <!-- Include custom template content -->
@@ -295,9 +600,10 @@
         {{ super() }}
     {% endblock %}
 
+<!--
     {% block resources %}
         {{ super() }}
     {% endblock %}
-
+-->
 
 {% endblock %}
