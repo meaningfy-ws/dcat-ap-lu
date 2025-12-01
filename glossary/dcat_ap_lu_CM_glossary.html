@@ -136,13 +136,21 @@
                   </tr>
                   <tr>
                      <td>dpv:Data</td>
-                     <td>A broad concept representing 'data' or 'information'.
+                     <td>A broad concept representing 'data' or 'information'
                         </td>
                   </tr>
                   <tr>
                      <td>eli:LegalResource</td>
                      <td>This class represents the legislation, policy or policies that lie behind the Rules
-                        that govern the service.</td>
+                        that govern the service.
+                        
+                        Usage Note
+                        The definition and properties of the Legal Resource class are aligned with the ontology
+                        included in "Council conclusions inviting the introduction of the European Legislation
+                        Identifier (ELI)". For describing the attributes of a Legal Resource (labels, preferred
+                        labels, alternative labels, definition, etc.) we refer to the ELI ontology. In this
+                        data specification the use is restricted to instances of this class that follow the
+                        ELI URI guidelines</td>
                   </tr>
                   <tr>
                      <td>foaf:Agent</td>
@@ -246,7 +254,7 @@
                   <tr>
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
                      <td>dcat:spatialResolutionInMeters</td>
-                     <td>The minimum spatial separation resolvable in a dataset, measured in metres.	 The minimum spatial separation resolvable in a dataset distribution, measured in meters.</td>
+                     <td>The minimum spatial separation resolvable in a dataset, measured in meters.	 The minimum spatial separation resolvable in a dataset distribution, measured in meters.</td>
                      <td>xsd:decimal [0..1]<br>xsd:decimal [0..*]<br></td>
                   </tr>
                   <tr>
@@ -271,7 +279,8 @@
                      <td>dcat:Dataset</td>
                      <td>dct:identifier</td>
                      <td>The main identifier for the Dataset, e.g. the URI or other unique identifier in the
-                        context of the Catalogue.</td>
+                        context of the Catalogue.
+                        Usage Note: The use of persistent dereferenceable URIs is mandatory in this profile.</td>
                      <td>rdfs:Literal [1..*]</td>
                   </tr>
                   <tr>
@@ -336,7 +345,7 @@
                </thead>
                <tbody>
                   <tr>
-                     <td>adms:identifierX</td>
+                     <td>adms:identifier</td>
                      <td>A secondary identifier of the Dataset.
                         
                         A secondary identifier of the Dataset.</td>
@@ -344,21 +353,24 @@
                   </tr>
                   <tr>
                      <td>adms:sample</td>
-                     <td>A sample distribution of the dataset.A sample distribution of the dataset.
-                        </td>
+                     <td>A sample distribution of the dataset.
+                        
+                        Usage: DCAT-AP-LU provides additional usage guidance for the use of this property
+                        in providing data dictionaries as part of dataset descriptions.A sample distribution
+                        of the dataset.
+                        
+                        Usage: DCAT-AP-LU provides additional usage guidance for the use of this property
+                        in providing data dictionaries as part of dataset descriptions.</td>
                      <td>dcat:Dataset -&gt; dcat:Distribution [0..*]</td>
                   </tr>
                   <tr>
                      <td>adms:status</td>
-                     <td>The status of the distribution in the context of maturity lifecycle.The status of
-                        the distribution in the context of maturity lifecycle.</td>
+                     <td></td>
                      <td>dcat:Distribution -&gt; skos:Concept [0..1]</td>
                   </tr>
                   <tr>
                      <td>dcat:accessService</td>
                      <td>A data service that gives access to the distribution of the dataset.
-                        
-                        A data service that gives access to the distribution of the dataset.
                         
                         </td>
                      <td>dcat:Distribution -&gt; dcat:DataService [0..*]</td>
@@ -366,6 +378,8 @@
                   <tr>
                      <td>dcat:compressFormat</td>
                      <td>compressed form, e.g. to reduce the size of the downloadable file.
+                        Usage Note: It SHOULD be expressed using a media type as defined in the official register
+                        of media types managed by IANA.
                         compressed form, e.g. to reduce the size of the downloadable file.
                         Usage Note: It SHOULD be expressed using a media type as defined in the official register
                         of media types managed by IANA.
@@ -395,8 +409,9 @@
                   </tr>
                   <tr>
                      <td>dcat:inSeries</td>
-                     <td>A dataset series of which the dataset is part.A dataset series of which the dataset
-                        is part.
+                     <td>A dataset series of which the dataset is part.
+                        Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance
+                        providedA dataset series of which the dataset is part.
                         Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance
                         provided</td>
                      <td>dcat:Dataset -&gt; dcat:DatasetSeries [0..*]</td>
@@ -413,9 +428,13 @@
                   </tr>
                   <tr>
                      <td>dcat:mediaType</td>
-                     <td>
+                     <td>The media type of the Distribution as defined in the official register of media types
+                        managed by IANA.
+                        Usage note: DCAT-AP-LU provides additional usage guidance for this property.
                         The media type of the Distribution as defined in the official register of media types
-                        managed by &lt;xref scope="external" href="https://www.iana.org/"&gt;IANA&lt;/xref&gt;.</td>
+                        managed by IANA.
+                        Usage note: DCAT-AP-LU provides additional usage guidance for this property.
+                        </td>
                      <td>dcat:Distribution -&gt; dct:MediaType [0..1]</td>
                   </tr>
                   <tr>
@@ -453,7 +472,9 @@
                   <tr>
                      <td>dcat:theme</td>
                      <td>A category of the Dataset.
-                        
+                        Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI
+                        not URL therefore, it may not properly resolve in the web browser even though it properly
+                        resolves through the API.
                         
                         A category of the Dataset.
                         Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI
@@ -465,10 +486,19 @@
                   <tr>
                      <td>dcatap:applicablelegislation</td>
                      <td>The legislation that mandates the creation or management of the Dataset.
+                        Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA
+                        context.
+                        The legislation that mandates the creation or management of the Dataset.
+                        Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA
+                        context. The legislation that mandates the creation or management of the Dataset Series.
+                         The legislation that mandates the creation or management of the Dataset.
+                        Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA
+                        context.
                         
-                        The legislation that mandates the creation or management of the Dataset. The legislation that mandates the creation or management of the Dataset Series.
-                         The legislation that mandates the creation or management of the Dataset.The legislation
-                        that mandates the creation or management of the Dataset</td>
+                        The legislation that mandates the creation or management of the Dataset.
+                        Usage: DCAT-AP-LU provides additional usage guidance for this property in the DGA
+                        context.
+                        </td>
                      <td>dcat:Dataset -&gt; eli:LegalResource [0..*]<br>dcat:DatasetSeries -&gt; eli:LegalResource [0..*]<br>dcat:Distribution -&gt; eli:LegalResource [0..*]<br></td>
                   </tr>
                   <tr>
@@ -491,8 +521,11 @@
                      <td>An implementing rule or other specification.
                         
                         An implementing rule or other specification.
-                         An established schema to which the described Distribution conforms.An established
-                        schema to which the described Distribution conforms.</td>
+                         An implementing rule or other specification.
+                        
+                        
+                        An implementing rule or other specification.
+                        </td>
                      <td>dcat:Dataset -&gt; dct:Standard [0..*]<br>dcat:Distribution -&gt; dct:Standard [0..*]<br></td>
                   </tr>
                   <tr>
@@ -522,14 +555,16 @@
                   <tr>
                      <td>dct:provenance</td>
                      <td>A statement about the lineage of a Dataset.
+                        DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details.
                         A statement about the lineage of a Dataset.
                         DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details.</td>
                      <td>dcat:Dataset -&gt; dct:ProvenanceStatement [0..*]</td>
                   </tr>
                   <tr>
                      <td>dct:publisher</td>
-                     <td> An entity (organisation) responsible for making the Dataset available.An entity (organisation)
-                        responsible for making the Dataset available.
+                     <td> An entity (organisation) responsible for making the Dataset available.
+                        Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.An
+                        entity (organisation) responsible for making the Dataset available.
                         Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.
                          An entity (organisation) responsible for making the Dataset available.
                         
@@ -543,7 +578,10 @@
                   <tr>
                      <td>dct:rights</td>
                      <td>Information that indicates whether the Dataset is publicly accessible, has access
-                        restrictions, or is not public. A statement that specifies rights associated with the Distribution.A statement that
+                        restrictions or is not public.
+                        
+                        Usage note: DCAT-AP-LU places additional restrictions on the vocabularies recommended
+                        in DCAT-AP. See section 10. Controlled Vocabularies for details. A statement that specifies rights associated with the Distribution.A statement that
                         specifies rights associated with the Distribution.
                         </td>
                      <td>dcat:Dataset -&gt; dct:RightsStatement [0..1]<br>dcat:Distribution -&gt; dct:RightsStatement [0..1]<br></td>
@@ -569,7 +607,9 @@
                   </tr>
                   <tr>
                      <td>dct:type</td>
-                     <td>A type of the Dataset.	
+                     <td>A type of the Dataset.
+                        Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this
+                        properties provided by DCAT-AP.	
                         
                         A type of the Dataset.
                         Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this
