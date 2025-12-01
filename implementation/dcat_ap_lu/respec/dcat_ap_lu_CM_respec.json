@@ -449,35 +449,6 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A related Dataset that is a version, edition, or adaptation of the described Dataset."
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Has version"
-          },
-          "name": "dcat:hasVersion",
-          "range": [
-            {
-              "range_curie": "dcat:Dataset",
-              "range_label": {
-                "en": "Dataset"
-              },
-              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
-              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "tags": {},
-          "uri": "http://www.w3.org/ns/dcat#hasVersion",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
             "en": ""
           },
           "domain": [
@@ -559,7 +530,7 @@
             }
           ],
           "tags": {
-            "dal:reuse": "E",
+            "dal:reuse": "A",
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">Link</a>",
             "skos:note": "DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section <a href=\"#controlled-vocs\">10. Controlled Vocabularies</a> for details.",
             "skos:prefLabel": "access rights"
@@ -827,6 +798,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>",
             "skos:prefLabel": "documentation"
           },
           "uri": "http://xmlns.com/foaf/0.1/page",
@@ -895,6 +867,39 @@
             "skos:prefLabel": "geographical coverage"
           },
           "uri": "http://purl.org/dc/terms/spatial",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "A related Dataset that is a version, edition, or adaptation of the described Dataset."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "has version"
+          },
+          "name": "dcat:hasVersion",
+          "range": [
+            {
+              "range_curie": "dcat:Dataset",
+              "range_label": {
+                "en": "Dataset"
+              },
+              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
+              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_version\">Link</a>",
+            "skos:prefLabel": "has version"
+          },
+          "uri": "http://www.w3.org/ns/dcat#hasVersion",
           "usage": {}
         },
         {
@@ -1659,6 +1664,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version_notes\">Link</a>",
             "skos:note": "This property can be repeated for parallel language versions of the version notes.",
             "skos:prefLabel": "version notes"
           },
@@ -2173,7 +2179,7 @@
             }
           ],
           "label": {
-            "en": "documentation Document"
+            "en": "documentation"
           },
           "name": "foaf:page",
           "range": [
@@ -2188,7 +2194,8 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "skos:prefLabel": "documentation Document"
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>",
+            "skos:prefLabel": "documentation"
           },
           "uri": "http://xmlns.com/foaf/0.1/page",
           "usage": {}
@@ -2320,6 +2327,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language\">Link</a>",
             "skos:note": "This property can be repeated if the metadata is provided in multiple languages.",
             "skos:prefLabel": "language"
           },
@@ -2587,6 +2595,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_status\">link</a>",
             "skos:note": "It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn.",
             "skos:prefLabel": "status"
           },
@@ -2787,7 +2796,7 @@
         "skos:example": "Link to web page is: <a href=\"https://op.europa.eu/web/eu-vocabularies/dataset/-/resource?uri=http://publications.\neuropa.eu/resource/dataset/eli\">here</a>.",
         "skos:note": "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52012XG1026%2801%29\">(ELI)</a>\". For describing the attributes of a Legal Resource",
         "skos:prefLabel": "Legal Resource",
-        "skos:scopeNote": "(labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology. In this data specification the use is restricted to instances of this class that follow the ELI URI guidelines."
+        "skos:scopeNote": "(labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology. In this data specification,  the use is restricted to instances of this class that follow the ELI URI guidelines."
       },
       "uri": "http://data.europa.eu/eli/ontology#LegalResource",
       "usage": {
@@ -2831,6 +2840,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type\">Link</a>",
             "skos:prefLabel": "type"
           },
           "uri": "http://purl.org/dc/terms/type",
