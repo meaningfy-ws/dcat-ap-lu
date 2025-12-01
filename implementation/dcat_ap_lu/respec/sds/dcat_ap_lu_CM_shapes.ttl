@@ -65,6 +65,7 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dcat-distribution,
         core-res:dcat-Dataset-dcat-hasVersion,
         core-res:dcat-Dataset-dcat-inSeries,
+        core-res:dcat-Dataset-dcat-isVersionOf,
         core-res:dcat-Dataset-dcat-keyword,
         core-res:dcat-Dataset-dcat-landingPage,
         core-res:dcat-Dataset-dcat-qualifiedRelation,
@@ -368,6 +369,13 @@ core-res:dcat-Dataset-dcat-inSeries a sh:PropertyShape ;
     sh:name "In series" ;
     sh:path dcat:inSeries ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#inSeries> ?that . ?that <http://www.w3.org/ns/dcat#inSeries> ?this .}" ] .
+
+core-res:dcat-Dataset-dcat-isVersionOf a sh:PropertyShape ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:class dcat:Dataset ;
+    sh:name "Is version of" ;
+    sh:path dcat:isVersionOf ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#isVersionOf> ?that . ?that <http://www.w3.org/ns/dcat#isVersionOf> ?this .}" ] .
 
 core-res:dcat-Dataset-dcat-keyword a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
