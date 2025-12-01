@@ -21,7 +21,11 @@
 
 eli:LegalResource a owl:Class ;
     skos:definition "This class represents the legislation, policy or policies that lie behind the Rules that govern the service."@en ;
-    skos:note "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier (ELI)\". For describing the attributes of a Legal Resource (labels, pr"@en ;
+    skos:note """ link to the web page of ELI, being
+link to web page is: https://op.europa.eu/web/eu-vocabularies/dataset/-/resource?uri=http://publications.
+europa.eu/resource/dataset/eli."""@en,
+        "(labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology. In this data specification the use is restricted to instances of this class that follow the ELI URI guidelines."@en,
+        "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier (ELI)\". For describing the attributes of a Legal Resource"@en ;
     skos:prefLabel "Legal Resource"@en .
 
 dcatap:applicablelegislation a owl:ObjectProperty ;
@@ -262,47 +266,6 @@ spdx:checksum a owl:ObjectProperty ;
     skos:prefLabel "checksum"@en ;
     :reuse "A"@en .
 
-rdf:PlainLiteral a rdfs:Datatype ;
-    skos:prefLabel "Plain Literal"@en .
-
-rdfs:Literal a rdfs:Datatype ;
-    skos:definition "rdfs:Literal encoded using the relevant [ISO8601] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime)."@en ;
-    skos:prefLabel "Literal"@en .
-
-rdfs:Resource a rdfs:Datatype ;
-    skos:prefLabel "Resource"@en .
-
-xsd:date a rdfs:Datatype ;
-    skos:prefLabel "date"@en .
-
-xsd:dateTime a rdfs:Datatype ;
-    skos:definition "Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property."@en ;
-    skos:prefLabel "date Time"@en .
-
-xsd:decimal a rdfs:Datatype ;
-    skos:definition "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n &amp;#8805; 0."@en ;
-    skos:prefLabel "decimal"@en .
-
-xsd:duration a rdfs:Datatype ;
-    skos:definition "Duration represents a duration of time. The &#183;value space&#183; of duration is a six-dimensional space where the coordinates designate the Gregorian year, month, day, hour, minute, and second components defined in &#167; 5.5.3.2 of [ISO8601], respectively."@en ;
-    skos:prefLabel "duration"@en .
-
-xsd:gYear a rdfs:Datatype ;
-    skos:prefLabel "g Year"@en .
-
-xsd:gYearMonth a rdfs:Datatype ;
-    skos:prefLabel "g Year Month"@en .
-
-xsd:integer a rdfs:Datatype ;
-    skos:prefLabel "integer"@en .
-
-xsd:nonNegativeInteger a rdfs:Datatype ;
-    skos:definition "Number derived from integer by setting the value of minInclusive to be 0."@en ;
-    skos:prefLabel "non Negative Integer"@en .
-
-xsd:string a rdfs:Datatype ;
-    skos:prefLabel "string"@en .
-
 skos:Concept a owl:Class ;
     skos:prefLabel "Concept"@en ;
     :vocabname "Data theme - EU Vocabularies - Publications Office of the EU"@en,
@@ -318,10 +281,6 @@ skos:prefLabel a owl:DatatypeProperty ;
     skos:prefLabel "pref Label"@en,
         "preferred label"@en ;
     :reuse "A"@en .
-
-time:Instant a rdfs:Datatype ;
-    skos:definition "A temporal entity with zero extent or duration."@en ;
-    skos:prefLabel "Instant"@en .
 
 time:hasBeginning a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning\">Link</a>"@en ;
@@ -595,25 +554,6 @@ foaf:page a owl:ObjectProperty ;
 foaf:primaryTopic a owl:ObjectProperty ;
     skos:prefLabel "primary Topic"@en .
 
-:TemporalLiteral a rdfs:Datatype ;
-    rdfs:isDefinedBy core-res:core ;
-    skos:definition "rdfs:Literal encoded using the relevant [ISO8601] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime)."@en ;
-    skos:prefLabel "Temporal Literal"@en .
-
-<https://w3id.org/dpv#Data> a owl:Class ;
-    skos:definition "A broad concept representing 'data' or 'information'."@en ;
-    skos:prefLabel "Data"@en ;
-    :vocabname "Data"@en ;
-    :vocaburi "https://w3c.github.io/dpv/2.2/dpv/#Data"@en .
-
-<https://w3id.org/dpv#hasData> a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">link</a>"@en ;
-    skos:definition "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset. Usage:A list of accepted types, based on the Data Privacy Vocabulary."@en ;
-    skos:note "A list of accepted types, based on the Data Privacy Vocabulary, is defined in 10. Controlled Vocabularies. For additional usage guidance, refer to section 11."@en ;
-    skos:prefLabel "data protection type"@en,
-        "has Data"@en ;
-    :reuse "P"@en .
-
 core-res:core a owl:Ontology ;
     rdfs:label """This artefact provides the definitions for the DCAT-AP-LU.
         This artefact excludes the restrictions.
@@ -639,6 +579,20 @@ core-res:core a owl:Ontology ;
     owl:priorVersion "https://mindig_lu.gitlab.io/DCAT-AP-LU#core-" ;
     owl:versionIRI core-res:core-1 ;
     owl:versionInfo "1" .
+
+<https://w3id.org/dpv#Data> a owl:Class ;
+    skos:definition "A broad concept representing 'data' or 'information'."@en ;
+    skos:prefLabel "Data"@en ;
+    :vocabname "Data"@en ;
+    :vocaburi "https://w3c.github.io/dpv/2.2/dpv/#Data"@en .
+
+<https://w3id.org/dpv#hasData> a owl:ObjectProperty ;
+    dcterms:references "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">link</a>"@en ;
+    skos:definition "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset. Usage:A list of accepted types, based on the Data Privacy Vocabulary."@en ;
+    skos:note "A list of accepted types, based on the Data Privacy Vocabulary, is defined in 10. Controlled Vocabularies. For additional usage guidance, refer to section 11."@en ;
+    skos:prefLabel "data protection type"@en,
+        "has Data"@en ;
+    :reuse "P"@en .
 
 dcat:Resource a owl:Class ;
     skos:definition "Resource published or curated by a single agent."@en ;
