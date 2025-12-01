@@ -97,7 +97,7 @@
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
 
      <!--    Tag names/keys that are excluded from output -->
-    <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty)"/>
+    <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty, $usageNoteTagName, 'skos:scopeNote', 'skos:example')"/>
 
     <!-- Tag name/key that is used to describe a usage note of a class or property-->
     <xsl:variable name="usageNoteTagName" select="'skos:note'"/>
