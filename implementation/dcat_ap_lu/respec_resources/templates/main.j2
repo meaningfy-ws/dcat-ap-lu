@@ -182,11 +182,11 @@
             <h2>Introduction</h2>
             <h3>Context</h3>
 
-        DCAT-AP-LU is a Luxembourg-specific extension of the [[DCAT-AP-v3.0]] profile used for sharing information about Catalogues containing Datasets descriptions in Europe. It was created as part of the national implementation of the <a href="https://eur-lex.europa.eu/eli/reg/2022/868/oj/eng">Data Governance Act</a> (DGA) to support the creation of a single national dataset catalogue for all public sector data. The DCAT-AP-LU reuses large parts of the [[DCAT-AP-v3.0]] standard, with a set of minor adaptations to support specific requirements for Luxembourg. 
+        DCAT-AP-LU is a Luxembourg-specific extension of the [[DCAT-AP-v3.0]] profile used for sharing information about Catalogues containing Datasets descriptions in Europe. It was created as part of the national implementation of the <a href="https://eur-lex.europa.eu/eli/reg/2022/868/oj/eng">Data Governance Act</a> (DGA) to support the creation of a single national dataset catalogue for all public sector data. The DCAT-AP-LU reuses large parts of the [[DCAT-AP-v3.0]] standard, with a set of minor adaptations to support specific requirements for Luxembourg.
 
         <h3>Scope of the Application Profile</h3>
-        
-        This document provides guidelines for how to use DCAT-AP-LU to describe datasets in the context of the DGA national implementation but that are also interoperable with other national and international dataset catalogues following the [[DCAT-AP-v3.0]] specification. 
+
+        This document provides guidelines for how to use DCAT-AP-LU to describe datasets in the context of the DGA national implementation but that are also interoperable with other national and international dataset catalogues following the [[DCAT-AP-v3.0]] specification.
 
         <h3>Revision history</h3>
         The first DCAT-AP-LU specification was released in March 2025. It focuses exclusively on the Dataset and Distribution concepts, as well as the most relevant supportive entities where these are reused "as is" from [[DCAT-AP-v3.0]] or where their specification differs for DCAT-AP-LU. A more comprehensive version, including additional entities such as Catalogue, Data Service, Dataset Series and further main and supportive entities will be released by Q1 2026.
@@ -199,7 +199,7 @@
             <p>
 
         This application profile is published by a collaboration of the Luxembourg National Data Service (LNDS) and the Ministère de la Digitalisation, Luxembourg. It is being developed with input and feedback from relevant national stakeholders. </p>
-        
+
         <p>
         It has no official standing of any kind and does not represent the support or consensus of any standards organisation. </p>
         </section>
@@ -216,7 +216,7 @@
 
     {% block conformance %}
         <section id="conformance">
- 
+
  <!--           <p>
 As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p>
 
@@ -240,7 +240,7 @@ The key words MAY, MUST, and SHOULD in this document are to be interpreted as de
             <p>
         An <strong>Application Profile</strong> is a specification that reuses terms from one or more base standards, and adds more specificity by identifying mandatory, recommended and optional elements for a particular application, as well as advising on the use of controlled vocabularies.
         </p>
-        
+
         <p>
         A <strong>Dataset</strong> is a collection of data featured in a data catalogue that describes datasets and offers services to facilitate their discovery and reuse.
         </p>
@@ -337,7 +337,7 @@ The key words MAY, MUST, and SHOULD in this document are to be interpreted as de
     {% block supportiveEntities %}
         <section>
             <h2>Supportive Entities</h2>
-The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties. 
+The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.
 
             {% block supportiveEntitiesGen %}
                 {% for entity in classes | sort(attribute=sortattr) %}
@@ -376,7 +376,7 @@ The supportive entities are supporting the main entities in the Application Prof
                         <td>dcat:mediaType</td>
                         <td><a href="#Distribution">Distribution</a></td>
                         <td><a href="http://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type">File type - EU Vocabularies - Publications Office of the EU</a></td>
-                        <td>Indicating the type of file(s) in a distribution, including any compression or packaging format for compressing/grouping files, facilitates the machine-actionability of the dataset. The use of the IANA media types is preferred over the EU file types list thanks to the former's greater precision. Both lists may be used.</td>
+                        <td>Indicating the type of file(s) in a distribution, including any compression or packaging format for compressing/grouping files, facilitates the machine-actionability of the dataset. Use the IANA media types in preference to the EU file types list due to the former's greater precision. Both lists may be used in full.</td>
                     </tr>
                     <tr>
                         <td>dcat:theme</td>
@@ -422,7 +422,7 @@ The supportive entities are supporting the main entities in the Application Prof
                     </tr>
                     <tr>
                         <td>dct:type</td>
-                        <td><a href="#Licencedocument">Licence Document</a></td>
+                        <td><a href="#Licensedocument">Licence Document</a></td>
                         <td><a href="http://purl.org/adms/licencetype/1.0">ADMS licence type vocabulary</a></td>
                         <td>The list of terms in the ADMS licence type vocabulary is included in the ADMS specification</td>
                     </tr>
@@ -436,7 +436,7 @@ The supportive entities are supporting the main entities in the Application Prof
                         <td>dct:accessRights</td>
                         <td><a href="#Dataset">Dataset</a></td>
                         <td><a href="http://publications.europa.eu/resource/authority/access-right">Access Rights Named Authority List</a>, <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right">Access right - EU Vocabularies - Publications Office of the EU</a></td>
-                        <td>Use one of the following values (:PUBLIC, :NON_PUBLIC). Any dataset labelled as NON_PUBLIC should specify all applicable data protections under "dataProtectionType".</td>
+                        <td>Use one of the following values (:PUBLIC, :NON_PUBLIC). Any dataset labelled as "non-public" should specify all applicable data protections under "dataProtectionType".</td>
                     </tr>
                     <tr>
                         <td>dpv:hasData</td>
@@ -464,14 +464,14 @@ The supportive entities are supporting the main entities in the Application Prof
                     <tr>
                         <td>dct:type</td>
                         <td><a href="#Dataset">Dataset</a></td>
-                        <td><a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/dataset-type">EU Dataset Types</a>, <a href="https://gfzpublic.gfz-potsdam.de/rest/items/item_1397899_10/component/file_1398549/content">RE3 metadata schema (contentType)</a>, <a href="https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/resourcetype/#a-resourcetypegeneral">Datacite Metadata Schema</a></td>
-                        <td>DCAT-AP-LU supports several vocabularies for this context. A defined list of preferred terms is provided in column I of the ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm">an external xlsm file</a>. Select all terms that apply.</td>
+                        <td><a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/dataset-type">EU Dataset Types</a>, <a href="https://gfzpublic.gfz-potsdam.de/rest/items/item_1397899_10/component/file_1398549/content">RE3 metadata schema - item 15 contentType (page 19/20)</a>, <a href="https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/resourcetype/#a-resourcetypegeneral">Datacite Metadata Schema</a></td>
+                        <td>DCAT-AP-LU supports several vocabularies for this context. A defined list of preferred terms is provided in column I of ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm">an external xlsm file.</a> Select all terms that apply.</td>
                     </tr>
                     <tr>
                         <td>dct:publisher</td>
                         <td><a href="#Dataset">Dataset</a></td>
                         <td>&nbsp;</td>
-                        <td>For Luxembourg public sector entities, a defined list of preferred terms is provided in column B of the ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm">an external xlsm file</a>. If an expected entity is not listed, an extension of the list should be requested.</td>
+                        <td>For Luxembourg public sector entities, a defined list of preferred terms is provided in column B of ControlledVocabularies tab in <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/blob/master/DCAT-AP-LU_official.xlsm">an external xlsm file.</a> If an expected entity is not listed, an extension of the list should be requested.</td>
                     </tr>
                     <tr>
                         <td>dct:accessRights</td>
@@ -770,7 +770,7 @@ The supportive entities are supporting the main entities in the Application Prof
     {% endblock %}
 
     {% block resources %}
-        {{ super() }}
+{#        {{ super() }}#}
     {% endblock %}
 
 
