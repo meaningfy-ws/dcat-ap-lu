@@ -8,30 +8,107 @@
    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://purl.org/dc/terms/language">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">language</skos:prefLabel>
-    <skos:definition xml:lang="en">A language of the Dataset. A language used in the Distribution.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-    <skos:note xml:lang="en">This property can be repeated if there are multiple languages in the Dataset.</skos:note>
-    <skos:note xml:lang="en">This property can be repeated if the metadata is provided in multiple languages.</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#compressFormat">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">compress Format</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">compression format</skos:prefLabel>
-    <skos:definition xml:lang="en">compressed form, e.g. to reduce the size of the downloadable file.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <skos:note xml:lang="en">It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</skos:note>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_compression_format"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2006/time#hasEnd">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#temporalResolution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">has End</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">end</skos:prefLabel>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end'&gt;Link&lt;/a&gt;</dcterms:references>
+    <skos:prefLabel xml:lang="en">temporal Resolution</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">temporal resolution</skos:prefLabel>
+    <skos:definition xml:lang="en">The minimum time period resolvable in the dataset. (dcat:Dataset) The minimum time period resolvable in the dataset distribution. (dcat:Distribution)</skos:definition>
     <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Relationship">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Relationship</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">description</skos:prefLabel>
+    <skos:definition xml:lang="en">A free-text account of the Dataset. (dcat:Dataset) A free-text account of the Distribution. (dcat:Distribution)</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description"&gt;link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#downloadURL">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">download URL</skos:prefLabel>
+    <skos:definition xml:lang="en">A URL that is a direct link to a downloadable file in a given format. (dcat:Distribution)</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url"&gt;link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#CatalogRecord">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Catalog Record</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#landingPage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">landing Page</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">landing page</skos:prefLabel>
+    <skos:definition xml:lang="en">A web page that provides access to the Dataset, its Distributions and/or additional information.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/MediaTypeOrExtent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Media Type Or Extent</skos:prefLabel>
+    <skos:definition xml:lang="en">A media type or dataset distribution.</skos:definition>
+    <vocabname xml:lang="en">EU Vocabularies File Type Named Authority List</vocabname>
+    <vocaburi xml:lang="en">http://publications.europa.eu/resource/authority/file-type</vocaburi>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#DataService">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Data Service</skos:prefLabel>
+    <skos:definition xml:lang="en">A collection of operations that provides access to one or more datasets or data processing functions.</skos:definition>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/odrl/2/hasPolicy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">has Policy</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">has policy</skos:prefLabel>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">E</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#byteSize">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">byte Size</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">byte size</skos:prefLabel>
+    <skos:definition xml:lang="en">The size of a Distribution in bytes. (dcat:Distribution)</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_size"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#inSeries">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">in Series</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">in series</skos:prefLabel>
+    <skos:definition xml:lang="en">A dataset series of which the dataset is part.</skos:definition>
+    <reuse xml:lang="en">E</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/publisher">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">publisher</skos:prefLabel>
+    <skos:definition xml:lang="en">An entity (organisation) responsible for making the Dataset available. An entity (organisation) responsible for making the Dataset available. Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">E</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gYearMonth">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">g Year Month</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Document</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#packageFormat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">package Format</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">packaging format</skos:prefLabel>
+    <skos:definition xml:lang="en">The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_packaging_format"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#Instant">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">Instant</skos:prefLabel>
+    <skos:definition xml:lang="en">A temporal entity with zero extent or duration.</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#core">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -60,23 +137,15 @@
     <vann:preferredNamespacePrefix>dal</vann:preferredNamespacePrefix>
     <dcterms:license>Copyright 2025 Ministère de la Digitalisation, Luxembourg. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.</dcterms:license>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/eli/ontology#LegalResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Legal Resource</skos:prefLabel>
-    <skos:definition xml:lang="en">This class represents the legislation, policy or policies that lie behind the Rules that govern the service.</skos:definition>
-    <skos:note xml:lang="en">The definition and properties of the Legal Resource class are aligned with the ontology included in "Council conclusions inviting the introduction of the European Legislation Identifier (ELI)". For describing the attributes of a Legal Resource (labels, pr</skos:note>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">non Negative Integer</skos:prefLabel>
+    <skos:definition xml:lang="en">Number derived from integer by setting the value of minInclusive to be 0.</skos:definition>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#DataService">
+  <rdf:Description rdf:about="http://www.w3.org/ns/odrl/2/Policy">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Data Service</skos:prefLabel>
-    <skos:definition xml:lang="en">A collection of operations that provides access to one or more datasets or data processing functions.</skos:definition>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#DatasetSeries">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Dataset Series</skos:prefLabel>
-    <skos:definition xml:lang="en">A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries).</skos:definition>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+    <skos:prefLabel xml:lang="en">Policy</skos:prefLabel>
+    <skos:definition xml:lang="en">A non-empty group of Permissions and/or Prohibitions.</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -84,106 +153,36 @@
     <vocabname xml:lang="en">EU Vocabularies Corporate bodies Named Authority List</vocabname>
     <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/corporate-body</vocaburi>
   </rdf:Description>
-  <rdf:Description rdf:about="http://spdx.org/rdf/terms#checksum">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/rights">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">checksum</skos:prefLabel>
-    <skos:definition xml:lang="en">A mechanism that can be used to verify that the contents of a distribution have not changed.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum"&gt;link&lt;/a&gt;</dcterms:references>
-    <skos:note xml:lang="en">The checksum is related to the download URL</skos:note>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/MediaTypeOrExtent">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Media Type Or Extent</skos:prefLabel>
-    <skos:definition xml:lang="en">A media type or dataset distribution.</skos:definition>
-    <vocabname xml:lang="en">EU Vocabularies File Type Named Authority List</vocabname>
-    <vocaburi xml:lang="en">http://publications.europa.eu/resource/authority/file-type</vocaburi>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/prov#Activity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Activity</skos:prefLabel>
-    <skos:definition xml:lang="en">An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#inSeries">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">in Series</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">in series</skos:prefLabel>
-    <skos:definition xml:lang="en">A dataset series of which the dataset is part.</skos:definition>
-    <reuse xml:lang="en">E</reuse>
-    <skos:note xml:lang="en">DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided.</skos:note>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#byteSize">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">byte Size</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">byte size</skos:prefLabel>
-    <skos:definition xml:lang="en">The size of a Distribution in bytes. (dcat:Distribution)</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_size"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/Frequency">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Frequency</skos:prefLabel>
-    <skos:definition xml:lang="en">A rate at which something recurs, e.g. the publication of a Dataset.</skos:definition>
-    <vocabname xml:lang="en">Frequency - EU Vocabularies -Publications Office of the EU</vocabname>
-    <vocabname xml:lang="en">EU Vocabularies Frequency Named Authority List</vocabname>
-    <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/file-type</vocaburi>
-    <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/frequency</vocaburi>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/locn#Geometry">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Geometry</skos:prefLabel>
-    <skos:definition xml:lang="en">The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/isReferencedBy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">is Referenced By</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">is referenced by</skos:prefLabel>
-    <skos:definition xml:lang="en">A related resource, such as a publication, that references, cites, or otherwise points to the dataset. (dcat:Dataset)</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_is_referenced_by"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#accessURL">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">access URL</skos:prefLabel>
-    <skos:definition xml:lang="en">A URL that gives access to a Distribution of the Dataset. (dcat:Distribution)</skos:definition>
-    <skos:note xml:lang="en">The resource at the access URL may contain information about how to get the Dataset. </skos:note>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url"&gt;link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/relation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">relation</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">related resource</skos:prefLabel>
-    <skos:definition xml:lang="en">A related resource. (dcat:Dataset)</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_relation"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/type">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">type</skos:prefLabel>
-    <skos:definition xml:lang="en">A type of the Dataset. A type of licence, e.g. indicating 'public domain' or 'royalties required'.</skos:definition>
+    <skos:prefLabel xml:lang="en">rights</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">access rights</skos:prefLabel>
+    <skos:definition xml:lang="en">Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public. A statement that specifies rights associated with the Distribution.</skos:definition>
     <reuse xml:lang="en">E</reuse>
     <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type"&gt;Link&lt;/a&gt;</dcterms:references>
-    <skos:note xml:lang="en">DCAT-AP-LU extends the recommendations for controlled vocabularies for this property provided by DCAT-AP.</skos:note>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights"&gt;Link&lt;/a&gt;</dcterms:references>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights"&gt;Link&lt;/a&gt;
+</dcterms:references>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/Standard">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Standard</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#temporalResolution">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">temporal Resolution</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">temporal resolution</skos:prefLabel>
-    <skos:definition xml:lang="en">The minimum time period resolvable in the dataset. (dcat:Dataset) The minimum time period resolvable in the dataset distribution. (dcat:Distribution)</skos:definition>
+  <rdf:Description rdf:about="http://www.w3.org/ns/adms#identifierX">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">identifier X</skos:prefLabel>
+    <skos:definition xml:lang="en">A secondary identifier of the Dataset.</skos:definition>
     <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution"&gt;Link&lt;/a&gt;</dcterms:references>
+    <dcterms:references xml:lang="en">&lt;a href ="https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers"&gt;Link&lt;/a&gt;</dcterms:references>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/PeriodOfTime">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">creator</skos:prefLabel>
+    <skos:definition xml:lang="en">An entity responsible for producing the dataset.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/LinguisticSystem">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Period Of Time</skos:prefLabel>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Class:Period_of_Time"&gt;Link&lt;/a&gt;</dcterms:references>
+    <skos:prefLabel xml:lang="en">Linguistic System</skos:prefLabel>
+    <vocabname xml:lang="en">EU Vocabularies Languages Named Authority List</vocabname>
+    <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/language</vocaburi>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/Location">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -204,23 +203,12 @@
     <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/country</vocaburi>
     <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/continent/</vocaburi>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Relationship">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Relationship</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">pref Label</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">preferred label</skos:prefLabel>
-    <skos:note xml:lang="en">This property can be repeated for parallel language versions of the label.</skos:note>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/adms#versionNotes">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">version Notes</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">version notes</skos:prefLabel>
-    <skos:definition xml:lang="en">A description of the differences between this version and a previous version of the Dataset. (dcat:Dataset)</skos:definition>
-    <skos:note xml:lang="en">This property can be repeated for parallel language versions of the version notes.</skos:note>
+  <rdf:Description rdf:about="http://data.europa.eu/r5r/applicablelegislation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">applicablelegislation</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">applicable legislation</skos:prefLabel>
+    <skos:definition xml:lang="en">The legislation that mandates the creation or management of the Dataset. The legislation that mandates the creation or management of the Dataset Series.</skos:definition>
+    <reuse xml:lang="en">E</reuse>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
@@ -234,70 +222,32 @@
     <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/planned-availability</vocaburi>
     <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/distribution-status</vocaburi>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">title</skos:prefLabel>
-    <skos:definition xml:lang="en">A name given to the Dataset (dcat:Dataset) A name given to the Distribution. (dcat:Distribution)</skos:definition>
-    <skos:note xml:lang="en">This property can be repeated for parallel language versions of the name.</skos:note>
-    <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/odrl/2/hasPolicy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">has Policy</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">has policy</skos:prefLabel>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy"&gt;Link&lt;/a&gt;</dcterms:references>
-    <skos:note xml:lang="en">DCAT-AP-LU provides &lt;a href=“https://mindig_lu.gitlab.io/DCAT-AP-LU/#policy_guidance”&gt;additional usage guidance&lt;/a&gt; on the use of this property for expressing data use restrictions.</skos:note>
-    <reuse xml:lang="en">E</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/temporal">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">temporal</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">temporal coverage</skos:prefLabel>
-    <skos:definition xml:lang="en">A temporal period that the Dataset covers.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/source">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">source</skos:prefLabel>
-    <skos:definition xml:lang="en">A related Dataset from which the described Dataset is derived.</skos:definition>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/issued">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:prefLabel xml:lang="en">issued</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">release date</skos:prefLabel>
+    <skos:definition xml:lang="en">The date of formal issuance (e.g., publication) of the Dataset. (dcat:Dataset) The date of formal issuance (e.g., publication) of the Distribution. (dcat:Distribution)</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date"&gt;Link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">license</skos:prefLabel>
-    <skos:definition xml:lang="en">A licence under which the Distribution is made available.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">E</reuse>
-    <skos:note xml:lang="en">Licence object should only come from &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence"&gt;Licence - EU Vocabularies - Publications Office of the EU.&lt;/a&gt;</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Distribution">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/ProvenanceStatement">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Distribution</skos:prefLabel>
-    <skos:definition xml:lang="en">A physical embodiment of the Dataset in a particular format.</skos:definition>
+    <skos:prefLabel xml:lang="en">Provenance Statement</skos:prefLabel>
+    <skos:definition xml:lang="en">A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</skos:definition>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/prov#Attribution">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
-    <skos:definition xml:lang="en">Attribution is the ascribing of an entity to an agent.</skos:definition>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">Temporal Literal</skos:prefLabel>
+    <skos:definition xml:lang="en">rdfs:Literal encoded using the relevant [ISO8601] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime).</skos:definition>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#contactPoint">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#qualifiedRelation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">contact Point</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">contact point</skos:prefLabel>
-    <skos:definition xml:lang="en">Contact information that can be used for sending comments about the Dataset. Contact information that can be used for sending comments about the DatasetSeries.</skos:definition>
+    <skos:prefLabel xml:lang="en">qualified Relation</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">qualified relation</skos:prefLabel>
+    <skos:definition xml:lang="en">A description of a relationship with another resource.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_relation"&gt;link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#landingPage">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">landing Page</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">landing page</skos:prefLabel>
-    <skos:definition xml:lang="en">A web page that provides access to the Dataset, its Distributions and/or additional information.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page"&gt;Link&lt;/a&gt;</dcterms:references>
-    <skos:note xml:lang="en">It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator.</skos:note>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/RightsStatement">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -308,28 +258,42 @@
     <vocaburi xml:lang="en">https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right</vocaburi>
     <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/access-right</vocaburi>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/issued">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#endDate">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <skos:prefLabel xml:lang="en">issued</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">release date</skos:prefLabel>
-    <skos:definition xml:lang="en">The date of formal issuance (e.g., publication) of the Dataset. (dcat:Dataset) The date of formal issuance (e.g., publication) of the Distribution. (dcat:Distribution)</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date"&gt;Link&lt;/a&gt;</dcterms:references>
+    <skos:prefLabel xml:lang="en">end Date</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">end date</skos:prefLabel>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_end_date"&gt;Link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">description</skos:prefLabel>
-    <skos:definition xml:lang="en">A free-text account of the Dataset. (dcat:Dataset) A free-text account of the Distribution. (dcat:Distribution)</skos:definition>
-    <skos:note xml:lang="en">This property can be repeated for parallel language versions of the description.</skos:note>
-    <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description"&gt;link&lt;/a&gt;</dcterms:references>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#duration">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">duration</skos:prefLabel>
+    <skos:definition xml:lang="en">Duration represents a duration of time. The &amp;#183;value space&amp;#183; of duration is a six-dimensional space where the coordinates designate the Gregorian year, month, day, hour, minute, and second components defined in &amp;#167; 5.5.3.2 of [ISO8601], respectively.</skos:definition>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#qualifiedRelation">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/LicenseDocument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">License Document</skos:prefLabel>
+    <skos:definition xml:lang="en">A legal document giving official permission to do something with a resource.</skos:definition>
+    <vocabname xml:lang="en">ADMS licence type vocabulary</vocabname>
+    <vocaburi xml:lang="en">http://purl.org/adms/licencetype/1.0</vocaburi>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">Plain Literal</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#distribution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">qualified Relation</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">qualified relation</skos:prefLabel>
-    <skos:definition xml:lang="en">A description of a relationship with another resource.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_relation"&gt;link&lt;/a&gt;</dcterms:references>
+    <skos:prefLabel xml:lang="en">distribution</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">dataset distribution</skos:prefLabel>
+    <skos:definition xml:lang="en">An available Distribution for the Dataset.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#keyword">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">keyword</skos:prefLabel>
+    <skos:definition xml:lang="en">A keyword or tag describing the Dataset. (dcat:Dataset)</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page"&gt;Link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/conformsTo">
@@ -342,188 +306,20 @@
     <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_conforms_to"&gt;Link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/prov#qualifiedAttribution">
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">Resource</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/source">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">qualified Attribution</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">qualified attribution</skos:prefLabel>
-    <skos:definition xml:lang="en">An Agent having some form of responsibility for the resource.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_attribution"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/publisher">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">publisher</skos:prefLabel>
-    <skos:definition xml:lang="en">An entity (organisation) responsible for making the Dataset available. An entity (organisation) responsible for making the Dataset available. Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers</skos:definition>
-    <skos:note xml:lang="en">DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.</skos:note>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">E</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2006/time#hasBeginning">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">has Beginning</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">beginning</skos:prefLabel>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/adms#status">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">status</skos:prefLabel>
-    <skos:definition xml:lang="en">The status of the distribution in the context of maturity lifecycle.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <skos:note xml:lang="en">It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn.</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#keyword">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">keyword</skos:prefLabel>
-    <skos:definition xml:lang="en">A keyword or tag describing the Dataset. (dcat:Dataset)</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page"&gt;Link&lt;/a&gt;</dcterms:references>
+    <skos:prefLabel xml:lang="en">source</skos:prefLabel>
+    <skos:definition xml:lang="en">A related Dataset from which the described Dataset is derived.</skos:definition>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/r5r/availability">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <skos:prefLabel xml:lang="en">availability</skos:prefLabel>
     <skos:definition xml:lang="en">An indication how long it is planned to keep the Distribution of the Dataset available.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/adms#sample">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">sample</skos:prefLabel>
-    <skos:definition xml:lang="en">A sample distribution of the dataset.</skos:definition>
-    <reuse xml:lang="en">E</reuse>
-    <skos:note xml:lang="en">DCAT-AP-LU provides additional usage guidance for the use of this property in providing data dictionaries as part of dataset descriptions.
-</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#endDate">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <skos:prefLabel xml:lang="en">end Date</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">end date</skos:prefLabel>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_end_date"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#spatialResolutionInMeters">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">spatial Resolution In Meters</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">spatial resolution</skos:prefLabel>
-    <skos:definition xml:lang="en">The minimum spatial separation resolvable in a dataset, measured in metres. (dcat:Dataset) The minimum spatial separation resolvable in a dataset distribution, measured in meters. (dcat:Distribution)</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/accrualPeriodicity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">accrual Periodicity</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">frequency</skos:prefLabel>
-    <skos:definition xml:lang="en">The frequency at which the Dataset is updated.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency"&gt;Link&lt;/a&gt;</dcterms:references>
-    <skos:note xml:lang="en">Use "irreg" rathe than "unknown" if there is no set frequency but updates will definitely occur.</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://spdx.org/rdf/terms#Checksum">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Checksum</skos:prefLabel>
-    <skos:definition xml:lang="en">A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/MediaType">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Media Type</skos:prefLabel>
-    <skos:definition xml:lang="en">A file format or physical medium.</skos:definition>
-    <vocabname xml:lang="en">IANA Media Types</vocabname>
-    <vocabname xml:lang="en">File type - EU Vocabularies - Publications Office of the EU.</vocabname>
-    <vocaburi xml:lang="en">https://www.iana.org/assignments/media-types/media-types.xhtml</vocaburi>
-    <vocaburi xml:lang="en">https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type</vocaburi>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">creator</skos:prefLabel>
-    <skos:definition xml:lang="en">An entity responsible for producing the dataset.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#mediaType">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">media Type</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">media type</skos:prefLabel>
-    <reuse xml:lang="en">E</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type"&gt;Link&lt;/a&gt;</dcterms:references>
-    <skos:note xml:lang="en">DCAT-AP-LU provides additional usage guidance for this property.</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/odrl/2/Policy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Policy</skos:prefLabel>
-    <skos:definition xml:lang="en">A non-empty group of Permissions and/or Prohibitions.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#startDate">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <skos:prefLabel xml:lang="en">start Date</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">start date</skos:prefLabel>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_start_date"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#accessService">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">access Service</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">access service</skos:prefLabel>
-    <skos:definition xml:lang="en">A data service that gives access to the distribution of the dataset.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_service"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#hasVersion">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">has Version</skos:prefLabel>
-    <skos:definition xml:lang="en">A related Dataset that is a version, edition, or adaptation of the described Dataset.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/dpv#Data">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Data</skos:prefLabel>
-    <skos:definition xml:lang="en">A broad concept representing 'data' or 'information'.</skos:definition>
-    <vocabname xml:lang="en">Data</vocabname>
-    <vocaburi xml:lang="en">https://w3c.github.io/dpv/2.2/dpv/#Data</vocaburi>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#record">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">record</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/provenance">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">provenance</skos:prefLabel>
-    <skos:definition xml:lang="en">A statement about the lineage of a Dataset.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">E</reuse>
-    <skos:note xml:lang="en">DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details.</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/page">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">page</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">documentation</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">documentation Document</skos:prefLabel>
-    <skos:definition xml:lang="en">A page or document about this Dataset. A page or document about this Distribution.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/rights">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">rights</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">access rights</skos:prefLabel>
-    <skos:definition xml:lang="en">Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public. A statement that specifies rights associated with the Distribution.</skos:definition>
-    <skos:note xml:lang="en">DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details.</skos:note>
-    <reuse xml:lang="en">E</reuse>
-    <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights"&gt;Link&lt;/a&gt;</dcterms:references>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights"&gt;Link&lt;/a&gt;
-</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/adms#identifierX">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">identifier X</skos:prefLabel>
-    <skos:definition xml:lang="en">A secondary identifier of the Dataset.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <skos:note xml:lang="en">Examples are MAST/ADS [MASTADS], DOI [DOI], EZID [EZID] or W3ID [W3ID].</skos:note>
-    <skos:note xml:lang="en">other identifier</skos:note>
-    <dcterms:references xml:lang="en">&lt;a href ="https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/spatial">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">spatial</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">geographical coverage</skos:prefLabel>
-    <skos:definition xml:lang="en">A geographic region that is covered by the Dataset. A geographic region that is covered by the Dataset Series</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial"&gt;Link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasGeneratedBy">
@@ -534,124 +330,126 @@
     <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_was_generated_by"&gt;Link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/LicenseDocument">
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Resource">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">License Document</skos:prefLabel>
-    <skos:definition xml:lang="en">A legal document giving official permission to do something with a resource.</skos:definition>
-    <vocabname xml:lang="en">ADMS licence type vocabulary</vocabname>
-    <vocaburi xml:lang="en">http://purl.org/adms/licencetype/1.0</vocaburi>
+    <skos:prefLabel xml:lang="en">Resource</skos:prefLabel>
+    <skos:definition xml:lang="en">Resource published or curated by a single agent.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">string</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/language">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">language</skos:prefLabel>
+    <skos:definition xml:lang="en">A language of the Dataset. A language used in the Distribution.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#hasVersion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">has Version</skos:prefLabel>
+    <skos:definition xml:lang="en">A related Dataset that is a version, edition, or adaptation of the described Dataset.</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/dpv#hasData">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <skos:prefLabel xml:lang="en">has Data</skos:prefLabel>
     <skos:prefLabel xml:lang="en">data protection type</skos:prefLabel>
     <skos:definition xml:lang="en">The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset. Usage:A list of accepted types, based on the Data Privacy Vocabulary.</skos:definition>
-    <skos:note xml:lang="en">A list of accepted types, based on the Data Privacy Vocabulary, is defined in 10. Controlled Vocabularies. For additional usage guidance, refer to section 11.</skos:note>
     <reuse xml:lang="en">P</reuse>
     <dcterms:references xml:lang="en">&lt;a href="https://w3c.github.io/dpv/2.2/dpv/#hasData"&gt;link&lt;/a&gt;</dcterms:references>
   </rdf:Description>
-  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Document</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#distribution">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/temporal">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">distribution</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">dataset distribution</skos:prefLabel>
-    <skos:definition xml:lang="en">An available Distribution for the Dataset.</skos:definition>
+    <skos:prefLabel xml:lang="en">temporal</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">temporal coverage</skos:prefLabel>
+    <skos:definition xml:lang="en">A temporal period that the Dataset covers.</skos:definition>
     <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/format">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">format</skos:prefLabel>
-    <skos:definition xml:lang="en">The file format of the Distribution.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_format"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/r5r/applicablelegislation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">applicablelegislation</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">applicable legislation</skos:prefLabel>
-    <skos:definition xml:lang="en">The legislation that mandates the creation or management of the Dataset. The legislation that mandates the creation or management of the Dataset Series.</skos:definition>
-    <reuse xml:lang="en">E</reuse>
-    <reuse xml:lang="en">A</reuse>
-    <skos:note xml:lang="en">DCAT-AP-LU provides additional usage guidance for this property in the DGA context.</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2006/vcard/ns#Kind">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Kind</skos:prefLabel>
-    <skos:definition xml:lang="en">A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.</skos:definition>
-    <skos:note xml:lang="en">Note that the class Kind is the parent class for the four explicit types of vCard (Individual, Organization, Location, Group).</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#CatalogRecord">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Catalog Record</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#theme">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">theme</skos:prefLabel>
-    <skos:definition xml:lang="en">A category of the Dataset.</skos:definition>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">A</reuse>
-    <skos:note xml:lang="en">A Dataset may be associated with multiple themes. Note: the theme is a URI not a URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API.</skos:note>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#packageFormat">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">package Format</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">packaging format</skos:prefLabel>
-    <skos:definition xml:lang="en">The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</skos:definition>
-    <reuse xml:lang="en">A</reuse>
-    <skos:note xml:lang="en">It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</skos:note>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_packaging_format"&gt;Link&lt;/a&gt;</dcterms:references>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/locn#geometry">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">geometry</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/adms#Identifier">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Identifier</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/ProvenanceStatement">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Provenance Statement</skos:prefLabel>
-    <skos:definition xml:lang="en">A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal"&gt;Link&lt;/a&gt;</dcterms:references>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Dataset">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <skos:prefLabel xml:lang="en">Dataset</skos:prefLabel>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/identifier">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">identifier</skos:prefLabel>
-    <skos:definition xml:lang="en">The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue. (dcat:Dataset)</skos:definition>
-    <skos:note xml:lang="en">The use of persistent dereferenceable URIs is mandatory in this profile.</skos:note>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier"&gt;Link&lt;/a&gt;</dcterms:references>
-    <reuse xml:lang="en">E</reuse>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#decimal">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">decimal</skos:prefLabel>
+    <skos:definition xml:lang="en">Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &amp;#215; 10^-n where i and n are integers and n ≥ 0.</skos:definition>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Resource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Resource</skos:prefLabel>
-    <skos:definition xml:lang="en">Resource published or curated by a single agent.</skos:definition>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/LinguisticSystem">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <skos:prefLabel xml:lang="en">Linguistic System</skos:prefLabel>
-    <vocabname xml:lang="en">EU Vocabularies Languages Named Authority List</vocabname>
-    <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/language</vocaburi>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#servesDataset">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/spatial">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">serves Dataset</skos:prefLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#downloadURL">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <skos:prefLabel xml:lang="en">download URL</skos:prefLabel>
-    <skos:definition xml:lang="en">A URL that is a direct link to a downloadable file in a given format. (dcat:Distribution)</skos:definition>
+    <skos:prefLabel xml:lang="en">spatial</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">geographical coverage</skos:prefLabel>
+    <skos:definition xml:lang="en">A geographic region that is covered by the Dataset. A geographic region that is covered by the Dataset Series</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial"&gt;Link&lt;/a&gt;</dcterms:references>
     <reuse xml:lang="en">A</reuse>
-    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url"&gt;link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">pref Label</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">preferred label</skos:prefLabel>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/adms#versionNotes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">version Notes</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">version notes</skos:prefLabel>
+    <skos:definition xml:lang="en">A description of the differences between this version and a previous version of the Dataset. (dcat:Dataset)</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/accrualPeriodicity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">accrual Periodicity</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">frequency</skos:prefLabel>
+    <skos:definition xml:lang="en">The frequency at which the Dataset is updated.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/vcard/ns#Kind">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Kind</skos:prefLabel>
+    <skos:definition xml:lang="en">A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/relation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">relation</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">related resource</skos:prefLabel>
+    <skos:definition xml:lang="en">A related resource. (dcat:Dataset)</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_relation"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#spatialResolutionInMeters">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">spatial Resolution In Meters</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">spatial resolution</skos:prefLabel>
+    <skos:definition xml:lang="en">The minimum spatial separation resolvable in a dataset, measured in metres. (dcat:Dataset) The minimum spatial separation resolvable in a dataset distribution, measured in meters. (dcat:Distribution)</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/adms#Identifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Identifier</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">type</skos:prefLabel>
+    <skos:definition xml:lang="en">A type of the Dataset. A type of licence, e.g. indicating 'public domain' or 'royalties required'.</skos:definition>
+    <reuse xml:lang="en">E</reuse>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">date</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#Activity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Activity</skos:prefLabel>
+    <skos:definition xml:lang="en">An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">primary Topic</skos:prefLabel>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/modified">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -665,12 +463,251 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <skos:prefLabel xml:lang="en">service</skos:prefLabel>
   </rdf:Description>
-  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <skos:prefLabel xml:lang="en">primary Topic</skos:prefLabel>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Distribution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Distribution</skos:prefLabel>
+    <skos:definition xml:lang="en">A physical embodiment of the Dataset in a particular format.</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Catalog">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <skos:prefLabel xml:lang="en">Catalog</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/page">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">page</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">documentation</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">documentation Document</skos:prefLabel>
+    <skos:definition xml:lang="en">A page or document about this Dataset. A page or document about this Distribution.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dpv#Data">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Data</skos:prefLabel>
+    <skos:definition xml:lang="en">A broad concept representing 'data' or 'information'.</skos:definition>
+    <vocabname xml:lang="en">Data</vocabname>
+    <vocaburi xml:lang="en">https://w3c.github.io/dpv/2.2/dpv/#Data</vocaburi>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://spdx.org/rdf/terms#checksum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">checksum</skos:prefLabel>
+    <skos:definition xml:lang="en">A mechanism that can be used to verify that the contents of a distribution have not changed.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum"&gt;link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#hasBeginning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">has Beginning</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">beginning</skos:prefLabel>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/provenance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">provenance</skos:prefLabel>
+    <skos:definition xml:lang="en">A statement about the lineage of a Dataset.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">E</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#hasEnd">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">has End</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">end</skos:prefLabel>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end'&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#accessService">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">access Service</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">access service</skos:prefLabel>
+    <skos:definition xml:lang="en">A data service that gives access to the distribution of the dataset.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_service"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#dateTime">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">date Time</skos:prefLabel>
+    <skos:definition xml:lang="en">Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#theme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">theme</skos:prefLabel>
+    <skos:definition xml:lang="en">A category of the Dataset.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#startDate">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:prefLabel xml:lang="en">start Date</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">start date</skos:prefLabel>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_start_date"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#DatasetSeries">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Dataset Series</skos:prefLabel>
+    <skos:definition xml:lang="en">A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries).</skos:definition>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gYear">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">g Year</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">license</skos:prefLabel>
+    <skos:definition xml:lang="en">A licence under which the Distribution is made available.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">E</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">title</skos:prefLabel>
+    <skos:definition xml:lang="en">A name given to the Dataset (dcat:Dataset) A name given to the Distribution. (dcat:Distribution)</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isReferencedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">is Referenced By</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">is referenced by</skos:prefLabel>
+    <skos:definition xml:lang="en">A related resource, such as a publication, that references, cites, or otherwise points to the dataset. (dcat:Dataset)</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_is_referenced_by"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/adms#status">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">status</skos:prefLabel>
+    <skos:definition xml:lang="en">The status of the distribution in the context of maturity lifecycle.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#geometry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">geometry</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/format">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">format</skos:prefLabel>
+    <skos:definition xml:lang="en">The file format of the Distribution.</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_format"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#compressFormat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">compress Format</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">compression format</skos:prefLabel>
+    <skos:definition xml:lang="en">compressed form, e.g. to reduce the size of the downloadable file.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_compression_format"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#mediaType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">media Type</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">media type</skos:prefLabel>
+    <reuse xml:lang="en">E</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/Frequency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Frequency</skos:prefLabel>
+    <skos:definition xml:lang="en">A rate at which something recurs, e.g. the publication of a Dataset.</skos:definition>
+    <vocabname xml:lang="en">Frequency - EU Vocabularies -Publications Office of the EU</vocabname>
+    <vocabname xml:lang="en">EU Vocabularies Frequency Named Authority List</vocabname>
+    <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/file-type</vocaburi>
+    <vocaburi xml:lang="en">https://publications.europa.eu/resource/authority/frequency</vocaburi>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#contactPoint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">contact Point</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">contact point</skos:prefLabel>
+    <skos:definition xml:lang="en">Contact information that can be used for sending comments about the Dataset. Contact information that can be used for sending comments about the DatasetSeries.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/adms#sample">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">sample</skos:prefLabel>
+    <skos:definition xml:lang="en">A sample distribution of the dataset.</skos:definition>
+    <reuse xml:lang="en">E</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/eli/ontology#LegalResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Legal Resource</skos:prefLabel>
+    <skos:definition xml:lang="en">This class represents the legislation, policy or policies that lie behind the Rules that govern the service.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#Attribution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+    <skos:definition xml:lang="en">Attribution is the ascribing of an entity to an agent.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#record">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">record</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/MediaType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Media Type</skos:prefLabel>
+    <skos:definition xml:lang="en">A file format or physical medium.</skos:definition>
+    <vocabname xml:lang="en">IANA Media Types</vocabname>
+    <vocabname xml:lang="en">File type - EU Vocabularies - Publications Office of the EU.</vocabname>
+    <vocaburi xml:lang="en">https://www.iana.org/assignments/media-types/media-types.xhtml</vocaburi>
+    <vocaburi xml:lang="en">https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type</vocaburi>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/PeriodOfTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Period Of Time</skos:prefLabel>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Class:Period_of_Time"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#isVersionOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">is Version Of</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/identifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">identifier</skos:prefLabel>
+    <skos:definition xml:lang="en">The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue. (dcat:Dataset)</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier"&gt;Link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">E</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#Geometry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Geometry</skos:prefLabel>
+    <skos:definition xml:lang="en">The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#accessURL">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <skos:prefLabel xml:lang="en">access URL</skos:prefLabel>
+    <skos:definition xml:lang="en">A URL that gives access to a Distribution of the Dataset. (dcat:Distribution)</skos:definition>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url"&gt;link&lt;/a&gt;</dcterms:references>
+    <reuse xml:lang="en">A</reuse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#servesDataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">serves Dataset</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/Standard">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Standard</skos:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#qualifiedAttribution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:prefLabel xml:lang="en">qualified Attribution</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">qualified attribution</skos:prefLabel>
+    <skos:definition xml:lang="en">An Agent having some form of responsibility for the resource.</skos:definition>
+    <reuse xml:lang="en">A</reuse>
+    <dcterms:references xml:lang="en">&lt;a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_attribution"&gt;Link&lt;/a&gt;</dcterms:references>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://spdx.org/rdf/terms#Checksum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:prefLabel xml:lang="en">Checksum</skos:prefLabel>
+    <skos:definition xml:lang="en">A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#Literal">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">Literal</skos:prefLabel>
+    <skos:definition xml:lang="en">rdfs:Literal encoded using the relevant [ISO8601] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime).</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#integer">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <skos:prefLabel xml:lang="en">integer</skos:prefLabel>
   </rdf:Description>
 </rdf:RDF>
