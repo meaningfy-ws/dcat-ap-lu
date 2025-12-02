@@ -95,7 +95,7 @@
         "en": ""
       },
       "label": {
-        "en": "Catalog"
+        "en": "Catalogue"
       },
       "name": "dcat:Catalog",
       "parents": [],
@@ -103,7 +103,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "An entity responsible for the creation of the catalogue."
           },
           "domain": [
             {
@@ -112,7 +112,7 @@
             }
           ],
           "label": {
-            "en": "Creator"
+            "en": "creator"
           },
           "name": "dct:creator",
           "range": [
@@ -125,7 +125,11 @@
               "range_uri": "http://xmlns.com/foaf/0.1/Agent"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator\">Link</a>",
+            "skos:prefLabel": "creator"
+          },
           "uri": "http://purl.org/dc/terms/creator",
           "usage": {}
         },
@@ -141,7 +145,7 @@
             }
           ],
           "label": {
-            "en": "License"
+            "en": "licence"
           },
           "name": "dct:license",
           "range": [
@@ -154,14 +158,18 @@
               "range_uri": "http://purl.org/dc/terms/LicenseDocument"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license\">Link</a>",
+            "skos:prefLabel": "licence"
+          },
           "uri": "http://purl.org/dc/terms/license",
           "usage": {}
         },
         {
           "cardinality": "1..1",
           "description": {
-            "en": ""
+            "en": "An entity (organisation) responsible for making the Catalogue available."
           },
           "domain": [
             {
@@ -170,7 +178,7 @@
             }
           ],
           "label": {
-            "en": "Publisher"
+            "en": "publisher"
           },
           "name": "dct:publisher",
           "range": [
@@ -183,14 +191,18 @@
               "range_uri": "http://xmlns.com/foaf/0.1/Agent"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher\">Link</a>",
+            "skos:prefLabel": "publisher"
+          },
           "uri": "http://purl.org/dc/terms/publisher",
           "usage": {}
         },
         {
           "cardinality": "0..*",
           "description": {
-            "en": ""
+            "en": "A Catalogue Record that is part of the Catalogue."
           },
           "domain": [
             {
@@ -199,7 +211,7 @@
             }
           ],
           "label": {
-            "en": "Record"
+            "en": "record"
           },
           "name": "dcat:record",
           "range": [
@@ -212,14 +224,18 @@
               "range_uri": "http://www.w3.org/ns/dcat#CatalogRecord"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record\">Link</a>",
+            "skos:prefLabel": "record"
+          },
           "uri": "http://www.w3.org/ns/dcat#record",
           "usage": {}
         },
         {
           "cardinality": "0..*",
           "description": {
-            "en": ""
+            "en": "A site or end-point (Data Service) that is listed in the Catalogue."
           },
           "domain": [
             {
@@ -228,7 +244,7 @@
             }
           ],
           "label": {
-            "en": "Service"
+            "en": "service"
           },
           "name": "dcat:service",
           "range": [
@@ -241,7 +257,12 @@
               "range_uri": "http://www.w3.org/ns/dcat#DataService"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service\">Link</a>",
+            "skos:note": "As empty Catalogues are usually indications of problems, this property should be combined with the property <a href=\"#Dataset\">dataset</a> to implement an empty Catalogue check.",
+            "skos:prefLabel": "service"
+          },
           "uri": "http://www.w3.org/ns/dcat#service",
           "usage": {}
         }
@@ -249,7 +270,9 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Catalogue"
+      },
       "uri": "http://www.w3.org/ns/dcat#Catalog",
       "usage": {
         "en": ""
@@ -260,7 +283,7 @@
         "en": ""
       },
       "label": {
-        "en": "Catalog record"
+        "en": "Catalogue Record"
       },
       "name": "dcat:CatalogRecord",
       "parents": [],
@@ -268,7 +291,7 @@
         {
           "cardinality": "1..1",
           "description": {
-            "en": ""
+            "en": "A link to the Dataset, Data service or Catalog described in the record."
           },
           "domain": [
             {
@@ -277,7 +300,7 @@
             }
           ],
           "label": {
-            "en": "Primary topic"
+            "en": "primary topic"
           },
           "name": "foaf:primaryTopic",
           "range": [
@@ -290,7 +313,13 @@
               "range_uri": "http://www.w3.org/ns/dcat#Resource"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic\">Link</a>",
+            "skos:note": "A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. ",
+            "skos:prefLabel": "primary topic",
+            "skos:scopeNote": "However it is not the intend with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used."
+          },
           "uri": "http://xmlns.com/foaf/0.1/primaryTopic",
           "usage": {}
         }
@@ -298,7 +327,9 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Catalogue Record"
+      },
       "uri": "http://www.w3.org/ns/dcat#CatalogRecord",
       "usage": {
         "en": ""
@@ -1744,7 +1775,7 @@
             }
           ],
           "label": {
-            "en": "Applicablelegislation"
+            "en": "applicable legislation"
           },
           "name": "dcatap:applicablelegislation",
           "range": [
@@ -1757,7 +1788,10 @@
               "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "skos:prefLabel": "applicable legislation"
+          },
           "uri": "http://data.europa.eu/r5r/applicablelegislation",
           "usage": {}
         },
