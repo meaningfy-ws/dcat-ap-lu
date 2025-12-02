@@ -673,7 +673,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset.Usage:A list of accepted types, based on the Data Privacy Vocabulary"
+            "en": "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset."
           },
           "domain": [
             {
@@ -1174,7 +1174,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A statement about the lineage of a Dataset.DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details."
+            "en": "A statement about the lineage of a Dataset."
           },
           "domain": [
             {
@@ -1208,7 +1208,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "An entity (organisation) responsible for making the Dataset available.Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers."
+            "en": "An entity (organisation) responsible for making the Dataset available."
           },
           "domain": [
             {
@@ -1538,7 +1538,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A category of the Dataset.Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI not URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API."
+            "en": "A category of the Dataset."
           },
           "domain": [
             {
@@ -1606,7 +1606,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "A type of the Dataset.Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this properties provided by DCAT-AP."
+            "en": "A type of the Dataset."
           },
           "domain": [
             {
@@ -1773,7 +1773,7 @@
             }
           ],
           "label": {
-            "en": "Contact point"
+            "en": "contact point"
           },
           "name": "dcat:contactPoint",
           "range": [
@@ -1786,37 +1786,12 @@
               "range_uri": "http://www.w3.org/2006/vcard/ns#Kind"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point\">Link</a>",
+            "skos:prefLabel": "contact point"
+          },
           "uri": "http://www.w3.org/ns/dcat#contactPoint",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "An entity (organisation) responsible for making the Dataset available.Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers."
-          },
-          "domain": [
-            {
-              "name": "dcat:DatasetSeries",
-              "uri": "http://www.w3.org/ns/dcat#DatasetSeries"
-            }
-          ],
-          "label": {
-            "en": "Publisher"
-          },
-          "name": "dct:publisher",
-          "range": [
-            {
-              "range_curie": "foaf:Agent",
-              "range_label": {
-                "en": "Agent"
-              },
-              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
-              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/publisher",
           "usage": {}
         },
         {
@@ -1831,7 +1806,7 @@
             }
           ],
           "label": {
-            "en": "Spatial"
+            "en": "geographical coverage"
           },
           "name": "dct:spatial",
           "range": [
@@ -1844,8 +1819,48 @@
               "range_uri": "http://purl.org/dc/terms/Location"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial\">Link</a>",
+            "skos:note": "When spatial coverage is a dimension in the dataset series then the spatial coverage of each dataset in the collection should be part of the spatial coverage. In that case, an open ended value is recommended,",
+            "skos:prefLabel": "geographical coverage",
+            "skos:scopeNote": "e.g. EU or a broad bounding box covering the expected values."
+          },
           "uri": "http://purl.org/dc/terms/spatial",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An entity (organisation) responsible for making the Dataset available."
+          },
+          "domain": [
+            {
+              "name": "dcat:DatasetSeries",
+              "uri": "http://www.w3.org/ns/dcat#DatasetSeries"
+            }
+          ],
+          "label": {
+            "en": "publisher"
+          },
+          "name": "dct:publisher",
+          "range": [
+            {
+              "range_curie": "foaf:Agent",
+              "range_label": {
+                "en": "Agent"
+              },
+              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher\">Link</a>",
+            "skos:note": "DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.",
+            "skos:prefLabel": "publisher"
+          },
+          "uri": "http://purl.org/dc/terms/publisher",
           "usage": {}
         }
       ],
