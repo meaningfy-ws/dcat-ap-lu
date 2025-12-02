@@ -63,15 +63,16 @@
                 <dd>
                     For this entity, the following properties are defined:
                     {%- for prop in entity['properties'] | sort(attribute='label[language]') %}
-                        <p> The following properties of this profile (denoted as 'E') are reused with additional usage notes or additional restrictions compared to [DCAT-AP-v3.0]:
-                            access rights, applicable legislation, in series, identifier provenance, sample, type
-                            The properties listed below are unique to the DCAT-AP-LU profile (denoted as 'P') and were not earlier defined by any requirements in [DCAT-AP-v3.0]: data protection type</p>
                         {# lower the first letter in case it's uppercase #}
                         {% set propertyLabel = prop.label[language][:1]|lower ~ prop.label[language][1:] %}
                         <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ','') | urlencode | title }}">{{ propertyLabel }}</a>
                         {%- if not loop.last %},{% endif %}
                     {%- endfor %}.
                 </dd>
+                 <p> The following properties of this profile (denoted as 'E') are reused with additional usage notes or additional restrictions compared to [DCAT-AP-v3.0]:
+                            access rights, applicable legislation, in series, identifier provenance, sample, type
+                            The properties listed below are unique to the DCAT-AP-LU profile (denoted as 'P')
+                            and were not earlier defined by any requirements in [DCAT-AP-v3.0]: data protection type</p>
             {% else %}
                 <dd>
                     This specification does not impose any additional requirements to properties for this entity.
