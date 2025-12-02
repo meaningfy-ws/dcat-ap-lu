@@ -43,6 +43,7 @@ core-res:dcat-DataServiceShape a sh:NodeShape ;
     rdfs:label "Data Service" ;
     rdfs:comment "A collection of operations that provides access to one or more datasets or data processing functions." ;
     rdfs:isDefinedBy core-res:core-shape ;
+    sh:property core-res:dcat-DataService-dcat-servesDataset ;
     sh:targetClass dcat:DataService .
 
 core-res:dcat-DatasetSeriesShape a sh:NodeShape ;
@@ -69,7 +70,6 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dcat-keyword,
         core-res:dcat-Dataset-dcat-landingPage,
         core-res:dcat-Dataset-dcat-qualifiedRelation,
-        core-res:dcat-Dataset-dcat-servesDataset,
         core-res:dcat-Dataset-dcat-spatialResolutionInMeters,
         core-res:dcat-Dataset-dcat-temporalResolution,
         core-res:dcat-Dataset-dcat-theme,
@@ -320,6 +320,14 @@ core-res:dcat-CatalogRecord-foaf-primaryTopic a sh:PropertyShape ;
     sh:path foaf:primaryTopic ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://xmlns.com/foaf/0.1/primaryTopic> ?that . ?that <http://xmlns.com/foaf/0.1/primaryTopic> ?this .}" ] .
 
+core-res:dcat-DataService-dcat-servesDataset a sh:PropertyShape ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:class dcat:Dataset ;
+    sh:description "This property refers to a collection of data that this data service can distribute." ;
+    sh:name "Serves dataset" ;
+    sh:path dcat:servesDataset ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#servesDataset> ?that . ?that <http://www.w3.org/ns/dcat#servesDataset> ?this .}" ] .
+
 core-res:dcat-Dataset-adms-identifierX a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class adms:Identifier ;
@@ -404,13 +412,6 @@ core-res:dcat-Dataset-dcat-qualifiedRelation a sh:PropertyShape ;
     sh:name "Qualified relation" ;
     sh:path dcat:qualifiedRelation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#qualifiedRelation> ?that . ?that <http://www.w3.org/ns/dcat#qualifiedRelation> ?this .}" ] .
-
-core-res:dcat-Dataset-dcat-servesDataset a sh:PropertyShape ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:class dcat:DataService ;
-    sh:name "Serves dataset" ;
-    sh:path dcat:servesDataset ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#servesDataset> ?that . ?that <http://www.w3.org/ns/dcat#servesDataset> ?this .}" ] .
 
 core-res:dcat-Dataset-dcat-spatialResolutionInMeters a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
