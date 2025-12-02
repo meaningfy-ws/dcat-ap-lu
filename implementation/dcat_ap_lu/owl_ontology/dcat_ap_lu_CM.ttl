@@ -122,7 +122,7 @@ dcterms:conformsTo a owl:ObjectProperty ;
 
 dcterms:creator a owl:ObjectProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator\">Link</a>"@en ;
-    skos:definition "An entity responsible for producing the dataset."@en ;
+    skos:definition "An entity responsible for the creation of the catalogue. An entity responsible for producing the dataset."@en ;
     skos:prefLabel "creator"@en ;
     :reuse "A"@en .
 
@@ -165,10 +165,13 @@ dcterms:language a owl:ObjectProperty ;
     :reuse "A"@en .
 
 dcterms:license a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Link</a>"@en ;
+    dcterms:references "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Link</a>"@en,
+        "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license\">Link</a>"@en ;
     skos:definition "A licence under which the Distribution is made available."@en ;
-    skos:prefLabel "license"@en ;
-    :reuse "E"@en .
+    skos:prefLabel "licence"@en,
+        "license"@en ;
+    :reuse "A"@en,
+        "E"@en .
 
 dcterms:modified a rdf:Property ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date\">Link</a>"@en ;
@@ -185,7 +188,7 @@ dcterms:provenance a owl:ObjectProperty ;
 
 dcterms:publisher a owl:ObjectProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher\">Link</a>"@en ;
-    skos:definition "An entity (organisation) responsible for making the Dataset available."@en ;
+    skos:definition "An entity (organisation) responsible for making the Catalogue available. An entity (organisation) responsible for making the Dataset available."@en ;
     skos:prefLabel "publisher"@en ;
     :reuse "A"@en,
         "E"@en .
@@ -353,10 +356,12 @@ adms:versionNotes a owl:DatatypeProperty ;
     :reuse "A"@en .
 
 dcat:Catalog a owl:Class ;
-    skos:prefLabel "Catalog"@en .
+    skos:prefLabel "Catalog"@en,
+        "Catalogue"@en .
 
 dcat:CatalogRecord a owl:Class ;
-    skos:prefLabel "Catalog Record"@en .
+    skos:prefLabel "Catalog Record"@en,
+        "Catalogue Record"@en .
 
 dcat:DataService a owl:Class ;
     rdfs:subClassOf dcat:Resource ;
@@ -483,13 +488,19 @@ dcat:qualifiedRelation a owl:ObjectProperty ;
     :reuse "A"@en .
 
 dcat:record a owl:ObjectProperty ;
-    skos:prefLabel "record"@en .
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record\">Link</a>"@en ;
+    skos:definition "A Catalogue Record that is part of the Catalogue."@en ;
+    skos:prefLabel "record"@en ;
+    :reuse "A"@en .
 
 dcat:servesDataset a owl:ObjectProperty ;
     skos:prefLabel "serves Dataset"@en .
 
 dcat:service a owl:ObjectProperty ;
-    skos:prefLabel "service"@en .
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service\">Link</a>"@en ;
+    skos:definition "A site or end-point (Data Service) that is listed in the Catalogue."@en ;
+    skos:prefLabel "service"@en ;
+    :reuse "A"@en .
 
 dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution\">Link</a>"@en ;
@@ -572,7 +583,11 @@ foaf:page a owl:ObjectProperty ;
     :reuse "A"@en .
 
 foaf:primaryTopic a owl:ObjectProperty ;
-    skos:prefLabel "primary Topic"@en .
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic\">Link</a>"@en ;
+    skos:definition "A link to the Dataset, Data service or Catalog described in the record."@en ;
+    skos:prefLabel "primary Topic"@en,
+        "primary topic"@en ;
+    :reuse "A"@en .
 
 :TemporalLiteral a rdfs:Datatype ;
     rdfs:isDefinedBy core-res:core ;
