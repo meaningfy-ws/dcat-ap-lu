@@ -106,6 +106,35 @@
       "parents": [],
       "properties": [
         {
+          "cardinality": "1..1",
+          "description": {
+            "en": "An entity (organisation) responsible for making the Catalogue available."
+          },
+          "domain": [
+            {
+              "name": "dcat:Catalog",
+              "uri": "http://www.w3.org/ns/dcat#Catalog"
+            }
+          ],
+          "label": {
+            "en": "Publisher"
+          },
+          "name": "dct:publisher",
+          "range": [
+            {
+              "range_curie": "foaf:Agent",
+              "range_label": {
+                "en": "Agent"
+              },
+              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "tags": {},
+          "uri": "http://purl.org/dc/terms/publisher",
+          "usage": {}
+        },
+        {
           "cardinality": "0..1",
           "description": {
             "en": "An entity responsible for the creation of the catalogue."
@@ -131,8 +160,6 @@
             }
           ],
           "tags": {
-            "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator\">Link</a>",
             "skos:prefLabel": "creator"
           },
           "uri": "http://purl.org/dc/terms/creator",
@@ -164,44 +191,9 @@
             }
           ],
           "tags": {
-            "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license\">Link</a>",
             "skos:prefLabel": "licence"
           },
           "uri": "http://purl.org/dc/terms/license",
-          "usage": {}
-        },
-        {
-          "cardinality": "1..1",
-          "description": {
-            "en": "An entity (organisation) responsible for making the Catalogue available."
-          },
-          "domain": [
-            {
-              "name": "dcat:Catalog",
-              "uri": "http://www.w3.org/ns/dcat#Catalog"
-            }
-          ],
-          "label": {
-            "en": "publisher"
-          },
-          "name": "dct:publisher",
-          "range": [
-            {
-              "range_curie": "foaf:Agent",
-              "range_label": {
-                "en": "Agent"
-              },
-              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
-              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "tags": {
-            "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher\">Link</a>",
-            "skos:prefLabel": "publisher"
-          },
-          "uri": "http://purl.org/dc/terms/publisher",
           "usage": {}
         },
         {
@@ -230,8 +222,6 @@
             }
           ],
           "tags": {
-            "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record\">Link</a>",
             "skos:prefLabel": "record"
           },
           "uri": "http://www.w3.org/ns/dcat#record",
@@ -263,8 +253,6 @@
             }
           ],
           "tags": {
-            "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service\">Link</a>",
             "skos:note": "As empty Catalogues are usually indications of problems, this property should be combined with the property <a href=\"#Dataset\">dataset</a> to implement an empty Catalogue check.",
             "skos:prefLabel": "service"
           },
@@ -319,11 +307,7 @@
             }
           ],
           "tags": {
-            "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic\">Link</a>",
-            "skos:note": "A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. ",
-            "skos:prefLabel": "primary topic",
-            "skos:scopeNote": "However it is not the intend with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used."
+            "skos:prefLabel": "primary topic"
           },
           "uri": "http://xmlns.com/foaf/0.1/primaryTopic",
           "usage": {}
@@ -3070,7 +3054,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The beginning of a period or interval."
           },
           "domain": [
             {
@@ -3103,7 +3087,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The end of a period or interval."
           },
           "domain": [
             {
@@ -3136,7 +3120,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The end of the period."
           },
           "domain": [
             {
@@ -3169,7 +3153,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The start of the period."
           },
           "domain": [
             {
