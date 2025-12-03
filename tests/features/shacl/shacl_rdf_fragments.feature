@@ -87,4 +87,4 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Catalog-dct-creator                         |                              0 |                                3 |
       | dcat-Catalog-dct-license                         |                              0 |                                3 |
       | dcat-Catalog-dct-publisher                       |                              0 |                                3 |
-      | dct-PeriodOfTime-dcat-startDate                  |                              0 |                                2 |
+      | dct-PeriodOfTime-dcat-startDate                  |                              0 |                                1 |
