@@ -138,14 +138,23 @@
                             </td>
                             <td>
                                 {% for range in prop.range %}
+                                    {# Determine the display label - check for skos:prefLabel in matching class #}
+                                    {% set range_label_raw = range['range_label'][language] %}
+                                    {% set display_label = range_label_raw %}
+                                    {# Try to find matching class and use its skos:prefLabel if available #}
+                                    {% for cls in classes %}
+                                        {% if cls.label[language] == range_label_raw and cls.tags and cls.tags['skos:prefLabel'] %}
+                                            {% set display_label = cls.tags['skos:prefLabel'] %}
+                                        {% endif %}
+                                    {% endfor %}
                                     {% if range['range_uri'] == range['range_puri'] %}
-                                        <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
+                                        <a href="#{{ display_label | replace(' ','') |urlencode | title }}"
                                            data-toggle="tooltip"
                                            data-content="{{ range['range_puri'] }}"
-                                           data-placement="right">{{ range['range_label'][language] }}</a>
+                                           data-placement="right">{{ display_label }}</a>
                                     {% else %}
-                                        <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
-                                           data-placement="right">{{ range['range_label'][language] }}</a>
+                                        <a href="#{{ display_label | replace(' ','') |urlencode | title }}"
+                                           data-placement="right">{{ display_label }}</a>
                                     {% endif %}
                                 {% endfor %}
                             </td>
