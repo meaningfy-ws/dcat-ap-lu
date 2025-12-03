@@ -153,13 +153,11 @@ dcterms:language a owl:ObjectProperty ;
     :reuse "A"@en .
 
 dcterms:license a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Link</a>"@en,
-        "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license\">Link</a>"@en ;
+    dcterms:references "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Link</a>"@en ;
     skos:definition "A licence under which the Distribution is made available."@en ;
     skos:prefLabel "licence"@en,
         "license"@en ;
-    :reuse "A"@en,
-        "E"@en .
+    :reuse "E"@en .
 
 dcterms:modified a rdf:Property ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date\">Link</a>"@en ;
@@ -301,12 +299,14 @@ time:Instant a rdfs:Datatype ;
 
 time:hasBeginning a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning\">Link</a>"@en ;
+    skos:definition "The beginning of a period or interval. (dct:PeriodOfTime)"@en ;
     skos:prefLabel "beginning"@en,
         "has Beginning"@en ;
     :reuse "A"@en .
 
 time:hasEnd a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end\">Link</a>"@en ;
+    skos:definition "The end of a period or interval. (dct:PeriodOfTime)"@en ;
     skos:prefLabel "end"@en,
         "has End"@en ;
     :reuse "A"@en .
@@ -421,6 +421,7 @@ dcat:downloadURL a owl:DatatypeProperty ;
 
 dcat:endDate a rdf:Property ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_end_date\">Link</a>"@en ;
+    skos:definition "The end of the period. (dct:PeriodOfTime)"@en ;
     skos:prefLabel "end Date"@en,
         "end date"@en ;
     :reuse "A"@en .
@@ -476,10 +477,8 @@ dcat:qualifiedRelation a owl:ObjectProperty ;
     :reuse "A"@en .
 
 dcat:record a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record\">Link</a>"@en ;
     skos:definition "A Catalogue Record that is part of the Catalogue."@en ;
-    skos:prefLabel "record"@en ;
-    :reuse "A"@en .
+    skos:prefLabel "record"@en .
 
 dcat:servesDataset a owl:ObjectProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_serves_dataset\">Link</a>"@en ;
@@ -489,10 +488,8 @@ dcat:servesDataset a owl:ObjectProperty ;
     :reuse "A"@en .
 
 dcat:service a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service\">Link</a>"@en ;
     skos:definition "A site or end-point (Data Service) that is listed in the Catalogue."@en ;
-    skos:prefLabel "service"@en ;
-    :reuse "A"@en .
+    skos:prefLabel "service"@en .
 
 dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution\">Link</a>"@en ;
@@ -503,6 +500,7 @@ dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
 
 dcat:startDate a rdf:Property ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_start_date\">Link</a>"@en ;
+    skos:definition "The start of the period. (dct:PeriodOfTime)"@en ;
     skos:prefLabel "start Date"@en,
         "start date"@en ;
     :reuse "A"@en .
@@ -575,11 +573,9 @@ foaf:page a owl:ObjectProperty ;
     :reuse "A"@en .
 
 foaf:primaryTopic a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic\">Link</a>"@en ;
     skos:definition "A link to the Dataset, Data service or Catalog described in the record."@en ;
     skos:prefLabel "primary Topic"@en,
-        "primary topic"@en ;
-    :reuse "A"@en .
+        "primary topic"@en .
 
 :TemporalLiteral a rdfs:Datatype ;
     rdfs:isDefinedBy core-res:core ;
@@ -614,7 +610,7 @@ core-res:core a owl:Ontology ;
     dcterms:title "DCAT-AP-LU"@en ;
     vann:preferredNamespacePrefix "dal" ;
     vann:preferredNamespaceUri "https://mindig_lu.gitlab.io/DCAT-AP-LU/#" ;
-    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-02" ;
+    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-03" ;
     rdfs:seeAlso <https://mindig_lu.gitlab.io/DCAT-AP-LU/> ;
     owl:imports dcterms:,
         skos:,
