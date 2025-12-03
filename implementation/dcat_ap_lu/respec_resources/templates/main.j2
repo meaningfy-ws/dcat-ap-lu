@@ -138,19 +138,11 @@
                             </td>
                             <td>
                                 {% for range in prop.range %}
-                                    {# Determine the display label - match class by URI and use skos:prefLabel or class label #}
-                                    {% set range_label_raw = range['range_label'][language] %}
-                                    {% set display_label = range_label_raw %}
-                                    {# Try to find matching class by URI and use its skos:prefLabel or label #}
-                                    {% for cls in classes %}
-                                        {% if cls.uri == range['range_uri'] %}
-                                            {% if cls.tags and cls.tags['skos:prefLabel'] %}
-                                                {% set display_label = cls.tags['skos:prefLabel'] %}
-                                            {% elif cls.label and cls.label[language] %}
-                                                {% set display_label = cls.label[language] %}
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {# Handle edge case: "Catalog record" -> "Catalogue Record" #}
+                                    {% set display_label = range['range_label'][language] %}
+                                    {% if display_label == 'Catalog record' %}
+                                        {% set display_label = 'Catalogue Record' %}
+                                    {% endif %}
                                     {% if range['range_uri'] == range['range_puri'] %}
                                         <a href="#{{ display_label | replace(' ','') |urlencode | title }}"
                                            data-toggle="tooltip"
