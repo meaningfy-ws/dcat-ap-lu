@@ -59,7 +59,7 @@ core-res:dcat-DatasetSeriesShape a sh:NodeShape ;
 core-res:dcat-DatasetShape a sh:NodeShape ;
     rdfs:label "Dataset" ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:property core-res:dcat-Dataset-adms-identifierX,
+    sh:property core-res:dcat-Dataset-adms-identifier,
         core-res:dcat-Dataset-adms-sample,
         core-res:dcat-Dataset-adms-versionNotes,
         core-res:dcat-Dataset-dcat-contactPoint,
@@ -328,13 +328,13 @@ core-res:dcat-DataService-dcat-servesDataset a sh:PropertyShape ;
     sh:path dcat:servesDataset ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#servesDataset> ?that . ?that <http://www.w3.org/ns/dcat#servesDataset> ?this .}" ] .
 
-core-res:dcat-Dataset-adms-identifierX a sh:PropertyShape ;
+core-res:dcat-Dataset-adms-identifier a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class adms:Identifier ;
     sh:description "A secondary identifier of the Dataset." ;
-    sh:name "Identifier X" ;
-    sh:path adms:identifierX ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifierX> ?that . ?that <http://www.w3.org/ns/adms#identifierX> ?this .}" ] .
+    sh:name "Identifier" ;
+    sh:path adms:identifier ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
 
 core-res:dcat-Dataset-adms-sample a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
