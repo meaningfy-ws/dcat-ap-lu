@@ -4,34 +4,24 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-### Supporting required property (publisher)
 ex:publisher1 a foaf:Agent .
 
-#####################################################
-# 1. Too many licenses → violates maxCount = 1
-#####################################################
-
+### 1. Too many licenses (1 violation)
 ex:catalog5 a dcat:Catalog ;
-    dct:publisher ex:publisher1 ;   # ← REQUIRED
+    dct:publisher ex:publisher1 ;
     dct:license ex:licA, ex:licB .
 
 ex:licA a dct:LicenseDocument .
 ex:licB a dct:LicenseDocument .
 
-#####################################################
-# 2. Wrong class → violates sh:class
-#####################################################
-
+### 2. Wrong class (1 violation)
 ex:catalog6 a dcat:Catalog ;
     dct:publisher ex:publisher1 ;
     dct:license ex:notLicense .
 
 ex:notLicense a rdfs:Class .
 
-#####################################################
-# 3. Circular reference → violates SPARQL constraint
-#####################################################
-
-ex:catalog7 a dcat:Catalog ;
+### 3. Circular reference (1 violation ONLY)
+ex:catalog7 a dcat:Catalog, dct:LicenseDocument ;
     dct:publisher ex:publisher1 ;
     dct:license ex:catalog7 .

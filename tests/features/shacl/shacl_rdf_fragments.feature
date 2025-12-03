@@ -53,9 +53,9 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dcat-hasVersion                     |                              2 |                                3 |
       | dcat-Dataset-dct-identifier                      |                              1 |                                2 |
       | dcat-Dataset-dct-isReferencedBy                  |                              2 |                                2 |
-      | dcat-Dataset-dct-issued                          |                              1 |                                3 |
+      | dcat-Dataset-dct-issued                          |                              1 |                                2 |
       | dcat-Dataset-dct-language                        |                              1 |                                3 |
-      | dcat-Dataset-dct-modified                        |                              1 |                                3 |
+      | dcat-Dataset-dct-modified                        |                              1 |                                 2|
       | dcat-Dataset-dct-provenance                      |                              1 |                                4 |
       | dcat-Dataset-dct-publisher                       |                              1 |                                5 |
       | dcat-Dataset-dct-relation                        |                              2 |                                2 |
@@ -66,7 +66,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-type                            |                              1 |                                4 |
       | dcat-Dataset-dpv-hasData                         |                              1 |                                3 |
       | dcat-Dataset-foaf-page                           |                              1 |                                3 |
-      | dcat-Dataset-owl-versionInfo                     |                              1 |                                2 |
+      | dcat-Dataset-dcat-isVersionOf                     |                             1 |                                2 |
       | dcat-Dataset-prov-qualifiedAttribution           |                              1 |                                3 |
       | dcat-Dataset-dcat-qualifiedRelation              |                              1 |                                3 |
       | dcat-Dataset-prov-wasGeneratedBy                 |                              1 |                                4 |

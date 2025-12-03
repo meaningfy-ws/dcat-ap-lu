@@ -8,10 +8,9 @@ ex:dataset-002 a dcat:Dataset ;
     dct:description "Invalid modified values." ;
     dcat:distribution ex:dist2 ;
 
-    # Violation 1: Wrong datatype (plain literal)
+    # Violation 1: Wrong class for dcat:accessURL for distribution below
+    # Violation 2: maxCount violation on dct:modified
     dct:modified "2024-12-31" ;
-
-    # Violation 2: Second value, violating maxCount=1
     dct:modified "2025-01-01T12:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
 
 ex:dist2 a dcat:Distribution ;

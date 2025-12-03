@@ -3,10 +3,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://example.org/> .
 
-# Violations:
-# 1. Two values → violates sh:maxCount = 1
-# 2. One of the values is not a dateTime literal
-
 ex:period-invalid a dct:PeriodOfTime ;
-    dcat:endDate "2024-12-31T00:00:00"^^xsd:dateTime ,   #  Correct
-                 "not-a-date" .                          #  Not a valid xsd:dateTime
+    dcat:endDate "2024-12-31T00:00:00"^^xsd:dateTime ,
+                 "2025-01-01T00:00:00"^^xsd:dateTime .

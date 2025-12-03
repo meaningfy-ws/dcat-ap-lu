@@ -4,21 +4,30 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex: <http://example.org/> .
 
-#  Too many values for maxCount = 1
+ex:publisher1 a foaf:Agent .
+
+################################################
+# 1. Too many creators (maxCount violation)
+################################################
 ex:catalog2 a dcat:Catalog ;
+    dcterms:publisher ex:publisher1 ;       # REQUIRED
     dcterms:creator ex:agent2a, ex:agent2b .
 
-ex:agent2a a foaf:Agent ;
-           foaf:name "Example Creator" .
-ex:agent2b a foaf:Agent ;
-           foaf:name "Example2 Creator" .
+ex:agent2a a foaf:Agent .
+ex:agent2b a foaf:Agent .
 
-##  Wrong class (not a foaf:Agent)
-#ex:catalog3 a dcat:Catalog ;
-#    dcterms:creator ex:wrongClass .
-#
-#ex:wrongClass a rdfs:Class .
+################################################
+# 2. Wrong class (class violation)
+################################################
+ex:catalog3 a dcat:Catalog ;
+    dcterms:publisher ex:publisher1 ;      # REQUIRED
+    dcterms:creator ex:wrongClass .
 
-#  Circular reference and Wrong class
-ex:catalog4 a dcat:Catalog ;
+ex:wrongClass a rdfs:Class .
+
+################################################
+# 3. Circular reference ONLY (SPARQL violation)
+################################################
+ex:catalog4 a dcat:Catalog, foaf:Agent ;   # Add foaf:Agent to avoid class violation
+    dcterms:publisher ex:publisher1 ;
     dcterms:creator ex:catalog4 .
