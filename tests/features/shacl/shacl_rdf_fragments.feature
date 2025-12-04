@@ -45,7 +45,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dcat-temporalResolution             |                              1 |                                3 |
       | dcat-Dataset-dcat-theme                          |                              1 |                                3 |
       | dcat-Dataset-dcatap-applicablelegislation        |                              1 |                                3 |
-      | dcat-Dataset-dct-accessRights                    |                              1 |                                3 |
+      | dcat-Dataset-dct-rights                          |                              1 |                                3 |
       | dcat-Dataset-dct-accrualPeriodicity              |                              1 |                                4 |
       | dcat-Dataset-dct-conformsTo                      |                              1 |                                3 |
       | dcat-Dataset-dct-creator                         |                              1 |                                4 |
@@ -76,7 +76,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-DatasetSeries-dct-spatial                   |                              0 |                                2 |
       | dct-LicenseDocument-dct-type                     |                              0 |                                2 |
       | dct-Location-locn-geometry                       |                              0 |                                3 |
-      | dct-PeriodOfTime-dcat-endDate                    |                              0 |                                2 |
+      | dct-PeriodOfTime-dcat-endDate                    |                              0 |                                1 |
       | dct-PeriodOfTime-time-hasBeginning               |                              0 |                                3 |
       | dct-PeriodOfTime-time-hasEnd                     |                              0 |                                3 |
       | foaf-Agent-dct-type                              |                              0 |                                3 |
