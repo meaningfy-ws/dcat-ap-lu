@@ -17,9 +17,9 @@ ex:catalog3 a dcat:Catalog ;
     dcat:service ex:notAService .     # ❌ wrong class
 
 ############################################################
-# INVALID 2 — Circular reference (violates SPARQL rule)
+# INVALID 2 — Circular reference ONLY (NO class violation)
 ############################################################
 
-ex:catalog4 a dcat:Catalog ;
+ex:catalog4 a dcat:Catalog, dcat:DataService ;   #  prevents class violation
     dcterms:publisher ex:publisher1 ;
-    dcat:service ex:catalog4 .        # ❌ circular reference
+    dcat:service ex:catalog4 .        # ❌ SPARQL circular violation

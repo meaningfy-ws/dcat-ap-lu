@@ -1,25 +1,17 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-##############################################################
-# INVALID 1 — Wrong class (violates sh:class dcat:Dataset)
-##############################################################
+###########################################################
+# INVALID — circular isVersionOf (violates SPARQL only)
+###########################################################
 
-ex:notADataset a rdfs:Class .
+ex:circA a dcat:Dataset ;
+    dct:title "Dataset A" ;
+    dct:identifier "ds-A" ;
+    dcat:isVersionOf ex:circB .
 
-ex:dataset-invalid1 a dcat:Dataset ;
-    dct:title "Invalid wrong class" ;
-    dct:identifier "ds-invalid-1" ;
-    dcat:isVersionOf ex:notADataset .   # ❌ violates class constraint
-
-
-##############################################################
-# INVALID 2 — Circular reference (violates SPARQL constraint)
-##############################################################
-
-ex:dataset-invalid2 a dcat:Dataset ;
-    dct:title "Invalid circular reference" ;
-    dct:identifier "ds-invalid-2" ;
-    dcat:isVersionOf ex:dataset-invalid2 .   # ❌ circular reference
+ex:circB a dcat:Dataset ;
+    dct:title "Dataset B" ;
+    dct:identifier "ds-B" ;
+    dcat:isVersionOf ex:circA .     # ❌ Circular relationship
