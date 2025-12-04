@@ -4,11 +4,13 @@
 @prefix ex:   <http://example.org/> .
 
 ###############################################################
-# INVALID — violates ONLY sh:class dcat:Dataset (1 violation)
+# INVALID — Violates sh:class dcat:Dataset (1 violation only)
 ###############################################################
 
-ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "ds-001" ;
-    dct:title "Invalid isVersionOf" ;
-    dcat:isVersionOf ex:notADataset .   # ❌ wrong class (violation)
+ex:notADataset a rdfs:Class .
 
+ex:dataset-invalid a dcat:Dataset ;
+    dct:title "Invalid wrong class" ;
+    dct:identifier "ds-invalid" ;
+    dct:description "This ensures no other MinCount violations." ;
+    dcat:isVersionOf ex:notADataset .   # ❌ not a dcat:Dataset → exactly 1 violation

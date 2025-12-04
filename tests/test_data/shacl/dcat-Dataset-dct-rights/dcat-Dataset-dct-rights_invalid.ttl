@@ -1,30 +1,26 @@
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ex:     <http://example.org/> .
-@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 
-############################################################
-# INVALID Dataset — dct:rights (exactly 3 violations)
-############################################################
+###############################################################
+# INVALID: dcat-Dataset-dct-rights should produce EXACTLY 3:
+#   1) wrong class
+#   2) maxCount violation
+#   3) SPARQL circular rights
+###############################################################
 
 ex:dataset-invalid a dcat:Dataset ;
     dct:identifier "dataset-002" ;
-    dct:title "Invalid Dataset" ;
-    dcat:distribution ex:dist1 ;
+    dct:title "Dataset with invalid rights"@en ;
+    dct:description "This ensures no missing-description violation."@en ;
+    dct:rights ex:notRights , ex:rightsLoop .
 
-    # Violation 1 — wrong class (not a RightsStatement)
-    dct:rights ex:wrong1 ;
+# 1️⃣ WRONG CLASS → violation 1
+ex:notRights a skos:Concept ;
+    skos:prefLabel "Not a rights statement"@en .
 
-    # Violation 2 — second wrong-class entry → maxCount broken
-    dct:rights ex:wrong2 .
-
-# WRONG CLASS OBJECTS (no Dataset typing!)
-ex:wrong1 a foaf:Agent .
-ex:wrong2 a foaf:Person .
-
-############################################################
-# Violation 3 — accessURL wrong datatype
-############################################################
-
-ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> .
+# 2️⃣ CIRCULAR RIGHTS → SPARQL violation
+ex:rightsLoop a dct:RightsStatement ;
+    skos:prefLabel "Looping rights"@en ;
+    dct:rights ex:dataset-invalid .
