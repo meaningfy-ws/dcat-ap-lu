@@ -1,33 +1,30 @@
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ex:     <http://example.org/> .
-@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 @prefix foaf:   <http://xmlns.com/foaf/0.1/> .
 
 ############################################################
-# INVALID Dataset — dct:accessRights violations
+# INVALID Dataset — dct:rights (exactly 3 violations)
 ############################################################
 
 ex:dataset-invalid a dcat:Dataset ;
     dct:identifier "dataset-002" ;
-    dct:title "Invalid Dataset"@en ;
-    dct:description "A dataset with invalid access rights."@en ;
+    dct:title "Invalid Dataset" ;
     dcat:distribution ex:dist1 ;
 
-    # ❌ Violation 1 — wrong class (must be dct:RightsStatement)
-    dct:accessRights ex:notRights1 ;
+    # Violation 1 — wrong class (not a RightsStatement)
+    dct:rights ex:wrong1 ;
 
-    # ❌ Violation 2 — extra value (maxCount=1), also wrong class
-    dct:accessRights ex:notRights2 .
+    # Violation 2 — second wrong-class entry → maxCount broken
+    dct:rights ex:wrong2 .
 
-# wrong classes
-ex:notRights1 a foaf:Agent .
-ex:notRights2 a dcat:Dataset .
+# WRONG CLASS OBJECTS (no Dataset typing!)
+ex:wrong1 a foaf:Agent .
+ex:wrong2 a foaf:Person .
 
 ############################################################
-# INVALID Distribution — accessURL violates datatype constraint
+# Violation 3 — accessURL wrong datatype
 ############################################################
 
 ex:dist1 a dcat:Distribution ;
     dcat:accessURL <http://example.org/download/dataset-002> .
-# ❌ violates sh:datatype rdfs:Resource (expects literal)
