@@ -1,16 +1,16 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 ###############################################################
-# INVALID — Violates sh:class dcat:Dataset (1 violation only)
+# INVALID — guaranteed 1 violation (wrong class)
 ###############################################################
 
-ex:notADataset a rdfs:Class .
+ex:notDataset a foaf:Person .     # ❌ NOT a dcat:Dataset
 
 ex:dataset-invalid a dcat:Dataset ;
     dct:title "Invalid wrong class" ;
     dct:identifier "ds-invalid" ;
-    dct:description "This ensures no other MinCount violations." ;
-    dcat:isVersionOf ex:notADataset .   # ❌ not a dcat:Dataset → exactly 1 violation
+    dct:description "Minimal valid metadata" ;
+    dcat:isVersionOf ex:notDataset .   # ❌ violates sh:class — 1 violation
