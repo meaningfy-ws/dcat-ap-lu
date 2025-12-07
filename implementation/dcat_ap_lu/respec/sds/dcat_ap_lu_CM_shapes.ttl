@@ -20,6 +20,7 @@
 
 core-res:adms-IdentifierShape a sh:NodeShape ;
     rdfs:label "Identifier" ;
+    rdfs:comment "This is based on the UN/CEFACT Identifier class." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:targetClass adms:Identifier .
 
@@ -32,6 +33,7 @@ core-res:dcat-CatalogRecordShape a sh:NodeShape ;
 
 core-res:dcat-CatalogShape a sh:NodeShape ;
     rdfs:label "Catalog" ;
+    rdfs:comment "A catalogue or repository that hosts the Datasets or Data Services being described." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:property core-res:dcat-Catalog-dcat-record,
         core-res:dcat-Catalog-dcat-service,
@@ -52,7 +54,7 @@ core-res:dcat-DatasetSeriesShape a sh:NodeShape ;
     rdfs:comment "A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries)." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:property core-res:dcat-DatasetSeries-dcat-contactPoint,
-        core-res:dcat-DatasetSeries-dcatap-applicablelegislation,
+        core-res:dcat-DatasetSeries-dcatap-applicableLegislation,
         core-res:dcat-DatasetSeries-dct-publisher,
         core-res:dcat-DatasetSeries-dct-spatial ;
     sh:targetClass dcat:DatasetSeries .
@@ -75,7 +77,7 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dcat-spatialResolutionInMeters,
         core-res:dcat-Dataset-dcat-temporalResolution,
         core-res:dcat-Dataset-dcat-theme,
-        core-res:dcat-Dataset-dcatap-applicablelegislation,
+        core-res:dcat-Dataset-dcatap-applicableLegislation,
         core-res:dcat-Dataset-dct-accrualPeriodicity,
         core-res:dcat-Dataset-dct-conformsTo,
         core-res:dcat-Dataset-dct-creator,
@@ -114,7 +116,7 @@ core-res:dcat-DistributionShape a sh:NodeShape ;
         core-res:dcat-Distribution-dcat-packageFormat,
         core-res:dcat-Distribution-dcat-spatialResolutionInMeters,
         core-res:dcat-Distribution-dcat-temporalResolution,
-        core-res:dcat-Distribution-dcatap-applicablelegislation,
+        core-res:dcat-Distribution-dcatap-applicableLegislation,
         core-res:dcat-Distribution-dcatap-availability,
         core-res:dcat-Distribution-dct-conformsTo,
         core-res:dcat-Distribution-dct-description,
@@ -132,6 +134,7 @@ core-res:dcat-DistributionShape a sh:NodeShape ;
 
 core-res:dcat-RelationshipShape a sh:NodeShape ;
     rdfs:label "Relationship" ;
+    rdfs:comment "An association class for attaching additional information to a relationship between DCAT Resources." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:targetClass dcat:Relationship .
 
@@ -181,6 +184,7 @@ core-res:dct-MediaTypeShape a sh:NodeShape ;
 
 core-res:dct-PeriodOfTimeShape a sh:NodeShape ;
     rdfs:label "Period Of Time" ;
+    rdfs:comment "An interval of time that is named or defined by its start and end dates." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:property core-res:dct-PeriodOfTime-dcat-endDate,
         core-res:dct-PeriodOfTime-dcat-startDate,
@@ -220,12 +224,14 @@ core-res:eli-LegalResourceShape a sh:NodeShape ;
 
 core-res:foaf-AgentShape a sh:NodeShape ;
     rdfs:label "Agent" ;
+    rdfs:comment "Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:property core-res:foaf-Agent-dct-type ;
     sh:targetClass foaf:Agent .
 
 core-res:foaf-DocumentShape a sh:NodeShape ;
     rdfs:label "Document" ;
+    rdfs:comment "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:targetClass foaf:Document .
 
@@ -436,13 +442,13 @@ core-res:dcat-Dataset-dcat-theme a sh:PropertyShape ;
     sh:path dcat:theme ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#theme> ?that . ?that <http://www.w3.org/ns/dcat#theme> ?this .}" ] .
 
-core-res:dcat-Dataset-dcatap-applicablelegislation a sh:PropertyShape ;
+core-res:dcat-Dataset-dcatap-applicableLegislation a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class eli:LegalResource ;
     sh:description "The legislation that mandates the creation or management of the Dataset." ;
-    sh:name "Applicablelegislation" ;
-    sh:path dcatap:applicablelegislation ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicablelegislation> ?that . ?that <http://data.europa.eu/r5r/applicablelegislation> ?this .}" ] .
+    sh:name "Applicable legislation" ;
+    sh:path dcatap:applicableLegislation ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicableLegislation> ?that . ?that <http://data.europa.eu/r5r/applicableLegislation> ?this .}" ] .
 
 core-res:dcat-Dataset-dct-accrualPeriodicity a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -628,13 +634,13 @@ core-res:dcat-DatasetSeries-dcat-contactPoint a sh:PropertyShape ;
     sh:path dcat:contactPoint ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#contactPoint> ?that . ?that <http://www.w3.org/ns/dcat#contactPoint> ?this .}" ] .
 
-core-res:dcat-DatasetSeries-dcatap-applicablelegislation a sh:PropertyShape ;
+core-res:dcat-DatasetSeries-dcatap-applicableLegislation a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class eli:LegalResource ;
     sh:description "The legislation that mandates the creation or management of the Dataset Series." ;
-    sh:name "Applicablelegislation" ;
-    sh:path dcatap:applicablelegislation ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicablelegislation> ?that . ?that <http://data.europa.eu/r5r/applicablelegislation> ?this .}" ] .
+    sh:name "Applicable legislation" ;
+    sh:path dcatap:applicableLegislation ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicableLegislation> ?that . ?that <http://data.europa.eu/r5r/applicableLegislation> ?this .}" ] .
 
 core-res:dcat-DatasetSeries-dct-publisher a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -734,13 +740,13 @@ core-res:dcat-Distribution-dcat-temporalResolution a sh:PropertyShape ;
     sh:name "Temporal resolution" ;
     sh:path dcat:temporalResolution .
 
-core-res:dcat-Distribution-dcatap-applicablelegislation a sh:PropertyShape ;
+core-res:dcat-Distribution-dcatap-applicableLegislation a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class eli:LegalResource ;
     sh:description "The legislation that mandates the creation or management of the Dataset" ;
-    sh:name "Applicablelegislation" ;
-    sh:path dcatap:applicablelegislation ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicablelegislation> ?that . ?that <http://data.europa.eu/r5r/applicablelegislation> ?this .}" ] .
+    sh:name "Applicable legislation" ;
+    sh:path dcatap:applicableLegislation ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/r5r/applicableLegislation> ?that . ?that <http://data.europa.eu/r5r/applicableLegislation> ?this .}" ] .
 
 core-res:dcat-Distribution-dcatap-availability a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -925,7 +931,7 @@ core-res:core-shape a owl:Ontology ;
     dcterms:title "DCAT-AP-LU shapes"@en ;
     vann:preferredNamespacePrefix "dal" ;
     vann:preferredNamespaceUri "https://mindig_lu.gitlab.io/DCAT-AP-LU/#" ;
-    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-06" ;
+    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-07" ;
     rdfs:seeAlso <https://mindig_lu.gitlab.io/DCAT-AP-LU/> ;
     owl:imports dcterms:,
         skos:,
@@ -934,7 +940,7 @@ core-res:core-shape a owl:Ontology ;
         core-res:core,
         core-res:core-restriction ;
     owl:incompatibleWith "" ;
-    owl:priorVersion "https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape-" ;
-    owl:versionIRI core-res:core-shape-1 ;
-    owl:versionInfo "1" .
+    owl:priorVersion "https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape-1.0.0" ;
+    owl:versionIRI core-res:core-shape-1.1.0 ;
+    owl:versionInfo "1.1.0" .
 
