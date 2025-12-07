@@ -23,10 +23,10 @@ eli:LegalResource a owl:Class ;
     skos:definition "This class represents the legislation, policy or policies that lie behind the Rules that govern the service."@en ;
     skos:prefLabel "Legal Resource"@en .
 
-dcatap:applicablelegislation a owl:ObjectProperty ;
+dcatap:applicableLegislation a owl:ObjectProperty ;
     skos:definition "The legislation that mandates the creation or management of the Dataset. The legislation that mandates the creation or management of the Dataset Series."@en ;
-    skos:prefLabel "applicable legislation"@en,
-        "applicablelegislation"@en ;
+    skos:prefLabel "applicable Legislation"@en,
+        "applicable legislation"@en ;
     :reuse "A"@en,
         "E"@en .
 
@@ -76,6 +76,7 @@ dcterms:MediaTypeOrExtent a owl:Class ;
 
 dcterms:PeriodOfTime a owl:Class ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Class:Period_of_Time\">Link</a>"@en ;
+    skos:definition "An interval of time that is named or defined by its start and end dates."@en ;
     skos:prefLabel "Period Of Time"@en,
         "Period of time"@en .
 
@@ -239,57 +240,6 @@ spdx:checksum a owl:ObjectProperty ;
     skos:prefLabel "checksum"@en ;
     :reuse "A"@en .
 
-rdf:PlainLiteral a rdfs:Datatype ;
-    skos:prefLabel "Plain Literal"@en,
-        "rdf:PlainLiteral"@en .
-
-rdfs:Literal a rdfs:Datatype ;
-    skos:definition "A literal value such as a string or integer. Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 4715 [[RFC5646]]."@en ;
-    skos:prefLabel "Literal"@en .
-
-rdfs:Resource a rdfs:Datatype ;
-    skos:prefLabel "Resource"@en .
-
-xsd:date a rdfs:Datatype ;
-    skos:prefLabel "date"@en,
-        "xsd:date"@en .
-
-xsd:dateTime a rdfs:Datatype ;
-    skos:definition "Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property."@en ;
-    skos:prefLabel "date Time"@en,
-        "xsd:dateTime"@en .
-
-xsd:decimal a rdfs:Datatype ;
-    skos:definition "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n ≥ 0."@en ;
-    skos:prefLabel "decimal"@en,
-        "xsd:decimal"@en .
-
-xsd:duration a rdfs:Datatype ;
-    skos:definition "Duration represents a duration of time. The &#183;value space&#183; of duration is a six-dimensional space where the coordinates designate the Gregorian year, month, day, hour, minute, and second components defined in &#167; 5.5.3.2 of [[ISO8601]], respectively."@en ;
-    skos:prefLabel "duration"@en,
-        "xsd:duration"@en .
-
-xsd:gYear a rdfs:Datatype ;
-    skos:prefLabel "g Year"@en,
-        "xsd:gYear"@en .
-
-xsd:gYearMonth a rdfs:Datatype ;
-    skos:prefLabel "g Year Month"@en,
-        "xsd:gYearMonth"@en .
-
-xsd:integer a rdfs:Datatype ;
-    skos:prefLabel "integer"@en,
-        "xsd:nonNegativeInteger"@en .
-
-xsd:nonNegativeInteger a rdfs:Datatype ;
-    skos:definition "Number derived from integer by setting the value of minInclusive to be 0."@en ;
-    skos:prefLabel "non Negative Integer"@en,
-        "xsd:nonNegativeInteger"@en .
-
-xsd:string a rdfs:Datatype ;
-    skos:prefLabel "string"@en,
-        "xsd:string"@en .
-
 skos:Concept a owl:Class ;
     skos:definition "An idea or notion; a unit of thought."@en ;
     skos:prefLabel "Concept"@en ;
@@ -305,11 +255,6 @@ skos:prefLabel a owl:DatatypeProperty ;
     skos:prefLabel "pref Label"@en,
         "preferred label"@en ;
     :reuse "A"@en .
-
-time:Instant a rdfs:Datatype ;
-    skos:definition "A temporal entity with zero extent or duration."@en ;
-    skos:prefLabel "Instant"@en,
-        "Time instant"@en .
 
 time:hasBeginning a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning\">Link</a>"@en ;
@@ -330,6 +275,7 @@ vcard:Kind a owl:Class ;
     skos:prefLabel "Kind"@en .
 
 adms:Identifier a owl:Class ;
+    skos:definition "This is based on the UN/CEFACT Identifier class."@en ;
     skos:prefLabel "Identifier"@en .
 
 adms:identifier a owl:ObjectProperty ;
@@ -365,6 +311,7 @@ adms:versionNotes a owl:DatatypeProperty ;
     :reuse "A"@en .
 
 dcat:Catalog a owl:Class ;
+    skos:definition "A catalogue or repository that hosts the Datasets or Data Services being described."@en ;
     skos:prefLabel "Catalog"@en,
         "Catalogue"@en .
 
@@ -393,6 +340,7 @@ dcat:Distribution a owl:Class ;
     skos:prefLabel "Distribution"@en .
 
 dcat:Relationship a owl:Class ;
+    skos:definition "An association class for attaching additional information to a relationship between DCAT Resources."@en ;
     skos:prefLabel "Relationship"@en .
 
 dcat:accessService a owl:ObjectProperty ;
@@ -578,11 +526,13 @@ prov:wasGeneratedBy a owl:ObjectProperty ;
     :reuse "A"@en .
 
 foaf:Agent a owl:Class ;
+    skos:definition "Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources."@en ;
     skos:prefLabel "Agent"@en ;
     :vocabname "EU Vocabularies Corporate bodies Named Authority List"@en ;
     :vocaburi "https://publications.europa.eu/resource/authority/corporate-body"@en .
 
 foaf:Document a owl:Class ;
+    skos:definition "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset."@en ;
     skos:prefLabel "Document"@en .
 
 foaf:page a owl:ObjectProperty ;
@@ -595,24 +545,6 @@ foaf:page a owl:ObjectProperty ;
 foaf:primaryTopic a owl:ObjectProperty ;
     skos:prefLabel "primary Topic"@en,
         "primary topic"@en .
-
-:TemporalLiteral a rdfs:Datatype ;
-    rdfs:isDefinedBy core-res:core ;
-    skos:definition "rdfs:Literal encoded using the relevant [[ISO8601]] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime)."@en ;
-    skos:prefLabel "Temporal Literal"@en .
-
-<https://w3id.org/dpv#Data> a owl:Class ;
-    skos:definition "A broad concept representing 'data' or 'information'."@en ;
-    skos:prefLabel "Data"@en ;
-    :vocabname "Data"@en ;
-    :vocaburi "https://w3c.github.io/dpv/2.2/dpv/#Data"@en .
-
-<https://w3id.org/dpv#hasData> a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">Link</a>"@en ;
-    skos:definition "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset."@en ;
-    skos:prefLabel "data protection type"@en,
-        "has Data"@en ;
-    :reuse "P"@en .
 
 core-res:core a owl:Ontology ;
     rdfs:label """This artefact provides the definitions for the DCAT-AP-LU.
@@ -629,16 +561,29 @@ core-res:core a owl:Ontology ;
     dcterms:title "DCAT-AP-LU 1.1.0"@en ;
     vann:preferredNamespacePrefix "dal" ;
     vann:preferredNamespaceUri "https://mindig_lu.gitlab.io/DCAT-AP-LU/#" ;
-    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-06" ;
+    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-07" ;
     rdfs:seeAlso <https://mindig_lu.gitlab.io/DCAT-AP-LU/> ;
     owl:imports dcterms:,
         skos:,
         <http://www.w3.org/ns/adms>,
         <https://data.europa.eu/m8g> ;
     owl:incompatibleWith "" ;
-    owl:priorVersion "https://mindig_lu.gitlab.io/DCAT-AP-LU#core-" ;
-    owl:versionIRI core-res:core-1 ;
-    owl:versionInfo "1" .
+    owl:priorVersion "https://mindig_lu.gitlab.io/DCAT-AP-LU#core-1.0.0" ;
+    owl:versionIRI core-res:core-1.1.0 ;
+    owl:versionInfo "1.1.0" .
+
+<https://w3id.org/dpv#Data> a owl:Class ;
+    skos:definition "A broad concept representing 'data' or 'information'."@en ;
+    skos:prefLabel "Data"@en ;
+    :vocabname "Data"@en ;
+    :vocaburi "https://w3c.github.io/dpv/2.2/dpv/#Data"@en .
+
+<https://w3id.org/dpv#hasData> a owl:ObjectProperty ;
+    dcterms:references "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">Link</a>"@en ;
+    skos:definition "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset."@en ;
+    skos:prefLabel "data protection type"@en,
+        "has Data"@en ;
+    :reuse "P"@en .
 
 dcat:Resource a owl:Class ;
     skos:definition "Resource published or curated by a single agent."@en ;
