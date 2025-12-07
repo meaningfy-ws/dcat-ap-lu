@@ -11,16 +11,16 @@ ex:dataset-invalid a dcat:Dataset ;
     dcat:distribution ex:dist1 ;
 
     #  Invalid 1: not a eli:LegalResource
-    dcatap:applicablelegislation ex:NotALegalResource ;
+    dcatap:applicableLegislation ex:NotALegalResource ;
 
     #  Invalid 2: circular reference (dataset links to law, and law links back to dataset)
-    dcatap:applicablelegislation ex:circularLaw .
+    dcatap:applicableLegislation ex:circularLaw .
 
 ex:NotALegalResource a dcat:test ;
     dct:title "Wrong type"@en .
 
 ex:circularLaw a eli:LegalResource ;
-    dcatap:applicablelegislation ex:dataset-invalid ;
+    dcatap:applicableLegislation ex:dataset-invalid ;
     dct:title "Circular Law"@en .
 
 ex:dist1 a dcat:Distribution ;
