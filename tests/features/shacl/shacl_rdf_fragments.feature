@@ -20,7 +20,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
       | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
       | dcat-Distribution-dcat-temporalResolution        |                              1 |                                2 |
-      | dcat-Distribution-dcatap-applicablelegislation   |                              1 |                                4 |
+      | dcat-Distribution-dcatap-applicableLegislation   |                              1 |                                4 |
       | dcat-Distribution-dct-conformsTo                 |                              1 |                                4 |
       | dcat-Distribution-dct-description                |                              1 |                                2 |
       | dcat-Distribution-dct-format                     |                              1 |                                6 |
@@ -44,7 +44,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dcat-spatialResolutionInMeters      |                              1 |                                3 |
       | dcat-Dataset-dcat-temporalResolution             |                              1 |                                3 |
       | dcat-Dataset-dcat-theme                          |                              1 |                                3 |
-      | dcat-Dataset-dcatap-applicablelegislation        |                              1 |                                3 |
+      | dcat-Dataset-dcatap-applicableLegislation        |                              1 |                                3 |
       | dcat-Dataset-dct-rights                          |                              1 |                                3 |
       | dcat-Dataset-dct-accrualPeriodicity              |                              1 |                                4 |
       | dcat-Dataset-dct-conformsTo                      |                              1 |                                3 |
@@ -71,7 +71,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dcat-qualifiedRelation              |                              1 |                                3 |
       | dcat-Dataset-prov-wasGeneratedBy                 |                              1 |                                4 |
       | dcat-DatasetSeries-dcat-contactPoint             |                              0 |                                2 |
-      | dcat-DatasetSeries-dcatap-applicablelegislation  |                              0 |                                2 |
+      | dcat-DatasetSeries-dcatap-applicableLegislation  |                              0 |                                2 |
       | dcat-DatasetSeries-dct-publisher                 |                              0 |                                2 |
       | dcat-DatasetSeries-dct-spatial                   |                              0 |                                2 |
       | dct-LicenseDocument-dct-type                     |                              0 |                                2 |
