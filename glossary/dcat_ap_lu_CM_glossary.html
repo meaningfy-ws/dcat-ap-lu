@@ -6,6 +6,9 @@
       <meta name="description" content="Model glossary">
       <meta name="author" content="Publications Office of the European Union">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <link rel="stylesheet" href="static/css/pubcss-acm-sig.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.css">
@@ -452,17 +455,19 @@
                      </tr>
                      <tr>
                         <td>dcat:record</td>
-                        <td></td>
+                        <td>A Catalogue Record that is part of the Catalogue.A Catalogue Record that is part of
+                           the Catalogue.</td>
                         <td>dcat:Catalog -&gt; dcat:CatalogRecord [0..*]</td>
                      </tr>
                      <tr>
                         <td>dcat:servesDataset</td>
-                        <td></td>
+                        <td>This property refers to a collection of data that this data service can distribute.</td>
                         <td>dcat:DataService -&gt; dcat:Dataset []</td>
                      </tr>
                      <tr>
                         <td>dcat:service</td>
-                        <td></td>
+                        <td>A site or end-point (Data Service) that is listed in the Catalogue.A site or end-point
+                           (Data Service) that is listed in the Catalogue.</td>
                         <td>dcat:Catalog -&gt; dcat:DataService [0..*]</td>
                      </tr>
                      <tr>
@@ -508,7 +513,8 @@
                      </tr>
                      <tr>
                         <td>dct:creator</td>
-                        <td> An entity responsible for producing the dataset.An entity responsible for producing
+                        <td>An entity responsible for the creation of the catalogue.An entity responsible for
+                           the creation of the catalogue. An entity responsible for producing the dataset.An entity responsible for producing
                            the dataset.</td>
                         <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..*]<br></td>
                      </tr>
@@ -526,7 +532,7 @@
                      </tr>
                      <tr>
                         <td>dct:license</td>
-                        <td> A licence under which the Distribution is made available.A licence under which the
+                        <td>A licence under which the Catalogue can be used or reused. A licence under which the Distribution is made available.A licence under which the
                            Distribution is made available.</td>
                         <td>dcat:Catalog -&gt; dct:LicenseDocument [0..1]<br>dcat:Distribution -&gt; dct:LicenseDocument [0..1]<br></td>
                      </tr>
@@ -538,12 +544,12 @@
                      </tr>
                      <tr>
                         <td>dct:publisher</td>
-                        <td> An entity (organisation) responsible for making the Dataset available.An entity (organisation)
+                        <td>An entity (organisation) responsible for making the Dataset available.An entity (organisation)
                            responsible for making the Dataset available.
                             An entity (organisation) responsible for making the Dataset available.
                            An entity (organisation) responsible for making the Dataset available.
                            </td>
-                        <td>dcat:Catalog -&gt; foaf:Agent [1..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
+                        <td>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>dct:rights</td>
@@ -600,7 +606,8 @@
                      </tr>
                      <tr>
                         <td>foaf:primaryTopic</td>
-                        <td></td>
+                        <td>A link to the Dataset, Data service or Catalog described in the record.A link to the
+                           Dataset, Data service or Catalog described in the record.</td>
                         <td>dcat:CatalogRecord -&gt; dcat:Resource [1..1]</td>
                      </tr>
                      <tr>
@@ -629,6 +636,12 @@
                         <td>dcat:Dataset -&gt; prov:Activity [0..*]</td>
                      </tr>
                      <tr>
+                        <td>sko</td>
+                        <td>An entity (organisation) responsible for making the Catalogue available.An entity
+                           (organisation) responsible for making the Catalogue available.</td>
+                        <td>dcat:Catalog -&gt; foaf:Agent [1..1]</td>
+                     </tr>
+                     <tr>
                         <td>spdx:checksum</td>
                         <td>A mechanism that can be used to verify that the contents of a distribution have not
                            changed.A mechanism that can be used to verify that the contents of a distribution
@@ -644,7 +657,7 @@
       </main>
       <footer class="text-center mt-5 py-4 border-top">
          <p class="mb-2"> This document is generated automatically by the <a href="https://github.com/costezki/model2owl" target="_blank" class="text-decoration-none">model2owl tool</a>
-            developed in the context of <a href="https://joinup.ec.europa.eu/solution/eprocurement-ontology" class="text-decoration-none">the
+            developed in the context of <a href="https://interoperable-europe.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology">the
                eProcurement Ontology initiative</a>.</p>
          <p class="mb-2">The template of this report is based on the <a href="https://github.com/thomaspark/pubcss" class="text-decoration-none">PubCSS library</a>.</p>
          <p class="mb-0 text-muted">© Ministère de la Digitalisation and Luxembourg National Data Service, 2025</p>
