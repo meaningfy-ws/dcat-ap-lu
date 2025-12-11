@@ -13,7 +13,9 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Activity"
+      },
       "uri": "http://www.w3.org/ns/prov#Activity",
       "usage": {
         "en": "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities."
@@ -21,7 +23,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources."
       },
       "label": {
         "en": "Agent"
@@ -64,11 +66,12 @@
       },
       "tags": {
         "dal:vocabname": "EU Vocabularies Corporate bodies Named Authority List",
-        "dal:vocaburi": "https://publications.europa.eu/resource/authority/corporate-body"
+        "dal:vocaburi": "https://publications.europa.eu/resource/authority/corporate-body",
+        "skos:prefLabel": "Agent"
       },
       "uri": "http://xmlns.com/foaf/0.1/Agent",
       "usage": {
-        "en": ""
+        "en": "Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources."
       }
     },
     {
@@ -84,7 +87,9 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Attribution"
+      },
       "uri": "http://www.w3.org/ns/prov#Attribution",
       "usage": {
         "en": "Attribution is the ascribing of an entity to an agent."
@@ -92,72 +97,14 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "A catalogue or repository that hosts the Datasets or Data Services being described."
       },
       "label": {
-        "en": "Catalog"
+        "en": "Catalogue"
       },
       "name": "dcat:Catalog",
       "parents": [],
       "properties": [
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": ""
-          },
-          "domain": [
-            {
-              "name": "dcat:Catalog",
-              "uri": "http://www.w3.org/ns/dcat#Catalog"
-            }
-          ],
-          "label": {
-            "en": "Creator"
-          },
-          "name": "dct:creator",
-          "range": [
-            {
-              "range_curie": "foaf:Agent",
-              "range_label": {
-                "en": "Agent"
-              },
-              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
-              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/creator",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": ""
-          },
-          "domain": [
-            {
-              "name": "dcat:Catalog",
-              "uri": "http://www.w3.org/ns/dcat#Catalog"
-            }
-          ],
-          "label": {
-            "en": "License"
-          },
-          "name": "dct:license",
-          "range": [
-            {
-              "range_curie": "dct:LicenseDocument",
-              "range_label": {
-                "en": "License document"
-              },
-              "range_puri": "http://purl.org/dc/terms/LicenseDocument",
-              "range_uri": "http://purl.org/dc/terms/LicenseDocument"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/license",
-          "usage": {}
-        },
         {
           "cardinality": "1..1",
           "description": {
@@ -188,6 +135,68 @@
           "usage": {}
         },
         {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "dcat:Catalog",
+              "uri": "http://www.w3.org/ns/dcat#Catalog"
+            }
+          ],
+          "label": {
+            "en": "creator"
+          },
+          "name": "dct:creator",
+          "range": [
+            {
+              "range_curie": "foaf:Agent",
+              "range_label": {
+                "en": "Agent"
+              },
+              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "tags": {
+            "skos:prefLabel": "creator"
+          },
+          "uri": "http://purl.org/dc/terms/creator",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "dcat:Catalog",
+              "uri": "http://www.w3.org/ns/dcat#Catalog"
+            }
+          ],
+          "label": {
+            "en": "licence"
+          },
+          "name": "dct:license",
+          "range": [
+            {
+              "range_curie": "dct:LicenseDocument",
+              "range_label": {
+                "en": "License Document"
+              },
+              "range_puri": "http://purl.org/dc/terms/LicenseDocument",
+              "range_uri": "http://purl.org/dc/terms/LicenseDocument"
+            }
+          ],
+          "tags": {
+            "skos:prefLabel": "licence"
+          },
+          "uri": "http://purl.org/dc/terms/license",
+          "usage": {}
+        },
+        {
           "cardinality": "0..*",
           "description": {
             "en": ""
@@ -199,20 +208,22 @@
             }
           ],
           "label": {
-            "en": "Record"
+            "en": "record"
           },
           "name": "dcat:record",
           "range": [
             {
               "range_curie": "dcat:CatalogRecord",
               "range_label": {
-                "en": "Catalog record"
+                "en": "Catalogue Record"
               },
               "range_puri": "http://www.w3.org/ns/dcat#CatalogRecord",
               "range_uri": "http://www.w3.org/ns/dcat#CatalogRecord"
             }
           ],
-          "tags": {},
+          "tags": {
+            "skos:prefLabel": "record"
+          },
           "uri": "http://www.w3.org/ns/dcat#record",
           "usage": {}
         },
@@ -228,20 +239,22 @@
             }
           ],
           "label": {
-            "en": "Service"
+            "en": "service"
           },
           "name": "dcat:service",
           "range": [
             {
               "range_curie": "dcat:DataService",
               "range_label": {
-                "en": "Data service"
+                "en": "Data Service"
               },
               "range_puri": "http://www.w3.org/ns/dcat#DataService",
               "range_uri": "http://www.w3.org/ns/dcat#DataService"
             }
           ],
-          "tags": {},
+          "tags": {
+            "skos:prefLabel": "service"
+          },
           "uri": "http://www.w3.org/ns/dcat#service",
           "usage": {}
         }
@@ -249,18 +262,20 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Catalogue"
+      },
       "uri": "http://www.w3.org/ns/dcat#Catalog",
       "usage": {
-        "en": ""
+        "en": "A catalogue or repository that hosts the Datasets or Data Services being described."
       }
     },
     {
       "description": {
-        "en": ""
+        "en": "A description of a Catalogued Resource's entry in the Catalogue."
       },
       "label": {
-        "en": "Catalog record"
+        "en": "Catalogue Record"
       },
       "name": "dcat:CatalogRecord",
       "parents": [],
@@ -277,7 +292,7 @@
             }
           ],
           "label": {
-            "en": "Primary topic"
+            "en": "primary topic"
           },
           "name": "foaf:primaryTopic",
           "range": [
@@ -290,7 +305,9 @@
               "range_uri": "http://www.w3.org/ns/dcat#Resource"
             }
           ],
-          "tags": {},
+          "tags": {
+            "skos:prefLabel": "primary topic"
+          },
           "uri": "http://xmlns.com/foaf/0.1/primaryTopic",
           "usage": {}
         }
@@ -298,10 +315,12 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Catalogue Record"
+      },
       "uri": "http://www.w3.org/ns/dcat#CatalogRecord",
       "usage": {
-        "en": ""
+        "en": "A description of a Catalogued Resource's entry in the Catalogue."
       }
     },
     {
@@ -317,7 +336,9 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Checksum"
+      },
       "uri": "http://spdx.org/rdf/terms#Checksum",
       "usage": {
         "en": "A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented."
@@ -325,7 +346,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "An idea or notion; a unit of thought."
       },
       "label": {
         "en": "Concept"
@@ -372,11 +393,12 @@
       },
       "tags": {
         "dal:vocabname": "Data theme - EU Vocabularies - Publications Office of the EU",
-        "dal:vocaburi": "https://publications.europa.eu/resource/authority/data-theme"
+        "dal:vocaburi": "https://publications.europa.eu/resource/authority/data-theme",
+        "skos:prefLabel": "Concept"
       },
       "uri": "http://www.w3.org/2004/02/skos/core#Concept",
       "usage": {
-        "en": ""
+        "en": "An idea or notion; a unit of thought."
       }
     },
     {
@@ -394,7 +416,8 @@
       },
       "tags": {
         "dal:vocabname": "Data",
-        "dal:vocaburi": "https://w3c.github.io/dpv/2.2/dpv/#Data"
+        "dal:vocaburi": "https://w3c.github.io/dpv/2.2/dpv/#Data",
+        "skos:prefLabel": "Data"
       },
       "uri": "https://w3id.org/dpv#Data",
       "usage": {
@@ -406,7 +429,7 @@
         "en": "A collection of operations that provides access to one or more datasets or data processing functions."
       },
       "label": {
-        "en": "Data service"
+        "en": "Data Service"
       },
       "name": "dcat:DataService",
       "parents": [
@@ -418,11 +441,45 @@
           "scoped_uri": "http://www.w3.org/ns/dcat#Resource"
         }
       ],
-      "properties": [],
+      "properties": [
+        {
+          "cardinality": "",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "label": {
+            "en": "serves dataset"
+          },
+          "name": "dcat:servesDataset",
+          "range": [
+            {
+              "range_curie": "dcat:Dataset",
+              "range_label": {
+                "en": "Dataset"
+              },
+              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
+              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "tags": {
+            "skos:prefLabel": "serves dataset"
+          },
+          "uri": "http://www.w3.org/ns/dcat#servesDataset",
+          "usage": {}
+        }
+      ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Data Service"
+      },
       "uri": "http://www.w3.org/ns/dcat#DataService",
       "usage": {
         "en": "A collection of operations that provides access to one or more datasets or data processing functions."
@@ -430,7 +487,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "A conceptual entity that represents the information published."
       },
       "label": {
         "en": "Dataset"
@@ -449,7 +506,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A related Dataset that is a version, edition, or adaptation of the described Dataset."
+            "en": ""
           },
           "domain": [
             {
@@ -458,9 +515,9 @@
             }
           ],
           "label": {
-            "en": "Has version"
+            "en": "Is version of"
           },
-          "name": "dcat:hasVersion",
+          "name": "dcat:isVersionOf",
           "range": [
             {
               "range_curie": "dcat:Dataset",
@@ -471,70 +528,11 @@
               "range_uri": "http://www.w3.org/ns/dcat#Dataset"
             }
           ],
-          "tags": {},
-          "uri": "http://www.w3.org/ns/dcat#hasVersion",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "A secondary identifier of the Dataset."
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Identifier X"
-          },
-          "name": "adms:identifierX",
-          "range": [
-            {
-              "range_curie": "adms:Identifier",
-              "range_label": {
-                "en": "Identifier"
-              },
-              "range_puri": "http://www.w3.org/ns/adms#Identifier",
-              "range_uri": "http://www.w3.org/ns/adms#Identifier"
-            }
-          ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href =\"https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers\">Link</a>",
-            "skos:note": "Examples are MAST/ADS [MASTADS], DOI [DOI], EZID [EZID] or W3ID [W3ID]."
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_is_version_of\">Link</a>"
           },
-          "uri": "http://www.w3.org/ns/adms#identifierX",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": ""
-          },
-          "domain": [
-            {
-              "name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "label": {
-            "en": "Serves dataset"
-          },
-          "name": "dcat:servesDataset",
-          "range": [
-            {
-              "range_curie": "dcat:DataService",
-              "range_label": {
-                "en": "Data service"
-              },
-              "range_puri": "http://www.w3.org/ns/dcat#DataService",
-              "range_uri": "http://www.w3.org/ns/dcat#DataService"
-            }
-          ],
-          "tags": {},
-          "uri": "http://www.w3.org/ns/dcat#servesDataset",
+          "uri": "http://www.w3.org/ns/dcat#isVersionOf",
           "usage": {}
         },
         {
@@ -556,16 +554,16 @@
             {
               "range_curie": "dct:RightsStatement",
               "range_label": {
-                "en": "Rights statement"
+                "en": "Rights Statement"
               },
               "range_puri": "http://purl.org/dc/terms/RightsStatement",
               "range_uri": "http://purl.org/dc/terms/RightsStatement"
             }
           ],
           "tags": {
-            "dal:reuse": "E",
+            "dal:reuse": "A",
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">Link</a>",
-            "skos:note": "DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section 10. Controlled Vocabularies for details.",
+            "skos:note": "DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section <a href=\"#controlled-vocs\">10. Controlled Vocabularies</a> for details.",
             "skos:prefLabel": "access rights"
           },
           "uri": "http://purl.org/dc/terms/rights",
@@ -585,12 +583,12 @@
           "label": {
             "en": "applicable legislation"
           },
-          "name": "dcatap:applicablelegislation",
+          "name": "dcatap:applicableLegislation",
           "range": [
             {
               "range_curie": "eli:LegalResource",
               "range_label": {
-                "en": "Legal resource"
+                "en": "Legal Resource"
               },
               "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
               "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
@@ -598,10 +596,10 @@
           ],
           "tags": {
             "dal:reuse": "E",
-            "skos:note": "DCAT-AP-LU provides additional usage guidance for this property in the DGA context.",
+            "skos:note": "DCAT-AP-LU provides additional usage <a href=\"#legislation_guidance\">guidance for this property </a>in the [[DGA]] context.",
             "skos:prefLabel": "applicable legislation"
           },
-          "uri": "http://data.europa.eu/r5r/applicablelegislation",
+          "uri": "http://data.europa.eu/r5r/applicableLegislation",
           "usage": {}
         },
         {
@@ -706,7 +704,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset.Usage:A list of accepted types, based on the Data Privacy Vocabulary"
+            "en": "The type(s) of data protection, as defined in the context of the [[DGA]], that applies to the dataset."
           },
           "domain": [
             {
@@ -730,8 +728,8 @@
           ],
           "tags": {
             "dal:reuse": "P",
-            "dct:references": "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">link</a>",
-            "skos:note": "A list of accepted types, based on the Data Privacy Vocabulary, is defined in 10. Controlled Vocabularies. For additional usage guidance, refer to section 11.",
+            "dct:references": "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">Link</a>",
+            "skos:note": "A list of accepted types, based on the Data Privacy Vocabulary, is defined in <a href=\"#controlled-vocs\">10. Controlled Vocabularies</a>. For additional usage guidance, refer to section <a href=\"#usage-guide-on-datasets-and-distributions\">11</a>.",
             "skos:prefLabel": "data protection type"
           },
           "uri": "https://w3id.org/dpv#hasData",
@@ -797,7 +795,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description\">link</a>",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description\">Link</a>",
             "skos:note": "This property can be repeated for parallel language versions of the description.",
             "skos:prefLabel": "description"
           },
@@ -831,6 +829,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>",
             "skos:prefLabel": "documentation"
           },
           "uri": "http://xmlns.com/foaf/0.1/page",
@@ -863,7 +862,6 @@
           ],
           "tags": {
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency\">Link</a>",
-            "skos:note": "Use \"irreg\" rathe than \"unknown\" if there is no set frequency but updates will definitely occur.",
             "skos:prefLabel": "frequency"
           },
           "uri": "http://purl.org/dc/terms/accrualPeriodicity",
@@ -903,6 +901,39 @@
           "usage": {}
         },
         {
+          "cardinality": "0..*",
+          "description": {
+            "en": "A related Dataset that is a version, edition, or adaptation of the described Dataset."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "has version"
+          },
+          "name": "dcat:hasVersion",
+          "range": [
+            {
+              "range_curie": "dcat:Dataset",
+              "range_label": {
+                "en": "Dataset"
+              },
+              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
+              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_version\">Link</a>",
+            "skos:prefLabel": "has version"
+          },
+          "uri": "http://www.w3.org/ns/dcat#hasVersion",
+          "usage": {}
+        },
+        {
           "cardinality": "1..*",
           "description": {
             "en": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue."
@@ -939,7 +970,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A dataset series of which the dataset is part.Usage Note: DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided"
+            "en": "A dataset series of which the dataset is part."
           },
           "domain": [
             {
@@ -955,7 +986,7 @@
             {
               "range_curie": "dcat:DatasetSeries",
               "range_label": {
-                "en": "Dataset series"
+                "en": "Dataset Series"
               },
               "range_puri": "http://www.w3.org/ns/dcat#DatasetSeries",
               "range_uri": "http://www.w3.org/ns/dcat#DatasetSeries"
@@ -1089,7 +1120,7 @@
             {
               "range_curie": "dct:LinguisticSystem",
               "range_label": {
-                "en": "Linguistic system"
+                "en": "Linguistic System"
               },
               "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_uri": "http://purl.org/dc/terms/LinguisticSystem"
@@ -1140,7 +1171,41 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A statement about the lineage of a Dataset.DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details."
+            "en": "A secondary identifier of the Dataset."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "other identifier"
+          },
+          "name": "adms:identifier",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href =\"https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers\">Link</a>",
+            "skos:note": "Examples are MAST/ADS [[MASTADS]], DOI [[DOI]], EZID [[EZID]] or W3ID [[W3ID]].",
+            "skos:prefLabel": "other identifier"
+          },
+          "uri": "http://www.w3.org/ns/adms#identifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "A statement about the lineage of a Dataset."
           },
           "domain": [
             {
@@ -1156,7 +1221,7 @@
             {
               "range_curie": "dct:ProvenanceStatement",
               "range_label": {
-                "en": "Provenance statement"
+                "en": "Provenance Statement"
               },
               "range_puri": "http://purl.org/dc/terms/ProvenanceStatement",
               "range_uri": "http://purl.org/dc/terms/ProvenanceStatement"
@@ -1174,7 +1239,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "An entity (organisation) responsible for making the Dataset available.Usage: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers."
+            "en": "An entity (organisation) responsible for making the Dataset available."
           },
           "domain": [
             {
@@ -1265,7 +1330,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_relation\">link</a>",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_relation\">Link</a>",
             "skos:prefLabel": "qualified relation"
           },
           "uri": "http://www.w3.org/ns/dcat#qualifiedRelation",
@@ -1364,7 +1429,7 @@
           ],
           "tags": {
             "dal:reuse": "E",
-            "skos:note": "DCAT-AP-LU provides additional usage guidance for the use of this property in providing data dictionaries as part of dataset descriptions.\n",
+            "skos:note": "DCAT-AP-LU provides </a href=\"#sample_guidance\">additional usage guidance</a> for the use of this property in providing data dictionaries as part of dataset descriptions.\n",
             "skos:prefLabel": "sample"
           },
           "uri": "http://www.w3.org/ns/adms#sample",
@@ -1421,7 +1486,7 @@
             {
               "range_curie": "xsd:decimal",
               "range_label": {
-                "en": "Decimal"
+                "en": "xsd:decimal"
               },
               "range_puri": "http://www.w3.org/2001/XMLSchema#decimal",
               "range_uri": "http://www.w3.org/2001/XMLSchema#decimal"
@@ -1487,7 +1552,7 @@
             {
               "range_curie": "xsd:duration",
               "range_label": {
-                "en": "Duration"
+                "en": "xsd:duration"
               },
               "range_puri": "http://www.w3.org/2001/XMLSchema#duration",
               "range_uri": "http://www.w3.org/2001/XMLSchema#duration"
@@ -1504,7 +1569,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "A category of the Dataset.Usage: A Dataset may be associated with multiple themes. Note: the theme is an URI not URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API."
+            "en": "A category of the Dataset."
           },
           "domain": [
             {
@@ -1572,7 +1637,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "A type of the Dataset.Usage:DCAT-AP-LU extends the recommendations for controlled vocabularies for this properties provided by DCAT-AP."
+            "en": "A type of the Dataset."
           },
           "domain": [
             {
@@ -1630,6 +1695,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version_notes\">Link</a>",
             "skos:note": "This property can be repeated for parallel language versions of the version notes.",
             "skos:prefLabel": "version notes"
           },
@@ -1676,7 +1742,7 @@
       "tags": {},
       "uri": "http://www.w3.org/ns/dcat#Dataset",
       "usage": {
-        "en": ""
+        "en": "A conceptual entity that represents the information published."
       }
     },
     {
@@ -1684,7 +1750,7 @@
         "en": "A collection of datasets that are published separately, but share some characteristics that group them.Usage NoteIt is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries)."
       },
       "label": {
-        "en": "Dataset series"
+        "en": "Dataset Series"
       },
       "name": "dcat:DatasetSeries",
       "parents": [
@@ -1709,21 +1775,24 @@
             }
           ],
           "label": {
-            "en": "Applicablelegislation"
+            "en": "applicable legislation"
           },
-          "name": "dcatap:applicablelegislation",
+          "name": "dcatap:applicableLegislation",
           "range": [
             {
               "range_curie": "eli:LegalResource",
               "range_label": {
-                "en": "Legal resource"
+                "en": "Legal Resource"
               },
               "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
               "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
             }
           ],
-          "tags": {},
-          "uri": "http://data.europa.eu/r5r/applicablelegislation",
+          "tags": {
+            "dal:reuse": "A",
+            "skos:prefLabel": "applicable legislation"
+          },
+          "uri": "http://data.europa.eu/r5r/applicableLegislation",
           "usage": {}
         },
         {
@@ -1738,7 +1807,7 @@
             }
           ],
           "label": {
-            "en": "Contact point"
+            "en": "contact point"
           },
           "name": "dcat:contactPoint",
           "range": [
@@ -1751,37 +1820,12 @@
               "range_uri": "http://www.w3.org/2006/vcard/ns#Kind"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point\">Link</a>",
+            "skos:prefLabel": "contact point"
+          },
           "uri": "http://www.w3.org/ns/dcat#contactPoint",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "An entity (organisation) responsible for making the Dataset available.Usage note: DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers."
-          },
-          "domain": [
-            {
-              "name": "dcat:DatasetSeries",
-              "uri": "http://www.w3.org/ns/dcat#DatasetSeries"
-            }
-          ],
-          "label": {
-            "en": "Publisher"
-          },
-          "name": "dct:publisher",
-          "range": [
-            {
-              "range_curie": "foaf:Agent",
-              "range_label": {
-                "en": "Agent"
-              },
-              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
-              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "tags": {},
-          "uri": "http://purl.org/dc/terms/publisher",
           "usage": {}
         },
         {
@@ -1796,7 +1840,7 @@
             }
           ],
           "label": {
-            "en": "Spatial"
+            "en": "geographical coverage"
           },
           "name": "dct:spatial",
           "range": [
@@ -1809,15 +1853,57 @@
               "range_uri": "http://purl.org/dc/terms/Location"
             }
           ],
-          "tags": {},
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial\">Link</a>",
+            "skos:note": "When spatial coverage is a dimension in the dataset series then the spatial coverage of each dataset in the collection should be part of the spatial coverage. In that case, an open ended value is recommended,",
+            "skos:prefLabel": "geographical coverage",
+            "skos:scopeNote": "e.g. EU or a broad bounding box covering the expected values."
+          },
           "uri": "http://purl.org/dc/terms/spatial",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An entity (organisation) responsible for making the Dataset available."
+          },
+          "domain": [
+            {
+              "name": "dcat:DatasetSeries",
+              "uri": "http://www.w3.org/ns/dcat#DatasetSeries"
+            }
+          ],
+          "label": {
+            "en": "publisher"
+          },
+          "name": "dct:publisher",
+          "range": [
+            {
+              "range_curie": "foaf:Agent",
+              "range_label": {
+                "en": "Agent"
+              },
+              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher\">Link</a>",
+            "skos:note": "DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers.",
+            "skos:prefLabel": "publisher"
+          },
+          "uri": "http://purl.org/dc/terms/publisher",
           "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Dataset Series"
+      },
       "uri": "http://www.w3.org/ns/dcat#DatasetSeries",
       "usage": {
         "en": "A collection of datasets that are published separately, but share some characteristics that group them.Usage NoteIt is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries)."
@@ -1860,7 +1946,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url\">link</a>",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url\">Link</a>",
             "skos:note": "The resource at the access URL may contain information about how to get the Dataset. ",
             "skos:prefLabel": "access URL"
           },
@@ -1886,7 +1972,7 @@
             {
               "range_curie": "dct:RightsStatement",
               "range_label": {
-                "en": "Rights statement"
+                "en": "Rights Statement"
               },
               "range_puri": "http://purl.org/dc/terms/RightsStatement",
               "range_uri": "http://purl.org/dc/terms/RightsStatement"
@@ -1919,7 +2005,7 @@
             {
               "range_curie": "dcat:DataService",
               "range_label": {
-                "en": "Data service"
+                "en": "Data Service"
               },
               "range_puri": "http://www.w3.org/ns/dcat#DataService",
               "range_uri": "http://www.w3.org/ns/dcat#DataService"
@@ -1947,12 +2033,12 @@
           "label": {
             "en": "applicable legislation"
           },
-          "name": "dcatap:applicablelegislation",
+          "name": "dcatap:applicableLegislation",
           "range": [
             {
               "range_curie": "eli:LegalResource",
               "range_label": {
-                "en": "Legal resource"
+                "en": "Legal Resource"
               },
               "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
               "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
@@ -1962,7 +2048,7 @@
             "dal:reuse": "A",
             "skos:prefLabel": "applicable legislation"
           },
-          "uri": "http://data.europa.eu/r5r/applicablelegislation",
+          "uri": "http://data.europa.eu/r5r/applicableLegislation",
           "usage": {}
         },
         {
@@ -2016,7 +2102,7 @@
             {
               "range_curie": "xsd:nonNegativeInteger",
               "range_label": {
-                "en": "Non negative integer"
+                "en": "xsd:nonNegativeInteger"
               },
               "range_puri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
               "range_uri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
@@ -2057,7 +2143,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum\">link</a>",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum\">Link</a>",
             "skos:note": "The checksum is related to the download URL",
             "skos:prefLabel": "checksum"
           },
@@ -2083,7 +2169,7 @@
             {
               "range_curie": "dct:MediaType",
               "range_label": {
-                "en": "Media type"
+                "en": "Media Type"
               },
               "range_puri": "http://purl.org/dc/terms/MediaType",
               "range_uri": "http://purl.org/dc/terms/MediaType"
@@ -2092,7 +2178,7 @@
           "tags": {
             "dal:reuse": "A",
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_compression_format\">Link</a>",
-            "skos:note": "It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.",
+            "skos:note": "It SHOULD be expressed using a media type as defined in the official register of media types managed by <a href=\"https://www.iana.org/\">IANA</a>.",
             "skos:prefLabel": "compression format"
           },
           "uri": "http://www.w3.org/ns/dcat#compressFormat",
@@ -2144,7 +2230,7 @@
             }
           ],
           "label": {
-            "en": "documentation Document"
+            "en": "documentation"
           },
           "name": "foaf:page",
           "range": [
@@ -2159,7 +2245,8 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "skos:prefLabel": "documentation Document"
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>",
+            "skos:prefLabel": "documentation"
           },
           "uri": "http://xmlns.com/foaf/0.1/page",
           "usage": {}
@@ -2191,7 +2278,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url\">link</a>",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url\">Link</a>",
             "skos:prefLabel": "download URL"
           },
           "uri": "http://www.w3.org/ns/dcat#downloadURL",
@@ -2233,7 +2320,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": "The policy expressing the rights associated with the distribution if using the <xref scope=\"external\" href=\"\"https://mindig_lu.gitlab.io/DCAT-AP-LU/#bib-odrl\"\">ODRL</xref>vocabulary."
+            "en": "The policy expressing the rights associated with the distribution if using the [[ODRL]] vocabulary."
           },
           "domain": [
             {
@@ -2258,7 +2345,7 @@
           "tags": {
             "dal:reuse": "E",
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy\">Link</a>",
-            "skos:note": "DCAT-AP-LU provides <a href=\u201chttps://mindig_lu.gitlab.io/DCAT-AP-LU/#policy_guidance\u201d>additional usage guidance</a> on the use of this property for expressing data use restrictions.",
+            "skos:note": "DCAT-AP-LU provides <a href=\u201c#policy_guidance\u201d>additional usage guidance</a> on the use of this property for expressing data use restrictions.",
             "skos:prefLabel": "has policy"
           },
           "uri": "http://www.w3.org/ns/odrl/2/hasPolicy",
@@ -2283,7 +2370,7 @@
             {
               "range_curie": "dct:LinguisticSystem",
               "range_label": {
-                "en": "Linguistic system"
+                "en": "Linguistic System"
               },
               "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_uri": "http://purl.org/dc/terms/LinguisticSystem"
@@ -2291,6 +2378,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language\">Link</a>",
             "skos:note": "This property can be repeated if the metadata is provided in multiple languages.",
             "skos:prefLabel": "language"
           },
@@ -2316,7 +2404,7 @@
             {
               "range_curie": "dct:LicenseDocument",
               "range_label": {
-                "en": "License document"
+                "en": "License Document"
               },
               "range_puri": "http://purl.org/dc/terms/LicenseDocument",
               "range_uri": "http://purl.org/dc/terms/LicenseDocument"
@@ -2383,7 +2471,7 @@
             {
               "range_curie": "dct:MediaType",
               "range_label": {
-                "en": "Media type"
+                "en": "Media Type"
               },
               "range_puri": "http://purl.org/dc/terms/MediaType",
               "range_uri": "http://purl.org/dc/terms/MediaType"
@@ -2392,7 +2480,7 @@
           "tags": {
             "dal:reuse": "E",
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type\">Link</a>",
-            "skos:note": "DCAT-AP-LU provides additional usage guidance for this property.",
+            "skos:note": "DCAT-AP-LU provides <a href=\"#usage-guide-on-datasets-and-distributions\">additional usage guidance</a> for this property.",
             "skos:prefLabel": "media type"
           },
           "uri": "http://www.w3.org/ns/dcat#mediaType",
@@ -2417,7 +2505,7 @@
             {
               "range_curie": "xsd:dateTime",
               "range_label": {
-                "en": "Date time"
+                "en": "xsd:dateTime"
               },
               "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
               "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
@@ -2450,7 +2538,7 @@
             {
               "range_curie": "dct:MediaType",
               "range_label": {
-                "en": "Media type"
+                "en": "Media Type"
               },
               "range_puri": "http://purl.org/dc/terms/MediaType",
               "range_uri": "http://purl.org/dc/terms/MediaType"
@@ -2459,7 +2547,7 @@
           "tags": {
             "dal:reuse": "A",
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_packaging_format\">Link</a>",
-            "skos:note": "It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.",
+            "skos:note": "It SHOULD be expressed using a media type as defined in the official register of media types managed by <a href=\"https://www.iana.org/\">IANA</a>.",
             "skos:prefLabel": "packaging format"
           },
           "uri": "http://www.w3.org/ns/dcat#packageFormat",
@@ -2484,7 +2572,7 @@
             {
               "range_curie": "xsd:dateTime",
               "range_label": {
-                "en": "Date time"
+                "en": "xsd:dateTime"
               },
               "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
               "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
@@ -2501,7 +2589,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "The minimum spatial separation resolvable in a dataset distribution, measured in meters."
+            "en": "The minimum spatial separation resolvable in a dataset distribution, measured in metres."
           },
           "domain": [
             {
@@ -2517,7 +2605,7 @@
             {
               "range_curie": "xsd:decimal",
               "range_label": {
-                "en": "Decimal"
+                "en": "xsd:decimal"
               },
               "range_puri": "http://www.w3.org/2001/XMLSchema#decimal",
               "range_uri": "http://www.w3.org/2001/XMLSchema#decimal"
@@ -2558,6 +2646,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_status\">Link</a>",
             "skos:note": "It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn.",
             "skos:prefLabel": "status"
           },
@@ -2583,7 +2672,7 @@
             {
               "range_curie": "xsd:duration",
               "range_label": {
-                "en": "Duration"
+                "en": "xsd:duration"
               },
               "range_puri": "http://www.w3.org/2001/XMLSchema#duration",
               "range_uri": "http://www.w3.org/2001/XMLSchema#duration"
@@ -2635,7 +2724,9 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Distribution"
+      },
       "uri": "http://www.w3.org/ns/dcat#Distribution",
       "usage": {
         "en": "A physical embodiment of the Dataset in a particular format."
@@ -2643,7 +2734,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset."
       },
       "label": {
         "en": "Document"
@@ -2654,10 +2745,12 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Document"
+      },
       "uri": "http://xmlns.com/foaf/0.1/Document",
       "usage": {
-        "en": ""
+        "en": "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset."
       }
     },
     {
@@ -2675,7 +2768,8 @@
       },
       "tags": {
         "dal:vocabname": "Frequency - EU Vocabularies -Publications Office of the EU",
-        "dal:vocaburi": "https://publications.europa.eu/resource/authority/file-type"
+        "dal:vocaburi": "https://publications.europa.eu/resource/authority/file-type",
+        "skos:prefLabel": "Frequency"
       },
       "uri": "http://purl.org/dc/terms/Frequency",
       "usage": {
@@ -2695,7 +2789,9 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Geometry"
+      },
       "uri": "http://www.w3.org/ns/locn#Geometry",
       "usage": {
         "en": "The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System."
@@ -2703,7 +2799,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "This is based on the UN/CEFACT Identifier class."
       },
       "label": {
         "en": "Identifier"
@@ -2714,10 +2810,12 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Identifier"
+      },
       "uri": "http://www.w3.org/ns/adms#Identifier",
       "usage": {
-        "en": ""
+        "en": "This is based on the UN/CEFACT Identifier class."
       }
     },
     {
@@ -2734,7 +2832,8 @@
         "class-usage-scope": "supportive"
       },
       "tags": {
-        "skos:note": "Note that the class Kind is the parent class for the four explicit types of vCard (Individual, Organization, Location, Group)."
+        "skos:note": "Note that the class Kind is the parent class for the four explicit types of <a href=\"https://www.rfc-editor.org/rfc/rfc6350.html\">vCard</a> (Individual, Organization, Location, Group).",
+        "skos:prefLabel": "Kind"
       },
       "uri": "http://www.w3.org/2006/vcard/ns#Kind",
       "usage": {
@@ -2755,8 +2854,10 @@
         "class-usage-scope": "supportive"
       },
       "tags": {
-        "skos:note": "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier (ELI)\". For describing the attributes of a Legal Resource (labels, pr",
-        "skos:prefLabel": "Legal Resource"
+        "skos:example": "Link to web page is: <a href=\"https://op.europa.eu/web/eu-vocabularies/dataset/-/resource?uri=http://publications.\neuropa.eu/resource/dataset/eli\">here</a>.",
+        "skos:note": "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier (<a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52012XG1026%2801%29\">ELI</a>). For describing the attributes of a Legal Resource",
+        "skos:prefLabel": "Legal Resource",
+        "skos:scopeNote": "(labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology. In this data specification,  the use is restricted to instances of this class that follow the ELI URI guidelines."
       },
       "uri": "http://data.europa.eu/eli/ontology#LegalResource",
       "usage": {
@@ -2768,7 +2869,7 @@
         "en": "A legal document giving official permission to do something with a resource."
       },
       "label": {
-        "en": "License document"
+        "en": "License Document"
       },
       "name": "dct:LicenseDocument",
       "parents": [],
@@ -2800,6 +2901,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type\">Link</a>",
             "skos:prefLabel": "type"
           },
           "uri": "http://purl.org/dc/terms/type",
@@ -2811,7 +2913,8 @@
       },
       "tags": {
         "dal:vocabname": "ADMS licence type vocabulary",
-        "dal:vocaburi": "http://purl.org/adms/licencetype/1.0"
+        "dal:vocaburi": "http://purl.org/adms/licencetype/1.0",
+        "skos:prefLabel": "License Document"
       },
       "uri": "http://purl.org/dc/terms/LicenseDocument",
       "usage": {
@@ -2820,10 +2923,10 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "A system of signs, symbols, sounds, gestures, or rules used in communication, e.g. a language."
       },
       "label": {
-        "en": "Linguistic system"
+        "en": "Linguistic System"
       },
       "name": "dct:LinguisticSystem",
       "parents": [],
@@ -2833,11 +2936,12 @@
       },
       "tags": {
         "dal:vocabname": "EU Vocabularies Languages Named Authority List",
-        "dal:vocaburi": "https://publications.europa.eu/resource/authority/language"
+        "dal:vocaburi": "https://publications.europa.eu/resource/authority/language",
+        "skos:prefLabel": "Linguistic System"
       },
       "uri": "http://purl.org/dc/terms/LinguisticSystem",
       "usage": {
-        "en": ""
+        "en": "A system of signs, symbols, sounds, gestures, or rules used in communication, e.g. a language."
       }
     },
     {
@@ -2884,8 +2988,7 @@
         "class-usage-scope": "supportive"
       },
       "tags": {
-        "dal:vocabname": "Place - EU Vocabularies - Publications Office of the EU",
-        "dal:vocaburi": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/place"
+        "skos:prefLabel": "Location"
       },
       "uri": "http://purl.org/dc/terms/Location",
       "usage": {
@@ -2897,7 +3000,7 @@
         "en": "A file format or physical medium."
       },
       "label": {
-        "en": "Media type"
+        "en": "Media Type"
       },
       "name": "dct:MediaType",
       "parents": [],
@@ -2907,7 +3010,8 @@
       },
       "tags": {
         "dal:vocabname": "IANA Media Types",
-        "dal:vocaburi": "https://www.iana.org/assignments/media-types/media-types.xhtml"
+        "dal:vocaburi": "https://www.iana.org/assignments/media-types/media-types.xhtml",
+        "skos:prefLabel": "Media Type"
       },
       "uri": "http://purl.org/dc/terms/MediaType",
       "usage": {
@@ -2929,7 +3033,8 @@
       },
       "tags": {
         "dal:vocabname": "EU Vocabularies File Type Named Authority List",
-        "dal:vocaburi": "http://publications.europa.eu/resource/authority/file-type"
+        "dal:vocaburi": "http://publications.europa.eu/resource/authority/file-type",
+        "skos:prefLabel": "Media type or extent"
       },
       "uri": "http://purl.org/dc/terms/MediaTypeOrExtent",
       "usage": {
@@ -2938,7 +3043,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "An interval of time that is named or defined by its start and end dates."
       },
       "label": {
         "en": "Period of time"
@@ -2949,7 +3054,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The beginning of a period or interval."
           },
           "domain": [
             {
@@ -2965,7 +3070,7 @@
             {
               "range_curie": "time:Instant",
               "range_label": {
-                "en": "Instant"
+                "en": "Time instant"
               },
               "range_puri": "http://www.w3.org/2006/time#Instant",
               "range_uri": "http://www.w3.org/2006/time#Instant"
@@ -2982,7 +3087,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The end of a period or interval."
           },
           "domain": [
             {
@@ -2998,7 +3103,7 @@
             {
               "range_curie": "time:Instant",
               "range_label": {
-                "en": "Instant"
+                "en": "Time instant"
               },
               "range_puri": "http://www.w3.org/2006/time#Instant",
               "range_uri": "http://www.w3.org/2006/time#Instant"
@@ -3006,7 +3111,7 @@
           ],
           "tags": {
             "dal:reuse": "A",
-            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end'>Link</a>",
+            "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end\">Link</a>",
             "skos:prefLabel": "end"
           },
           "uri": "http://www.w3.org/2006/time#hasEnd",
@@ -3015,7 +3120,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The end of the period."
           },
           "domain": [
             {
@@ -3048,7 +3153,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "The start of the period."
           },
           "domain": [
             {
@@ -3083,11 +3188,12 @@
         "class-usage-scope": "supportive"
       },
       "tags": {
-        "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Class:Period_of_Time\">Link</a>"
+        "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Class:Period_of_Time\">Link</a>",
+        "skos:prefLabel": "Period of time"
       },
       "uri": "http://purl.org/dc/terms/PeriodOfTime",
       "usage": {
-        "en": ""
+        "en": "An interval of time that is named or defined by its start and end dates."
       }
     },
     {
@@ -3103,7 +3209,9 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Policy"
+      },
       "uri": "http://www.w3.org/ns/odrl/2/Policy",
       "usage": {
         "en": "A non-empty group of Permissions and/or Prohibitions."
@@ -3114,7 +3222,7 @@
         "en": "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."
       },
       "label": {
-        "en": "Provenance statement"
+        "en": "Provenance Statement"
       },
       "name": "dct:ProvenanceStatement",
       "parents": [],
@@ -3122,7 +3230,9 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Provenance Statement"
+      },
       "uri": "http://purl.org/dc/terms/ProvenanceStatement",
       "usage": {
         "en": "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."
@@ -3130,7 +3240,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "An association class for attaching additional information to a relationship between DCAT Resources."
       },
       "label": {
         "en": "Relationship"
@@ -3141,10 +3251,12 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Relationship"
+      },
       "uri": "http://www.w3.org/ns/dcat#Relationship",
       "usage": {
-        "en": ""
+        "en": "An association class for attaching additional information to a relationship between DCAT Resources."
       }
     },
     {
@@ -3160,7 +3272,9 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Resource"
+      },
       "uri": "http://www.w3.org/ns/dcat#Resource",
       "usage": {
         "en": "Resource published or curated by a single agent."
@@ -3171,7 +3285,7 @@
         "en": "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights."
       },
       "label": {
-        "en": "Rights statement"
+        "en": "Rights Statement"
       },
       "name": "dct:RightsStatement",
       "parents": [],
@@ -3181,7 +3295,8 @@
       },
       "tags": {
         "dal:vocabname": "Access right - EU Vocabularies - Publications Office of the EU",
-        "dal:vocaburi": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right"
+        "dal:vocaburi": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right",
+        "skos:prefLabel": "Rights Statement"
       },
       "uri": "http://purl.org/dc/terms/RightsStatement",
       "usage": {
@@ -3190,7 +3305,7 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "A standard or other specification to which a Dataset or Distribution conforms."
       },
       "label": {
         "en": "Standard"
@@ -3201,43 +3316,45 @@
       "rawTags": {
         "class-usage-scope": "supportive"
       },
-      "tags": {},
+      "tags": {
+        "skos:prefLabel": "Standard"
+      },
       "uri": "http://purl.org/dc/terms/Standard",
       "usage": {
-        "en": ""
+        "en": "A standard or other specification to which a Dataset or Distribution conforms."
       }
     }
   ],
   "datatypes": [
     {
       "description": {
+        "en": "rdfs:Literal encoded using the relevant [[ISO8601-2]] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime). "
+      },
+      "label": {
+        "en": "Temporal literal"
+      },
+      "scopeduri": "dal:TemporalLiteral",
+      "uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
+    },
+    {
+      "description": {
         "en": ""
+      },
+      "label": {
+        "en": "Plain literal"
+      },
+      "scopeduri": "rdf:PlainLiteral",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+    },
+    {
+      "description": {
+        "en": "A literal value such as a string or integer. Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 4715 [[RFC5646]]."
       },
       "label": {
         "en": "Literal"
       },
       "scopeduri": "rdfs:Literal",
       "uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
-    },
-    {
-      "description": {
-        "en": ""
-      },
-      "label": {
-        "en": "Decimal"
-      },
-      "scopeduri": "xsd:decimal",
-      "uri": "http://www.w3.org/2001/XMLSchema#decimal"
-    },
-    {
-      "description": {
-        "en": ""
-      },
-      "label": {
-        "en": "Duration"
-      },
-      "scopeduri": "xsd:duration",
-      "uri": "http://www.w3.org/2001/XMLSchema#duration"
     },
     {
       "description": {
@@ -3251,17 +3368,87 @@
     },
     {
       "description": {
-        "en": ""
+        "en": "A temporal entity with zero extent or duration. "
       },
       "label": {
-        "en": "Temporal literal"
+        "en": "Instant"
       },
-      "scopeduri": "dal:TemporalLiteral",
-      "uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#TemporalLiteral"
+      "scopeduri": "time:Instant",
+      "uri": "http://www.w3.org/2006/time#Instant"
     },
     {
       "description": {
         "en": ""
+      },
+      "label": {
+        "en": "Date"
+      },
+      "scopeduri": "xsd:date",
+      "uri": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    {
+      "description": {
+        "en": "Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property. "
+      },
+      "label": {
+        "en": "Date time"
+      },
+      "scopeduri": "xsd:dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    {
+      "description": {
+        "en": "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n  \u2265  0."
+      },
+      "label": {
+        "en": "Decimal"
+      },
+      "scopeduri": "xsd:decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    {
+      "description": {
+        "en": "Duration represents a duration of time. The &#183;value space&#183; of duration is a six-dimensional space where the coordinates designate the Gregorian year, month, day, hour, minute, and second components defined in &#167; 5.5.3.2 of [[ISO8601-2]], respectively."
+      },
+      "label": {
+        "en": "Duration"
+      },
+      "scopeduri": "xsd:duration",
+      "uri": "http://www.w3.org/2001/XMLSchema#duration"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "G year"
+      },
+      "scopeduri": "xsd:gYear",
+      "uri": "http://www.w3.org/2001/XMLSchema#gYear"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "G year month"
+      },
+      "scopeduri": "xsd:gYearMonth",
+      "uri": "http://www.w3.org/2001/XMLSchema#gYearMonth"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Integer"
+      },
+      "scopeduri": "xsd:integer",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    {
+      "description": {
+        "en": "Number derived from integer by setting the value of minInclusive to be 0. "
       },
       "label": {
         "en": "Non negative integer"
@@ -3274,23 +3461,21 @@
         "en": ""
       },
       "label": {
-        "en": "Date time"
+        "en": "String"
       },
-      "scopeduri": "xsd:dateTime",
-      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    {
-      "description": {
-        "en": ""
-      },
-      "label": {
-        "en": "Instant"
-      },
-      "scopeduri": "time:Instant",
-      "uri": "http://www.w3.org/2006/time#Instant"
+      "scopeduri": "xsd:string",
+      "uri": "http://www.w3.org/2001/XMLSchema#string"
     }
   ],
   "prefixes": [
+    {
+      "name": "xsd",
+      "uri": "http://www.w3.org/2001/XMLSchema#"
+    },
+    {
+      "name": "dal",
+      "uri": "https://mindig_lu.gitlab.io/DCAT-AP-LU/#"
+    },
     {
       "name": "adms",
       "uri": "http://www.w3.org/ns/adms#"
@@ -3342,6 +3527,14 @@
     {
       "name": "locn",
       "uri": "http://www.w3.org/ns/locn#"
+    },
+    {
+      "name": "rdf",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "name": "rdfs",
+      "uri": "http://www.w3.org/2000/01/rdf-schema#"
     },
     {
       "name": "time",
