@@ -1,6 +1,6 @@
 <?xml  version='1.0' encoding='windows-1252' ?>
-<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0" xmlns:sysml="http://www.omg.org/spec/SysML/20080501/SysML-profile">
-	<xmi:Documentation exporter="EnterpriseArchitect" exporterVersion="6.5" exporterID="1629"/>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20161101" xmlns:umldi="http://www.omg.org/spec/UML/20161101/UMLDI" xmlns:dc="http://www.omg.org/spec/UML/20161101/UMLDC" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0" xmlns:sysml="http://www.omg.org/spec/SysML/20080501/SysML-profile">
+	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5" exporterID="1629"/>
 	<uml:Model xmi:type="uml:Model" name="EA_Model">
 		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_BCC670FB_9672_42bf_B875_85C45A561994" name="DCAT Application Profile">
 			<packagedElement xmi:type="uml:Package" xmi:id="EAPK_FDA51D29_82BE_4d5a_ADD9_A17CB0378ABB" name="datatype">
@@ -5520,41 +5520,52 @@
 			</packagedElement>
 		</primitivetypes>
 		<profiles>
-			<uml:Profile xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmi:id="thecustomprofile" nsPrefix="thecustomprofile" name="thecustomprofile" metamodelReference="mmref01">
+			<uml:Profile xmlns:uml="http://www.omg.org/spec/UML/20161101" xmlns:xmi="http://www.omg.org/spec/XMI/20161101" xmi:id="thecustomprofile" nsPrefix="thecustomprofile" name="thecustomprofile" metamodelReference="mmref01">
 				<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="thecustomprofile">
 					<body> Version:1.0</body>
 				</ownedComment>
 				<packageImport xmi:id="mmref01">
-					<importedPackage href="http://www.omg.org/spec/UML/20131001"/>
+					<importedPackage href="http://www.omg.org/spec/UML/20161101"/>
 				</packageImport>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="dal:reuse" name="dal:reuse">
+					<ownedAttribute xmi:type="uml:Property" xmi:id="dal:reuse-base_Property" name="base_Property" association="Property_dal:reuse">
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Property"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="dal:reuse-dal:reuse" name="dal:reuse">
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Extension" xmi:id="Property_dal:reuse" name="A_Property_dal:reuse" memberEnd="extension_dal:reuse dal:reuse-base_Property">
+					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_dal:reuse" name="extension_dal:reuse" type="dal:reuse" isComposite="true" lower="0" upper="1" memberEnd="extension_dal:reuse dal:reuse-base_Property"/>
+				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="dct:references" name="dct:references">
-					<ownedAttribute xmi:type="uml:Property" xmi:id="dct:references-base_Class" name="base_Class" association="Class_dct:references">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Class"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="dct:references-base_Property" name="base_Property" association="Property_dct:references">
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Property"/>
 					</ownedAttribute>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="dct:references-dct:references" name="dct:references">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#String"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
 					</ownedAttribute>
 				</packagedElement>
-				<packagedElement xmi:type="uml:Extension" xmi:id="Class_dct:references" name="A_Class_dct:references" memberEnd="extension_dct:references dct:references-base_Class">
-					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_dct:references" name="extension_dct:references" type="dct:references" isComposite="true" lower="0" upper="1" memberEnd="extension_dct:references dct:references-base_Class"/>
+				<packagedElement xmi:type="uml:Extension" xmi:id="Property_dct:references" name="A_Property_dct:references" memberEnd="extension_dct:references dct:references-base_Property">
+					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_dct:references" name="extension_dct:references" type="dct:references" isComposite="true" lower="0" upper="1" memberEnd="extension_dct:references dct:references-base_Property"/>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="skos:note" name="skos:note">
-					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:note-base_Class" name="base_Class" association="Class_skos:note">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Class"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:note-base_Property" name="base_Property" association="Property_skos:note">
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Property"/>
 					</ownedAttribute>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:note-skos:note" name="skos:note">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#String"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
 					</ownedAttribute>
 				</packagedElement>
-				<packagedElement xmi:type="uml:Extension" xmi:id="Class_skos:note" name="A_Class_skos:note" memberEnd="extension_skos:note skos:note-base_Class">
-					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_skos:note" name="extension_skos:note" type="skos:note" isComposite="true" lower="0" upper="1" memberEnd="extension_skos:note skos:note-base_Class"/>
+				<packagedElement xmi:type="uml:Extension" xmi:id="Property_skos:note" name="A_Property_skos:note" memberEnd="extension_skos:note skos:note-base_Property">
+					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_skos:note" name="extension_skos:note" type="skos:note" isComposite="true" lower="0" upper="1" memberEnd="extension_skos:note skos:note-base_Property"/>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="skos:prefLabel" name="skos:prefLabel">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:prefLabel-base_DataType" name="base_DataType" association="DataType_skos:prefLabel">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#DataType"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#DataType"/>
 					</ownedAttribute>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:prefLabel-skos:prefLabel" name="skos:prefLabel">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#String"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="DataType_skos:prefLabel" name="A_DataType_skos:prefLabel" memberEnd="extension_skos:prefLabel skos:prefLabel-base_DataType">
@@ -5562,7 +5573,7 @@
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="recommended" name="recommended">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="recommended-base_Association" name="base_Association" association="Association_recommended">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Association"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Association"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="Association_recommended" name="A_Association_recommended" memberEnd="extension_recommended recommended-base_Association">
@@ -5570,10 +5581,10 @@
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="skos:example" name="skos:example">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:example-base_Class" name="base_Class" association="Class_skos:example">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Class"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Class"/>
 					</ownedAttribute>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:example-skos:example" name="skos:example">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#String"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="Class_skos:example" name="A_Class_skos:example" memberEnd="extension_skos:example skos:example-base_Class">
@@ -5581,7 +5592,7 @@
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="mandatory" name="mandatory">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="mandatory-base_Association" name="base_Association" association="Association_mandatory">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Association"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Association"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="Association_mandatory" name="A_Association_mandatory" memberEnd="extension_mandatory mandatory-base_Association">
@@ -5589,10 +5600,10 @@
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="dal:vocaburi" name="dal:vocaburi">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="dal:vocaburi-base_Class" name="base_Class" association="Class_dal:vocaburi">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Class"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Class"/>
 					</ownedAttribute>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="dal:vocaburi-dal:vocaburi" name="dal:vocaburi">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#String"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="Class_dal:vocaburi" name="A_Class_dal:vocaburi" memberEnd="extension_dal:vocaburi dal:vocaburi-base_Class">
@@ -5600,10 +5611,10 @@
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="dal:vocabname" name="dal:vocabname">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="dal:vocabname-base_Class" name="base_Class" association="Class_dal:vocabname">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Class"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Class"/>
 					</ownedAttribute>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="dal:vocabname-dal:vocabname" name="dal:vocabname">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#String"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="Class_dal:vocabname" name="A_Class_dal:vocabname" memberEnd="extension_dal:vocabname dal:vocabname-base_Class">
@@ -5611,22 +5622,22 @@
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="optional" name="optional">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="optional-base_Association" name="base_Association" association="Association_optional">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Association"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Association"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="Association_optional" name="A_Association_optional" memberEnd="extension_optional optional-base_Association">
 					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_optional" name="extension_optional" type="optional" isComposite="true" lower="0" upper="1" memberEnd="extension_optional optional-base_Association"/>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="skos:scopeNote" name="skos:scopeNote">
-					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:scopeNote-base_Class" name="base_Class" association="Class_skos:scopeNote">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#Class"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:scopeNote-base_Property" name="base_Property" association="Property_skos:scopeNote">
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Property"/>
 					</ownedAttribute>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="skos:scopeNote-skos:scopeNote" name="skos:scopeNote">
-						<type href="http://www.omg.org/spec/UML/20131001/UML.xmi#String"/>
+						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#String"/>
 					</ownedAttribute>
 				</packagedElement>
-				<packagedElement xmi:type="uml:Extension" xmi:id="Class_skos:scopeNote" name="A_Class_skos:scopeNote" memberEnd="extension_skos:scopeNote skos:scopeNote-base_Class">
-					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_skos:scopeNote" name="extension_skos:scopeNote" type="skos:scopeNote" isComposite="true" lower="0" upper="1" memberEnd="extension_skos:scopeNote skos:scopeNote-base_Class"/>
+				<packagedElement xmi:type="uml:Extension" xmi:id="Property_skos:scopeNote" name="A_Property_skos:scopeNote" memberEnd="extension_skos:scopeNote skos:scopeNote-base_Property">
+					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_skos:scopeNote" name="extension_skos:scopeNote" type="skos:scopeNote" isComposite="true" lower="0" upper="1" memberEnd="extension_skos:scopeNote skos:scopeNote-base_Property"/>
 				</packagedElement>
 			</uml:Profile>
 		</profiles>
@@ -5781,79 +5792,320 @@
 	<thecustomprofile:skos_prefLabel base_Class="EAID_0AF7745E_596D_4c48_AE1F_C611231C587B" __EAStereoName="skos:prefLabel" skos_prefLabel="Identifier"/>
 	<thecustomprofile:optional base_Association="EAID_4E5F9B50_F431_474d_BF1D_69EE52148295"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_FDD4C5C9_562C_46cd_A0AE_BAA740DB9D33" __EAStereoName="skos:prefLabel" skos_prefLabel="Catalogue"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstF5013D_BAF8_4e48_A98E_AA493A191899" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstF5013D_BAF8_4e48_A98E_AA493A191899" __EAStereoName="skos:note" skos_note="In case multiple organisations are considered the publishers of the catalogue, it is recommended to use foaf:Group to bundle them into one entity."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstF5013D_BAF8_4e48_A98E_AA493A191899" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstF5013D_BAF8_4e48_A98E_AA493A191899" __EAStereoName="skos:prefLabel" skos_prefLabel="publisher"/>
 	<thecustomprofile:recommended base_Association="EAID_5CF5013D_BAF8_4e48_A98E_AA493A191899"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstADFFF2_995D_4e5d_AE3D_4E175BCCD657" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstADFFF2_995D_4e5d_AE3D_4E175BCCD657" __EAStereoName="skos:note" skos_note="As empty Catalogues are usually indications of problems, this property should be combined with the property &lt;a href=&quot;#Dataset&quot;&gt;dataset&lt;/a&gt; to implement an empty Catalogue check."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstADFFF2_995D_4e5d_AE3D_4E175BCCD657" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstADFFF2_995D_4e5d_AE3D_4E175BCCD657" __EAStereoName="skos:prefLabel" skos_prefLabel="service"/>
 	<thecustomprofile:optional base_Association="EAID_6FADFFF2_995D_4e5d_AE3D_4E175BCCD657"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst8A4DA7_8A99_4679_95F7_F6625090FB0E" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst8A4DA7_8A99_4679_95F7_F6625090FB0E" __EAStereoName="skos:prefLabel" skos_prefLabel="licence"/>
 	<thecustomprofile:optional base_Association="EAID_918A4DA7_8A99_4679_95F7_F6625090FB0E"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst57EE2F_F05B_4c0c_BE73_3C7F8EFFA971" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst57EE2F_F05B_4c0c_BE73_3C7F8EFFA971" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst57EE2F_F05B_4c0c_BE73_3C7F8EFFA971" __EAStereoName="skos:prefLabel" skos_prefLabel="creator"/>
 	<thecustomprofile:optional base_Association="EAID_C057EE2F_F05B_4c0c_BE73_3C7F8EFFA971"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst1A70FF_6505_43bb_A8A5_5C62C1F5B1BC" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst1A70FF_6505_43bb_A8A5_5C62C1F5B1BC" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst1A70FF_6505_43bb_A8A5_5C62C1F5B1BC" __EAStereoName="skos:prefLabel" skos_prefLabel="record"/>
 	<thecustomprofile:optional base_Association="EAID_D31A70FF_6505_43bb_A8A5_5C62C1F5B1BC"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_C44B0688_9EE6_4ad7_946E_D0D27933EA86" __EAStereoName="skos:prefLabel" skos_prefLabel="Catalogue Record"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstB7D505_56F6_41c5_BF08_1EE040D2DE57" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstB7D505_56F6_41c5_BF08_1EE040D2DE57" __EAStereoName="skos:note" skos_note="A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource."/>
+	<thecustomprofile:skos_scopeNote base_Property="EAID_dstB7D505_56F6_41c5_BF08_1EE040D2DE57" __EAStereoName="skos:scopeNote" skos_scopeNote="However it is not the intent with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstB7D505_56F6_41c5_BF08_1EE040D2DE57" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstB7D505_56F6_41c5_BF08_1EE040D2DE57" __EAStereoName="skos:prefLabel" skos_prefLabel="primary topic"/>
 	<thecustomprofile:mandatory base_Association="EAID_5FB7D505_56F6_41c5_BF08_1EE040D2DE57"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_58C69C87_D71A_4ec5_B1A3_1C5B567347BF" __EAStereoName="skos:prefLabel" skos_prefLabel="Data Service"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst7E9899_6505_4785_9373_9693982F1F2D" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_serves_dataset&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst7E9899_6505_4785_9373_9693982F1F2D" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst7E9899_6505_4785_9373_9693982F1F2D" __EAStereoName="skos:prefLabel" skos_prefLabel="serves dataset"/>
 	<thecustomprofile:recommended base_Association="EAID_DD7E9899_6505_4785_9373_9693982F1F2D"/>
 	<thecustomprofile:optional base_Association="EAID_239FCB69_E9BD_4955_A036_BE1E97AD348D"/>
+	<thecustomprofile:dct_references base_Property="EAID_7AEBA562_E122_4ce1_A05E_5271CF7A1DC2" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version_notes&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_7AEBA562_E122_4ce1_A05E_5271CF7A1DC2" __EAStereoName="skos:note" skos_note="This property can be repeated for parallel language versions of the version notes."/>
 	<sysml:optional base_Property="EAID_7AEBA562_E122_4ce1_A05E_5271CF7A1DC2"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_7AEBA562_E122_4ce1_A05E_5271CF7A1DC2" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_7AEBA562_E122_4ce1_A05E_5271CF7A1DC2" __EAStereoName="skos:prefLabel" skos_prefLabel="version notes"/>
+	<thecustomprofile:dct_references base_Property="EAID_964FD0F6_6111_42e6_A5D6_EA80D2EED069" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:recommended base_Property="EAID_964FD0F6_6111_42e6_A5D6_EA80D2EED069"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_964FD0F6_6111_42e6_A5D6_EA80D2EED069" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_964FD0F6_6111_42e6_A5D6_EA80D2EED069" __EAStereoName="skos:prefLabel" skos_prefLabel="keyword"/>
+	<thecustomprofile:dct_references base_Property="EAID_A3561177_6408_473a_8975_4348FC70CA03" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_A3561177_6408_473a_8975_4348FC70CA03"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_A3561177_6408_473a_8975_4348FC70CA03" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_A3561177_6408_473a_8975_4348FC70CA03" __EAStereoName="skos:prefLabel" skos_prefLabel="spatial resolution"/>
+	<thecustomprofile:dct_references base_Property="EAID_B99BFAE8_7A4A_4ca4_A5A6_AD8C6A6C4C38" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_B99BFAE8_7A4A_4ca4_A5A6_AD8C6A6C4C38"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_B99BFAE8_7A4A_4ca4_A5A6_AD8C6A6C4C38" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_B99BFAE8_7A4A_4ca4_A5A6_AD8C6A6C4C38" __EAStereoName="skos:prefLabel" skos_prefLabel="temporal resolution"/>
+	<thecustomprofile:dct_references base_Property="EAID_7E2ABD97_259E_4f69_88B3_4DDC16E3D9EE" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_7E2ABD97_259E_4f69_88B3_4DDC16E3D9EE" __EAStereoName="skos:note" skos_note="This property can be repeated for parallel language versions of the description."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_7E2ABD97_259E_4f69_88B3_4DDC16E3D9EE" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_7E2ABD97_259E_4f69_88B3_4DDC16E3D9EE" __EAStereoName="skos:prefLabel" skos_prefLabel="description"/>
 	<thecustomprofile:mandatory base_Property="EAID_7E2ABD97_259E_4f69_88B3_4DDC16E3D9EE"/>
+	<thecustomprofile:dct_references base_Property="EAID_1E3C599E_1FA1_4984_8307_C481D873EFE3" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_1E3C599E_1FA1_4984_8307_C481D873EFE3" __EAStereoName="skos:note" skos_note="The use of persistent dereferenceable URIs is mandatory in this profile."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_1E3C599E_1FA1_4984_8307_C481D873EFE3" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_1E3C599E_1FA1_4984_8307_C481D873EFE3" __EAStereoName="skos:prefLabel" skos_prefLabel="identifier"/>
 	<thecustomprofile:mandatory base_Property="EAID_1E3C599E_1FA1_4984_8307_C481D873EFE3"/>
+	<thecustomprofile:dct_references base_Property="EAID_F1769C1A_339E_4049_BD6B_9B689BB0C651" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_is_referenced_by&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_F1769C1A_339E_4049_BD6B_9B689BB0C651"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_F1769C1A_339E_4049_BD6B_9B689BB0C651" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_F1769C1A_339E_4049_BD6B_9B689BB0C651" __EAStereoName="skos:prefLabel" skos_prefLabel="is referenced by"/>
+	<thecustomprofile:dct_references base_Property="EAID_CDE7536A_EE2D_434f_BA09_847F115C9D89" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_CDE7536A_EE2D_434f_BA09_847F115C9D89"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_CDE7536A_EE2D_434f_BA09_847F115C9D89" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_CDE7536A_EE2D_434f_BA09_847F115C9D89" __EAStereoName="skos:prefLabel" skos_prefLabel="release date"/>
+	<thecustomprofile:dct_references base_Property="EAID_66784828_8FD9_40d9_B678_D0BD9DE7F621" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_66784828_8FD9_40d9_B678_D0BD9DE7F621"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_66784828_8FD9_40d9_B678_D0BD9DE7F621" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_66784828_8FD9_40d9_B678_D0BD9DE7F621" __EAStereoName="skos:prefLabel" skos_prefLabel="modification date"/>
+	<thecustomprofile:dct_references base_Property="EAID_82EDFAFA_6872_48fb_8643_A4A553F8B75B" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_relation&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_82EDFAFA_6872_48fb_8643_A4A553F8B75B"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_82EDFAFA_6872_48fb_8643_A4A553F8B75B" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_82EDFAFA_6872_48fb_8643_A4A553F8B75B" __EAStereoName="skos:prefLabel" skos_prefLabel="related resource"/>
+	<thecustomprofile:dct_references base_Property="EAID_0D2C8860_1F52_4993_89E5_7C7FF6B1BF0E" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_0D2C8860_1F52_4993_89E5_7C7FF6B1BF0E" __EAStereoName="skos:note" skos_note="This property can be repeated for parallel language versions of the name."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_0D2C8860_1F52_4993_89E5_7C7FF6B1BF0E" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_0D2C8860_1F52_4993_89E5_7C7FF6B1BF0E" __EAStereoName="skos:prefLabel" skos_prefLabel="title"/>
 	<thecustomprofile:mandatory base_Property="EAID_0D2C8860_1F52_4993_89E5_7C7FF6B1BF0E"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst968CE7_DEC0_4fb5_A4A8_D083A10A4EC1" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_version&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst968CE7_DEC0_4fb5_A4A8_D083A10A4EC1" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst968CE7_DEC0_4fb5_A4A8_D083A10A4EC1" __EAStereoName="skos:prefLabel" skos_prefLabel="has version"/>
 	<thecustomprofile:optional base_Association="EAID_08968CE7_DEC0_4fb5_A4A8_D083A10A4EC1"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst47C698_D38F_4361_981A_D99507B8203A" __EAStereoName="skos:note" skos_note="DCAT-AP-LU provides &lt;/a href=&quot;#sample_guidance&quot;&gt;additional usage guidance&lt;/a&gt; for the use of this property in providing data dictionaries as part of dataset descriptions.&#xA;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst47C698_D38F_4361_981A_D99507B8203A" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst47C698_D38F_4361_981A_D99507B8203A" __EAStereoName="skos:prefLabel" skos_prefLabel="sample"/>
 	<thecustomprofile:optional base_Association="EAID_0A47C698_D38F_4361_981A_D99507B8203A"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstD2E7EA_4517_4f27_BD0B_C19590D7F903" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstD2E7EA_4517_4f27_BD0B_C19590D7F903" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstD2E7EA_4517_4f27_BD0B_C19590D7F903" __EAStereoName="skos:prefLabel" skos_prefLabel="dataset distribution"/>
 	<thecustomprofile:recommended base_Association="EAID_12D2E7EA_4517_4f27_BD0B_C19590D7F903"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst347B40_203D_4188_BE84_A0A03D6ACE81" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_is_version_of&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst347B40_203D_4188_BE84_A0A03D6ACE81" __EAStereoName="dal:reuse" dal_reuse="A"/>
 	<thecustomprofile:optional base_Association="EAID_13347B40_203D_4188_BE84_A0A03D6ACE81"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst9D2448_F2CE_4dae_99C8_CF9915409B45" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst9D2448_F2CE_4dae_99C8_CF9915409B45" __EAStereoName="skos:note" skos_note="DCAT-AP-LU extends the recommendations for controlled vocabularies for this property provided by DCAT-AP."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst9D2448_F2CE_4dae_99C8_CF9915409B45" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst9D2448_F2CE_4dae_99C8_CF9915409B45" __EAStereoName="skos:prefLabel" skos_prefLabel="type"/>
 	<thecustomprofile:optional base_Association="EAID_139D2448_F2CE_4dae_99C8_CF9915409B45"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst2405D9_3C69_411f_B625_B0AA7D90F8CF" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst2405D9_3C69_411f_B625_B0AA7D90F8CF" __EAStereoName="skos:note" skos_note="DCAT-AP-LU places additional restrictions on the vocabularies recommended in DCAT-AP. See section &lt;a href=&quot;#controlled-vocs&quot;&gt;10. Controlled Vocabularies&lt;/a&gt; for details."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst2405D9_3C69_411f_B625_B0AA7D90F8CF" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst2405D9_3C69_411f_B625_B0AA7D90F8CF" __EAStereoName="skos:prefLabel" skos_prefLabel="access rights"/>
 	<thecustomprofile:optional base_Association="EAID_162405D9_3C69_411f_B625_B0AA7D90F8CF"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst0AF645_C37B_489d_9F80_8E3ACF981117" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst0AF645_C37B_489d_9F80_8E3ACF981117" __EAStereoName="skos:note" skos_note="This property can be repeated if there are multiple languages in the Dataset."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst0AF645_C37B_489d_9F80_8E3ACF981117" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst0AF645_C37B_489d_9F80_8E3ACF981117" __EAStereoName="skos:prefLabel" skos_prefLabel="language"/>
 	<thecustomprofile:optional base_Association="EAID_190AF645_C37B_489d_9F80_8E3ACF981117"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstA111B4_52B3_4199_9AFA_B520C4A57DFD" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://w3c.github.io/dpv/2.2/dpv/#hasData&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstA111B4_52B3_4199_9AFA_B520C4A57DFD" __EAStereoName="skos:note" skos_note="A list of accepted types, based on the Data Privacy Vocabulary, is defined in &lt;a href=&quot;#controlled-vocs&quot;&gt;10. Controlled Vocabularies&lt;/a&gt;. For additional usage guidance, refer to section &lt;a href=&quot;#usage-guide-on-datasets-and-distributions&quot;&gt;11&lt;/a&gt;."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstA111B4_52B3_4199_9AFA_B520C4A57DFD" __EAStereoName="dal:reuse" dal_reuse="P"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstA111B4_52B3_4199_9AFA_B520C4A57DFD" __EAStereoName="skos:prefLabel" skos_prefLabel="data protection type"/>
 	<thecustomprofile:recommended base_Association="EAID_1DA111B4_52B3_4199_9AFA_B520C4A57DFD"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstAA03D8_7B97_48f9_BFBE_F9EE7D494D48" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstAA03D8_7B97_48f9_BFBE_F9EE7D494D48" __EAStereoName="skos:note" skos_note="It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstAA03D8_7B97_48f9_BFBE_F9EE7D494D48" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstAA03D8_7B97_48f9_BFBE_F9EE7D494D48" __EAStereoName="skos:prefLabel" skos_prefLabel="landing page"/>
 	<thecustomprofile:optional base_Association="EAID_1FAA03D8_7B97_48f9_BFBE_F9EE7D494D48"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst1A0488_0FA1_4c18_853E_2403D4AB46B9" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst1A0488_0FA1_4c18_853E_2403D4AB46B9" __EAStereoName="skos:note" skos_note="DCAT-AP-LU recommends the use of this property. Refer to usage guidance for details."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst1A0488_0FA1_4c18_853E_2403D4AB46B9" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst1A0488_0FA1_4c18_853E_2403D4AB46B9" __EAStereoName="skos:prefLabel" skos_prefLabel="provenance"/>
 	<thecustomprofile:optional base_Association="EAID_241A0488_0FA1_4c18_853E_2403D4AB46B9"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstC9A4D3_5F8D_4fd9_9BDE_A232C5BEE63D" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstC9A4D3_5F8D_4fd9_9BDE_A232C5BEE63D" __EAStereoName="skos:note" skos_note="DCAT-AP-LU recommends the use of DatasetSeries, with additional guidance provided."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstC9A4D3_5F8D_4fd9_9BDE_A232C5BEE63D" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstC9A4D3_5F8D_4fd9_9BDE_A232C5BEE63D" __EAStereoName="skos:prefLabel" skos_prefLabel="in series"/>
 	<thecustomprofile:recommended base_Association="EAID_32C9A4D3_5F8D_4fd9_9BDE_A232C5BEE63D"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstE5EC81_3102_46a2_BBAF_48952ACA70C5" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstE5EC81_3102_46a2_BBAF_48952ACA70C5" __EAStereoName="skos:prefLabel" skos_prefLabel="source"/>
 	<thecustomprofile:optional base_Association="EAID_3EE5EC81_3102_46a2_BBAF_48952ACA70C5"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst449638_B1B0_4fb0_B539_11C950FE58D2" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_relation&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst449638_B1B0_4fb0_B539_11C950FE58D2" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst449638_B1B0_4fb0_B539_11C950FE58D2" __EAStereoName="skos:prefLabel" skos_prefLabel="qualified relation"/>
 	<thecustomprofile:optional base_Association="EAID_3F449638_B1B0_4fb0_B539_11C950FE58D2"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst5F9B50_F431_474d_BF1D_69EE52148295" __EAStereoName="dct:references" dct_references="&lt;a href =&quot;https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst5F9B50_F431_474d_BF1D_69EE52148295" __EAStereoName="skos:note" skos_note="Examples are MAST/ADS [[MASTADS]], DOI [[DOI]], EZID [[EZID]] or W3ID [[W3ID]]."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst5F9B50_F431_474d_BF1D_69EE52148295" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst5F9B50_F431_474d_BF1D_69EE52148295" __EAStereoName="skos:prefLabel" skos_prefLabel="other identifier"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst5CBF10_24F4_4f67_B8D9_E398AEFE5C1F" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_was_generated_by&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst5CBF10_24F4_4f67_B8D9_E398AEFE5C1F" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst5CBF10_24F4_4f67_B8D9_E398AEFE5C1F" __EAStereoName="skos:prefLabel" skos_prefLabel="was generated by"/>
 	<thecustomprofile:optional base_Association="EAID_7E5CBF10_24F4_4f67_B8D9_E398AEFE5C1F"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstF5E447_ECFE_446d_A6B7_57DA71BBDE2D" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstF5E447_ECFE_446d_A6B7_57DA71BBDE2D" __EAStereoName="skos:note" skos_note="A Dataset may be associated with multiple themes. Note: the theme is a URI not a URL therefore, it may not properly resolve in the web browser even though it properly resolves through the API."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstF5E447_ECFE_446d_A6B7_57DA71BBDE2D" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstF5E447_ECFE_446d_A6B7_57DA71BBDE2D" __EAStereoName="skos:prefLabel" skos_prefLabel="theme"/>
 	<thecustomprofile:recommended base_Association="EAID_7EF5E447_ECFE_446d_A6B7_57DA71BBDE2D"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst258166_33FC_4b04_AA2B_729B056A24DE" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst258166_33FC_4b04_AA2B_729B056A24DE" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst258166_33FC_4b04_AA2B_729B056A24DE" __EAStereoName="skos:prefLabel" skos_prefLabel="geographical coverage"/>
 	<thecustomprofile:recommended base_Association="EAID_96258166_33FC_4b04_AA2B_729B056A24DE"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst051298_BB13_4ffb_A8FA_1AD8C0F53A3B" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst051298_BB13_4ffb_A8FA_1AD8C0F53A3B" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst051298_BB13_4ffb_A8FA_1AD8C0F53A3B" __EAStereoName="skos:prefLabel" skos_prefLabel="temporal coverage"/>
 	<thecustomprofile:recommended base_Association="EAID_A8051298_BB13_4ffb_A8FA_1AD8C0F53A3B"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst516A6B_4219_4a42_ACFF_E32791013224" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst516A6B_4219_4a42_ACFF_E32791013224" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst516A6B_4219_4a42_ACFF_E32791013224" __EAStereoName="skos:prefLabel" skos_prefLabel="creator"/>
 	<thecustomprofile:optional base_Association="EAID_B9516A6B_4219_4a42_ACFF_E32791013224"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstF1F56A_ECFF_4f1a_A92B_9EE21B6C695B" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstF1F56A_ECFF_4f1a_A92B_9EE21B6C695B" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstF1F56A_ECFF_4f1a_A92B_9EE21B6C695B" __EAStereoName="skos:prefLabel" skos_prefLabel="documentation"/>
 	<sysml:optional base_Association="EAID_BAF1F56A_ECFF_4f1a_A92B_9EE21B6C695B"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstDDE0C0_74CB_47b4_A3EE_BFA1CAB17E2F" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstDDE0C0_74CB_47b4_A3EE_BFA1CAB17E2F" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstDDE0C0_74CB_47b4_A3EE_BFA1CAB17E2F" __EAStereoName="skos:prefLabel" skos_prefLabel="conforms to"/>
 	<thecustomprofile:optional base_Association="EAID_CFDDE0C0_74CB_47b4_A3EE_BFA1CAB17E2F"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstAFA773_522C_4e46_872D_6C0FA244493C" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_attribution&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstAFA773_522C_4e46_872D_6C0FA244493C" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstAFA773_522C_4e46_872D_6C0FA244493C" __EAStereoName="skos:prefLabel" skos_prefLabel="qualified attribution"/>
 	<thecustomprofile:optional base_Association="EAID_D3AFA773_522C_4e46_872D_6C0FA244493C"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst8C068E_955F_49ce_BAD5_C746A0F82F04" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst8C068E_955F_49ce_BAD5_C746A0F82F04" __EAStereoName="skos:note" skos_note="DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst8C068E_955F_49ce_BAD5_C746A0F82F04" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst8C068E_955F_49ce_BAD5_C746A0F82F04" __EAStereoName="skos:prefLabel" skos_prefLabel="publisher"/>
 	<thecustomprofile:recommended base_Association="EAID_D78C068E_955F_49ce_BAD5_C746A0F82F04"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst05BC05_82C8_4927_ACB1_C02D09866AFA" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst05BC05_82C8_4927_ACB1_C02D09866AFA" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst05BC05_82C8_4927_ACB1_C02D09866AFA" __EAStereoName="skos:prefLabel" skos_prefLabel="contact point"/>
 	<thecustomprofile:recommended base_Association="EAID_E005BC05_82C8_4927_ACB1_C02D09866AFA"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst90B201_35E0_486c_A713_69FE4B6F159F" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst90B201_35E0_486c_A713_69FE4B6F159F" __EAStereoName="skos:prefLabel" skos_prefLabel="frequency"/>
 	<thecustomprofile:optional base_Association="EAID_E790B201_35E0_486c_A713_69FE4B6F159F"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst000E49_EA61_40a2_A93A_9919A90171C9" __EAStereoName="skos:note" skos_note="DCAT-AP-LU provides additional usage &lt;a href=&quot;#legislation_guidance&quot;&gt;guidance for this property &lt;/a&gt;in the [[DGA]] context."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst000E49_EA61_40a2_A93A_9919A90171C9" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst000E49_EA61_40a2_A93A_9919A90171C9" __EAStereoName="skos:prefLabel" skos_prefLabel="applicable legislation"/>
 	<thecustomprofile:optional base_Association="EAID_EE000E49_EA61_40a2_A93A_9919A90171C9"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_40327841_E4D5_4dbd_8E35_E96CA161E597" __EAStereoName="skos:prefLabel" skos_prefLabel="Dataset Series"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstC80A37_DB76_4405_81DD_8FFE3E3866D3" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstC80A37_DB76_4405_81DD_8FFE3E3866D3" __EAStereoName="skos:note" skos_note="DCAT-AP-LU provides additional usage guidance regarding vocabularies for publishers."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstC80A37_DB76_4405_81DD_8FFE3E3866D3" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstC80A37_DB76_4405_81DD_8FFE3E3866D3" __EAStereoName="skos:prefLabel" skos_prefLabel="publisher"/>
 	<thecustomprofile:recommended base_Association="EAID_06C80A37_DB76_4405_81DD_8FFE3E3866D3"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstBE86A4_20D4_4911_B5AF_5AB485E75671" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstBE86A4_20D4_4911_B5AF_5AB485E75671" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstBE86A4_20D4_4911_B5AF_5AB485E75671" __EAStereoName="skos:prefLabel" skos_prefLabel="contact point"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst27F2CA_B4A9_489c_8ABB_3DEF8F3D4B7A" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst27F2CA_B4A9_489c_8ABB_3DEF8F3D4B7A" __EAStereoName="skos:prefLabel" skos_prefLabel="applicable legislation"/>
 	<thecustomprofile:optional base_Association="EAID_AA27F2CA_B4A9_489c_8ABB_3DEF8F3D4B7A"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst6A4FBE_B699_4cdb_AB27_38B9811CF506" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst6A4FBE_B699_4cdb_AB27_38B9811CF506" __EAStereoName="skos:note" skos_note="When spatial coverage is a dimension in the dataset series then the spatial coverage of each dataset in the collection should be part of the spatial coverage. In that case, an open ended value is recommended,"/>
+	<thecustomprofile:skos_scopeNote base_Property="EAID_dst6A4FBE_B699_4cdb_AB27_38B9811CF506" __EAStereoName="skos:scopeNote" skos_scopeNote="e.g. EU or a broad bounding box covering the expected values."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst6A4FBE_B699_4cdb_AB27_38B9811CF506" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst6A4FBE_B699_4cdb_AB27_38B9811CF506" __EAStereoName="skos:prefLabel" skos_prefLabel="geographical coverage"/>
 	<thecustomprofile:recommended base_Association="EAID_E76A4FBE_B699_4cdb_AB27_38B9811CF506"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_80E1F5B2_738F_4118_8E47_917B1DDEA792" __EAStereoName="skos:prefLabel" skos_prefLabel="Distribution"/>
+	<thecustomprofile:dct_references base_Property="EAID_1EFEE259_F46C_4a44_A504_F98445890312" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_1EFEE259_F46C_4a44_A504_F98445890312" __EAStereoName="skos:note" skos_note="The resource at the access URL may contain information about how to get the Dataset. "/>
+	<thecustomprofile:dal_reuse base_Property="EAID_1EFEE259_F46C_4a44_A504_F98445890312" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_1EFEE259_F46C_4a44_A504_F98445890312" __EAStereoName="skos:prefLabel" skos_prefLabel="access URL"/>
 	<thecustomprofile:mandatory base_Property="EAID_1EFEE259_F46C_4a44_A504_F98445890312"/>
+	<thecustomprofile:dct_references base_Property="EAID_28FACB78_8A32_4689_8503_9E09197B604D" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_size&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_28FACB78_8A32_4689_8503_9E09197B604D"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_28FACB78_8A32_4689_8503_9E09197B604D" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_28FACB78_8A32_4689_8503_9E09197B604D" __EAStereoName="skos:prefLabel" skos_prefLabel="byte size"/>
+	<thecustomprofile:dct_references base_Property="EAID_0F1F1BF8_827F_46a5_BECF_6FD16026F159" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_0F1F1BF8_827F_46a5_BECF_6FD16026F159"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_0F1F1BF8_827F_46a5_BECF_6FD16026F159" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_0F1F1BF8_827F_46a5_BECF_6FD16026F159" __EAStereoName="skos:prefLabel" skos_prefLabel="download URL"/>
+	<thecustomprofile:dct_references base_Property="EAID_B4B78CF1_DBAE_49d7_BEC6_B277B419ABA6" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_spatial_resolution&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_B4B78CF1_DBAE_49d7_BEC6_B277B419ABA6"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_B4B78CF1_DBAE_49d7_BEC6_B277B419ABA6" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_B4B78CF1_DBAE_49d7_BEC6_B277B419ABA6" __EAStereoName="skos:prefLabel" skos_prefLabel="spatial resolution"/>
+	<thecustomprofile:dct_references base_Property="EAID_E39393BA_B07B_49aa_9BE2_11D776CE34FD" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_temporal_resolution&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_E39393BA_B07B_49aa_9BE2_11D776CE34FD"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_E39393BA_B07B_49aa_9BE2_11D776CE34FD" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_E39393BA_B07B_49aa_9BE2_11D776CE34FD" __EAStereoName="skos:prefLabel" skos_prefLabel="temporal resolution"/>
+	<thecustomprofile:dct_references base_Property="EAID_ABDF0C5E_536C_4159_A334_AA15CB968BAE" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_description&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_ABDF0C5E_536C_4159_A334_AA15CB968BAE" __EAStereoName="skos:note" skos_note="This property can be repeated for parallel language versions of the description. "/>
 	<thecustomprofile:recommended base_Property="EAID_ABDF0C5E_536C_4159_A334_AA15CB968BAE"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_ABDF0C5E_536C_4159_A334_AA15CB968BAE" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_ABDF0C5E_536C_4159_A334_AA15CB968BAE" __EAStereoName="skos:prefLabel" skos_prefLabel="description"/>
+	<thecustomprofile:dct_references base_Property="EAID_0433D71E_C1FC_459c_BE8C_F208DCF75B51" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_0433D71E_C1FC_459c_BE8C_F208DCF75B51"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_0433D71E_C1FC_459c_BE8C_F208DCF75B51" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_0433D71E_C1FC_459c_BE8C_F208DCF75B51" __EAStereoName="skos:prefLabel" skos_prefLabel="release date"/>
+	<thecustomprofile:dct_references base_Property="EAID_54F4B95C_4E5C_429b_B650_B949820A844F" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_update_date&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_54F4B95C_4E5C_429b_B650_B949820A844F"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_54F4B95C_4E5C_429b_B650_B949820A844F" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_54F4B95C_4E5C_429b_B650_B949820A844F" __EAStereoName="skos:prefLabel" skos_prefLabel="modification date"/>
+	<thecustomprofile:dct_references base_Property="EAID_42D78AFF_7A39_4c46_B8CF_103AA7427C99" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_title&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_42D78AFF_7A39_4c46_B8CF_103AA7427C99" __EAStereoName="skos:note" skos_note="This property can be repeated for parallel language versions of the description."/>
 	<thecustomprofile:optional base_Property="EAID_42D78AFF_7A39_4c46_B8CF_103AA7427C99"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_42D78AFF_7A39_4c46_B8CF_103AA7427C99" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_42D78AFF_7A39_4c46_B8CF_103AA7427C99" __EAStereoName="skos:prefLabel" skos_prefLabel="title"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst9FCB69_E9BD_4955_A036_BE1E97AD348D" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_service&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst9FCB69_E9BD_4955_A036_BE1E97AD348D" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst9FCB69_E9BD_4955_A036_BE1E97AD348D" __EAStereoName="skos:prefLabel" skos_prefLabel="access service"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst79E901_0E23_4e8d_A3E6_FC32072143B8" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_packaging_format&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst79E901_0E23_4e8d_A3E6_FC32072143B8" __EAStereoName="skos:note" skos_note="It SHOULD be expressed using a media type as defined in the official register of media types managed by &lt;a href=&quot;https://www.iana.org/&quot;&gt;IANA&lt;/a&gt;."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst79E901_0E23_4e8d_A3E6_FC32072143B8" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst79E901_0E23_4e8d_A3E6_FC32072143B8" __EAStereoName="skos:prefLabel" skos_prefLabel="packaging format"/>
 	<thecustomprofile:optional base_Association="EAID_2479E901_0E23_4e8d_A3E6_FC32072143B8"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst8F4C46_88B3_4093_BBA3_528F0C031210" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst8F4C46_88B3_4093_BBA3_528F0C031210" __EAStereoName="skos:note" skos_note="DCAT-AP-LU provides &lt;a href=“#policy_guidance”&gt;additional usage guidance&lt;/a&gt; on the use of this property for expressing data use restrictions."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst8F4C46_88B3_4093_BBA3_528F0C031210" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst8F4C46_88B3_4093_BBA3_528F0C031210" __EAStereoName="skos:prefLabel" skos_prefLabel="has policy"/>
 	<thecustomprofile:optional base_Association="EAID_338F4C46_88B3_4093_BBA3_528F0C031210"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstB722E0_2A1B_4e73_BFFB_E9F83F92A398" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_conforms_to&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstB722E0_2A1B_4e73_BFFB_E9F83F92A398" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstB722E0_2A1B_4e73_BFFB_E9F83F92A398" __EAStereoName="skos:prefLabel" skos_prefLabel="linked schemas"/>
 	<thecustomprofile:optional base_Association="EAID_3CB722E0_2A1B_4e73_BFFB_E9F83F92A398"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstE2801C_646F_45d5_A292_BAE7331004C1" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstE2801C_646F_45d5_A292_BAE7331004C1" __EAStereoName="skos:prefLabel" skos_prefLabel="availability"/>
 	<thecustomprofile:optional base_Association="EAID_4DE2801C_646F_45d5_A292_BAE7331004C1"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstA4543E_B011_4288_AFC3_BCC3D4A255E1" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstA4543E_B011_4288_AFC3_BCC3D4A255E1" __EAStereoName="skos:note" skos_note="The checksum is related to the download URL"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstA4543E_B011_4288_AFC3_BCC3D4A255E1" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstA4543E_B011_4288_AFC3_BCC3D4A255E1" __EAStereoName="skos:prefLabel" skos_prefLabel="checksum"/>
 	<thecustomprofile:optional base_Association="EAID_64A4543E_B011_4288_AFC3_BCC3D4A255E1"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstD8214F_E3A6_4677_9057_35E47BA114FC" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstD8214F_E3A6_4677_9057_35E47BA114FC" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstD8214F_E3A6_4677_9057_35E47BA114FC" __EAStereoName="skos:prefLabel" skos_prefLabel="documentation"/>
 	<thecustomprofile:optional base_Association="EAID_66D8214F_E3A6_4677_9057_35E47BA114FC"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst0A70FB_E433_45d8_B685_8A988B3CEC5D" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst0A70FB_E433_45d8_B685_8A988B3CEC5D" __EAStereoName="skos:note" skos_note="DCAT-AP-LU provides &lt;a href=&quot;#usage-guide-on-datasets-and-distributions&quot;&gt;additional usage guidance&lt;/a&gt; for this property."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst0A70FB_E433_45d8_B685_8A988B3CEC5D" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst0A70FB_E433_45d8_B685_8A988B3CEC5D" __EAStereoName="skos:prefLabel" skos_prefLabel="media type"/>
 	<thecustomprofile:optional base_Association="EAID_A20A70FB_E433_45d8_B685_8A988B3CEC5D"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstAEB985_983F_478b_A68B_981A4D7A97A9" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstAEB985_983F_478b_A68B_981A4D7A97A9" __EAStereoName="skos:prefLabel" skos_prefLabel="applicable legislation"/>
 	<thecustomprofile:optional base_Association="EAID_A3AEB985_983F_478b_A68B_981A4D7A97A9"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst57B56C_6BCE_4dac_AC8D_34F5944F56BF" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights&quot;&gt;Link&lt;/a&gt;&#xA;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst57B56C_6BCE_4dac_AC8D_34F5944F56BF" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst57B56C_6BCE_4dac_AC8D_34F5944F56BF" __EAStereoName="skos:prefLabel" skos_prefLabel="access rights"/>
 	<thecustomprofile:optional base_Association="EAID_A457B56C_6BCE_4dac_AC8D_34F5944F56BF"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstD79CFB_364F_47ed_9BD0_4E2E6588D4EF" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_status&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstD79CFB_364F_47ed_9BD0_4E2E6588D4EF" __EAStereoName="skos:note" skos_note="It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstD79CFB_364F_47ed_9BD0_4E2E6588D4EF" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstD79CFB_364F_47ed_9BD0_4E2E6588D4EF" __EAStereoName="skos:prefLabel" skos_prefLabel="status"/>
 	<thecustomprofile:optional base_Association="EAID_A9D79CFB_364F_47ed_9BD0_4E2E6588D4EF"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst06793A_75D2_4fdd_9F04_14E94B27526A" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dst06793A_75D2_4fdd_9F04_14E94B27526A" __EAStereoName="skos:note" skos_note="This property can be repeated if the metadata is provided in multiple languages."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst06793A_75D2_4fdd_9F04_14E94B27526A" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst06793A_75D2_4fdd_9F04_14E94B27526A" __EAStereoName="skos:prefLabel" skos_prefLabel="language"/>
 	<thecustomprofile:optional base_Association="EAID_AB06793A_75D2_4fdd_9F04_14E94B27526A"/>
+	<thecustomprofile:dct_references base_Property="EAID_dst1A10BE_2B3B_4299_9157_7AF4A917372F" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_format&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dst1A10BE_2B3B_4299_9157_7AF4A917372F" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dst1A10BE_2B3B_4299_9157_7AF4A917372F" __EAStereoName="skos:prefLabel" skos_prefLabel="format"/>
 	<thecustomprofile:recommended base_Association="EAID_B31A10BE_2B3B_4299_9157_7AF4A917372F"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstA87022_98E2_4e47_B8AE_4B8A2B14F70F" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_compression_format&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstA87022_98E2_4e47_B8AE_4B8A2B14F70F" __EAStereoName="skos:note" skos_note="It SHOULD be expressed using a media type as defined in the official register of media types managed by &lt;a href=&quot;https://www.iana.org/&quot;&gt;IANA&lt;/a&gt;."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstA87022_98E2_4e47_B8AE_4B8A2B14F70F" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstA87022_98E2_4e47_B8AE_4B8A2B14F70F" __EAStereoName="skos:prefLabel" skos_prefLabel="compression format"/>
 	<thecustomprofile:optional base_Association="EAID_F8A87022_98E2_4e47_B8AE_4B8A2B14F70F"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstCDCD7B_6F67_4e2b_A8E9_70A00DE6A6B7" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:skos_note base_Property="EAID_dstCDCD7B_6F67_4e2b_A8E9_70A00DE6A6B7" __EAStereoName="skos:note" skos_note="Licence object should only come from &lt;a href=&quot;https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence&quot;&gt;Licence - EU Vocabularies - Publications Office of the EU.&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstCDCD7B_6F67_4e2b_A8E9_70A00DE6A6B7" __EAStereoName="dal:reuse" dal_reuse="E"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstCDCD7B_6F67_4e2b_A8E9_70A00DE6A6B7" __EAStereoName="skos:prefLabel" skos_prefLabel="license"/>
 	<thecustomprofile:recommended base_Association="EAID_FACDCD7B_6F67_4e2b_A8E9_70A00DE6A6B7"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_4B8C2DD2_4456_4f83_82DB_8EFF65AB9725" __EAStereoName="skos:prefLabel" skos_prefLabel="Relationship"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_27E333CC_6E65_4248_8EF1_2729F5E3154A" __EAStereoName="skos:prefLabel" skos_prefLabel="Resource"/>
@@ -5863,6 +6115,9 @@
 	<thecustomprofile:dal_vocaburi base_Class="EAID_99CF909B_4E2B_4c7b_A184_CD337AA23ED6" __EAStereoName="dal:vocaburi" dal_vocaburi="http://purl.org/adms/licencetype/1.0"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_99CF909B_4E2B_4c7b_A184_CD337AA23ED6" __EAStereoName="skos:prefLabel" skos_prefLabel="License Document"/>
 	<thecustomprofile:dal_vocabname base_Class="EAID_99CF909B_4E2B_4c7b_A184_CD337AA23ED6" __EAStereoName="dal:vocabname" dal_vocabname="ADMS licence type vocabulary"/>
+	<thecustomprofile:dct_references base_Property="EAID_dstCBDFF6_1A48_40d9_A342_7D7155F9479B" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type&quot;&gt;Link&lt;/a&gt;"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_dstCBDFF6_1A48_40d9_A342_7D7155F9479B" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_dstCBDFF6_1A48_40d9_A342_7D7155F9479B" __EAStereoName="skos:prefLabel" skos_prefLabel="type"/>
 	<thecustomprofile:recommended base_Association="EAID_2ECBDFF6_1A48_40d9_A342_7D7155F9479B"/>
 	<thecustomprofile:dal_vocaburi base_Class="EAID_3AD388EE_015E_46b2_9518_C1E6C343ECE8" __EAStereoName="dal:vocaburi" dal_vocaburi="https://publications.europa.eu/resource/authority/language"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_3AD388EE_015E_46b2_9518_C1E6C343ECE8" __EAStereoName="skos:prefLabel" skos_prefLabel="Linguistic System"/>
@@ -5876,10 +6131,22 @@
 	<thecustomprofile:dal_vocabname base_Class="EAID_997E23F2_B3A1_40c6_9CED_216EA28700E2" __EAStereoName="dal:vocabname" dal_vocabname="EU Vocabularies File Type Named Authority List"/>
 	<thecustomprofile:dct_references base_Class="EAID_6E8C6E5E_633B_4e5a_AE1F_30E8719AC6FE" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Class:Period_of_Time&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_6E8C6E5E_633B_4e5a_AE1F_30E8719AC6FE" __EAStereoName="skos:prefLabel" skos_prefLabel="Period of time"/>
+	<thecustomprofile:dct_references base_Property="EAID_A4C3299E_46A5_45ec_90CA_22C8DDE501D6" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:period_end_date&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:recommended base_Property="EAID_A4C3299E_46A5_45ec_90CA_22C8DDE501D6"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_A4C3299E_46A5_45ec_90CA_22C8DDE501D6" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_A4C3299E_46A5_45ec_90CA_22C8DDE501D6" __EAStereoName="skos:prefLabel" skos_prefLabel="end date"/>
+	<thecustomprofile:dct_references base_Property="EAID_61FA3702_966E_435e_904A_73A7B3F2C37B" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:period_start_date&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:recommended base_Property="EAID_61FA3702_966E_435e_904A_73A7B3F2C37B"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_61FA3702_966E_435e_904A_73A7B3F2C37B" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_61FA3702_966E_435e_904A_73A7B3F2C37B" __EAStereoName="skos:prefLabel" skos_prefLabel="start date"/>
+	<thecustomprofile:dct_references base_Property="EAID_4135610D_59B5_432c_9A8F_1A7EEDC7DAB3" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_4135610D_59B5_432c_9A8F_1A7EEDC7DAB3"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_4135610D_59B5_432c_9A8F_1A7EEDC7DAB3" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_4135610D_59B5_432c_9A8F_1A7EEDC7DAB3" __EAStereoName="skos:prefLabel" skos_prefLabel="beginning"/>
+	<thecustomprofile:dct_references base_Property="EAID_5BA85E71_C883_498c_81AD_46DEF5DB390A" __EAStereoName="dct:references" dct_references="&lt;a href=&quot;https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end&quot;&gt;Link&lt;/a&gt;"/>
 	<thecustomprofile:optional base_Property="EAID_5BA85E71_C883_498c_81AD_46DEF5DB390A"/>
+	<thecustomprofile:dal_reuse base_Property="EAID_5BA85E71_C883_498c_81AD_46DEF5DB390A" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_5BA85E71_C883_498c_81AD_46DEF5DB390A" __EAStereoName="skos:prefLabel" skos_prefLabel="end"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_7B128FE8_041B_467e_A0F0_BFCF703AE60D" __EAStereoName="skos:prefLabel" skos_prefLabel="Provenance Statement"/>
 	<thecustomprofile:dal_vocaburi base_Class="EAID_B33076C7_0F23_4437_BCC1_97AEA8F9F399" __EAStereoName="dal:vocaburi" dal_vocaburi="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_B33076C7_0F23_4437_BCC1_97AEA8F9F399" __EAStereoName="skos:prefLabel" skos_prefLabel="Rights Statement"/>
@@ -5904,6 +6171,9 @@
 	<thecustomprofile:dal_vocaburi base_Class="EAID_D60766FA_AEB6_46f9_896D_1FADB3BD18A4" __EAStereoName="dal:vocaburi" dal_vocaburi="https://publications.europa.eu/resource/authority/data-theme"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_D60766FA_AEB6_46f9_896D_1FADB3BD18A4" __EAStereoName="skos:prefLabel" skos_prefLabel="Concept"/>
 	<thecustomprofile:dal_vocabname base_Class="EAID_D60766FA_AEB6_46f9_896D_1FADB3BD18A4" __EAStereoName="dal:vocabname" dal_vocabname="Data theme - EU Vocabularies - Publications Office of the EU"/>
+	<thecustomprofile:skos_note base_Property="EAID_2E29303E_CBF4_4b81_8029_8CFE68E4F560" __EAStereoName="skos:note" skos_note="This property can be repeated for parallel language versions of the label."/>
+	<thecustomprofile:dal_reuse base_Property="EAID_2E29303E_CBF4_4b81_8029_8CFE68E4F560" __EAStereoName="dal:reuse" dal_reuse="A"/>
+	<thecustomprofile:skos_prefLabel base_Property="EAID_2E29303E_CBF4_4b81_8029_8CFE68E4F560" __EAStereoName="skos:prefLabel" skos_prefLabel="preferred label"/>
 	<thecustomprofile:mandatory base_Property="EAID_2E29303E_CBF4_4b81_8029_8CFE68E4F560"/>
 	<thecustomprofile:skos_prefLabel base_Class="EAID_4C2B4A8C_4764_41ff_B267_CE382B4B1EB0" __EAStereoName="skos:prefLabel" skos_prefLabel="Checksum"/>
 	<thecustomprofile:skos_note base_Class="EAID_8EEF8118_362C_4fd7_A642_63B68BF1EB6E" __EAStereoName="skos:note" skos_note="Note that the class Kind is the parent class for the four explicit types of &lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc6350.html&quot;&gt;vCard&lt;/a&gt; (Individual, Organization, Location, Group)."/>
