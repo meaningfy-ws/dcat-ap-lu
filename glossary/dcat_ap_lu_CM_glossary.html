@@ -455,19 +455,17 @@
                      </tr>
                      <tr>
                         <td>dcat:record</td>
-                        <td>A Catalogue Record that is part of the Catalogue.A Catalogue Record that is part of
-                           the Catalogue.</td>
+                        <td></td>
                         <td>dcat:Catalog -&gt; dcat:CatalogRecord [0..*]</td>
                      </tr>
                      <tr>
                         <td>dcat:servesDataset</td>
-                        <td>This property refers to a collection of data that this data service can distribute.</td>
+                        <td></td>
                         <td>dcat:DataService -&gt; dcat:Dataset []</td>
                      </tr>
                      <tr>
                         <td>dcat:service</td>
-                        <td>A site or end-point (Data Service) that is listed in the Catalogue.A site or end-point
-                           (Data Service) that is listed in the Catalogue.</td>
+                        <td></td>
                         <td>dcat:Catalog -&gt; dcat:DataService [0..*]</td>
                      </tr>
                      <tr>
@@ -513,8 +511,7 @@
                      </tr>
                      <tr>
                         <td>dct:creator</td>
-                        <td>An entity responsible for the creation of the catalogue.An entity responsible for
-                           the creation of the catalogue. An entity responsible for producing the dataset.An entity responsible for producing
+                        <td> An entity responsible for producing the dataset.An entity responsible for producing
                            the dataset.</td>
                         <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..*]<br></td>
                      </tr>
@@ -532,7 +529,7 @@
                      </tr>
                      <tr>
                         <td>dct:license</td>
-                        <td>A licence under which the Catalogue can be used or reused. A licence under which the Distribution is made available.A licence under which the
+                        <td> A licence under which the Distribution is made available.A licence under which the
                            Distribution is made available.</td>
                         <td>dcat:Catalog -&gt; dct:LicenseDocument [0..1]<br>dcat:Distribution -&gt; dct:LicenseDocument [0..1]<br></td>
                      </tr>
@@ -544,12 +541,12 @@
                      </tr>
                      <tr>
                         <td>dct:publisher</td>
-                        <td>An entity (organisation) responsible for making the Dataset available.An entity (organisation)
+                        <td> An entity (organisation) responsible for making the Dataset available.An entity (organisation)
                            responsible for making the Dataset available.
                             An entity (organisation) responsible for making the Dataset available.
                            An entity (organisation) responsible for making the Dataset available.
                            </td>
-                        <td>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
+                        <td>dcat:Catalog -&gt; foaf:Agent [1..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>dct:rights</td>
@@ -606,8 +603,7 @@
                      </tr>
                      <tr>
                         <td>foaf:primaryTopic</td>
-                        <td>A link to the Dataset, Data service or Catalog described in the record.A link to the
-                           Dataset, Data service or Catalog described in the record.</td>
+                        <td></td>
                         <td>dcat:CatalogRecord -&gt; dcat:Resource [1..1]</td>
                      </tr>
                      <tr>
@@ -634,12 +630,6 @@
                         <td>provides the business context for, the creation of the dataset.
                            provides the business context for, the creation of the dataset.</td>
                         <td>dcat:Dataset -&gt; prov:Activity [0..*]</td>
-                     </tr>
-                     <tr>
-                        <td>sko</td>
-                        <td>An entity (organisation) responsible for making the Catalogue available.An entity
-                           (organisation) responsible for making the Catalogue available.</td>
-                        <td>dcat:Catalog -&gt; foaf:Agent [1..1]</td>
                      </tr>
                      <tr>
                         <td>spdx:checksum</td>
