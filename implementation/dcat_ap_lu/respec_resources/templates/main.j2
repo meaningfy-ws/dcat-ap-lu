@@ -113,12 +113,6 @@
                                 {{ config.propertyReferenceRespecLabel if config.propertyReferenceRespecLabel else 'Reuse' }}
                             </th>
                         {% endif %}
-                        {% if metadata.openGithubIssue %}
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active"
-                                style="width:5%">
-                                {{ metadata.openGithubIssue.columnLabel if metadata.openGithubIssue.columnLabel else 'Open an issue' }}
-                            </th>
-                        {% endif %}
                     </tr>
                     </thead>
                     <tbody class="supertype">
@@ -187,11 +181,6 @@
                                     {% else %}
                                         &nbsp;
                                     {% endif %}
-                                </td>
-                            {% endif %}
-                            {% if metadata.openGithubIssue %}
-                                <td>
-                                    {{ renderFeedbackButton(entity, prop) }}
                                 </td>
                             {% endif %}
                         </tr>
