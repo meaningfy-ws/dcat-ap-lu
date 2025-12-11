@@ -1,3 +1,4 @@
+@prefix : <https://mindig_lu.gitlab.io/DCAT-AP-LU/#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix at-voc: <http://publications.europa.eu/resource/authority/> .
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
@@ -22,7 +23,7 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-dcatap:applicablelegislation rdfs:domain [ a owl:Class ;
+dcatap:applicableLegislation rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Dataset dcat:DatasetSeries dcat:Distribution ) ] ;
     rdfs:range eli:LegalResource .
 
@@ -57,6 +58,8 @@ dcterms:temporal rdfs:domain dcat:Dataset ;
 adms:identifier rdfs:domain dcat:Dataset ;
     rdfs:range adms:Identifier .
 
+adms:identifierX rdfs:domain adms:Identifier .
+
 adms:sample rdfs:domain dcat:Dataset ;
     rdfs:range dcat:Distribution .
 
@@ -83,6 +86,10 @@ dcat:hasVersion a owl:AsymmetricProperty ;
 dcat:inSeries rdfs:domain dcat:Dataset ;
     rdfs:range dcat:DatasetSeries .
 
+dcat:isVersionOf a owl:AsymmetricProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range dcat:Dataset .
+
 dcat:keyword rdfs:domain dcat:Dataset ;
     rdfs:range rdfs:Literal .
 
@@ -95,8 +102,8 @@ dcat:qualifiedRelation rdfs:domain dcat:Dataset ;
 dcat:record rdfs:domain dcat:Catalog ;
     rdfs:range dcat:CatalogRecord .
 
-dcat:servesDataset rdfs:domain dcat:Dataset ;
-    rdfs:range dcat:DataService .
+dcat:servesDataset rdfs:domain dcat:DataService ;
+    rdfs:range dcat:Dataset .
 
 dcat:service rdfs:domain dcat:Catalog ;
     rdfs:range dcat:DataService .
@@ -116,16 +123,16 @@ foaf:page rdfs:domain [ a owl:Class ;
 
 core-res:core-restriction a owl:Ontology ;
     rdfs:label "This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.         This artefact excludes the definitions of concepts.         The eDCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency."@en ;
-    dcterms:created "2025-08-29"^^xsd:date ;
+    dcterms:created "2025-12-11"^^xsd:date ;
     dcterms:description "This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.         This artefact excludes the definitions of concepts.         The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency."@en ;
-    dcterms:issued "2025-08-29"^^xsd:date ;
+    dcterms:issued "2025-12-11"^^xsd:date ;
     dcterms:license "Copyright 2025 Ministère de la Digitalisation, Luxembourg. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned. " ;
     dcterms:publisher "https://mindig_lu.gitlab.io/DCAT-AP-LU" ;
     dcterms:title "DCAT-AP-LU restrictions"@en ;
     vann:preferredNamespacePrefix "dal" ;
     vann:preferredNamespaceUri "https://mindig_lu.gitlab.io/DCAT-AP-LU/#" ;
     rdfs:comment """This version is automatically generated from dcat_ap_lu_CM.xml on 
-                2025-08-29""" ;
+                2025-12-11""" ;
     rdfs:seeAlso <https://mindig_lu.gitlab.io/DCAT-AP-LU/> ;
     owl:imports cv:,
         dcatap:,
@@ -159,11 +166,12 @@ core-res:core-restriction a owl:Ontology ;
 dcatap:availability rdfs:domain dcat:Distribution ;
     rdfs:range skos:Concept .
 
-dcterms:accessRights rdfs:domain dcat:Dataset ;
-    rdfs:range dcterms:RightsStatement .
-
 dcterms:accrualPeriodicity rdfs:domain dcat:Dataset ;
     rdfs:range dcterms:Frequency .
+
+dcterms:creator rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dcat:Catalog dcat:Dataset ) ] ;
+    rdfs:range foaf:Agent .
 
 dcterms:description rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Dataset dcat:Distribution ) ] ;
@@ -175,18 +183,12 @@ dcterms:format rdfs:domain dcat:Distribution ;
 dcterms:identifier rdfs:domain dcat:Dataset ;
     rdfs:range rdfs:Literal .
 
-dcterms:rights rdfs:domain dcat:Distribution ;
-    rdfs:range dcterms:RightsStatement .
-
 dcterms:title rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Dataset dcat:Distribution ) ] ;
     rdfs:range rdfs:Literal .
 
 spdx:checksum rdfs:domain dcat:Distribution ;
     rdfs:range spdx:Checksum .
-
-owl:versionInfo rdfs:domain dcat:Dataset ;
-    rdfs:range rdfs:Literal .
 
 skos:prefLabel rdfs:domain skos:Concept ;
     rdfs:range rdfs:Literal .
@@ -210,7 +212,7 @@ dcat:compressFormat rdfs:domain dcat:Distribution ;
     rdfs:range dcterms:MediaType .
 
 dcat:endDate rdfs:domain dcterms:PeriodOfTime ;
-    rdfs:range xsd:dateTime .
+    rdfs:range :TemporalLiteral .
 
 dcat:mediaType rdfs:domain dcat:Distribution ;
     rdfs:range dcterms:MediaType .
@@ -223,7 +225,7 @@ dcat:spatialResolutionInMeters rdfs:domain [ a owl:Class ;
     rdfs:range xsd:decimal .
 
 dcat:startDate rdfs:domain dcterms:PeriodOfTime ;
-    rdfs:range xsd:dateTime .
+    rdfs:range :TemporalLiteral .
 
 dcat:temporalResolution rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Dataset dcat:Distribution ) ] ;
@@ -243,13 +245,10 @@ dcterms:Location rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty locn:geometry ] .
 
-dcterms:creator rdfs:domain [ a owl:Class ;
-            owl:unionOf ( dcat:Catalog dcat:Dataset ) ] ;
-    rdfs:range foaf:Agent .
-
 dcterms:issued rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Dataset dcat:Distribution ) ] ;
-    rdfs:range xsd:dateTime .
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :TemporalLiteral xsd:dateTime ) ] .
 
 dcterms:license rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Catalog dcat:Distribution ) ] ;
@@ -257,17 +256,25 @@ dcterms:license rdfs:domain [ a owl:Class ;
 
 dcterms:modified rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Dataset dcat:Distribution ) ] ;
-    rdfs:range xsd:dateTime .
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :TemporalLiteral xsd:dateTime ) ] .
+
+dcterms:rights rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dcat:Dataset dcat:Distribution ) ] ;
+    rdfs:range dcterms:RightsStatement .
 
 dcterms:type rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Dataset dcterms:LicenseDocument foaf:Agent ) ] ;
     rdfs:range skos:Concept .
 
+xsd:dateTime a owl:Class .
+
 dcat:CatalogRecord rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty foaf:primaryTopic ] .
 
-dcterms:publisher rdfs:domain [ a owl:Class ;
+dcterms:publisher a owl:FunctionalProperty ;
+    rdfs:domain [ a owl:Class ;
             owl:unionOf ( dcat:Catalog dcat:Dataset dcat:DatasetSeries ) ] ;
     rdfs:range foaf:Agent .
 
@@ -275,15 +282,17 @@ foaf:Agent rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcterms:type ] .
 
+:TemporalLiteral a owl:Class .
+
 dcterms:PeriodOfTime rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty time:hasEnd ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcat:startDate ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty time:hasBeginning ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty time:hasEnd ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcat:endDate ] .
@@ -297,10 +306,10 @@ dcat:Catalog rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty dcterms:license ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcterms:publisher ],
+            owl:onProperty dcterms:creator ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcterms:creator ] .
+            owl:cardinality 1 ;
+            owl:onProperty dcterms:publisher ] .
 
 dcat:DatasetSeries rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -309,63 +318,57 @@ dcat:DatasetSeries rdfs:subClassOf [ a owl:Restriction ;
 dcat:Distribution a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcat:compressFormat ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcterms:issued ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcat:packageFormat ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcat:accessURL ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty odrl:hasPolicy ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap:availability ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty adms:status ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcterms:format ],
+            owl:onProperty dcat:byteSize ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcat:mediaType ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcat:byteSize ],
+            owl:onProperty spdx:checksum ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat:packageFormat ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty odrl:hasPolicy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty adms:status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcterms:issued ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcterms:format ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcterms:rights ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty spdx:checksum ],
+            owl:minCardinality 1 ;
+            owl:onProperty dcat:accessURL ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcterms:license ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap:availability ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat:compressFormat ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcterms:modified ] .
 
 dcat:Dataset a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty owl:versionInfo ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcterms:publisher ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcterms:accrualPeriodicity ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcterms:issued ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcterms:identifier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcterms:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcterms:type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcat:spatialResolutionInMeters ],
@@ -373,23 +376,23 @@ dcat:Dataset a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty dcat:temporalResolution ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcterms:description ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcterms:creator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcterms:accessRights ],
+            owl:onProperty dcterms:publisher ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcterms:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty dcterms:rights ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcterms:modified ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcterms:type ] .
+            owl:onProperty dcterms:issued ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcterms:accrualPeriodicity ] .
 
 [] a owl:AllDisjointClasses ;
     owl:members ( dcat:DataService dcat:Dataset dcat:DatasetSeries ) .
