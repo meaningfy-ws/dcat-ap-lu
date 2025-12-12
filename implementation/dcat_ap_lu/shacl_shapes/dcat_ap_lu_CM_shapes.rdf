@@ -7,18 +7,138 @@
    xmlns:sh="http://www.w3.org/ns/shacl#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-publisher">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N9d46b3e74e8f4240a051dedca93d6915"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
-    <sh:name>Publisher</sh:name>
-    <sh:description>An entity (organisation) responsible for making the Dataset available.</sh:description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-CatalogShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+    <rdfs:label>Catalog</rdfs:label>
+    <rdfs:comment>A catalogue or repository that hosts the Datasets or Data Services being described.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-publisher"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-service"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-license"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-creator"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-record"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#prov-ActivityShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    <rdfs:label>Activity</rdfs:label>
+    <rdfs:comment>An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf5f3d068628b4327a58f0e1bcf177d9d">
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-byteSize">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#byteSize"/>
+    <sh:name>Byte size</sh:name>
+    <sh:description>The size of a Distribution in bytes.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#prov-AttributionShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
+    <rdfs:label>Attribution</rdfs:label>
+    <rdfs:comment>Attribution is the ascribing of an entity to an agent.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-identifier">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/identifier"/>
+    <sh:name>Identifier</sh:name>
+    <sh:description>The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-license">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N9e0b640e70e647d1a8f4d48863b93d8a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
+    <sh:name>License</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#adms-IdentifierShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <rdfs:label>Identifier</rdfs:label>
+    <rdfs:comment>This is based on the UN/CEFACT Identifier class.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd9970cfbe2e64e24a433529030dced7d">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-source">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <sh:sparql rdf:nodeID="N729c83cf16b0487a8c8e8c6db66b1ae9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/source"/>
+    <sh:name>Source</sh:name>
+    <sh:description>A related Dataset from which the described Dataset is derived.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-rights">
+    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N0cc08e3676b243fb97dff0be9edcabbd"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/rights"/>
+    <sh:name>Rights</sh:name>
+    <sh:description>A statement that specifies rights associated with the Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-compressFormat">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N6a919893ca194607941ac2b4992443c0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#compressFormat"/>
+    <sh:name>Compress format</sh:name>
+    <sh:description>compressed form, e.g. to reduce the size of the downloadable file. Usage Note: It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-RightsStatementShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <rdfs:label>Rights statement</rdfs:label>
+    <rdfs:comment>A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N35ebdb2f2a88409dbd485f2e543555fb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/locn#geometry&gt; ?that . ?that &lt;http://www.w3.org/ns/locn#geometry&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DistributionShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <rdfs:label>Distribution</rdfs:label>
+    <rdfs:comment>A physical embodiment of the Dataset in a particular format.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessURL"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-byteSize"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-downloadURL"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-spatialResolutionInMeters"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-temporalResolution"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-description"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-issued"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-modified"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-title"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessService"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-packageFormat"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-odrl-hasPolicy"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-conformsTo"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-availability"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-spdx-checksum"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-foaf-page"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-mediaType"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-applicableLegislation"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-rights"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-adms-status"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-language"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-format"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-compressFormat"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-license"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetShape">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
@@ -64,145 +184,6 @@
     <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-accrualPeriodicity"/>
     <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcatap-applicableLegislation"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-adms-identifier">
-    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
-    <sh:sparql rdf:nodeID="Nd8be1208db2847d9a46b3d6e969625a8"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#identifier"/>
-    <sh:name>Identifier</sh:name>
-    <sh:description>A secondary identifier of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-modified">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/modified"/>
-    <sh:name>Modified</sh:name>
-    <sh:description>The most recent date on which the Dataset was changed or modified.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-availability">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Neafe4c5afc5c431881723fc67910e990"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/availability"/>
-    <sh:name>Availability</sh:name>
-    <sh:description>An indication how long it is planned to keep the Distribution of the Dataset available.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-mediaType">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N6b030c811242482e90df34c71dda1c74"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#mediaType"/>
-    <sh:name>Media type</sh:name>
-    <sh:description>The media type of the Distribution as defined in the official register of media types managed by &lt;a href="https://www.iana.org/"&gt;IANA&lt;/a&gt;.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTimeShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
-    <rdfs:label>Period of time</rdfs:label>
-    <rdfs:comment>An interval of time that is named or defined by its start and end dates.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-dcat-endDate"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-dcat-startDate"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasBeginning"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasEnd"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-ResourceShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
-    <rdfs:label>Resource</rdfs:label>
-    <rdfs:comment>Resource published or curated by a single agent.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-accrualPeriodicity">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Frequency"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N645c94e1d1844aa4b0b99393e71f16d9"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/accrualPeriodicity"/>
-    <sh:name>Accrual periodicity</sh:name>
-    <sh:description>The frequency at which the Dataset is updated.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N837ca4a5c19f4b1f96c80ae879b28b63">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#distribution&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#distribution&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-service">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
-    <sh:sparql rdf:nodeID="N26d737388d944b4da17aadb14d22ae54"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#service"/>
-    <sh:name>Service</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LicenseDocument-dct-type">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:sparql rdf:nodeID="N8cb615998d0a4ab48fa388adddb65bad"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
-    <sh:name>Type</sh:name>
-    <sh:description>A type of licence, e.g. indicating 'public domain' or 'royalties required'.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-FrequencyShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Frequency"/>
-    <rdfs:label>Frequency</rdfs:label>
-    <rdfs:comment>A rate at which something recurs, e.g. the publication of a Dataset.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#eli-LegalResourceShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <rdfs:label>Legal resource</rdfs:label>
-    <rdfs:comment>This class represents the legislation, policy or policies that lie behind the Rules that govern the service.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-qualifiedRelation">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Relationship"/>
-    <sh:sparql rdf:nodeID="N97b44a58958845bc8cc1526e0cb461ef"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#qualifiedRelation"/>
-    <sh:name>Qualified relation</sh:name>
-    <sh:description>A description of a relationship with another resource.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-creator">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <sh:sparql rdf:nodeID="Na0825a933e604f1aa438140be3885850"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
-    <sh:name>Creator</sh:name>
-    <sh:description>An entity responsible for producing the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N2e0aabe9c0ef4656bbab8f7977a6f987">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#record&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#record&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-temporalResolution">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#temporalResolution"/>
-    <sh:name>Temporal resolution</sh:name>
-    <sh:description>The minimum time period resolvable in the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-publisher">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="N58ad5a46c0414478a094fb24cb9f3654"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
-    <sh:name>Publisher</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LicenseDocumentShape">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
     <sh:targetClass rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
@@ -210,242 +191,6 @@
     <rdfs:comment>A legal document giving official permission to do something with a resource.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
     <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LicenseDocument-dct-type"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-hasVersion">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-    <sh:sparql rdf:nodeID="Nb5b484af47894a20a108fb02d6b93299"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#hasVersion"/>
-    <sh:name>Has version</sh:name>
-    <sh:description>A related Dataset that is a version, edition, or adaptation of the described Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-type">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nc90e768c34aa48fbaf63acecbcd79fa9"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
-    <sh:name>Type</sh:name>
-    <sh:description>A type of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-AgentShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <rdfs:label>Agent</rdfs:label>
-    <rdfs:comment>Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-Agent-dct-type"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-inSeries">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
-    <sh:sparql rdf:nodeID="Nab81eb3d9fe5470997632913ca8ee46b"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#inSeries"/>
-    <sh:name>In series</sh:name>
-    <sh:description>A dataset series of which the dataset is part.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-title">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
-    <sh:name>Title</sh:name>
-    <sh:description>A name given to the Dataset</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N65ff3eb8bbf14cdda2095a5c7d715139">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N26d737388d944b4da17aadb14d22ae54">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#service&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#service&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-description">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/description"/>
-    <sh:name>Description</sh:name>
-    <sh:description>A free-text account of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-isReferencedBy">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/isReferencedBy"/>
-    <sh:name>Is referenced by</sh:name>
-    <sh:description>A related resource, such as a publication, that references, cites, or otherwise points to the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-publisher">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N65ff3eb8bbf14cdda2095a5c7d715139"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
-    <sh:name>Publisher</sh:name>
-    <sh:description>An entity (organisation) responsible for making the Dataset available.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-license">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N0a569de496f742079fd4f7c9516eeba7"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
-    <sh:name>License</sh:name>
-    <sh:description>A licence under which the Distribution is made available.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcatap-applicableLegislation">
-    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <sh:sparql rdf:nodeID="Nf5f3d068628b4327a58f0e1bcf177d9d"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/applicableLegislation"/>
-    <sh:name>Applicable legislation</sh:name>
-    <sh:description>The legislation that mandates the creation or management of the Dataset Series.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-packageFormat">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nd0a8e32ddabf449e88d046b0b1850b68"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#packageFormat"/>
-    <sh:name>Package format</sh:name>
-    <sh:description>The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-odrl-hasPolicy">
-    <sh:class rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N822411757bb4461d9c87a7e7f56ab70c"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/odrl/2/hasPolicy"/>
-    <sh:name>Has policy</sh:name>
-    <sh:description>The policy expressing the rights associated with the distribution if using the [[ODRL]] vocabulary.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-CatalogRecord-foaf-primaryTopic">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="Nc151cb43a5fb46d6afeeddabb04b0969"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/primaryTopic"/>
-    <sh:name>Primary topic</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-spatial">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
-    <sh:sparql rdf:nodeID="N34d76e9c9cc145bb992f8328b63b2c63"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
-    <sh:name>Spatial</sh:name>
-    <sh:description>A geographic region that is covered by the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-spatial">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
-    <sh:sparql rdf:nodeID="Nf3352ecb814d4b8eb014a92405a194c1"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
-    <sh:name>Spatial</sh:name>
-    <sh:description>A geographic region that is covered by the Dataet Series.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N0a569de496f742079fd4f7c9516eeba7">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/license&gt; ?that . ?that &lt;http://purl.org/dc/terms/license&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-temporalResolution">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#temporalResolution"/>
-    <sh:name>Temporal resolution</sh:name>
-    <sh:description>The minimum time period resolvable in the dataset distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nefa8e5984d78456fa7ac353818f714c3">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-spdx-checksum">
-    <sh:class rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nd277b33560e44ddb90ee41385b859522"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://spdx.org/rdf/terms#checksum"/>
-    <sh:name>Checksum</sh:name>
-    <sh:description>A mechanism that can be used to verify that the contents of a distribution have not changed.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DistributionShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
-    <rdfs:label>Distribution</rdfs:label>
-    <rdfs:comment>A physical embodiment of the Dataset in a particular format.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessURL"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-byteSize"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-downloadURL"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-spatialResolutionInMeters"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-temporalResolution"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-description"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-issued"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-modified"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-title"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessService"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-packageFormat"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-odrl-hasPolicy"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-conformsTo"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-availability"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-spdx-checksum"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-foaf-page"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-mediaType"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-applicableLegislation"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-rights"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-adms-status"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-language"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-format"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-compressFormat"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-license"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-distribution">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
-    <sh:sparql rdf:nodeID="N837ca4a5c19f4b1f96c80ae879b28b63"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#distribution"/>
-    <sh:name>Distribution</sh:name>
-    <sh:description>An available Distribution for the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-license">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nf41428af55674e2ab3adbbbb853500da"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
-    <sh:name>License</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-adms-sample">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
-    <sh:sparql rdf:nodeID="N8910bfccffb142bab066955e97a32fa5"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#sample"/>
-    <sh:name>Sample</sh:name>
-    <sh:description>A sample distribution of the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcat-contactPoint">
-    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
-    <sh:sparql rdf:nodeID="N7bf6d8fa2d1c4be5af84fb5ac4d0a52b"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
-    <sh:name>Contact point</sh:name>
-    <sh:description>Contact information that can be used for sending comments about the DatasetSeries.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-dcat-startDate">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -455,14 +200,14 @@
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-language">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-    <sh:sparql rdf:nodeID="N578625cbef9244c8928ee669c256a602"/>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessURL">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
-    <sh:name>Language</sh:name>
-    <sh:description>A language of the Dataset.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessURL"/>
+    <sh:name>Access URL</sh:name>
+    <sh:description>A URL that gives access to a Distribution of the Dataset.</sh:description>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#skos-Concept-skos-prefLabel">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -472,63 +217,23 @@
     <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-creator">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N1acc43770934484183b2c84e80962e51"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
-    <sh:name>Creator</sh:name>
+  <rdf:Description rdf:nodeID="Nfcd83947bf184ffcbd6e2db45d21c5b7">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#eli-LegalResourceShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <rdfs:label>Legal resource</rdfs:label>
+    <rdfs:comment>This class represents the legislation, policy or policies that lie behind the Rules that govern the service.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N158f87ffb0064030a800598e3aaa2ffe">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#isVersionOf&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#isVersionOf&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasBeginning">
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-contactPoint">
+    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <sh:sparql rdf:nodeID="Nbed787ab6d2f450eac65c37cb254ad69"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/2006/time#hasBeginning"/>
-    <sh:name>Has beginning</sh:name>
-    <sh:description>The beginning of a period or interval.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-foaf-page">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <sh:sparql rdf:nodeID="N419e99f1463146119465408481e203b7"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
-    <sh:name>Page</sh:name>
-    <sh:description>A page or document about this Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-format">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N90748971e0c949c89c94d41c6d8baac0"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/format"/>
-    <sh:name>Format</sh:name>
-    <sh:description>The file format of the Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-rights">
-    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Ncb8a00da6dbe4cbfa5fd0e6c1c9bd966"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/rights"/>
-    <sh:name>Rights</sh:name>
-    <sh:description>Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-provenance">
-    <sh:class rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
-    <sh:sparql rdf:nodeID="N7c54157b084b4e19ad048e8bfd25f316"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/provenance"/>
-    <sh:name>Provenance</sh:name>
-    <sh:description>A statement about the lineage of a Dataset.</sh:description>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
+    <sh:name>Contact point</sh:name>
+    <sh:description>Contact information that can be used for sending comments about the Dataset.</sh:description>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape">
@@ -547,9 +252,9 @@
     <dcterms:description xml:lang="en">This artefact provides the generic datashape specifications for the DCAT-AP-LU.
         The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.</dcterms:description>
-    <rdfs:comment>This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-11</rdfs:comment>
+    <rdfs:comment>This version is automatically generated from dcat_ap_lu_CM.xml on 2025-12-12</rdfs:comment>
     <rdfs:seeAlso rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU/"/>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-11</dcterms:issued>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-12</dcterms:issued>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-05</dcterms:created>
     <owl:versionInfo>1.1.0</owl:versionInfo>
     <owl:incompatibleWith></owl:incompatibleWith>
@@ -559,6 +264,227 @@
     <vann:preferredNamespacePrefix>dal</vann:preferredNamespacePrefix>
     <dcterms:license>Copyright 2025 Ministère de la Digitalisation, Luxembourg. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.</dcterms:license>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="N346f5ad54c704b138a2050938fc55f91">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-distribution">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <sh:sparql rdf:nodeID="N637e0dcc43484c3f801f8a50986f5d1f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#distribution"/>
+    <sh:name>Distribution</sh:name>
+    <sh:description>An available Distribution for the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-MediaTypeOrExtentShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+    <rdfs:label>Media type or extent</rdfs:label>
+    <rdfs:comment>A media type or dataset distribution.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcat-contactPoint">
+    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <sh:sparql rdf:nodeID="Na65d61f5f7254cba9bd21b47bf113ae2"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
+    <sh:name>Contact point</sh:name>
+    <sh:description>Contact information that can be used for sending comments about the DatasetSeries.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dpv-DataShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="https://w3id.org/dpv#Data"/>
+    <rdfs:label>Data</rdfs:label>
+    <rdfs:comment>A broad concept representing 'data' or 'information'.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcatap-applicableLegislation">
+    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <sh:sparql rdf:nodeID="N346f5ad54c704b138a2050938fc55f91"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/applicableLegislation"/>
+    <sh:name>Applicable legislation</sh:name>
+    <sh:description>The legislation that mandates the creation or management of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9d14d4e60421494eb8c1a0dc27237ebd">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-creator">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N7d462d9a2c1049659e18a9be0f825e33"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
+    <sh:name>Creator</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-modified">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/modified"/>
+    <sh:name>Modified</sh:name>
+    <sh:description>The most recent date on which the Dataset was changed or modified.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-title">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
+    <sh:name>Title</sh:name>
+    <sh:description>A name given to the Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-issued">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/issued"/>
+    <sh:name>Issued</sh:name>
+    <sh:description>The date of formal issuance (e.g., publication) of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-publisher">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nbc914e20491a4ee0955776a4676a590d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
+    <sh:name>Publisher</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-Location-locn-geometry">
+    <sh:class rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N35ebdb2f2a88409dbd485f2e543555fb"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/locn#geometry"/>
+    <sh:name>Geometry</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-landingPage">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <sh:sparql rdf:nodeID="N86f25e4b621d443a890d87eaf6ef7edb"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#landingPage"/>
+    <sh:name>Landing page</sh:name>
+    <sh:description>A web page that provides access to the Dataset, its Distributions and/or additional information.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0828c6abb89c42209d2f39e144399a24">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/provenance&gt; ?that . ?that &lt;http://purl.org/dc/terms/provenance&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-adms-status">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ndbcd39df283c4b0189f0079b81937a41"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#status"/>
+    <sh:name>Status</sh:name>
+    <sh:description>The status of the distribution in the context of maturity lifecycle.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-spatial">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
+    <sh:sparql rdf:nodeID="N8b4f33c0df464caba612f47aacae6a35"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
+    <sh:name>Spatial</sh:name>
+    <sh:description>A geographic region that is covered by the Dataet Series.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcatap-applicableLegislation">
+    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <sh:sparql rdf:nodeID="Nd9970cfbe2e64e24a433529030dced7d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/applicableLegislation"/>
+    <sh:name>Applicable legislation</sh:name>
+    <sh:description>The legislation that mandates the creation or management of the Dataset Series.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-spdx-checksum">
+    <sh:class rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N279c884575294b489a6dd7a7ae44e6d1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://spdx.org/rdf/terms#checksum"/>
+    <sh:name>Checksum</sh:name>
+    <sh:description>A mechanism that can be used to verify that the contents of a distribution have not changed.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-type">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N181d8cdb498f47fb83fbdb9934ad8762"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
+    <sh:name>Type</sh:name>
+    <sh:description>A type of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-prov-wasGeneratedBy">
+    <sh:class rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    <sh:sparql rdf:nodeID="N365fd9e4c190484da58a130d8daf8bc1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+    <sh:name>Was generated by</sh:name>
+    <sh:description>provides the business context for, the creation of the dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-creator">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <sh:sparql rdf:nodeID="Na490b24aee4e4fc5a758648a8e59be46"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/creator"/>
+    <sh:name>Creator</sh:name>
+    <sh:description>An entity responsible for producing the dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-Agent-dct-type">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N83e325c199bc49388aeccfbfed1cf357"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
+    <sh:name>Type</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-prov-qualifiedAttribution">
+    <sh:class rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
+    <sh:sparql rdf:nodeID="Nb890967626ab4bf6ace17c1f341a8c1e"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/prov#qualifiedAttribution"/>
+    <sh:name>Qualified attribution</sh:name>
+    <sh:description>An Agent having some form of responsibility for the resource.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-packageFormat">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ncd2974be605f4730bd3db12801c6d6c9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#packageFormat"/>
+    <sh:name>Package format</sh:name>
+    <sh:description>The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-issued">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/issued"/>
+    <sh:name>Issued</sh:name>
+    <sh:description>The date of formal issuance (e.g., publication) of the Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#odrl-PolicyShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
+    <rdfs:label>Policy</rdfs:label>
+    <rdfs:comment>A non-empty group of Permissions and/or Prohibitions.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-relation">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://purl.org/dc/terms/relation"/>
@@ -566,6 +492,507 @@
     <sh:description>A related resource.</sh:description>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
     <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb8d75c87aaba4ef28d3ff501e5a1dad3">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-publisher">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nf650d41857864b7bacd3ffc0aa2dc942"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
+    <sh:name>Publisher</sh:name>
+    <sh:description>An entity (organisation) responsible for making the Dataset available.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LinguisticSystemShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <rdfs:label>Linguistic system</rdfs:label>
+    <rdfs:comment>A system of signs, symbols, sounds, gestures, or rules used in communication, e.g. a language.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-spatialResolutionInMeters">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#spatialResolutionInMeters"/>
+    <sh:name>Spatial resolution in meters</sh:name>
+    <sh:description>The minimum spatial separation resolvable in a dataset, measured in metres.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-adms-identifier">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:sparql rdf:nodeID="Nc2ee25f458984a6e867b44a93e25630d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#identifier"/>
+    <sh:name>Identifier</sh:name>
+    <sh:description>A secondary identifier of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DataService-dcat-servesDataset">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <sh:sparql rdf:nodeID="Nf7888d4503314b80a933966b40877e48"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#servesDataset"/>
+    <sh:name>Serves dataset</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc46fc775397041df8e0048abe1b0f272">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/format&gt; ?that . ?that &lt;http://purl.org/dc/terms/format&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LicenseDocument-dct-type">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:sparql rdf:nodeID="Nb0027de380ad441390aa0b0de14a84e2"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
+    <sh:name>Type</sh:name>
+    <sh:description>A type of licence, e.g. indicating 'public domain' or 'royalties required'.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-odrl-hasPolicy">
+    <sh:class rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nca1906f90ac24c44a1021859cae54760"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/odrl/2/hasPolicy"/>
+    <sh:name>Has policy</sh:name>
+    <sh:description>The policy expressing the rights associated with the distribution if using the [[ODRL]] vocabulary.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbc914e20491a4ee0955776a4676a590d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-ResourceShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+    <rdfs:label>Resource</rdfs:label>
+    <rdfs:comment>Resource published or curated by a single agent.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LocationShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Location"/>
+    <rdfs:label>Location</rdfs:label>
+    <rdfs:comment>A temporal period that the Dataset covers.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-Location-locn-geometry"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-theme">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:sparql rdf:nodeID="N9ebfab00241b4712927562aca678f935"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#theme"/>
+    <sh:name>Theme</sh:name>
+    <sh:description>A category of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeriesShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
+    <rdfs:label>Dataset series</rdfs:label>
+    <rdfs:comment>A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries).</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-publisher"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcat-contactPoint"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcatap-applicableLegislation"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-spatial"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-mediaType">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ncfdeaf4a143b4ae99ef5ef31ce402edd"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#mediaType"/>
+    <sh:name>Media type</sh:name>
+    <sh:description>The media type of the Distribution as defined in the official register of media types managed by &lt;a href="https://www.iana.org/"&gt;IANA&lt;/a&gt;.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-publisher">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N7b5876d130114b8593e8ea6a35878c9b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/publisher"/>
+    <sh:name>Publisher</sh:name>
+    <sh:description>An entity (organisation) responsible for making the Dataset available.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-description">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/description"/>
+    <sh:name>Description</sh:name>
+    <sh:description>A free-text account of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#spdx-ChecksumShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
+    <rdfs:label>Checksum</rdfs:label>
+    <rdfs:comment>A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-language">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <sh:sparql rdf:nodeID="Na3788bf0dd81450e80947d7804f849f8"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
+    <sh:name>Language</sh:name>
+    <sh:description>A language used in the Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasBeginning">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/2006/time#hasBeginning"/>
+    <sh:name>Has beginning</sh:name>
+    <sh:description>The beginning of a period or interval.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-language">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <sh:sparql rdf:nodeID="Ndc2cfa3371d344d684b6dc4321bd17af"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
+    <sh:name>Language</sh:name>
+    <sh:description>A language of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-temporalResolution">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#temporalResolution"/>
+    <sh:name>Temporal resolution</sh:name>
+    <sh:description>The minimum time period resolvable in the dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-temporal">
+    <sh:class rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+    <sh:sparql rdf:nodeID="N0d76be4f7c3c4c84bec8024d829caa0a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/temporal"/>
+    <sh:name>Temporal</sh:name>
+    <sh:description>A temporal period that the Dataset covers.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-dcat-endDate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#endDate"/>
+    <sh:name>End date</sh:name>
+    <sh:description>The end of the period.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N24e2a356815c4964a65010f91ab23b0f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#service&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#service&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-title">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
+    <sh:name>Title</sh:name>
+    <sh:description>A name given to the Dataset</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-provenance">
+    <sh:class rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
+    <sh:sparql rdf:nodeID="N0828c6abb89c42209d2f39e144399a24"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/provenance"/>
+    <sh:name>Provenance</sh:name>
+    <sh:description>A statement about the lineage of a Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-FrequencyShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Frequency"/>
+    <rdfs:label>Frequency</rdfs:label>
+    <rdfs:comment>A rate at which something recurs, e.g. the publication of a Dataset.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-format">
+    <sh:class rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nc46fc775397041df8e0048abe1b0f272"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/format"/>
+    <sh:name>Format</sh:name>
+    <sh:description>The file format of the Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#skos-ConceptShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label>Concept</rdfs:label>
+    <rdfs:comment>An idea or notion; a unit of thought.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#skos-Concept-skos-prefLabel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-availability">
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N3d31c1b1a73842559ca150174e8839d1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/availability"/>
+    <sh:name>Availability</sh:name>
+    <sh:description>An indication how long it is planned to keep the Distribution of the Dataset available.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-hasVersion">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <sh:sparql rdf:nodeID="Nb8d75c87aaba4ef28d3ff501e5a1dad3"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#hasVersion"/>
+    <sh:name>Has version</sh:name>
+    <sh:description>A related Dataset that is a version, edition, or adaptation of the described Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-applicableLegislation">
+    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <sh:sparql rdf:nodeID="N9d14d4e60421494eb8c1a0dc27237ebd"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/r5r/applicableLegislation"/>
+    <sh:name>Applicable legislation</sh:name>
+    <sh:description>The legislation that mandates the creation or management of the Dataset</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N83e325c199bc49388aeccfbfed1cf357">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-service">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <sh:sparql rdf:nodeID="N24e2a356815c4964a65010f91ab23b0f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#service"/>
+    <sh:name>Service</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#vcard-KindShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <rdfs:label>Kind</rdfs:label>
+    <rdfs:comment>A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dpv-hasData">
+    <sh:class rdf:resource="https://w3id.org/dpv#Data"/>
+    <sh:sparql rdf:nodeID="Ne7b27c5e246b46afb2acfb51babd51d6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="https://w3id.org/dpv#hasData"/>
+    <sh:name>Has data</sh:name>
+    <sh:description>The type(s) of data protection, as defined in the context of the [[DGA]], that applies to the dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-description">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/description"/>
+    <sh:name>Description</sh:name>
+    <sh:description>A free-text account of the Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-foaf-page">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <sh:sparql rdf:nodeID="Ncb4860f428a147eaa0f6198dd6b67d59"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <sh:name>Page</sh:name>
+    <sh:description>A page or document about this Distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N86f25e4b621d443a890d87eaf6ef7edb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#landingPage&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#landingPage&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTimeShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+    <rdfs:label>Period of time</rdfs:label>
+    <rdfs:comment>An interval of time that is named or defined by its start and end dates.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-dcat-endDate"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-dcat-startDate"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasBeginning"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasEnd"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-isVersionOf">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <sh:sparql rdf:nodeID="Naa80909be05e4604b6fb7d06f20266b0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#isVersionOf"/>
+    <sh:name>Is version of</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessService">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <sh:sparql rdf:nodeID="Na5f81e352aaf4c9bb4974c00457cff5f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessService"/>
+    <sh:name>Access service</sh:name>
+    <sh:description>A data service that gives access to the distribution of the dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-spatial">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
+    <sh:sparql rdf:nodeID="N1677802da5e0465bb7898c816a263a8d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/spatial"/>
+    <sh:name>Spatial</sh:name>
+    <sh:description>A geographic region that is covered by the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-adms-versionNotes">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#versionNotes"/>
+    <sh:name>Version notes</sh:name>
+    <sh:description>A description of the differences between this version and a previous version of the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-RelationshipShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Relationship"/>
+    <rdfs:label>Relationship</rdfs:label>
+    <rdfs:comment>An association class for attaching additional information to a relationship between DCAT Resources.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N04d5d77a8cf54ccab650d7dccb276d62">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na490b24aee4e4fc5a758648a8e59be46">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/creator&gt; ?that . ?that &lt;http://purl.org/dc/terms/creator&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DataServiceShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <rdfs:label>Data service</rdfs:label>
+    <rdfs:comment>A collection of operations that provides access to one or more datasets or data processing functions.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DataService-dcat-servesDataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-CatalogRecord-foaf-primaryTopic">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N9d73abd6f6ee49bab86a20fde079081b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/primaryTopic"/>
+    <sh:name>Primary topic</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9d73abd6f6ee49bab86a20fde079081b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-inSeries">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
+    <sh:sparql rdf:nodeID="N04d5d77a8cf54ccab650d7dccb276d62"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#inSeries"/>
+    <sh:name>In series</sh:name>
+    <sh:description>A dataset series of which the dataset is part.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nca1906f90ac24c44a1021859cae54760">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?that . ?that &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-isReferencedBy">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/isReferencedBy"/>
+    <sh:name>Is referenced by</sh:name>
+    <sh:description>A related resource, such as a publication, that references, cites, or otherwise points to the dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-record">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
+    <sh:sparql rdf:nodeID="N9ad54570ebad4bab99c40d4457469144"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#record"/>
+    <sh:name>Record</sh:name>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-DocumentShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:label>Document</rdfs:label>
+    <rdfs:comment>A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-rights">
+    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nefa6606fc2a742fe9ac74af0b06cf7f1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/rights"/>
+    <sh:name>Rights</sh:name>
+    <sh:description>Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ncfdeaf4a143b4ae99ef5ef31ce402edd">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-spatialResolutionInMeters">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#spatialResolutionInMeters"/>
+    <sh:name>Spatial resolution in meters</sh:name>
+    <sh:description>The minimum spatial separation resolvable in a dataset distribution, measured in metres.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-accrualPeriodicity">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Frequency"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N6c8c52a560cd459faf8a05635beb44af"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/accrualPeriodicity"/>
+    <sh:name>Accrual periodicity</sh:name>
+    <sh:description>The frequency at which the Dataset is updated.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9e0b640e70e647d1a8f4d48863b93d8a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/license&gt; ?that . ?that &lt;http://purl.org/dc/terms/license&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-keyword">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#keyword"/>
+    <sh:name>Keyword</sh:name>
+    <sh:description>A keyword or tag describing the Dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6c8c52a560cd459faf8a05635beb44af">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?that . ?that &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9ebfab00241b4712927562aca678f935">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#theme&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#theme&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-downloadURL">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#downloadURL"/>
+    <sh:name>Download URL</sh:name>
+    <sh:description>A URL that is a direct link to a downloadable file in a given format.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-qualifiedRelation">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Relationship"/>
+    <sh:sparql rdf:nodeID="N28ced187cfa14670a65946174c210e9b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#qualifiedRelation"/>
+    <sh:name>Qualified relation</sh:name>
+    <sh:description>A description of a relationship with another resource.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndbcd39df283c4b0189f0079b81937a41">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#status&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#status&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6a919893ca194607941ac2b4992443c0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#compressFormat&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-modified">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -583,29 +1010,36 @@
     <rdfs:comment>A standard or other specification to which a Dataset or Distribution conforms.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasEnd">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/2006/time#hasEnd"/>
-    <sh:name>Has end</sh:name>
-    <sh:description>The end of a period or interval.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcatap-applicableLegislation">
-    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <sh:sparql rdf:nodeID="Ncceb6b4ab22a4c8ead610e38e1ceda10"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/applicableLegislation"/>
-    <sh:name>Applicable legislation</sh:name>
-    <sh:description>The legislation that mandates the creation or management of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dpv-DataShape">
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-ProvenanceStatementShape">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="https://w3id.org/dpv#Data"/>
-    <rdfs:label>Data</rdfs:label>
-    <rdfs:comment>A broad concept representing 'data' or 'information'.</rdfs:comment>
+    <sh:targetClass rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
+    <rdfs:label>Provenance statement</rdfs:label>
+    <rdfs:comment>A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N365fd9e4c190484da58a130d8daf8bc1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nefa6606fc2a742fe9ac74af0b06cf7f1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/rights&gt; ?that . ?that &lt;http://purl.org/dc/terms/rights&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#locn-GeometryShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
+    <rdfs:label>Geometry</rdfs:label>
+    <rdfs:comment>The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N279c884575294b489a6dd7a7ae44e6d1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://spdx.org/rdf/terms#checksum&gt; ?that . ?that &lt;http://spdx.org/rdf/terms#checksum&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-foaf-page">
+    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <sh:sparql rdf:nodeID="Nfcd83947bf184ffcbd6e2db45d21c5b7"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <sh:name>Page</sh:name>
+    <sh:description>A page or document about this Dataset.</sh:description>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-MediaTypeShape">
@@ -617,19 +1051,74 @@
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-conformsTo">
     <sh:class rdf:resource="http://purl.org/dc/terms/Standard"/>
-    <sh:sparql rdf:nodeID="N4fba57b96b934809a01dabfbbad79b65"/>
+    <sh:sparql rdf:nodeID="Nb7a77164356642a3817a30267396e7d5"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://purl.org/dc/terms/conformsTo"/>
     <sh:name>Conforms to</sh:name>
     <sh:description>An established schema to which the described Distribution conforms.</sh:description>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LinguisticSystemShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-    <rdfs:label>Linguistic system</rdfs:label>
-    <rdfs:comment>A system of signs, symbols, sounds, gestures, or rules used in communication, e.g. a language.</rdfs:comment>
+  <rdf:Description rdf:nodeID="N28ced187cfa14670a65946174c210e9b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-conformsTo">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Standard"/>
+    <sh:sparql rdf:nodeID="Ncdf8b8f564f54d178b0e3b78c77acab6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/conformsTo"/>
+    <sh:name>Conforms to</sh:name>
+    <sh:description>An implementing rule or other specification.</sh:description>
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-adms-sample">
+    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <sh:sparql rdf:nodeID="N893a007fc3d143509ab5e2e2d940a401"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/adms#sample"/>
+    <sh:name>Sample</sh:name>
+    <sh:description>A sample distribution of the dataset.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-license">
+    <sh:class rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N6034b28a8d6e41e0bdc58342c5164b40"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://purl.org/dc/terms/license"/>
+    <sh:name>License</sh:name>
+    <sh:description>A licence under which the Distribution is made available.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-temporalResolution">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/ns/dcat#temporalResolution"/>
+    <sh:name>Temporal resolution</sh:name>
+    <sh:description>The minimum time period resolvable in the dataset distribution.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-time-hasEnd">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://www.w3.org/2006/time#hasEnd"/>
+    <sh:name>Has end</sh:name>
+    <sh:description>The end of a period or interval.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-AgentShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:label>Agent</rdfs:label>
+    <rdfs:comment>Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-Agent-dct-type"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N181d8cdb498f47fb83fbdb9934ad8762">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N893a007fc3d143509ab5e2e2d940a401">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#sample&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#sample&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-CatalogRecordShape">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
@@ -639,574 +1128,85 @@
     <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
     <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-CatalogRecord-foaf-primaryTopic"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-record">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
-    <sh:sparql rdf:nodeID="N2e0aabe9c0ef4656bbab8f7977a6f987"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#record"/>
-    <sh:name>Record</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessService">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
-    <sh:sparql rdf:nodeID="Ne7e6b0ea4d8143d7881b73f71b264aa8"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessService"/>
-    <sh:name>Access service</sh:name>
-    <sh:description>A data service that gives access to the distribution of the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#prov-AttributionShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
-    <rdfs:label>Attribution</rdfs:label>
-    <rdfs:comment>Attribution is the ascribing of an entity to an agent.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-identifier">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/identifier"/>
-    <sh:name>Identifier</sh:name>
-    <sh:description>The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-RelationshipShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Relationship"/>
-    <rdfs:label>Relationship</rdfs:label>
-    <rdfs:comment>An association class for attaching additional information to a relationship between DCAT Resources.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dpv-hasData">
-    <sh:class rdf:resource="https://w3id.org/dpv#Data"/>
-    <sh:sparql rdf:nodeID="Na96cae502ad84f0fbf6e5d75f766e2f8"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="https://w3id.org/dpv#hasData"/>
-    <sh:name>Has data</sh:name>
-    <sh:description>The type(s) of data protection, as defined in the context of the [[DGA]], that applies to the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-description">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/description"/>
-    <sh:name>Description</sh:name>
-    <sh:description>A free-text account of the Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Ncdd05ba9bb6f41e7a6f9f3bb1c280a4b">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/locn#geometry&gt; ?that . ?that &lt;http://www.w3.org/ns/locn#geometry&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#prov-ActivityShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-    <rdfs:label>Activity</rdfs:label>
-    <rdfs:comment>An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-MediaTypeOrExtentShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
-    <rdfs:label>Media type or extent</rdfs:label>
-    <rdfs:comment>A media type or dataset distribution.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-prov-qualifiedAttribution">
-    <sh:class rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
-    <sh:sparql rdf:nodeID="N094568a94f684a0d82ff76d6e64bf9ab"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/prov#qualifiedAttribution"/>
-    <sh:name>Qualified attribution</sh:name>
-    <sh:description>An Agent having some form of responsibility for the resource.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-title">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/title"/>
-    <sh:name>Title</sh:name>
-    <sh:description>A name given to the Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-CatalogShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
-    <rdfs:label>Catalog</rdfs:label>
-    <rdfs:comment>A catalogue or repository that hosts the Datasets or Data Services being described.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-publisher"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-service"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-license"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dct-creator"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Catalog-dcat-record"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-spatialResolutionInMeters">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#spatialResolutionInMeters"/>
-    <sh:name>Spatial resolution in meters</sh:name>
-    <sh:description>The minimum spatial separation resolvable in a dataset, measured in metres.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N118a2dac2f9f475fb4363f3a9ba859d7">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-issued">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/issued"/>
-    <sh:name>Issued</sh:name>
-    <sh:description>The date of formal issuance (e.g., publication) of the Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-issued">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/issued"/>
-    <sh:name>Issued</sh:name>
-    <sh:description>The date of formal issuance (e.g., publication) of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#skos-ConceptShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <rdfs:label>Concept</rdfs:label>
-    <rdfs:comment>An idea or notion; a unit of thought.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#skos-Concept-skos-prefLabel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DataServiceShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
-    <rdfs:label>Data service</rdfs:label>
-    <rdfs:comment>A collection of operations that provides access to one or more datasets or data processing functions.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DataService-dcat-servesDataset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-temporal">
-    <sh:class rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
-    <sh:sparql rdf:nodeID="Nb67fd2b80d444ec3947510d8279147a4"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/temporal"/>
-    <sh:name>Temporal</sh:name>
-    <sh:description>A temporal period that the Dataset covers.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-DocumentShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <rdfs:label>Document</rdfs:label>
-    <rdfs:comment>A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#spdx-ChecksumShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
-    <rdfs:label>Checksum</rdfs:label>
-    <rdfs:comment>A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-adms-versionNotes">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#versionNotes"/>
-    <sh:name>Version notes</sh:name>
-    <sh:description>A description of the differences between this version and a previous version of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-language">
-    <sh:class rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
-    <sh:sparql rdf:nodeID="N2462680403434140881df99469fc1d34"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/language"/>
-    <sh:name>Language</sh:name>
-    <sh:description>A language used in the Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-landingPage">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <sh:sparql rdf:nodeID="Nae12f98005c746b9b748f989c42384ae"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#landingPage"/>
-    <sh:name>Landing page</sh:name>
-    <sh:description>A web page that provides access to the Dataset, its Distributions and/or additional information.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-PeriodOfTime-dcat-endDate">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#endDate"/>
-    <sh:name>End date</sh:name>
-    <sh:description>The end of the period.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N419e99f1463146119465408481e203b7">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeriesShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
-    <rdfs:label>Dataset series</rdfs:label>
-    <rdfs:comment>A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries).</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-publisher"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcat-contactPoint"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dcatap-applicableLegislation"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DatasetSeries-dct-spatial"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-contactPoint">
-    <sh:class rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
-    <sh:sparql rdf:nodeID="N2dc3f4a156934e2dae5c92210c9f00f6"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
-    <sh:name>Contact point</sh:name>
-    <sh:description>Contact information that can be used for sending comments about the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-Location-locn-geometry">
-    <sh:class rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Ncdd05ba9bb6f41e7a6f9f3bb1c280a4b"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/locn#geometry"/>
-    <sh:name>Geometry</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N645c94e1d1844aa4b0b99393e71f16d9">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?that . ?that &lt;http://purl.org/dc/terms/accrualPeriodicity&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-source">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-    <sh:sparql rdf:nodeID="N39fafbf1dd79422e8790f7430b630007"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/source"/>
-    <sh:name>Source</sh:name>
-    <sh:description>A related Dataset from which the described Dataset is derived.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-accessURL">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#accessURL"/>
-    <sh:name>Access URL</sh:name>
-    <sh:description>A URL that gives access to a Distribution of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dct-conformsTo">
-    <sh:class rdf:resource="http://purl.org/dc/terms/Standard"/>
-    <sh:sparql rdf:nodeID="N118a2dac2f9f475fb4363f3a9ba859d7"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/conformsTo"/>
-    <sh:name>Conforms to</sh:name>
-    <sh:description>An implementing rule or other specification.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-byteSize">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#byteSize"/>
-    <sh:name>Byte size</sh:name>
-    <sh:description>The size of a Distribution in bytes.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-downloadURL">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#downloadURL"/>
-    <sh:name>Download URL</sh:name>
-    <sh:description>A URL that is a direct link to a downloadable file in a given format.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#foaf-Agent-dct-type">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N488801a9ced946308b8a8676a7451484"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/type"/>
-    <sh:name>Type</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-keyword">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#keyword"/>
-    <sh:name>Keyword</sh:name>
-    <sh:description>A keyword or tag describing the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#vcard-KindShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
-    <rdfs:label>Kind</rdfs:label>
-    <rdfs:comment>A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-RightsStatementShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
-    <rdfs:label>Rights statement</rdfs:label>
-    <rdfs:comment>A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Na0825a933e604f1aa438140be3885850">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/creator&gt; ?that . ?that &lt;http://purl.org/dc/terms/creator&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-DataService-dcat-servesDataset">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-    <sh:sparql rdf:nodeID="N57c85ae82fd74427b122df86f726cb35"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#servesDataset"/>
-    <sh:name>Serves dataset</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-compressFormat">
-    <sh:class rdf:resource="http://purl.org/dc/terms/MediaType"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nefa8e5984d78456fa7ac353818f714c3"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#compressFormat"/>
-    <sh:name>Compress format</sh:name>
-    <sh:description>compressed form, e.g. to reduce the size of the downloadable file. Usage Note: It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nc90e768c34aa48fbaf63acecbcd79fa9">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#odrl-PolicyShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/odrl/2/Policy"/>
-    <rdfs:label>Policy</rdfs:label>
-    <rdfs:comment>A non-empty group of Permissions and/or Prohibitions.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-isVersionOf">
-    <sh:class rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-    <sh:sparql rdf:nodeID="N158f87ffb0064030a800598e3aaa2ffe"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#isVersionOf"/>
-    <sh:name>Is version of</sh:name>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcatap-applicableLegislation">
-    <sh:class rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-    <sh:sparql rdf:nodeID="Nc005c885c81d4620a3779766373f69db"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/r5r/applicableLegislation"/>
-    <sh:name>Applicable legislation</sh:name>
-    <sh:description>The legislation that mandates the creation or management of the Dataset</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-ProvenanceStatementShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
-    <rdfs:label>Provenance statement</rdfs:label>
-    <rdfs:comment>A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#adms-IdentifierShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
-    <rdfs:label>Identifier</rdfs:label>
-    <rdfs:comment>This is based on the UN/CEFACT Identifier class.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N8910bfccffb142bab066955e97a32fa5">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#sample&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#sample&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-prov-wasGeneratedBy">
-    <sh:class rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-    <sh:sparql rdf:nodeID="N416291647d2c4c3da02b7288af60d912"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
-    <sh:name>Was generated by</sh:name>
-    <sh:description>provides the business context for, the creation of the dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-adms-status">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N3e55ede9e3b74c7fb2e57f0511a5bd71"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/adms#status"/>
-    <sh:name>Status</sh:name>
-    <sh:description>The status of the distribution in the context of maturity lifecycle.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N488801a9ced946308b8a8676a7451484">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N9d46b3e74e8f4240a051dedca93d6915">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-foaf-page">
-    <sh:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-    <sh:sparql rdf:nodeID="N36f0b8b65d2f4b78bc39d2809f55bd5f"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://xmlns.com/foaf/0.1/page"/>
-    <sh:name>Page</sh:name>
-    <sh:description>A page or document about this Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N7bf6d8fa2d1c4be5af84fb5ac4d0a52b">
+  <rdf:Description rdf:nodeID="Na65d61f5f7254cba9bd21b47bf113ae2">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#locn-GeometryShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
-    <rdfs:label>Geometry</rdfs:label>
-    <rdfs:comment>The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
+  <rdf:Description rdf:nodeID="N9ad54570ebad4bab99c40d4457469144">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#record&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#record&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dcat-spatialResolutionInMeters">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#spatialResolutionInMeters"/>
-    <sh:name>Spatial resolution in meters</sh:name>
-    <sh:description>The minimum spatial separation resolvable in a dataset distribution, measured in metres.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdf:Description rdf:nodeID="N637e0dcc43484c3f801f8a50986f5d1f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#distribution&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#distribution&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N34d76e9c9cc145bb992f8328b63b2c63">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Naa80909be05e4604b6fb7d06f20266b0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#isVersionOf&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#isVersionOf&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-LocationShape">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://purl.org/dc/terms/Location"/>
-    <rdfs:label>Location</rdfs:label>
-    <rdfs:comment>A temporal period that the Dataset covers.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-    <sh:property rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#dct-Location-locn-geometry"/>
+  <rdf:Description rdf:nodeID="N7d462d9a2c1049659e18a9be0f825e33">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/creator&gt; ?that . ?that &lt;http://purl.org/dc/terms/creator&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Na96cae502ad84f0fbf6e5d75f766e2f8">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;https://w3id.org/dpv#hasData&gt; ?that . ?that &lt;https://w3id.org/dpv#hasData&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Ncdf8b8f564f54d178b0e3b78c77acab6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nb67fd2b80d444ec3947510d8279147a4">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/temporal&gt; ?that . ?that &lt;http://purl.org/dc/terms/temporal&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Distribution-dct-rights">
-    <sh:class rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N8b25826de3e5456ea67bfaa25f5ec26e"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://purl.org/dc/terms/rights"/>
-    <sh:name>Rights</sh:name>
-    <sh:description>A statement that specifies rights associated with the Distribution.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Ne7e6b0ea4d8143d7881b73f71b264aa8">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#accessService&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#accessService&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N094568a94f684a0d82ff76d6e64bf9ab">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N57c85ae82fd74427b122df86f726cb35">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#servesDataset&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#servesDataset&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nd8be1208db2847d9a46b3d6e969625a8">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#identifier&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#identifier&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf3352ecb814d4b8eb014a92405a194c1">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N8cb615998d0a4ab48fa388adddb65bad">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nc151cb43a5fb46d6afeeddabb04b0969">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/primaryTopic&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://mindig_lu.gitlab.io/DCAT-AP-LU#dcat-Dataset-dcat-theme">
-    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <sh:sparql rdf:nodeID="N8d266e17bbaf4a56b08b70a32fe761fb"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://www.w3.org/ns/dcat#theme"/>
-    <sh:name>Theme</sh:name>
-    <sh:description>A category of the Dataset.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="https://mindig_lu.gitlab.io/DCAT-AP-LU#core-shape"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N2462680403434140881df99469fc1d34">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nb5b484af47894a20a108fb02d6b93299">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#hasVersion&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N36f0b8b65d2f4b78bc39d2809f55bd5f">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N6b030c811242482e90df34c71dda1c74">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#mediaType&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Neafe4c5afc5c431881723fc67910e990">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/availability&gt; ?that . ?that &lt;http://data.europa.eu/r5r/availability&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Ncb8a00da6dbe4cbfa5fd0e6c1c9bd966">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/rights&gt; ?that . ?that &lt;http://purl.org/dc/terms/rights&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N8b25826de3e5456ea67bfaa25f5ec26e">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/rights&gt; ?that . ?that &lt;http://purl.org/dc/terms/rights&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N39fafbf1dd79422e8790f7430b630007">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/source&gt; ?that . ?that &lt;http://purl.org/dc/terms/source&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N578625cbef9244c8928ee669c256a602">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf41428af55674e2ab3adbbbb853500da">
+  <rdf:Description rdf:nodeID="N6034b28a8d6e41e0bdc58342c5164b40">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/license&gt; ?that . ?that &lt;http://purl.org/dc/terms/license&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nab81eb3d9fe5470997632913ca8ee46b">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#inSeries&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Nc2ee25f458984a6e867b44a93e25630d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#identifier&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#identifier&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N7c54157b084b4e19ad048e8bfd25f316">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/provenance&gt; ?that . ?that &lt;http://purl.org/dc/terms/provenance&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N4fba57b96b934809a01dabfbbad79b65">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N90748971e0c949c89c94d41c6d8baac0">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/format&gt; ?that . ?that &lt;http://purl.org/dc/terms/format&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Ncceb6b4ab22a4c8ead610e38e1ceda10">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N2dc3f4a156934e2dae5c92210c9f00f6">
+  <rdf:Description rdf:nodeID="Nbed787ab6d2f450eac65c37cb254ad69">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#contactPoint&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N8d266e17bbaf4a56b08b70a32fe761fb">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#theme&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#theme&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Na5f81e352aaf4c9bb4974c00457cff5f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#accessService&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#accessService&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N822411757bb4461d9c87a7e7f56ab70c">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?that . ?that &lt;http://www.w3.org/ns/odrl/2/hasPolicy&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Ncb4860f428a147eaa0f6198dd6b67d59">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://xmlns.com/foaf/0.1/page&gt; ?that . ?that &lt;http://xmlns.com/foaf/0.1/page&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N1acc43770934484183b2c84e80962e51">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/creator&gt; ?that . ?that &lt;http://purl.org/dc/terms/creator&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Nb0027de380ad441390aa0b0de14a84e2">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/type&gt; ?that . ?that &lt;http://purl.org/dc/terms/type&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N97b44a58958845bc8cc1526e0cb461ef">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#qualifiedRelation&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N0d76be4f7c3c4c84bec8024d829caa0a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/temporal&gt; ?that . ?that &lt;http://purl.org/dc/terms/temporal&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nd0a8e32ddabf449e88d046b0b1850b68">
+  <rdf:Description rdf:nodeID="N3d31c1b1a73842559ca150174e8839d1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/availability&gt; ?that . ?that &lt;http://data.europa.eu/r5r/availability&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8b4f33c0df464caba612f47aacae6a35">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ncd2974be605f4730bd3db12801c6d6c9">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#packageFormat&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#packageFormat&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nd277b33560e44ddb90ee41385b859522">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://spdx.org/rdf/terms#checksum&gt; ?that . ?that &lt;http://spdx.org/rdf/terms#checksum&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Ndc2cfa3371d344d684b6dc4321bd17af">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N58ad5a46c0414478a094fb24cb9f3654">
+  <rdf:Description rdf:nodeID="N1677802da5e0465bb7898c816a263a8d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/spatial&gt; ?that . ?that &lt;http://purl.org/dc/terms/spatial&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0cc08e3676b243fb97dff0be9edcabbd">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/rights&gt; ?that . ?that &lt;http://purl.org/dc/terms/rights&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N729c83cf16b0487a8c8e8c6db66b1ae9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/source&gt; ?that . ?that &lt;http://purl.org/dc/terms/source&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb890967626ab4bf6ace17c1f341a8c1e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#qualifiedAttribution&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na3788bf0dd81450e80947d7804f849f8">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/language&gt; ?that . ?that &lt;http://purl.org/dc/terms/language&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne7b27c5e246b46afb2acfb51babd51d6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;https://w3id.org/dpv#hasData&gt; ?that . ?that &lt;https://w3id.org/dpv#hasData&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf650d41857864b7bacd3ffc0aa2dc942">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nc005c885c81d4620a3779766373f69db">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?that . ?that &lt;http://data.europa.eu/r5r/applicableLegislation&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N7b5876d130114b8593e8ea6a35878c9b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/publisher&gt; ?that . ?that &lt;http://purl.org/dc/terms/publisher&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nae12f98005c746b9b748f989c42384ae">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#landingPage&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#landingPage&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Nb7a77164356642a3817a30267396e7d5">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://purl.org/dc/terms/conformsTo&gt; ?that . ?that &lt;http://purl.org/dc/terms/conformsTo&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N3e55ede9e3b74c7fb2e57f0511a5bd71">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/adms#status&gt; ?that . ?that &lt;http://www.w3.org/ns/adms#status&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N416291647d2c4c3da02b7288af60d912">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?that . ?that &lt;http://www.w3.org/ns/prov#wasGeneratedBy&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Nf7888d4503314b80a933966b40877e48">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://www.w3.org/ns/dcat#servesDataset&gt; ?that . ?that &lt;http://www.w3.org/ns/dcat#servesDataset&gt; ?this .}</sh:select>
   </rdf:Description>
 </rdf:RDF>
