@@ -1,3 +1,4 @@
+@prefix : <https://mindig_lu.gitlab.io/DCAT-AP-LU/#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -39,7 +40,7 @@ core-res:dcat-CatalogShape a sh:NodeShape ;
         core-res:dcat-Catalog-dcat-service,
         core-res:dcat-Catalog-dct-creator,
         core-res:dcat-Catalog-dct-license,
-        core-res:dcat-Catalog-dct-publisher ;
+        core-res:dcat-Catalog-sko ;
     sh:targetClass dcat:Catalog .
 
 core-res:dcat-DataServiceShape a sh:NodeShape ;
@@ -281,6 +282,7 @@ core-res:vcard-KindShape a sh:NodeShape ;
 core-res:dcat-Catalog-dcat-record a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcat:CatalogRecord ;
+    sh:description "A Catalogue Record that is part of the Catalogue." ;
     sh:name "Record" ;
     sh:path dcat:record ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#record> ?that . ?that <http://www.w3.org/ns/dcat#record> ?this .}" ] .
@@ -288,6 +290,7 @@ core-res:dcat-Catalog-dcat-record a sh:PropertyShape ;
 core-res:dcat-Catalog-dcat-service a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcat:DataService ;
+    sh:description "A site or end-point (Data Service) that is listed in the Catalogue." ;
     sh:name "Service" ;
     sh:path dcat:service ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#service> ?that . ?that <http://www.w3.org/ns/dcat#service> ?this .}" ] .
@@ -295,6 +298,7 @@ core-res:dcat-Catalog-dcat-service a sh:PropertyShape ;
 core-res:dcat-Catalog-dct-creator a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class foaf:Agent ;
+    sh:description "An entity responsible for the creation of the catalogue." ;
     sh:maxCount 1 ;
     sh:name "Creator" ;
     sh:path dcterms:creator ;
@@ -303,23 +307,26 @@ core-res:dcat-Catalog-dct-creator a sh:PropertyShape ;
 core-res:dcat-Catalog-dct-license a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcterms:LicenseDocument ;
+    sh:description "A licence under which the Catalogue can be used or reused." ;
     sh:maxCount 1 ;
     sh:name "License" ;
     sh:path dcterms:license ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/license> ?that . ?that <http://purl.org/dc/terms/license> ?this .}" ] .
 
-core-res:dcat-Catalog-dct-publisher a sh:PropertyShape ;
+core-res:dcat-Catalog-sko a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class foaf:Agent ;
+    sh:description "An entity (organisation) responsible for making the Catalogue available." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
-    sh:name "Publisher" ;
-    sh:path dcterms:publisher ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/publisher> ?that . ?that <http://purl.org/dc/terms/publisher> ?this .}" ] .
+    sh:name "Sko" ;
+    sh:path :sko ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko> ?that . ?that <https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko> ?this .}" ] .
 
 core-res:dcat-CatalogRecord-foaf-primaryTopic a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcat:Resource ;
+    sh:description "A link to the Dataset, Data service or Catalog described in the record." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "Primary topic" ;
@@ -329,6 +336,7 @@ core-res:dcat-CatalogRecord-foaf-primaryTopic a sh:PropertyShape ;
 core-res:dcat-DataService-dcat-servesDataset a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcat:Dataset ;
+    sh:description "This property refers to a collection of data that this data service can distribute." ;
     sh:name "Serves dataset" ;
     sh:path dcat:servesDataset ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#servesDataset> ?that . ?that <http://www.w3.org/ns/dcat#servesDataset> ?this .}" ] .

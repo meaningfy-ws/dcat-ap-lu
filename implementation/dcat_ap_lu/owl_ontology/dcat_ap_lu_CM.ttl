@@ -113,9 +113,10 @@ dcterms:conformsTo a owl:ObjectProperty ;
 
 dcterms:creator a owl:ObjectProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator\">Link</a>"@en ;
-    skos:definition "An entity responsible for producing the dataset."@en ;
+    skos:definition "An entity responsible for the creation of the catalogue. An entity responsible for producing the dataset."@en ;
     skos:prefLabel "creator"@en ;
-    :reuse "A"@en .
+    :reuse "A"@en,
+        "E"@en .
 
 dcterms:description a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description\">Link</a>"@en ;
@@ -506,14 +507,22 @@ dcat:qualifiedRelation a owl:ObjectProperty ;
     :reuse "A"@en .
 
 dcat:record a owl:ObjectProperty ;
-    skos:prefLabel "record"@en .
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record\">Link</a>"@en ;
+    skos:definition "A Catalogue Record that is part of the Catalogue."@en ;
+    skos:prefLabel "record"@en ;
+    :reuse "A"@en .
 
 dcat:servesDataset a owl:ObjectProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_serves_dataset\">Link</a>"@en ;
     skos:prefLabel "serves Dataset"@en,
-        "serves dataset"@en .
+        "serves dataset"@en ;
+    :reuse "A"@en .
 
 dcat:service a owl:ObjectProperty ;
-    skos:prefLabel "service"@en .
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service\">Link</a>"@en ;
+    skos:definition "A site or end-point (Data Service) that is listed in the Catalogue."@en ;
+    skos:prefLabel "service"@en ;
+    :reuse "A"@en .
 
 dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
     dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution\">Link</a>"@en ;
@@ -599,13 +608,24 @@ foaf:page a owl:ObjectProperty ;
     :reuse "A"@en .
 
 foaf:primaryTopic a owl:ObjectProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic\">Link</a>"@en ;
+    skos:definition "A link to the Dataset, Data service or Catalog described in the record."@en ;
     skos:prefLabel "primary Topic"@en,
-        "primary topic"@en .
+        "primary topic"@en ;
+    :reuse "E"@en .
 
 :TemporalLiteral a rdfs:Datatype ;
     rdfs:isDefinedBy core-res:core ;
     skos:definition "rdfs:Literal encoded using the relevant [[ISO8601-2]] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime)."@en ;
     skos:prefLabel "Temporal Literal"@en .
+
+:sko a owl:ObjectProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher\">Link</a>"@en ;
+    rdfs:isDefinedBy core-res:core ;
+    skos:definition "An entity (organisation) responsible for making the Catalogue available."@en ;
+    skos:prefLabel "publisher"@en,
+        "sko"@en ;
+    :reuse "E"@en .
 
 <https://w3id.org/dpv#Data> a owl:Class ;
     skos:definition "A broad concept representing 'data' or 'information'."@en ;
