@@ -4,6 +4,7 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcatap: <http://data.europa.eu/r5r/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv#> .
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
@@ -215,7 +216,7 @@ core-res:dpv-DataShape a sh:NodeShape ;
     rdfs:label "Data" ;
     rdfs:comment "A broad concept representing 'data' or 'information'." ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:targetClass <https://w3id.org/dpv#Data> .
+    sh:targetClass dpv:Data .
 
 core-res:eli-LegalResourceShape a sh:NodeShape ;
     rdfs:label "Legal resource" ;
@@ -604,10 +605,10 @@ core-res:dcat-Dataset-dct-type a sh:PropertyShape ;
 
 core-res:dcat-Dataset-dpv-hasData a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
-    sh:class <https://w3id.org/dpv#Data> ;
+    sh:class dpv:Data ;
     sh:description "The type(s) of data protection, as defined in the context of the [[DGA]], that applies to the dataset." ;
     sh:name "Has data" ;
-    sh:path <https://w3id.org/dpv#hasData> ;
+    sh:path dpv:hasData ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <https://w3id.org/dpv#hasData> ?that . ?that <https://w3id.org/dpv#hasData> ?this .}" ] .
 
 core-res:dcat-Dataset-foaf-page a sh:PropertyShape ;
