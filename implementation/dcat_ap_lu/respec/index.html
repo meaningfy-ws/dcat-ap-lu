@@ -706,13 +706,13 @@
                     For this entity, the following properties are defined:
                         
                         
-                        <a href="#Catalogue.publisher">publisher</a>,
-                        
-                        
                         <a href="#Catalogue.creator">creator</a>,
                         
                         
                         <a href="#Catalogue.licence">licence</a>,
+                        
+                        
+                        <a href="#Catalogue.publisher">publisher</a>,
                         
                         
                         <a href="#Catalogue.record">record</a>,
@@ -757,59 +757,6 @@
                     </thead>
                     <tbody class="supertype">
                     
-                        <tr id="Catalogue.publisher"
-                            typeof="rdf:Property"
-                            resource="http://purl.org/dc/terms/publisher"
-                            class="class mandatory">
-                            <td>
-                                
-                                
-                                <a href="http://purl.org/dc/terms/publisher"
-                                   data-toggle="tooltip"
-                                   data-content="http://purl.org/dc/terms/publisher"
-                                   data-placement="right">
-                                    publisher</a>
-                            </td>
-                            <td>
-                                
-                                    
-                                    
-                                    
-                                    
-                                        <a href="#Agent"
-                                           data-toggle="tooltip"
-                                           data-content="http://xmlns.com/foaf/0.1/Agent"
-                                           data-placement="right">Agent</a>
-                                    
-                                
-                            </td>
-                            <td>
-                                1..1
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                
-                                
-                                
-                                
-                                
-                            </td>
-                            <td>
-                                
-                                    &nbsp;
-                                
-                            </td>
-                            
-                                <td>
-                                    
-                                        &nbsp;
-                                    
-                                </td>
-                            
-                        </tr>
-                    
                         <tr id="Catalogue.creator"
                             typeof="rdf:Property"
                             resource="http://purl.org/dc/terms/creator"
@@ -840,7 +787,7 @@
                                 0..1
                             </td>
                             <td>
-                                
+                                An entity responsible for the creation of the catalogue.
                             </td>
                             <td>
                                 
@@ -851,13 +798,13 @@
                             </td>
                             <td>
                                 
-                                    &nbsp;
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator">Link</a>
                                 
                             </td>
                             
                                 <td>
                                     
-                                        &nbsp;
+                                        E
                                     
                                 </td>
                             
@@ -893,7 +840,7 @@
                                 0..1
                             </td>
                             <td>
-                                
+                                A licence under which the Catalogue can be used or reused.
                             </td>
                             <td>
                                 
@@ -910,7 +857,62 @@
                             
                                 <td>
                                     
-                                        &nbsp;
+                                        E
+                                    
+                                </td>
+                            
+                        </tr>
+                    
+                        <tr id="Catalogue.publisher"
+                            typeof="rdf:Property"
+                            resource="https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko"
+                            class="class mandatory">
+                            <td>
+                                
+                                
+                                <a href="https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko"
+                                   data-toggle="tooltip"
+                                   data-content="https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko"
+                                   data-placement="right">
+                                    publisher</a>
+                            </td>
+                            <td>
+                                
+                                    
+                                    
+                                    
+                                    
+                                        <a href="#Agent"
+                                           data-toggle="tooltip"
+                                           data-content="http://xmlns.com/foaf/0.1/Agent"
+                                           data-placement="right">Agent</a>
+                                    
+                                
+                            </td>
+                            <td>
+                                1..1
+                            </td>
+                            <td>
+                                An entity (organisation) responsible for making the Catalogue available.
+                            </td>
+                            <td>
+                                
+                                
+                                    
+                                
+                                
+                                
+                                In case multiple organisations are considered the publishers of the catalogue, it is recommended to use foaf:Group to bundle them into one entity.
+                            </td>
+                            <td>
+                                
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher">Link</a>
+                                
+                            </td>
+                            
+                                <td>
+                                    
+                                        E
                                     
                                 </td>
                             
@@ -946,7 +948,7 @@
                                 0..*
                             </td>
                             <td>
-                                
+                                A Catalogue Record that is part of the Catalogue.
                             </td>
                             <td>
                                 
@@ -957,13 +959,13 @@
                             </td>
                             <td>
                                 
-                                    &nbsp;
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record">Link</a>
                                 
                             </td>
                             
                                 <td>
                                     
-                                        &nbsp;
+                                        A
                                     
                                 </td>
                             
@@ -999,24 +1001,26 @@
                                 0..*
                             </td>
                             <td>
-                                
+                                A site or end-point (Data Service) that is listed in the Catalogue.
                             </td>
                             <td>
                                 
                                 
+                                    
                                 
                                 
                                 
+                                As empty Catalogues are usually indications of problems, this property should be combined with the property <a href="#Dataset">dataset</a> to implement an empty Catalogue check.
                             </td>
                             <td>
                                 
-                                    &nbsp;
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service">Link</a>
                                 
                             </td>
                             
                                 <td>
                                     
-                                        &nbsp;
+                                        A
                                     
                                 </td>
                             
@@ -1143,24 +1147,28 @@
                                 1..1
                             </td>
                             <td>
-                                
+                                A link to the Dataset, Data service or Catalog described in the record.
                             </td>
                             <td>
                                 
                                 
+                                    
                                 
                                 
+                                    
                                 
+                                
+                                A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. However it is not the intent with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used.
                             </td>
                             <td>
                                 
-                                    &nbsp;
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic">Link</a>
                                 
                             </td>
                             
                                 <td>
                                     
-                                        &nbsp;
+                                        E
                                     
                                 </td>
                             
@@ -1301,7 +1309,7 @@
                                 
                             </td>
                             <td>
-                                
+                                This property refers to a collection of data that this data service can distribute.
                             </td>
                             <td>
                                 
@@ -1312,13 +1320,13 @@
                             </td>
                             <td>
                                 
-                                    &nbsp;
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_serves_dataset">Link</a>
                                 
                             </td>
                             
                                 <td>
                                     
-                                        &nbsp;
+                                        A
                                     
                                 </td>
                             
@@ -8297,24 +8305,6 @@ Privacy Vocabulary [[DPV]].
     
         
         
-            Mandatory
-        
-    
-</td>
-                                <td><a href="#Catalogue.publisher">publisher </a></td>
-                                <td><div class="compact-uri">http://purl.org/dc/terms/publisher</div></td>
-                            </tr>
-                        
-                            
-                            
-                            <tr>
-                                <td><a href="#Catalogue">Catalogue</a></td>
-                                <td><div class="compact-uri">http://www.w3.org/ns/dcat#Catalog</div></td>
-                                <td>
-    
-    
-        
-        
             Optional
         
     
@@ -8339,6 +8329,24 @@ Privacy Vocabulary [[DPV]].
 </td>
                                 <td><a href="#Catalogue.licence">licence </a></td>
                                 <td><div class="compact-uri">http://purl.org/dc/terms/license</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Catalogue">Catalogue</a></td>
+                                <td><div class="compact-uri">http://www.w3.org/ns/dcat#Catalog</div></td>
+                                <td>
+    
+    
+        
+        
+            Mandatory
+        
+    
+</td>
+                                <td><a href="#Catalogue.publisher">publisher </a></td>
+                                <td><div class="compact-uri">https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko</div></td>
                             </tr>
                         
                             
