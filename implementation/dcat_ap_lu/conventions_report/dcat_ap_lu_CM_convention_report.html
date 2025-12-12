@@ -56,7 +56,7 @@
                   Generalisations</em>. Each major section lists model items that need correction of errors
                or consideration of warnings.</p>
             <p>The UML model in file <em>dcat_ap_lu_CM.xml</em> 
-               was tested at 07:10 on December 12, 2025.</p>
+               was tested at 07:24 on December 12, 2025.</p>
          </div>
          <h1 xmlns:f="http://https://github.com/costezki/model2owl#" id="nomenclature">Nomenclature</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="classNames">Class names</h2>
@@ -181,8 +181,7 @@
                      <li>dcat:Distribution -&gt; dct:LicenseDocument [0..1]</li></em></ul>
             </li>
             <li>dct:provenance</li>
-            <li><a href="#connector-dct:publisher">dct:publisher (3)</a><ul><em>
-                     <li>dcat:Catalog -&gt; foaf:Agent [1..1]</li>
+            <li><a href="#connector-dct:publisher">dct:publisher (2)</a><ul><em>
                      <li>dcat:Dataset -&gt; foaf:Agent [0..1]</li>
                      <li>dcat:DatasetSeries -&gt; foaf:Agent [0..1]</li></em></ul>
             </li>
@@ -211,6 +210,7 @@
             <li>odrl:hasPolicy</li>
             <li>prov:qualifiedAttribution</li>
             <li>prov:wasGeneratedBy</li>
+            <li>sko</li>
             <li>spdx:checksum</li>
          </ul>
          <h1 class="selector-heading" id="classes">Classes</h1>
@@ -690,15 +690,21 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>Generalisations can be provided only between classes or between connectors.</dd>
          </dl>
          <h1 class="selector-heading" id="associations">Associations</h1>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Catalog -&gt; foaf:Agent (+dct:publisher)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Catalog -&gt; foaf:Agent (+sko)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet association conventions </dt>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The stereotype applied to dcat:Catalog -&gt; foaf:Agent (+dct:publisher)is not known
-               and will be ignored. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Catalog -&gt; foaf:Agent (+dct:publisher). Stereotypes
-               are discouraged in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
-               define and describe all the relations.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The target role name sko does not match the pattern. The name should respect the syntax
+               prefix:localSegment (similar to the XML QName).</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The target role name sko is missing a prefix. The name should comprise a prefix respecing
+               the syntax prefix:localSegment.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The target role name sko , is invalid. Please provide a short prefix name containing
+               only alphanumeric characters [a-zA-Z0-9]+.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The target role name sko is not defined. A prefix must be associated to a namespace
+               URI.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The stereotype applied to dcat:Catalog -&gt; foaf:Agent (+sko)is not known and will be
+               ignored. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Catalog -&gt; foaf:Agent (+sko). Stereotypes are
+               discouraged in the current practice with some exceptions. </dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Catalog -&gt; dcat:DataService (+dcat:service)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -707,8 +713,6 @@
                and will be ignored. </dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Catalog -&gt; dcat:DataService (+dcat:service).
                Stereotypes are discouraged in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
-               define and describe all the relations.</dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Catalog -&gt; dct:LicenseDocument (+dct:license)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -717,8 +721,6 @@
                known and will be ignored. </dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Catalog -&gt; dct:LicenseDocument (+dct:license).
                Stereotypes are discouraged in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
-               define and describe all the relations.</dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Catalog -&gt; foaf:Agent (+dct:creator)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -727,8 +729,6 @@
                will be ignored. </dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Catalog -&gt; foaf:Agent (+dct:creator). Stereotypes
                are discouraged in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
-               define and describe all the relations.</dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:Catalog -&gt; dcat:CatalogRecord (+dcat:record)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -737,8 +737,6 @@
                known and will be ignored. </dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:Catalog -&gt; dcat:CatalogRecord (+dcat:record).
                Stereotypes are discouraged in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
-               define and describe all the relations.</dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:CatalogRecord -&gt; dcat:Resource (+foaf:primaryTopic)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -747,8 +745,6 @@
                not known and will be ignored. </dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:CatalogRecord -&gt; dcat:Resource (+foaf:primaryTopic).
                Stereotypes are discouraged in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
-               define and describe all the relations.</dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">dcat:DataService -&gt; dcat:Dataset (+dcat:servesDataset)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -757,8 +753,6 @@
                not known and will be ignored. </dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The true stereotype is applied to dcat:DataService -&gt; dcat:Dataset (+dcat:servesDataset).
                Stereotypes are discouraged in the current practice with some exceptions. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
-               define and describe all the relations.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The target role of dcat:DataService -&gt; dcat:Dataset (+dcat:servesDataset) has no multiplicity.
                Cardinality must be provided for each role.</dd>
          </dl>
@@ -1194,7 +1188,8 @@
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
-               <li>... (dcat:Catalog -&gt; foaf:Agent (+dct:creator)) </li>
+               <li>An entity responsible for the creation of the catalogue. (dcat:Catalog -&gt; foaf:Agent
+                  (+dct:creator)) </li>
                <li>An entity responsible for producing the dataset. (dcat:Dataset -&gt; foaf:Agent (+dct:creator))
                   </li>
             </ul>
@@ -1225,12 +1220,9 @@
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-dct:publisher">
             <dt>dct:publisher</dt>
          </dl>
-         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts the multiplicity is expected to be
-            the same.</dd>
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
-               <li>... (dcat:Catalog -&gt; foaf:Agent (+dct:publisher)) </li>
                <li>An entity (organisation) responsible for making the Dataset available. (dcat:Dataset
                   -&gt; foaf:Agent (+dct:publisher)) </li>
                <li>An entity (organisation) responsible for making the Dataset available.
