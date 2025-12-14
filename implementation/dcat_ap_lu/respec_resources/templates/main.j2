@@ -411,7 +411,52 @@
     {% endblock %}
 
     {% block datatypes %}
-        {{ super() }}
+        <section>
+    <h2>Datatypes</h2>
+
+	The following datatypes are used within this specification.
+
+    {% block datatypesGen %}
+        <table class="data-table simple" id="table-mandatory-classes">
+            <thead>
+                <tr class="data-table__header">
+                    <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:25%">
+                        Class
+                    </th>
+                    <th class="data-table__header-title--sortable" style="width:70%">
+                        Definition
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="supertype">
+                {% for entity in datatypes | sort(attribute=sortattr)%}
+                <tr>
+                    <td>
+                        {% if entity.scopeduri %}
+                            <div id="{{ entity.label[language] | replace(' ','') |urlencode | title }}">
+                                <a href="{{ entity.uri }}"
+                                    data-toggle="tooltip"
+                                    data-content="{{ entity.uri }}"
+                                    data-placement="right">{{ entity.label[language] }}</a>
+                            </div>
+                        {% else %}
+                            <div id="{{ entity.label[language] | replace(' ','') |urlencode | title }}">
+                                <a href="{{ entity.scopeduri }}"
+                                    data-toggle="tooltip"
+                                    data-content="{{ entity.uri }}"
+                                    data-placement="right">{{ entity.label[language] }}</a>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ entity.description[language] | safe }}
+                    </td>
+                </tr>
+                {%- endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
+</section>
     {% endblock %}
 
     {% block controlledVocabularies %}
