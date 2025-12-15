@@ -66,7 +66,6 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-type                            |                              1 |                                4 |
       | dcat-Dataset-dpv-hasData                         |                              1 |                                3 |
       | dcat-Dataset-foaf-page                           |                              1 |                                3 |
-      | dcat-Dataset-dcat-isVersionOf                     |                             0 |                                1 |
       | dcat-Dataset-prov-qualifiedAttribution           |                              1 |                                3 |
       | dcat-Dataset-dcat-qualifiedRelation              |                              1 |                                3 |
       | dcat-Dataset-prov-wasGeneratedBy                 |                              1 |                                4 |
@@ -88,3 +87,4 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Catalog-dct-license                         |                              0 |                                3 |
       | dcat-Catalog-dct-publisher                       |                              0 |                                3 |
       | dct-PeriodOfTime-dcat-startDate                  |                              0 |                                1 |
+
