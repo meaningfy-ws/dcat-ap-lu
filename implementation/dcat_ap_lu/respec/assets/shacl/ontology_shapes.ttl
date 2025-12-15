@@ -1,4 +1,3 @@
-@prefix : <https://mindig_lu.gitlab.io/DCAT-AP-LU/#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -41,7 +40,7 @@ core-res:dcat-CatalogShape a sh:NodeShape ;
         core-res:dcat-Catalog-dcat-service,
         core-res:dcat-Catalog-dct-creator,
         core-res:dcat-Catalog-dct-license,
-        core-res:dcat-Catalog-sko ;
+        core-res:dcat-Catalog-dct-publisher ;
     sh:targetClass dcat:Catalog .
 
 core-res:dcat-DataServiceShape a sh:NodeShape ;
@@ -53,7 +52,7 @@ core-res:dcat-DataServiceShape a sh:NodeShape ;
 
 core-res:dcat-DatasetSeriesShape a sh:NodeShape ;
     rdfs:label "Dataset series" ;
-    rdfs:comment "A collection of datasets that are published separately, but share some characteristics that group them. Usage Note It is recommended to avoid Dataset Series without a dataset in the collection. Therefore at least one Dataset should refer to a Dataset Series using the property in series (dcat:inSeries)." ;
+    rdfs:comment "A collection of datasets that are published separately, but share some characteristics that group them." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:property core-res:dcat-DatasetSeries-dcat-contactPoint,
         core-res:dcat-DatasetSeries-dcatap-applicableLegislation,
@@ -72,7 +71,6 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dcat-distribution,
         core-res:dcat-Dataset-dcat-hasVersion,
         core-res:dcat-Dataset-dcat-inSeries,
-        core-res:dcat-Dataset-dcat-isVersionOf,
         core-res:dcat-Dataset-dcat-keyword,
         core-res:dcat-Dataset-dcat-landingPage,
         core-res:dcat-Dataset-dcat-qualifiedRelation,
@@ -314,15 +312,15 @@ core-res:dcat-Catalog-dct-license a sh:PropertyShape ;
     sh:path dcterms:license ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/license> ?that . ?that <http://purl.org/dc/terms/license> ?this .}" ] .
 
-core-res:dcat-Catalog-sko a sh:PropertyShape ;
+core-res:dcat-Catalog-dct-publisher a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class foaf:Agent ;
     sh:description "An entity (organisation) responsible for making the Catalogue available." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
-    sh:name "Sko" ;
-    sh:path :sko ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko> ?that . ?that <https://mindig_lu.gitlab.io/DCAT-AP-LU/#sko> ?this .}" ] .
+    sh:name "Publisher" ;
+    sh:path dcterms:publisher ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/publisher> ?that . ?that <http://purl.org/dc/terms/publisher> ?this .}" ] .
 
 core-res:dcat-CatalogRecord-foaf-primaryTopic a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -396,13 +394,6 @@ core-res:dcat-Dataset-dcat-inSeries a sh:PropertyShape ;
     sh:name "In series" ;
     sh:path dcat:inSeries ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#inSeries> ?that . ?that <http://www.w3.org/ns/dcat#inSeries> ?this .}" ] .
-
-core-res:dcat-Dataset-dcat-isVersionOf a sh:PropertyShape ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:class dcat:Dataset ;
-    sh:name "Is version of" ;
-    sh:path dcat:isVersionOf ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#isVersionOf> ?that . ?that <http://www.w3.org/ns/dcat#isVersionOf> ?this .}" ] .
 
 core-res:dcat-Dataset-dcat-keyword a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
