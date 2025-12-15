@@ -19,6 +19,14 @@
             <dd>
                 {{ entity.description[language] | safe }}
             </dd>
+            {% if prop.tags['dct:references'] %}			
+               <dt>
+                   Reference in DCAT-AP
+               </dt>
+               <dd>
+                {{ prop.tags['dct:references'] | safe }}
+               </dd>
+			{% endif %}
             {% if entity.tags[config.usageNoteTagName] or entity.tags['skos:scopeNote'] or entity.tags['skos:example'] %}
                 <dt>
                     Usage Note
@@ -105,9 +113,6 @@
                         <th class="data-table__header-title--sortable" style="width:25%">
                             Usage
                         </th>
-                        <th class="data-table__header-title--sortable" style="width:20%">
-                            DCAT
-                        </th>
                         {% if config.showReferencesInRespec %}
                             <th class="data-table__header-title--sortable" style="width:20%">
                                 {{ config.propertyReferenceRespecLabel if config.propertyReferenceRespecLabel else 'Reuse' }}
@@ -166,13 +171,6 @@
                                     {% set _ = prop_usage_parts.append(prop.tags['skos:example']) %}
                                 {% endif %}
                                 {{ prop_usage_parts | join(' ') | safe }}
-                            </td>
-                            <td>
-                                {% if prop.tags["dct:references"] %}
-                                    {{ prop.tags["dct:references"] | safe }}
-                                {% else %}
-                                    &nbsp;
-                                {% endif %}
                             </td>
                             {% if config.showReferencesInRespec %}
                                 <td>
