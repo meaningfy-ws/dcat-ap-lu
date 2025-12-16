@@ -1,259 +1,16 @@
 @prefix : <https://mindig_lu.gitlab.io/DCAT-AP-LU/#> .
-@prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcatap: <http://data.europa.eu/r5r/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix dpv: <https://w3id.org/dpv#> .
-@prefix eli: <http://data.europa.eu/eli/ontology#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix locn: <http://www.w3.org/ns/locn#> .
-@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix spdx: <http://spdx.org/rdf/terms#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-eli:LegalResource a owl:Class ;
-    skos:definition "This class represents the legislation, policy or policies that lie behind the Rules that govern the service."@en ;
-    skos:prefLabel "Legal Resource"@en .
-
-dcatap:applicableLegislation a owl:ObjectProperty ;
-    skos:definition "The legislation that mandates the creation or management of the Dataset. The legislation that mandates the creation or management of the Dataset Series."@en ;
-    skos:prefLabel "applicable Legislation"@en,
-        "applicable legislation"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.applicablelegislation\">E</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DatasetSeries.applicablelegislation\">A</a>"@en,
-        "<a href=\"semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.applicablelegislation\">A</a>"@en .
-
-dcatap:availability a owl:ObjectProperty ;
-    skos:definition "An indication how long it is planned to keep the Distribution of the Dataset available."@en ;
-    skos:prefLabel "availability"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.availability\">A</a>"@en .
-
-dcterms:Frequency a owl:Class ;
-    skos:definition "A rate at which something recurs, e.g. the publication of a Dataset."@en ;
-    skos:prefLabel "Frequency"@en ;
-    :vocabname "EU Vocabularies Frequency Named Authority List"@en,
-        "Frequency - EU Vocabularies -Publications Office of the EU"@en ;
-    :vocaburi "https://publications.europa.eu/resource/authority/file-type"@en,
-        "https://publications.europa.eu/resource/authority/frequency"@en .
-
-dcterms:LicenseDocument a owl:Class ;
-    skos:definition "A legal document giving official permission to do something with a resource."@en ;
-    skos:prefLabel "License Document"@en ;
-    :vocabname "ADMS licence type vocabulary"@en ;
-    :vocaburi "http://purl.org/adms/licencetype/1.0"@en .
-
-dcterms:LinguisticSystem a owl:Class ;
-    skos:definition "A system of signs, symbols, sounds, gestures, or rules used in communication, e.g. a language."@en ;
-    skos:prefLabel "Linguistic System"@en ;
-    :vocabname "EU Vocabularies Languages Named Authority List"@en ;
-    :vocaburi "https://publications.europa.eu/resource/authority/language"@en .
-
-dcterms:Location a owl:Class ;
-    skos:definition "A temporal period that the Dataset covers."@en ;
-    skos:prefLabel "Location"@en .
-
-dcterms:MediaType a owl:Class ;
-    skos:definition "A file format or physical medium."@en ;
-    skos:prefLabel "Media Type"@en ;
-    :vocabname "File type - EU Vocabularies - Publications Office of the EU."@en,
-        "IANA Media Types"@en ;
-    :vocaburi "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type"@en,
-        "https://www.iana.org/assignments/media-types/media-types.xhtml"@en .
-
-dcterms:MediaTypeOrExtent a owl:Class ;
-    skos:definition "A media type or dataset distribution."@en ;
-    skos:prefLabel "Media Type Or Extent"@en,
-        "Media type or extent"@en ;
-    :vocabname "EU Vocabularies File Type Named Authority List"@en ;
-    :vocaburi "http://publications.europa.eu/resource/authority/file-type"@en .
-
-dcterms:PeriodOfTime a owl:Class ;
-    dcterms:references "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#PeriodofTime\">Link</a>"@en ;
-    skos:definition "An interval of time that is named or defined by its start and end dates."@en ;
-    skos:prefLabel "Period Of Time"@en,
-        "Period of time"@en .
-
-dcterms:ProvenanceStatement a owl:Class ;
-    skos:definition "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
-    skos:prefLabel "Provenance Statement"@en .
-
-dcterms:RightsStatement a owl:Class ;
-    skos:definition "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en ;
-    skos:prefLabel "Rights Statement"@en ;
-    :vocabname "Access Rights Named Authority List"@en,
-        "Access right - EU Vocabularies - Publications Office of the EU"@en ;
-    :vocaburi "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right"@en,
-        "https://publications.europa.eu/resource/authority/access-right"@en .
-
-dcterms:Standard a owl:Class ;
-    skos:definition "A standard or other specification to which a Dataset or Distribution conforms."@en ;
-    skos:prefLabel "Standard"@en .
-
-dcterms:accrualPeriodicity a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency\">Link</a>"@en ;
-    skos:definition "The frequency at which the Dataset is updated."@en ;
-    skos:prefLabel "accrual Periodicity"@en,
-        "frequency"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.frequency\">A</a>"@en .
-
-dcterms:conformsTo a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_conforms_to\">Link</a>"@en,
-        "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to\">Link</a>"@en ;
-    skos:definition "An implementing rule or other specification. An established schema to which the described Distribution conforms."@en ;
-    skos:prefLabel "conforms To"@en,
-        "conforms to"@en,
-        "linked schemas"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.conformsto\">A</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.linkedschemas\">A</a>"@en .
-
-dcterms:creator a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator\">Link</a>"@en ;
-    skos:definition "An entity responsible for the creation of the catalogue. An entity responsible for producing the dataset."@en ;
-    skos:prefLabel "creator"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.creator\">A</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.creator\">A</a>"@en .
-
-dcterms:description a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description\">Link</a>"@en ;
-    skos:definition "A free-text account of the Dataset. (dcat:Dataset) A free-text account of the Distribution. (dcat:Distribution)"@en ;
-    skos:prefLabel "description"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.description\">A</a>"@en .
-
-dcterms:format a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_format\">Link</a>"@en ;
-    skos:definition "The file format of the Distribution."@en ;
-    skos:prefLabel "format"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.format\">A</a>"@en .
-
-dcterms:identifier a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier\">Link</a>"@en ;
-    skos:definition "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue. (dcat:Dataset)"@en ;
-    skos:prefLabel "identifier"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.identifier\">E</a>"@en .
-
-dcterms:isReferencedBy a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_is_referenced_by\">Link</a>"@en ;
-    skos:definition "A related resource, such as a publication, that references, cites, or otherwise points to the dataset. (dcat:Dataset)"@en ;
-    skos:prefLabel "is Referenced By"@en,
-        "is referenced by"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.isreferencedby\">A</a>"@en .
-
-dcterms:issued a rdf:Property ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date\">Link</a>"@en ;
-    skos:definition "The date of formal issuance (e.g., publication) of the Dataset. (dcat:Dataset) The date of formal issuance (e.g., publication) of the Distribution. (dcat:Distribution)"@en ;
-    skos:prefLabel "issued"@en,
-        "release date"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.releasedate\">A</a>"@en .
-
-dcterms:language a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language\">Link</a>"@en ;
-    skos:definition "A language of the Dataset. A language used in the Distribution."@en ;
-    skos:prefLabel "language"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.language\">A</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.language\">A</a>"@en .
-
-dcterms:license a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/licence\">Link</a>"@en ;
-    skos:definition "A licence under which the Catalogue can be used or reused. A licence under which the Distribution is made available."@en ;
-    skos:prefLabel "licence"@en,
-        "license"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.licence\">A</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.licence\">A</a>"@en .
-
-dcterms:modified a rdf:Property ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date\">Link</a>"@en ;
-    skos:definition "The most recent date on which the Dataset was changed or modified. (dcat:Dataset) The most recent date on which the Distribution was changed or modified. (dcat:Distribution)"@en ;
-    skos:prefLabel "modification date"@en,
-        "modified"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.modificationdate\">A</a>"@en .
-
-dcterms:provenance a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers\">Link</a>"@en ;
-    skos:definition "A statement about the lineage of a Dataset."@en ;
-    skos:prefLabel "provenance"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.provenance\">E</a>"@en .
-
-dcterms:publisher a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher\">Link</a>"@en ;
-    skos:definition "An entity (organisation) responsible for making the Catalogue available. An entity (organisation) responsible for making the Dataset available."@en ;
-    skos:prefLabel "publisher"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.publisher\">A</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.publisher\">E</a>"@en,
-        "<a href=https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DatasetSeries.publisher\">A</a>"@en .
-
-dcterms:relation a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_relation\">Link</a>"@en ;
-    skos:definition "A related resource. (dcat:Dataset)"@en ;
-    skos:prefLabel "related resource"@en,
-        "relation"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.relatedresource\">A</a>"@en .
-
-dcterms:rights a owl:ObjectProperty ;
-    dcterms:references """<a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights">Link</a>
-"""@en,
-        "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights\">Link</a>"@en ;
-    skos:definition "Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public. A statement that specifies rights associated with the Distribution."@en ;
-    skos:prefLabel "access rights"@en,
-        "rights"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.accessrights\">E</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.rights\">A</a>"@en .
-
-dcterms:source a owl:ObjectProperty ;
-    skos:definition "A related Dataset from which the described Dataset is derived."@en ;
-    skos:prefLabel "source"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.source\">A</a>"@en .
-
-dcterms:spatial a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.geographicalcoverage\">E</a>"@en,
-        "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial\">Link</a>"@en ;
-    skos:definition "A geographic region that is covered by the Dataset. A geographic region that is covered by the Dataset Series"@en ;
-    skos:prefLabel "geographical coverage"@en,
-        "spatial"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.geographicalcoverage\">A</a>"@en,
-        "<a href=https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DatasetSeries.geographicalcoverage\">A</a>"@en .
-
-dcterms:temporal a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal\">Link</a>"@en ;
-    skos:definition "A temporal period that the Dataset covers."@en ;
-    skos:prefLabel "temporal"@en,
-        "temporal coverage"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.temporalcoverage\">A</a>"@en .
-
-dcterms:title a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title\">Link</a>"@en ;
-    skos:definition "A name given to the Dataset (dcat:Dataset) A name given to the Distribution. (dcat:Distribution)"@en ;
-    skos:prefLabel "title"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.title\">A</a>"@en .
-
-dcterms:type a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type\">Link</a>"@en ;
-    skos:definition "A type of the Dataset. A type of licence, e.g. indicating 'public domain' or 'royalties required'."@en ;
-    skos:prefLabel "type"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.type\">E</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#LicenceDocument.type\">A</a>"@en .
-
-spdx:Checksum a owl:Class ;
-    skos:definition "A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented."@en ;
-    skos:prefLabel "Checksum"@en .
-
-spdx:checksum a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum\">Link</a>"@en ;
-    skos:definition "A mechanism that can be used to verify that the contents of a distribution have not changed."@en ;
-    skos:prefLabel "checksum"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.checksum\">A</a>"@en .
-
 rdf:PlainLiteral a rdfs:Datatype ;
-    skos:prefLabel "Plain Literal"@en,
-        "rdf:PlainLiteral"@en .
+    skos:prefLabel "Plain Literal"@en .
 
 rdfs:Literal a rdfs:Datatype ;
     skos:definition "A literal value such as a string or integer. Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 4715 [[RFC5646]]."@en ;
@@ -263,13 +20,11 @@ rdfs:Resource a rdfs:Datatype ;
     skos:prefLabel "Resource"@en .
 
 xsd:date a rdfs:Datatype ;
-    skos:prefLabel "date"@en,
-        "xsd:date"@en .
+    skos:prefLabel "date"@en .
 
 xsd:dateTime a rdfs:Datatype ;
     skos:definition "Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property."@en ;
-    skos:prefLabel "date Time"@en,
-        "xsd:dateTime"@en .
+    skos:prefLabel "date Time"@en .
 
 xsd:decimal a rdfs:Datatype ;
     skos:definition "Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i &#215; 10^-n where i and n are integers and n ≥ 0."@en ;
@@ -277,366 +32,32 @@ xsd:decimal a rdfs:Datatype ;
 
 xsd:duration a rdfs:Datatype ;
     skos:definition "Duration represents a duration of time. The &#183;value space&#183; of duration is a six-dimensional space where the coordinates designate the Gregorian year, month, day, hour, minute, and second components defined in &#167; 5.5.3.2 of [[ISO8601-2]], respectively."@en ;
-    skos:prefLabel "duration"@en,
-        "xsd:duration"@en .
+    skos:prefLabel "duration"@en .
 
 xsd:gYear a rdfs:Datatype ;
-    skos:prefLabel "g Year"@en,
-        "xsd:gYear"@en .
+    skos:prefLabel "g Year"@en .
 
 xsd:gYearMonth a rdfs:Datatype ;
-    skos:prefLabel "g Year Month"@en,
-        "xsd:gYearMonth"@en .
+    skos:prefLabel "g Year Month"@en .
 
 xsd:integer a rdfs:Datatype ;
-    skos:prefLabel "integer"@en,
-        "xsd:nonNegativeInteger"@en .
+    skos:prefLabel "integer"@en .
 
 xsd:nonNegativeInteger a rdfs:Datatype ;
     skos:definition "Number derived from integer by setting the value of minInclusive to be 0."@en ;
-    skos:prefLabel "non Negative Integer"@en,
-        "xsd:nonNegativeInteger"@en .
+    skos:prefLabel "non Negative Integer"@en .
 
 xsd:string a rdfs:Datatype ;
-    skos:prefLabel "string"@en,
-        "xsd:string"@en .
-
-skos:Concept a owl:Class ;
-    skos:definition "An idea or notion; a unit of thought."@en ;
-    skos:prefLabel "Concept"@en ;
-    :vocabname "Data theme - EU Vocabularies - Publications Office of the EU"@en,
-        "Dataset Theme Vocabulary"@en,
-        "Distribution availability vocabulary"@en,
-        "EU Vocabularies Distribution Status"@en ;
-    :vocaburi "https://publications.europa.eu/resource/authority/data-theme"@en,
-        "https://publications.europa.eu/resource/authority/distribution-status"@en,
-        "https://publications.europa.eu/resource/authority/planned-availability"@en .
-
-skos:prefLabel a owl:DatatypeProperty ;
-    skos:prefLabel "pref Label"@en,
-        "preferred label"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Concept.preferredlabel\">A</a>"@en .
+    skos:prefLabel "string"@en .
 
 time:Instant a rdfs:Datatype ;
     skos:definition "A temporal entity with zero extent or duration."@en ;
-    skos:prefLabel "Instant"@en,
-        "Time instant"@en .
-
-time:hasBeginning a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning\">Link</a>"@en ;
-    skos:definition "The beginning of a period or interval. (dct:PeriodOfTime)"@en ;
-    skos:prefLabel "beginning"@en,
-        "has Beginning"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#PeriodofTime.beginning\">A</a>"@en .
-
-time:hasEnd a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end\">Link</a>"@en ;
-    skos:definition "The end of a period or interval. (dct:PeriodOfTime)"@en ;
-    skos:prefLabel "end"@en,
-        "has End"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#PeriodofTime.end\">A</a>"@en .
-
-vcard:Kind a owl:Class ;
-    skos:definition "A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point."@en ;
-    skos:prefLabel "Kind"@en .
-
-adms:Identifier a owl:Class ;
-    skos:definition "This is based on the UN/CEFACT Identifier class."@en ;
-    skos:prefLabel "Identifier"@en .
-
-adms:identifier a owl:ObjectProperty ;
-    dcterms:references "<a href =\"https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers\">Link</a>"@en ;
-    skos:definition "A secondary identifier of the Dataset."@en ;
-    skos:prefLabel "identifier"@en,
-        "other identifier"@en ;
-    :reuse "<a href=\"semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.otheridentifier\">A</a>"@en .
-
-adms:identifierX a owl:ObjectProperty ;
-    dcterms:references "<a href =\"https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers\">Link</a>"@en ;
-    skos:definition "A secondary identifier of the Dataset."@en ;
-    skos:prefLabel "identifier X"@en,
-        "other identifier"@en ;
-    :reuse "<a href=\"semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.otheridentifier\">A</a>"@en .
-
-adms:sample a owl:ObjectProperty ;
-    skos:definition "A sample distribution of the dataset."@en ;
-    skos:prefLabel "sample"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.sample\">E</a>"@en .
-
-adms:status a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_status\">Link</a>"@en ;
-    skos:definition "The status of the distribution in the context of maturity lifecycle."@en ;
-    skos:prefLabel "status"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.status\">A</a>"@en .
-
-adms:versionNotes a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version_notes\">Link</a>"@en ;
-    skos:definition "A description of the differences between this version and a previous version of the Dataset. (dcat:Dataset)"@en ;
-    skos:prefLabel "version Notes"@en,
-        "version notes"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.versionnotes\">A</a>"@en .
-
-dcat:Catalog a owl:Class ;
-    skos:definition "A catalogue or repository that hosts the Datasets or Data Services being described."@en ;
-    skos:prefLabel "Catalog"@en,
-        "Catalogue"@en .
-
-dcat:CatalogRecord a owl:Class ;
-    skos:definition "A description of a Catalogued Resource's entry in the Catalogue."@en ;
-    skos:prefLabel "Catalog Record"@en,
-        "Catalogue Record"@en .
-
-dcat:DataService a owl:Class ;
-    rdfs:subClassOf dcat:Resource ;
-    skos:definition "A collection of operations that provides access to one or more datasets or data processing functions."@en ;
-    skos:prefLabel "Data Service"@en .
-
-dcat:Dataset a owl:Class ;
-    dcterms:references "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset\">Link</a>"@en ;
-    rdfs:subClassOf dcat:Resource ;
-    skos:definition "A conceptual entity that represents the information published."@en ;
-    skos:prefLabel "Dataset"@en .
-
-dcat:DatasetSeries a owl:Class ;
-    dcterms:references "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DatasetSeries\">Link</a>"@en ;
-    rdfs:subClassOf dcat:Resource ;
-    skos:definition "A collection of datasets that are published separately, but share some characteristics that group them."@en ;
-    skos:prefLabel "Dataset Series"@en .
-
-dcat:Distribution a owl:Class ;
-    dcterms:references "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution\">Link</a>"@en ;
-    skos:definition "A physical embodiment of the Dataset in a particular format."@en ;
-    skos:prefLabel "Distribution"@en .
-
-dcat:Relationship a owl:Class ;
-    skos:definition "An association class for attaching additional information to a relationship between DCAT Resources."@en ;
-    skos:prefLabel "Relationship"@en .
-
-dcat:accessService a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_service\">Link</a>"@en ;
-    skos:definition "A data service that gives access to the distribution of the dataset."@en ;
-    skos:prefLabel "access Service"@en,
-        "access service"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.accessservice\">A</a>"@en .
-
-dcat:accessURL a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url\">Link</a>"@en ;
-    skos:definition "A URL that gives access to a Distribution of the Dataset. (dcat:Distribution)"@en ;
-    skos:prefLabel "access URL"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.accessURL\">E</a>"@en .
-
-dcat:byteSize a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_size\">Link</a>"@en ;
-    skos:definition "The size of a Distribution in bytes. (dcat:Distribution)"@en ;
-    skos:prefLabel "byte Size"@en,
-        "byte size"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.bytesize\">A</a>"@en .
-
-dcat:compressFormat a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_compression_format\">Link</a>"@en ;
-    skos:definition "compressed form, e.g. to reduce the size of the downloadable file."@en ;
-    skos:prefLabel "compress Format"@en,
-        "compression format"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.compressionformat\">A</a>"@en .
-
-dcat:contactPoint a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point\">Link</a>"@en ;
-    skos:definition "Contact information that can be used for sending comments about the Dataset. Contact information that can be used for sending comments about the DatasetSeries."@en ;
-    skos:prefLabel "contact Point"@en,
-        "contact point"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.conformsto\">A</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DatasetSeries.contactpoint\">A</a>"@en .
-
-dcat:distribution a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution\">Link</a>"@en ;
-    skos:definition "An available Distribution for the Dataset."@en ;
-    skos:prefLabel "dataset distribution"@en,
-        "distribution"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.datasetdistribution\">A</a>"@en .
-
-dcat:downloadURL a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url\">Link</a>"@en ;
-    skos:definition "A URL that is a direct link to a downloadable file in a given format. (dcat:Distribution)"@en ;
-    skos:prefLabel "download URL"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.downloadURL\">A</a>"@en .
-
-dcat:endDate a rdf:Property ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:period_end_date\">Link</a>"@en ;
-    skos:definition "The end of the period. (dct:PeriodOfTime)"@en ;
-    skos:prefLabel "end Date"@en,
-        "end date"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#PeriodofTime.enddate\">A</a>"@en .
-
-dcat:hasVersion a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_version\">Link</a>"@en ;
-    skos:definition "A related Dataset that is a version, edition, or adaptation of the described Dataset."@en ;
-    skos:prefLabel "has Version"@en,
-        "has version"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.hasversion\">A</a>"@en .
-
-dcat:inSeries a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series\">Link</a>"@en ;
-    skos:definition "A dataset series of which the dataset is part."@en ;
-    skos:prefLabel "in Series"@en,
-        "in series"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.inseries\">E</a>"@en .
-
-dcat:keyword a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>"@en ;
-    skos:definition "A keyword or tag describing the Dataset. (dcat:Dataset)"@en ;
-    skos:prefLabel "keyword"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.keyword\">A</a>"@en .
-
-dcat:landingPage a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>"@en ;
-    skos:definition "A web page that provides access to the Dataset, its Distributions and/or additional information."@en ;
-    skos:prefLabel "landing Page"@en,
-        "landing page"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.landingpage\">A</a>"@en .
-
-dcat:mediaType a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type\">Link</a>"@en ;
-    skos:prefLabel "media Type"@en,
-        "media type"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.mediatype\">E</a>"@en .
-
-dcat:packageFormat a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.packagingformat\">Link</a>"@en ;
-    skos:definition "The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together."@en ;
-    skos:prefLabel "package Format"@en,
-        "packaging format"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.mediatype\">A</a>"@en .
-
-dcat:qualifiedRelation a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_relation\">Link</a>"@en ;
-    skos:definition "A description of a relationship with another resource."@en ;
-    skos:prefLabel "qualified Relation"@en,
-        "qualified relation"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.qualifiedrelation\">A</a>"@en .
-
-dcat:record a owl:ObjectProperty ;
-    skos:definition "A Catalogue Record that is part of the Catalogue."@en ;
-    skos:prefLabel "record"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.record\">A</a>"@en .
-
-dcat:servesDataset a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_serves_dataset\">Link</a>"@en ;
-    skos:prefLabel "serves Dataset"@en,
-        "serves dataset"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.servesdataset\">A</a>"@en .
-
-dcat:service a owl:ObjectProperty ;
-    skos:definition "A site or end-point (Data Service) that is listed in the Catalogue."@en ;
-    skos:prefLabel "service"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.service\">A</a>"@en .
-
-dcat:spatialResolutionInMeters a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution\">Link</a>"@en ;
-    skos:definition "The minimum spatial separation resolvable in a dataset, measured in metres. (dcat:Dataset) The minimum spatial separation resolvable in a dataset distribution, measured in metres. (dcat:Distribution)"@en ;
-    skos:prefLabel "spatial Resolution In Meters"@en,
-        "spatial resolution"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.spatialresolution\">A</a>"@en .
-
-dcat:startDate a rdf:Property ;
-    skos:definition "The start of the period. (dct:PeriodOfTime)"@en ;
-    skos:prefLabel "start Date"@en,
-        "start date"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#PeriodofTime.startdate\">A</a>"@en .
-
-dcat:temporalResolution a owl:DatatypeProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution\">Link</a>"@en ;
-    skos:definition "The minimum time period resolvable in the dataset. (dcat:Dataset) The minimum time period resolvable in the dataset distribution. (dcat:Distribution)"@en ;
-    skos:prefLabel "temporal Resolution"@en,
-        "temporal resolution"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.temporalresolution\">A</a>"@en .
-
-dcat:theme a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme\">Link</a>"@en ;
-    skos:definition "A category of the Dataset."@en ;
-    skos:prefLabel "theme"@en ;
-    :reuse "<a href=\"semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.theme\">A</a>"@en .
-
-locn:Geometry a owl:Class ;
-    skos:definition "The Geometry class provides the means to identify a Location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference System."@en ;
-    skos:prefLabel "Geometry"@en .
-
-locn:geometry a owl:ObjectProperty ;
-    skos:prefLabel "geometry"@en .
-
-odrl:Policy a owl:Class ;
-    skos:definition "A non-empty group of Permissions and/or Prohibitions."@en ;
-    skos:prefLabel "Policy"@en .
-
-odrl:hasPolicy a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy\">Link</a>"@en ;
-    skos:prefLabel "has Policy"@en,
-        "has policy"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.haspolicy\">E</a>"@en .
-
-prov:Activity a owl:Class ;
-    skos:definition "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities."@en ;
-    skos:prefLabel "Activity"@en .
-
-prov:Attribution a owl:Class ;
-    skos:definition "Attribution is the ascribing of an entity to an agent."@en ;
-    skos:prefLabel "Attribution"@en .
-
-prov:qualifiedAttribution a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_attribution\">Link</a>"@en ;
-    skos:definition "An Agent having some form of responsibility for the resource."@en ;
-    skos:prefLabel "qualified Attribution"@en,
-        "qualified attribution"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.qualifiedattribution\">A</a>"@en .
-
-prov:wasGeneratedBy a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_was_generated_by\">Link</a>"@en ;
-    skos:definition "provides the business context for, the creation of the dataset."@en ;
-    skos:prefLabel "was Generated By"@en,
-        "was generated by"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.wasgeneratedby\">A</a>"@en .
-
-foaf:Agent a owl:Class ;
-    skos:definition "Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources."@en ;
-    skos:prefLabel "Agent"@en ;
-    :vocabname "EU Vocabularies Corporate bodies Named Authority List"@en ;
-    :vocaburi "https://publications.europa.eu/resource/authority/corporate-body"@en .
-
-foaf:Document a owl:Class ;
-    skos:definition "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset."@en ;
-    skos:prefLabel "Document"@en .
-
-foaf:page a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>"@en ;
-    skos:definition "A page or document about this Dataset. A page or document about this Distribution."@en ;
-    skos:prefLabel "documentation"@en,
-        "page"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.documentation\">A</a>"@en,
-        "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.documentation\">A</a>"@en .
-
-foaf:primaryTopic a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic\">Link</a>"@en ;
-    skos:definition "A link to the Dataset, Data service or Catalog described in the record."@en ;
-    skos:prefLabel "primary Topic"@en,
-        "primary topic"@en ;
-    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#CatalogueRecord.primarytopic\">A</a>"@en .
+    skos:prefLabel "Instant"@en .
 
 :TemporalLiteral a rdfs:Datatype ;
     rdfs:isDefinedBy core-res:core ;
     skos:definition "rdfs:Literal encoded using the relevant [[ISO8601-2]] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime)."@en ;
     skos:prefLabel "Temporal Literal"@en .
-
-dpv:Data a owl:Class ;
-    skos:definition "A broad concept representing 'data' or 'information'."@en ;
-    skos:prefLabel "Data"@en ;
-    :vocabname "Data"@en ;
-    :vocaburi "https://w3c.github.io/dpv/2.2/dpv/#Data"@en .
-
-dpv:hasData a owl:ObjectProperty ;
-    dcterms:references "<a href=\"https://w3c.github.io/dpv/2.2/dpv/#hasData\">Link</a>"@en ;
-    skos:definition "The type(s) of data protection, as defined in the context of the DGA, that applies to the dataset."@en ;
-    skos:prefLabel "data protection type"@en,
-        "has Data"@en ;
-    :reuse "P"@en .
 
 core-res:core a owl:Ontology ;
     rdfs:label """This artefact provides the definitions for the DCAT-AP-LU.
@@ -663,8 +84,4 @@ core-res:core a owl:Ontology ;
     owl:priorVersion "https://mindig_lu.gitlab.io/DCAT-AP-LU#core-1.0.0" ;
     owl:versionIRI core-res:core-1.1.0 ;
     owl:versionInfo "1.1.0" .
-
-dcat:Resource a owl:Class ;
-    skos:definition "Resource published or curated by a single agent."@en ;
-    skos:prefLabel "Resource"@en .
 
