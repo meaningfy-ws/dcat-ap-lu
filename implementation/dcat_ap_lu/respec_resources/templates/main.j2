@@ -1,6 +1,31 @@
 {% extends "base.j2" %}
 
 {# Custom macro with DCAT column - different name to avoid conflicts #}
+{% macro renderFeedbackButtonOverwrite(entity, prop=None) %}
+    {% if metadata.openGithubIssue %}
+        {% set _issueTitle = None %}
+        {% set _issueBody = None %}
+
+        {% if prop is not none %}
+            {% set _issueTitle = "Issue%20for%20'" ~ prop.label[language] ~ "'%20in%20'" ~ entity.label[language] ~ "'" %}
+            {% set _issueBody = "Explain%20your%20issue%20for%20"
+             ~ metadata.navigation.self
+             ~ "%23"
+             ~ ((entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode| title ) %}
+
+            {% else %}
+            {% set _issueTitle = "Issue%20for%20'" ~ entity.label[language] ~ "'" %}
+            {% set _issueBody = "Explain%20your%20issue%20for%20"
+             ~ metadata.navigation.self
+             ~ "%23"
+             ~ (entity.label[language] | replace(" ","") | urlencode| title ) %}
+        {% endif %}
+
+        <a href="https://gitlab.com/mindig_lu/DCAT-AP-LU/-/issues/new?title={{ _issueTitle }}&body={{ _issueBody }}" target="_blank" rel="noopener noreferrer" >
+            <img src="{{ imgRoot }}/callout.png" loading="lazy" alt="[o]" title="{{ metadata.openGithubIssue.buttonLabel if metadata.openGithubIssue.buttonLabel else ''}}" class="feedbackButton"/>
+        </a>
+    {% endif %}
+{% endmacro %}
 {% macro renderEntityOverwrite(entity) %}
     <section>
         <h3 id="{{ entity.label[language]| replace(' ','') |urlencode | title }}">
@@ -10,7 +35,7 @@
                data-placement="right">{{ entity.label[language] }}</a>
 
         </h3>
-        <span style="float:right;margin-right:10px;">{{ renderFeedbackButton(entity) }}</span>
+        <span style="float:right;margin-right:10px;">{{ renderFeedbackButtonOverwrite(entity) }}</span>
 
         <dl>
             <dt>
@@ -19,6 +44,14 @@
             <dd>
                 {{ entity.description[language] | safe }}
             </dd>
+            {% if entity.tags and entity.tags["dct:references"] %}
+                <dt>
+                    Reference in DCAT-AP
+                </dt>
+                <dd>
+                    {{ entity.tags["dct:references"] | safe }}
+                </dd>
+            {% endif %}
             {% if entity.tags[config.usageNoteTagName] or entity.tags['skos:scopeNote'] or entity.tags['skos:example'] %}
                 <dt>
                     Usage Note
@@ -862,10 +895,7 @@ Privacy Vocabulary [[DPV]].
                     </td>
                     <td>&nbsp;</td>
                 </tr>
-                <tr>
-                    <td>DUO:0000020</td>
-                    <td>collaboration required (COL)</td>
-                    <td>This data use modifier indicates that the requestor must agree to collaboration with the primary
+                <tr>dmust agree to collaboration with the primary
                         study investigator(s).
                     </td>
                     <td>&nbsp;</td>
