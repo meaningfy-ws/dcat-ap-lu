@@ -1,10 +1,25 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex: <http://example.org/> .
 
+ex:publisher1 a foaf:Agent .
 
-#  wrong class and Circular reference
-ex:catalog4 a dcat:Catalog ;
-    dcat:service ex:catalog4 .
+############################################################
+# INVALID 1 — Wrong class (violates sh:class dcat:DataService)
+############################################################
 
-ex:catalog4 a dcat:Catalog .
+ex:notAService a rdfs:Class .
+
+ex:catalog3 a dcat:Catalog ;
+    dcterms:publisher ex:publisher1 ;
+    dcat:service ex:notAService .     # ❌ wrong class
+
+############################################################
+# INVALID 2 — Circular reference ONLY (NO class violation)
+############################################################
+
+ex:catalog4 a dcat:Catalog, dcat:DataService ;   #  prevents class violation
+    dcterms:publisher ex:publisher1 ;
+    dcat:service ex:catalog4 .        # ❌ SPARQL circular violation

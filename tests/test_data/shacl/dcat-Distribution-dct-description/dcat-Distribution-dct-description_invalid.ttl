@@ -2,6 +2,10 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.org/> .
 
+### Invalid 1: Missing accessURL entirely → minCount violation
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcterms:description ex:notALiteral .
+    dcterms:description "A description"@en .
+
+### Invalid 2: Wrong datatype → literal instead of IRI
+ex:dist-wrong-type a dcat:Distribution ;
+    dcat:accessURL "https://example.org/not-a-resource" .

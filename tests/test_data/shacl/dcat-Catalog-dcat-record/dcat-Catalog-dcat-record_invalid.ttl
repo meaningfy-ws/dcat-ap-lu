@@ -1,20 +1,38 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix ex: <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
 
-#  Wrong class (not a dcat:CatalogRecord)
-ex:catalog2 a dcat:Catalog ;
-    dcat:record ex:record2 .
+############################################
+# Supporting required resource
+############################################
+ex:publisher1 a foaf:Agent .
 
-ex:record2 a rdfs:Class .
+############################################
+# INVALID 1 — Wrong class for dcat:record
+# Expected: dcat:CatalogRecord
+# Given: rdfs:Class  → ONE violation
+############################################
 
-#  Circular reference
-ex:catalog3 a dcat:Catalog ;
-    dcat:record ex:record3 .
+ex:recordWrongClass a rdfs:Class .
 
-ex:record3 a dcat:CatalogRecord ;
-    dcat:record ex:catalog3 ;
- foaf:primaryTopic ex:dataset1 .
+ex:catalogWrongClass a dcat:Catalog ;
+    dcterms:publisher ex:publisher1 ;
+    dcat:record ex:recordWrongClass .
+
+############################################
+# INVALID 2 — Circular reference
+# catalog -> record -> catalog
+# Class is correct, so ONLY circular violation
+############################################
+
+ex:catalogCircular a dcat:Catalog ;
+    dcterms:publisher ex:publisher1 ;
+    dcat:record ex:recordCircular .
+
+ex:recordCircular a dcat:CatalogRecord ;
+    foaf:primaryTopic ex:dataset1 ;
+    dcat:record ex:catalogCircular .
 
 ex:dataset1 a dcat:Resource .

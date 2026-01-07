@@ -5,6 +5,10 @@
 @prefix ex: <http://example.org/> .
 
 
+#ex:period-invalid a dct:PeriodOfTime ;
+#    dcat:startDate "2024-12-31T00:00:00"^^xsd:dateTime ,   #  Correct
+#                 "not-a-date" .                          #  Not a valid xsd:dateTime
+### Invalid: More than one start date → violates sh:maxCount 1
 ex:period-invalid a dct:PeriodOfTime ;
-    dcat:startDate "2024-12-31T00:00:00"^^xsd:dateTime ,   #  Correct
-                 "not-a-date" .                          #  Not a valid xsd:dateTime
+    dcat:startDate "2024-01-01" ;
+    dcat:startDate "2024-02-01" .

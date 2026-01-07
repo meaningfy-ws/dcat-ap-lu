@@ -1,21 +1,27 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix ex: <http://example.org/> .
+@prefix ex:   <http://example.org/> .
 
-#  Too many licenses (violates maxCount = 1)
-ex:catalog2 a dcat:Catalog ;
-    dcterms:license ex:license2a, ex:license2b .
+ex:publisher1 a foaf:Agent .
 
-ex:license2a a dcterms:LicenseDocument .
-ex:license2b a dcterms:LicenseDocument .
+### 1. Too many licenses (1 violation)
+ex:catalog5 a dcat:Catalog ;
+    dct:publisher ex:publisher1 ;
+    dct:license ex:licA, ex:licB .
 
-##  Wrong class (not a LicenseDocument)
-#ex:catalog3 a dcat:Catalog ;
-#    dcterms:license ex:notALicense .
-#
-#ex:notALicense a rdfs:Class .
+ex:licA a dct:LicenseDocument .
+ex:licB a dct:LicenseDocument .
 
-#  Circular reference and  Wrong class
-ex:catalog4 a dcat:Catalog ;
-    dcterms:license ex:catalog4 .
+### 2. Wrong class (1 violation)
+ex:catalog6 a dcat:Catalog ;
+    dct:publisher ex:publisher1 ;
+    dct:license ex:notLicense .
+
+ex:notLicense a rdfs:Class .
+
+### 3. Circular reference (1 violation ONLY)
+ex:catalog7 a dcat:Catalog, dct:LicenseDocument ;
+    dct:publisher ex:publisher1 ;
+    dct:license ex:catalog7 .

@@ -20,7 +20,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
       | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
       | dcat-Distribution-dcat-temporalResolution        |                              1 |                                2 |
-      | dcat-Distribution-dcatap-applicablelegislation   |                              1 |                                4 |
+      | dcat-Distribution-dcatap-applicableLegislation   |                              1 |                                4 |
       | dcat-Distribution-dct-conformsTo                 |                              1 |                                4 |
       | dcat-Distribution-dct-description                |                              1 |                                2 |
       | dcat-Distribution-dct-format                     |                              1 |                                6 |
@@ -44,18 +44,18 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dcat-spatialResolutionInMeters      |                              1 |                                3 |
       | dcat-Dataset-dcat-temporalResolution             |                              1 |                                3 |
       | dcat-Dataset-dcat-theme                          |                              1 |                                3 |
-      | dcat-Dataset-dcatap-applicablelegislation        |                              1 |                                3 |
-      | dcat-Dataset-dct-accessRights                    |                              1 |                                3 |
+      | dcat-Dataset-dcatap-applicableLegislation        |                              1 |                                3 |
+      | dcat-Dataset-dct-rights                          |                              1 |                                3 |
       | dcat-Dataset-dct-accrualPeriodicity              |                              1 |                                4 |
       | dcat-Dataset-dct-conformsTo                      |                              1 |                                3 |
-      | dcat-Dataset-dct-creator                         |                              1 |                                4 |
+      | dcat-Dataset-dct-creator                         |                              1 |                                3 |
       | dcat-Dataset-dct-description                     |                              1 |                                2 |
       | dcat-Dataset-dcat-hasVersion                     |                              2 |                                3 |
       | dcat-Dataset-dct-identifier                      |                              1 |                                2 |
       | dcat-Dataset-dct-isReferencedBy                  |                              2 |                                2 |
-      | dcat-Dataset-dct-issued                          |                              1 |                                3 |
+      | dcat-Dataset-dct-issued                          |                              1 |                                2 |
       | dcat-Dataset-dct-language                        |                              1 |                                3 |
-      | dcat-Dataset-dct-modified                        |                              1 |                                3 |
+      | dcat-Dataset-dct-modified                        |                              1 |                                 2|
       | dcat-Dataset-dct-provenance                      |                              1 |                                4 |
       | dcat-Dataset-dct-publisher                       |                              1 |                                5 |
       | dcat-Dataset-dct-relation                        |                              2 |                                2 |
@@ -66,17 +66,16 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-type                            |                              1 |                                4 |
       | dcat-Dataset-dpv-hasData                         |                              1 |                                3 |
       | dcat-Dataset-foaf-page                           |                              1 |                                3 |
-      | dcat-Dataset-owl-versionInfo                     |                              1 |                                2 |
       | dcat-Dataset-prov-qualifiedAttribution           |                              1 |                                3 |
       | dcat-Dataset-dcat-qualifiedRelation              |                              1 |                                3 |
       | dcat-Dataset-prov-wasGeneratedBy                 |                              1 |                                4 |
       | dcat-DatasetSeries-dcat-contactPoint             |                              0 |                                2 |
-      | dcat-DatasetSeries-dcatap-applicablelegislation  |                              0 |                                2 |
+      | dcat-DatasetSeries-dcatap-applicableLegislation  |                              0 |                                2 |
       | dcat-DatasetSeries-dct-publisher                 |                              0 |                                2 |
       | dcat-DatasetSeries-dct-spatial                   |                              0 |                                2 |
       | dct-LicenseDocument-dct-type                     |                              0 |                                2 |
       | dct-Location-locn-geometry                       |                              0 |                                3 |
-      | dct-PeriodOfTime-dcat-endDate                    |                              0 |                                2 |
+      | dct-PeriodOfTime-dcat-endDate                    |                              0 |                                1 |
       | dct-PeriodOfTime-time-hasBeginning               |                              0 |                                3 |
       | dct-PeriodOfTime-time-hasEnd                     |                              0 |                                3 |
       | foaf-Agent-dct-type                              |                              0 |                                3 |
@@ -87,4 +86,5 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Catalog-dct-creator                         |                              0 |                                3 |
       | dcat-Catalog-dct-license                         |                              0 |                                3 |
       | dcat-Catalog-dct-publisher                       |                              0 |                                3 |
-      | dct-PeriodOfTime-dcat-startDate                  |                              0 |                                2 |
+      | dct-PeriodOfTime-dcat-startDate                  |                              0 |                                1 |
+

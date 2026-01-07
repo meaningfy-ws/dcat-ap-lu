@@ -4,6 +4,12 @@
 @prefix ex: <http://example.org/> .
 
 
-ex:period1 a dct:PeriodOfTime ;
-    dcat:startDate "2023-01-01T00:00:00"^^xsd:dateTime .
+#ex:period1 a dct:PeriodOfTime ;
+#    dcat:startDate "2023-01-01T00:00:00"^^xsd:dateTime .
 
+### Valid: No start date (allowed because no minCount)
+ex:period-valid1 a dct:PeriodOfTime .
+
+### Valid: Exactly one start date (maxCount = 1)
+ex:period-valid2 a dct:PeriodOfTime ;
+    dcat:startDate "2024-01-01" .

@@ -1,11 +1,15 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix ex: <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
 
 ex:catalog1 a dcat:Catalog ;
+    dcterms:publisher ex:publisher1 ;     # REQUIRED
     dcat:record ex:record1 .
 
+ex:publisher1 a foaf:Agent .
+
 ex:record1 a dcat:CatalogRecord ;
-foaf:primaryTopic ex:dataset1 .
+    foaf:primaryTopic ex:dataset1 .
 
 ex:dataset1 a dcat:Resource .

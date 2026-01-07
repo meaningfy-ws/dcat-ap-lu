@@ -1,0 +1,26 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix ex:     <http://example.org/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+
+###############################################################
+# INVALID: dcat-Dataset-dct-rights should produce EXACTLY 3:
+#   1) wrong class
+#   2) maxCount violation
+#   3) SPARQL circular rights
+###############################################################
+
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier "dataset-002" ;
+    dct:title "Dataset with invalid rights"@en ;
+    dct:description "This ensures no missing-description violation."@en ;
+    dct:rights ex:notRights , ex:rightsLoop .
+
+# 1️⃣ WRONG CLASS → violation 1
+ex:notRights a skos:Concept ;
+    skos:prefLabel "Not a rights statement"@en .
+
+# 2️⃣ CIRCULAR RIGHTS → SPARQL violation
+ex:rightsLoop a dct:RightsStatement ;
+    skos:prefLabel "Looping rights"@en ;
+    dct:rights ex:dataset-invalid .
