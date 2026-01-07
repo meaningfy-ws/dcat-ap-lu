@@ -1,6 +1,6 @@
 # DCAT‑AP‑LU
 
-**DCAT‑AP‑LU** is the Luxembourg-specific Application Profile of the DCAT‑AP standard, aligned with the [SEMIC guidelines](https://semiceu.github.io/style-guide/1.0.0/index.html) and built upon [DCAT‑AP v3](https://www.w3.org/TR/vocab-dcat-3/).
+**DCAT‑AP‑LU** is the Luxembourg-specific Application Profile of the DCAT‑AP standard, aligned with the [SEMIC guidelines](https://semiceu.github.io/style-guide/1.0.0/index.html) and built upon [DCAT‑AP v3](https://www.w3.org/TR/vocab-dcat-3/). The files in this branch are the files of DCAT-AP-LU 1.1.0 of December 2025.
 
 ## Overview
 
@@ -93,7 +93,7 @@ What you are interested in are the `coverage_overall.*` files (named according t
 
 ## Version
 
-`v0.0.1-rc.1` – _Release Candidate – for internal review and testing_
+`v0.0.2-rc.1` – _Release Candidate – for internal review and testing_
 
 ## Contact
 
@@ -106,3 +106,4 @@ _Note: If you have any questions or discover any bugs, please put them on the [i
 ## License
 
 The documents, such as reports and specifications, are licenced under a  **CC‑BY 4.0**  licence.
+
