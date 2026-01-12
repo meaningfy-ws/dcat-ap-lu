@@ -1,34 +1,51 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ex: <http://example.org/> .
+@prefix ex:   <http://example.org/> .
 
-#  Invalid: Wrong class (foaf:Agent instead of prov:Activity)
+# Required supporting nodes (shared)
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+############################################################
+# Invalid case 1: WRONG CLASS (foaf:Agent instead of prov:Activity)
+############################################################
+
 ex:dataset-wrong-class a dcat:Dataset ;
-    dct:identifier "dataset-006" ;
-    dct:title "Invalid wasGeneratedBy - wrong class" ;
-    dct:description "Links to foaf:Agent instead of prov:Activity." ;
-    dcat:distribution ex:dist-2 ;
-    prov:wasGeneratedBy ex:agent1 .
+  dct:identifier  "dataset-006" ;
+  dct:title       "Invalid wasGeneratedBy - wrong class"@en ;
+  dct:description "prov:wasGeneratedBy points to a foaf:Agent."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-2 ;
+  prov:wasGeneratedBy ex:agent-1 .
 
-ex:agent1 a foaf:Agent ;
-    foaf:name "Some Person" .
-
-#  Invalid: Circular reference
-ex:dataset-circular a dcat:Dataset ;
-    dct:identifier "dataset-007" ;
-    dct:title "Invalid wasGeneratedBy - circular" ;
-    dct:description "Circular reference with wasGeneratedBy." ;
-    dcat:distribution ex:dist-3 ;
-    prov:wasGeneratedBy ex:circular-activity .
-
-ex:circular-activity a prov:Activity ;
-    prov:wasGeneratedBy ex:dataset-circular .
+ex:agent-1 a foaf:Agent ;
+  foaf:name "Not an Activity"@en .
 
 ex:dist-2 a dcat:Distribution ;
-   dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL <http://example.org/download/dataset-006> .
+
+############################################################
+# Invalid case 2: CIRCULAR REFERENCE (caught by sh:sparql)
+############################################################
+
+ex:dataset-circular a dcat:Dataset ;
+  dct:identifier  "dataset-007" ;
+  dct:title       "Invalid wasGeneratedBy - circular"@en ;
+  dct:description "Circular wasGeneratedBy reference."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-3 ;
+  prov:wasGeneratedBy ex:circular-activity .
+
+ex:circular-activity a prov:Activity ;
+  prov:wasGeneratedBy ex:dataset-circular .
 
 ex:dist-3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
-
+  dct:rights ex:rights-1 ;
+  dcat:accessURL <http://example.org/download/dataset-007> .
