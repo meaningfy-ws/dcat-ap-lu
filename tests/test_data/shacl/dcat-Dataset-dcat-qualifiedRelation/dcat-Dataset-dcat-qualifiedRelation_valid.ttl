@@ -1,17 +1,32 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# Required by prov:wasGeneratedBy shape (class prov:Activity)
+ex:activity-1 a prov:Activity ;
+  dct:description "Data processing activity for generating dataset."@en .
+
+# Dataset: satisfies required constraints (identifier, title, description, distribution, publisher, rights)
 ex:dataset-valid a dcat:Dataset ;
-    dct:identifier "dataset-003" ;
-    dct:title "Dataset with Valid Qualified Relation" ;
-    dct:description "This dataset uses a valid qualified relation." ;
-    dcat:distribution ex:dist-1 ;
-    dcat:qualifiedRelation ex:relation-1 .
+  dct:identifier  "dataset-005" ;
+  dct:title       "Dataset with valid wasGeneratedBy"@en ;
+  dct:description "This dataset links to a prov:Activity."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+  prov:wasGeneratedBy ex:activity-1 .
 
-ex:relation-1 a dcat:Relationship .
-
+# Distribution: satisfies required constraints (accessURL minCount=1, rights minCount=1)
+# NOTE: accessURL must be a *literal* typed as rdfs:Resource to satisfy your sh:datatype rdfs:Resource
 ex:dist-1 a dcat:Distribution ;
-       dcat:accessURL <http://example.org/download/dataset-001> .
-
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-005"^^rdfs:Resource .
