@@ -376,6 +376,7 @@ core-res:dcat-Dataset-dcat-distribution a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcat:Distribution ;
     sh:description "An available Distribution for the Dataset." ;
+    sh:minCount 1 ;
     sh:name "Distribution" ;
     sh:path dcat:distribution ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#distribution> ?that . ?that <http://www.w3.org/ns/dcat#distribution> ?this .}" ] .
@@ -541,6 +542,7 @@ core-res:dcat-Dataset-dct-publisher a sh:PropertyShape ;
     sh:class foaf:Agent ;
     sh:description "An entity (organisation) responsible for making the Dataset available." ;
     sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:name "Publisher" ;
     sh:path dcterms:publisher ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/publisher> ?that . ?that <http://purl.org/dc/terms/publisher> ?this .}" ] .
@@ -557,6 +559,7 @@ core-res:dcat-Dataset-dct-rights a sh:PropertyShape ;
     sh:class dcterms:RightsStatement ;
     sh:description "Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public." ;
     sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:name "Rights" ;
     sh:path dcterms:rights ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/rights> ?that . ?that <http://purl.org/dc/terms/rights> ?this .}" ] .
@@ -828,6 +831,7 @@ core-res:dcat-Distribution-dct-rights a sh:PropertyShape ;
     sh:class dcterms:RightsStatement ;
     sh:description "A statement that specifies rights associated with the Distribution." ;
     sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:name "Rights" ;
     sh:path dcterms:rights ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/rights> ?that . ?that <http://purl.org/dc/terms/rights> ?this .}" ] .
