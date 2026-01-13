@@ -10,16 +10,15 @@ ex:publisher-1 a foaf:Agent ;
 
 ex:rights-1 a dct:RightsStatement .
 
-# A helper distribution template (each distribution still needs rights + typed accessURL)
+# Helper distributions (each has rights + typed accessURL)
 ex:dist-201 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
 ex:dist-202 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
-ex:dist-203 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-203"^^rdfs:Resource .
 ex:dist-204 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-204"^^rdfs:Resource .
 ex:dist-205 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-205"^^rdfs:Resource .
 ex:dist-206 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-206"^^rdfs:Resource .
 
 ############################################################
-# Invalid 1: WRONG CLASS (foaf:Document instead of dcat:Dataset)
+# Invalid 1: WRONG CLASS (object is not a dcat:Dataset)
 ############################################################
 ex:dataset-source-wrong-class a dcat:Dataset ;
   dct:identifier  "dataset-201" ;
@@ -34,7 +33,7 @@ ex:not-a-dataset a foaf:Document ;
   foaf:name "Not a dataset"@en .
 
 ############################################################
-# Invalid 2: LITERAL INSTEAD OF RESOURCE (violates sh:class)
+# Invalid 2: LITERAL OBJECT (violates sh:class)
 ############################################################
 ex:dataset-source-literal a dcat:Dataset ;
   dct:identifier  "dataset-202" ;
@@ -46,20 +45,8 @@ ex:dataset-source-literal a dcat:Dataset ;
   dct:source      "Some literal source"@en .
 
 ############################################################
-# Invalid 3: CIRCULAR SELF-REFERENCE (A dct:source A)
-############################################################
-ex:dataset-source-self-cycle a dcat:Dataset ;
-  dct:identifier  "dataset-203" ;
-  dct:title       "Invalid source - self cycle"@en ;
-  dct:description "Dataset sources itself."@en ;
-  dct:publisher   ex:publisher-1 ;
-  dct:rights      ex:rights-1 ;
-  dcat:distribution ex:dist-203 ;
-  dct:source      ex:dataset-source-self-cycle .
-
-############################################################
-# Invalid 4: SYMMETRIC CYCLE (caught by your sh:sparql)
-# A dct:source B . B dct:source A
+# Invalid 3+4: SYMMETRIC CYCLE (A <-> B) caught by sh:sparql
+# This yields TWO violations: one for A and one for B
 ############################################################
 ex:dataset-source-a a dcat:Dataset ;
   dct:identifier  "dataset-204" ;
@@ -80,7 +67,7 @@ ex:dataset-source-b a dcat:Dataset ;
   dct:source      ex:dataset-source-a .
 
 ############################################################
-# Invalid 5: RESOURCE PRESENT BUT NOT TYPED AS dcat:Dataset
+# Invalid 5: OBJECT RESOURCE PRESENT BUT NOT typed dcat:Dataset
 ############################################################
 ex:dataset-source-missing-type a dcat:Dataset ;
   dct:identifier  "dataset-206" ;

@@ -1,35 +1,72 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ; foaf:name "Example publisher"@en .
+ex:rights-1 a dct:RightsStatement .
 
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Invalid Dataset" ;
-    dct:description "Invalid provenance usage." ;
-    dcat:distribution ex:dist1 ;
-     dct:provenance ex:provenance1 .
+# Distributions (each valid: rights + typed accessURL)
+ex:dist-101 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+ex:dist-102 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+ex:dist-103 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-103"^^rdfs:Resource .
+ex:dist-104 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-104"^^rdfs:Resource .
 
-    #  Violation 1: Class is incorrect (not dct:ProvenanceStatement)
-    ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+############################################################
+# Invalid 1: WRONG CLASS (foaf:Agent instead of dct:ProvenanceStatement)
+############################################################
+ex:prov-wrong-class a foaf:Agent ; foaf:name "Not provenance"@en .
 
-    #  Violation 2: Circular link using same predicate back to dataset
+ex:dataset-prov-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Invalid provenance - wrong class"@en ;
+  dct:description "provenance points to foaf:Agent."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-101 ;
+  dct:provenance  ex:prov-wrong-class .
 
-ex:provText a rdfs:Literal ;
-    rdfs:label "Provenance text" .
-ex:dataset-002 a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Invalid Circular Dataset" ;
-    dct:description "Invalid Circular  provenance usage." ;
-    dcat:distribution ex:dist2 ;
+############################################################
+# Invalid 2: UNTYPED NODE (not declared as dct:ProvenanceStatement)
+############################################################
+ex:prov-untyped dct:description "Untyped provenance node."@en .
 
-    #  Violation 2: Circular link using same predicate back to dataset
-    dct:provenance ex:dataset-002 .
+ex:dataset-prov-untyped a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Invalid provenance - untyped node"@en ;
+  dct:description "provenance points to a node missing rdf:type dct:ProvenanceStatement."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-102 ;
+  dct:provenance  ex:prov-untyped .
 
-ex:dist2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+############################################################
+# Invalid 3: LITERAL value (fails sh:class constraint)
+############################################################
+ex:dataset-prov-literal a dcat:Dataset ;
+  dct:identifier  "dataset-103" ;
+  dct:title       "Invalid provenance - literal"@en ;
+  dct:description "provenance is a literal, must be a dct:ProvenanceStatement resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-103 ;
+  dct:provenance  "Derived from older data"@en .
 
-ex:provenance1 a dct:ProvenanceStatement ;
-    dct:description "Derived from 2020 national survey data." .
+############################################################
+# Invalid 4: SYMMETRIC CYCLE (caught by sh:sparql)
+# dataset -> provenance -> dataset using the SAME predicate dct:provenance
+############################################################
+ex:prov-cycle a dct:ProvenanceStatement ;
+  dct:description "This provenance links back to dataset (cycle)."@en ;
+  dct:provenance ex:dataset-prov-cycle .
+
+ex:dataset-prov-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-104" ;
+  dct:title       "Invalid provenance - cycle"@en ;
+  dct:description "Cycle detected by SPARQL constraint."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-104 ;
+  dct:provenance  ex:prov-cycle .

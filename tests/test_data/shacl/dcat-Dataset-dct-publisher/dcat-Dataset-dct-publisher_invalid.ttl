@@ -4,47 +4,78 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-##  Dataset 1: Wrong class (not foaf:Agent)
-#########################################
-#ex:dataset-invalid-wrong-class a dcat:Dataset ;
-#    dct:identifier "dataset-wrong-class" ;
-#    dct:title "Wrong Publisher Class" ;
-#    dct:description "Publisher is not a foaf:Agent" ;
-#    dcat:distribution ex:dist-1 ;
-#    dct:publisher ex:notAnAgent .
-#
-#ex:dist-1 a dcat:Distribution ;
-#     dcat:accessURL <http://example.org/download/dataset-001> .
-#
-#
-#ex:notAnAgent a rdfs:Resource ;  # Not a foaf:Agent!
-#    rdfs:label "This is not a proper Agent" .
+# Shared required supporting nodes
+ex:rights-1 a dct:RightsStatement .
 
-#  Dataset 2: Too many publishers
-ex:dataset-invalid-too-many a dcat:Dataset ;
-    dct:identifier "dataset-too-many" ;
-    dct:title "Too Many Publishers" ;
-    dct:description "Violates maxCount = 1 for dct:publisher" ;
-    dcat:distribution ex:dist-2 ;
-    dct:publisher ex:agent1, ex:agent2 .
+# Distributions (each has rights + typed accessURL so they DON'T fail on other constraints)
+ex:dist-101 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+ex:dist-102 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+ex:dist-103 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-103"^^rdfs:Resource .
+ex:dist-104 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-104"^^rdfs:Resource .
+ex:dist-105 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-105"^^rdfs:Resource .
 
-ex:dist-2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> .
+# Valid agents used in some invalid cases
+ex:agent-a a foaf:Agent ; foaf:name "Agent A"@en .
+ex:agent-b a foaf:Agent ; foaf:name "Agent B"@en .
 
+############################################################
+# Invalid 1: MISSING publisher (violates minCount 1)
+############################################################
+ex:dataset-pub-missing a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Invalid publisher - missing"@en ;
+  dct:description "No dct:publisher provided."@en ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-101 .
 
-ex:agent1 a foaf:Agent ;
-    foaf:name "Publisher One" .
+############################################################
+# Invalid 2: WRONG CLASS for publisher (must be foaf:Agent)
+############################################################
+ex:dataset-pub-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Invalid publisher - wrong class"@en ;
+  dct:description "Publisher is not a foaf:Agent."@en ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-102 ;
+  dct:publisher   ex:not-an-agent .
 
-ex:agent2 a foaf:Agent ;
-    foaf:name "Publisher Two" .
+ex:not-an-agent a foaf:Document ;
+  foaf:name "Not an Agent"@en .
 
-#  Dataset 3: Circular reference
-ex:dataset-invalid-circular a dcat:Dataset ;
-    dct:identifier "dataset-circular" ;
-    dct:title "Circular Publisher" ;
-    dct:description "Publisher points back to dataset (circular)" ;
-    dcat:distribution ex:dist-3 ;
-    dct:publisher ex:dataset-invalid-circular .
+############################################################
+# Invalid 3: TOO MANY publishers (violates maxCount 1)
+############################################################
+ex:dataset-pub-too-many a dcat:Dataset ;
+  dct:identifier  "dataset-103" ;
+  dct:title       "Invalid publisher - too many"@en ;
+  dct:description "Two publishers given, but maxCount=1."@en ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-103 ;
+  dct:publisher   ex:agent-a, ex:agent-b .
 
-ex:dist-3 a dcat:Distribution ;
-     dcat:accessURL <http://example.org/download/dataset-003> .
+############################################################
+# Invalid 4: publisher is a LITERAL (fails sh:class foaf:Agent)
+############################################################
+ex:dataset-pub-literal a dcat:Dataset ;
+  dct:identifier  "dataset-104" ;
+  dct:title       "Invalid publisher - literal"@en ;
+  dct:description "Publisher is a literal, must be a foaf:Agent node."@en ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-104 ;
+  dct:publisher   "Just a string"@en .
+
+############################################################
+# Invalid 5: CIRCULAR publisher reference (caught by sh:sparql)
+# dataset -> publisher -> dataset (symmetric cycle)
+############################################################
+ex:dataset-pub-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-105" ;
+  dct:title       "Invalid publisher - cycle"@en ;
+  dct:description "Publisher points back to dataset (cycle)."@en ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-105 ;
+  dct:publisher   ex:publisher-cycle .
+
+ex:publisher-cycle a foaf:Agent ;
+  foaf:name "Cyclic publisher"@en ;
+  dct:publisher ex:dataset-pub-cycle .
