@@ -2,25 +2,31 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix dpv:  <https://w3id.org/dpv#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-# Invalid Dataset with multiple issues
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+############################################################
+# Invalid case: WRONG CLASS for dpv:hasData
+############################################################
+
+ex:notData-1 a foaf:Agent ;
+  foaf:name "Not dpv:Data"@en .
+
 ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-999" ;
-    dct:title "Invalid Dataset" ;
-    dct:description "hasData";
+  dct:identifier  "dataset-999" ;
+  dct:title       "Invalid Dataset - dpv:hasData wrong class"@en ;
+  dct:description "dpv:hasData points to a foaf:Agent (should be dpv:Data)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-2 ;
+  dpv:hasData     ex:notData-1 .
 
-
-#    #  Wrong class (foaf:Agent instead of dpv:Data)
-#    dpv:hasData ex:notData1 ;
-
-        #  Circular reference
-    dpv:hasData ex:dataset-invalid ;
-
-    dcat:distribution ex:dist-1 .
-
-ex:notData1 a foaf:Agent ;
-    foaf:name "Wrong Class" .
-
-ex:dist-1 a dcat:Distribution ;
-     dcat:accessURL <http://example.org/download/dataset-001> .
+ex:dist-2 a dcat:Distribution ;
+  dct:rights  ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-999"^^rdfs:Resource .

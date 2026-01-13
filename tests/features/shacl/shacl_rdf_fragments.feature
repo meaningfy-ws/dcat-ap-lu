@@ -63,9 +63,9 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-spatial                         |                              1 |                                3 |
       | dcat-Dataset-dct-temporal                        |                              1 |                                3 |
       | dcat-Dataset-dct-title                           |                              1 |                                2 |
-      | dcat-Dataset-dct-type                            |                              1 |                                4 |
-      | dcat-Dataset-dpv-hasData                         |                              1 |                                3 |
-      | dcat-Dataset-foaf-page                           |                              1 |                                3 |
+      | dcat-Dataset-dct-type                            |                              1 |                                1 |
+      | dcat-Dataset-dpv-hasData                         |                              1 |                                1 |
+      | dcat-Dataset-foaf-page                           |                              1 |                                2 |
       | dcat-Dataset-prov-qualifiedAttribution           |                              0 |                                3 |
       | dcat-Dataset-dcat-qualifiedRelation              |                              1 |                                3 |
       | dcat-Dataset-prov-wasGeneratedBy                 |                              1 |                                4 |

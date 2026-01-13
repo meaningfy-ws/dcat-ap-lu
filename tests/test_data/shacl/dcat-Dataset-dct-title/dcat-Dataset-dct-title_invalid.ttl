@@ -1,20 +1,42 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ex:   <http://example.org/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-#  No title
+# Required supporting nodes (shared)
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+############################################################
+# Invalid case 1: MISSING title (violates sh:minCount 1 on dct:title)
+############################################################
 ex:dataset-no-title a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:description "No title provided." .
+  dct:identifier  "dataset-101" ;
+  dct:description "No title provided."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-101 .
 
+ex:dist-101 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
 
-#  Title used as a resource instead of a literal
+############################################################
+# Invalid case 2: title is an IRI (violates sh:datatype rdfs:Literal on dct:title)
+############################################################
 ex:dataset-title-as-resource a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title ex:SomeTitleResource ;
-    dct:description "Title given as a URI instead of a literal." .
+  dct:identifier  "dataset-102" ;
+  dct:title       ex:SomeTitleResource ;
+  dct:description "Title given as a URI instead of a literal."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-102 .
 
 ex:SomeTitleResource a foaf:Document .
 
+ex:dist-102 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
