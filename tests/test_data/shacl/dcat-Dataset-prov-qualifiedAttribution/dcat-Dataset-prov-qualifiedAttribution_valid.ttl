@@ -1,22 +1,35 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# Dataset (satisfies required minCount: identifier/title/description/distribution/publisher/rights)
 ex:dataset-valid a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Dataset with Valid Attribution" ;
-    dct:description "This dataset has a proper qualified attribution." ;
-    dcat:distribution ex:dist-1 ;
-    prov:qualifiedAttribution ex:attrib-1 .
+  dct:identifier  "dataset-001" ;
+  dct:title       "Dataset with Valid Attribution"@en ;
+  dct:description "This dataset has a proper qualified attribution."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+  prov:qualifiedAttribution ex:attrib-1 .
 
+# Qualified attribution is correct class
 ex:attrib-1 a prov:Attribution ;
-    prov:agent ex:agent-1 .
+  prov:agent ex:agent-1 .
 
 ex:agent-1 a foaf:Agent ;
-    foaf:name "Valid Agent" .
+  foaf:name "Valid Agent"@en .
 
+# Distribution (satisfies required minCount: accessURL + rights)
+# NOTE: accessURL must be a literal typed rdfs:Resource (per your SHACL)
 ex:dist-1 a dcat:Distribution ;
-   dcat:accessURL <http://example.org/download/dataset-001> .
-
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .
