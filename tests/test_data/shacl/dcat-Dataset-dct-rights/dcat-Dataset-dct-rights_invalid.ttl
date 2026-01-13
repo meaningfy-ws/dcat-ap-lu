@@ -1,26 +1,52 @@
-@prefix dcat:   <http://www.w3.org/ns/dcat#> .
-@prefix dct:    <http://purl.org/dc/terms/> .
-@prefix ex:     <http://example.org/> .
-@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex:   <http://example.org/> .
 
-###############################################################
-# INVALID: dcat-Dataset-dct-rights should produce EXACTLY 3:
-#   1) wrong class
-#   2) maxCount violation
-#   3) SPARQL circular rights
-###############################################################
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Dataset with invalid rights"@en ;
-    dct:description "This ensures no missing-description violation."@en ;
-    dct:rights ex:notRights , ex:rightsLoop .
+# Distributions are valid (avoid unrelated failures)
+ex:dist-201 a dcat:Distribution ; dct:rights ex:rights-ok ; dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
+ex:dist-202 a dcat:Distribution ; dct:rights ex:rights-ok ; dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
+ex:dist-203 a dcat:Distribution ; dct:rights ex:rights-ok ; dcat:accessURL "http://example.org/download/dataset-203"^^rdfs:Resource .
 
-# 1️⃣ WRONG CLASS → violation 1
-ex:notRights a skos:Concept ;
-    skos:prefLabel "Not a rights statement"@en .
+ex:rights-ok a dct:RightsStatement .
 
-# 2️⃣ CIRCULAR RIGHTS → SPARQL violation
-ex:rightsLoop a dct:RightsStatement ;
-    skos:prefLabel "Looping rights"@en ;
-    dct:rights ex:dataset-invalid .
+############################################################
+# Invalid 1: MISSING rights (minCount violation)
+############################################################
+ex:dataset-rights-missing a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid rights - missing"@en ;
+  dct:description "No dct:rights provided (minCount=1 violation)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dcat:distribution ex:dist-201 .
+
+############################################################
+# Invalid 2: WRONG CLASS for rights (class violation)
+############################################################
+ex:dataset-rights-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid rights - wrong class"@en ;
+  dct:description "dct:rights points to skos:Concept, not dct:RightsStatement."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dcat:distribution ex:dist-202 ;
+  dct:rights      ex:not-rights .
+
+ex:not-rights a skos:Concept ;
+  skos:prefLabel "Not a rights statement"@en .
+
+############################################################
+# Invalid 3: SELF-CYCLE rights (SPARQL/cycle-style violation)
+############################################################
+ex:dataset-rights-self-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-203" ;
+  dct:title       "Invalid rights - self cycle"@en ;
+  dct:description "Dataset uses itself as rights node."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dcat:distribution ex:dist-203 ;
+  dct:rights      ex:dataset-rights-self-cycle .

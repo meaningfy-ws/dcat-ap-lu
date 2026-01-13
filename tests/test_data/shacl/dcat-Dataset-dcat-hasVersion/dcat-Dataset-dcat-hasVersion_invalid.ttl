@@ -1,22 +1,73 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
+# Shared required nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-invalid" ;
-    dct:title "Dataset Invalid"@en ;
-    dct:description "An invalid example missing proper version references."@en ;
-    dcat:distribution ex:dist-v1 ;
+ex:rights-1 a dct:RightsStatement .
 
-    # Invalid 1: target is NOT a dcat:Dataset
-    dcat:hasVersion ex:not-a-dataset ;
+# Valid distributions (avoid noise)
+ex:dist-301 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-301"^^rdfs:Resource .
 
-    # Invalid 2: Circular reference (see SPARQL anti-pattern)
-    dcat:hasVersion ex:dataset-invalid .
+ex:dist-302 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-302"^^rdfs:Resource .
+
+ex:dist-303 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-303"^^rdfs:Resource .
+
+############################################################
+# Invalid 1: WRONG CLASS for hasVersion target (foaf:Document)
+############################################################
+ex:dataset-hv-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-301" ;
+  dct:title       "Invalid hasVersion - wrong class"@en ;
+  dct:description "hasVersion points to a non-dcat:Dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-301 ;
+  dcat:hasVersion ex:not-a-dataset .
 
 ex:not-a-dataset a foaf:Document ;
-    dct:title "This is not a Dataset"@en .
-ex:dist-v1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:title "Not a Dataset"@en .
+
+############################################################
+# Invalid 2: SELF-CYCLE (dataset hasVersion itself)
+############################################################
+ex:dataset-hv-self-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-302" ;
+  dct:title       "Invalid hasVersion - self cycle"@en ;
+  dct:description "Dataset hasVersion itself."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-302 ;
+  dcat:hasVersion ex:dataset-hv-self-cycle .
+
+############################################################
+# Invalid 3: SYMMETRIC CYCLE (caught by your SPARQL constraint)
+# A hasVersion B . B hasVersion A
+############################################################
+ex:dataset-hv-a a dcat:Dataset ;
+  dct:identifier  "dataset-303a" ;
+  dct:title       "Invalid hasVersion - symmetric cycle A"@en ;
+  dct:description "A hasVersion B and B hasVersion A."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-303 ;
+  dcat:hasVersion ex:dataset-hv-b .
+
+ex:dataset-hv-b a dcat:Dataset ;
+  dct:identifier  "dataset-303b" ;
+  dct:title       "Invalid hasVersion - symmetric cycle B"@en ;
+  dct:description "B hasVersion A and A hasVersion B."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-303 ;
+  dcat:hasVersion ex:dataset-hv-a .

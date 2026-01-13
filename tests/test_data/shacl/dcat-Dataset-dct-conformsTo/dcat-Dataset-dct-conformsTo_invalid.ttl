@@ -1,23 +1,69 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-006" ;
-    dct:title "Invalid Dataset"@en ;
-    dct:description "This dataset violates conformsTo rules."@en ;
-    dcat:distribution ex:dist1 ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-# ❌ Multiple values (if maxCount implied or enforced elsewhere)
-    dct:conformsTo ex:bad1, ex:bad2 .
+ex:rights-1 a dct:RightsStatement .
 
-# ❌ Wrong class (skos:Concept instead of dct:Standard)
-ex:bad1 a skos:Concept ;
- skos:prefLabel "Public"@en.
-# ❌ Circular reference
-ex:bad2 a dct:Standard ;
-    dct:conformsTo ex:dataset-001 ;
-    dct:title "Circular reference"@en .
-ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+# Valid distributions (so Distribution constraints don’t add noise)
+ex:dist-201 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
+
+ex:dist-202 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
+
+ex:dist-203 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-203"^^rdfs:Resource .
+
+############################################################
+# Invalid 1: WRONG CLASS (object is not dct:Standard)
+############################################################
+ex:dataset-conforms-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid conformsTo - wrong class"@en ;
+  dct:description "conformsTo points to a skos:Concept, not a dct:Standard."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-201 ;
+  dct:conformsTo  ex:bad-standard-1 .
+
+ex:bad-standard-1 a skos:Concept ;
+  skos:prefLabel "Not a Standard"@en .
+
+############################################################
+# Invalid 2: LITERAL value (fails sh:class dct:Standard)
+############################################################
+ex:dataset-conforms-literal a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid conformsTo - literal"@en ;
+  dct:description "conformsTo is a literal; must be a dct:Standard resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-202 ;
+  dct:conformsTo  "ISO 19115"@en .
+
+############################################################
+# Invalid 3: SYMMETRIC CYCLE caught by SPARQL:
+# ?this dct:conformsTo ?that . ?that dct:conformsTo ?this .
+############################################################
+ex:dataset-conforms-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-203" ;
+  dct:title       "Invalid conformsTo - symmetric cycle"@en ;
+  dct:description "Dataset conformsTo a standard that conformsTo the dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-203 ;
+  dct:conformsTo  ex:cycle-standard .
+
+ex:cycle-standard a dct:Standard ;
+  dct:title "Cycle standard"@en ;
+  dct:conformsTo ex:dataset-conforms-cycle .

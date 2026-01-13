@@ -1,17 +1,44 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-#  Missing dcterms:description (violates sh:minCount = 1)
-ex:dataset1 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Example Dataset"@en .
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-#  Wrong datatype (non-literal)
-ex:dataset2 a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Example Dataset2"@en ;
-    dcterms:description ex:NonLiteral .
+ex:rights-1 a dct:RightsStatement .
 
-ex:NonLiteral a dcat:Datase .
+# Distributions (valid, so they don't add noise)
+ex:dist-101 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+
+ex:dist-102 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+
+############################################################
+# Invalid 1: Missing dct:description (minCount 1 violation)
+############################################################
+ex:dataset-missing-description a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Dataset without description"@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-101 .
+
+############################################################
+# Invalid 2: Description is not a literal (datatype violation)
+############################################################
+ex:dataset-description-not-literal a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Dataset with non-literal description"@en ;
+  dct:description ex:NonLiteral ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-102 .
+
+# NonLiteral is a resource (so description is NOT a literal)
+ex:NonLiteral a dcat:Dataset .
