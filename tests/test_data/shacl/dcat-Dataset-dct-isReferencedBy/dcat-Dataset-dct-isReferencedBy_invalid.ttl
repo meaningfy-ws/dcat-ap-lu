@@ -1,18 +1,44 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-999" ;
-    dct:title "Broken Reference Dataset"@en ;
-    dct:description "This dataset has an invalid isReferencedBy value."@en ;
-    dct:publisher   ex:publisher-1 ;
-    dct:rights      ex:rights-1 ;
-    # Invalid reference (literal instead of URI)
-    dct:isReferencedBy "This should be a URI not a literal." ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-    dcat:distribution ex:dist1 .
+ex:rights-1 a dct:RightsStatement .
 
-ex:dist1 a dcat:Distribution ;
-    dct:title "Broken CSV"@en ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+# Valid distributions (avoid noise)
+ex:dist-a a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-a"^^rdfs:Resource .
+
+ex:dist-b a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-b"^^rdfs:Resource .
+
+############################################################
+# Invalid 1: IRI instead of "..."^^rdfs:Resource
+############################################################
+ex:dataset-ref-iri a dcat:Dataset ;
+  dct:identifier  "dataset-a" ;
+  dct:title       "Invalid isReferencedBy - IRI"@en ;
+  dct:description "isReferencedBy uses an IRI, but SHACL expects datatype rdfs:Resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-a ;
+  dct:isReferencedBy <https://example.org/pub/1> .
+
+############################################################
+# Invalid 2: plain literal instead of "..."^^rdfs:Resource
+############################################################
+ex:dataset-ref-string a dcat:Dataset ;
+  dct:identifier  "dataset-b" ;
+  dct:title       "Invalid isReferencedBy - plain literal"@en ;
+  dct:description "isReferencedBy is a plain string, but must be typed as rdfs:Resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-b ;
+  dct:isReferencedBy "https://example.org/pub/2" .
