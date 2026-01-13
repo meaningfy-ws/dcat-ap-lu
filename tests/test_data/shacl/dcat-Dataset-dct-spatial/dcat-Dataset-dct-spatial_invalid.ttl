@@ -1,40 +1,65 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-##  Case 1: Wrong class
-#ex:dataset-invalid1 a dcat:Dataset ;
-#    dct:identifier "dataset-invalid-001" ;
-#    dct:title "Dataset with wrong spatial class" ;
-#    dct:description "Points to a foaf:Document instead of dct:Location." ;
-#    dcat:distribution ex:dist-1 ;
-#    dct:spatial ex:wrong-spatial .
-#
-#ex:wrong-spatial a foaf:Document .
-#
-##  Case 2: Literal value
-#ex:dataset-invalid2 a dcat:Dataset ;
-#    dct:identifier "dataset-invalid-002" ;
-#    dct:title "Dataset with literal spatial" ;
-#    dct:description "Points to a string literal instead of a resource." ;
-#    dcat:distribution ex:dist-2 ;
-#    dct:spatial "Europe" .
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-#  Case 3: Circular reference and Wrong Class
-ex:dataset-invalid3 a dcat:Dataset ;
-    dct:identifier "dataset-invalid-003" ;
-    dct:title "Dataset with circular spatial reference" ;
-    dct:description "Spatial reference creates a circular link." ;
-    dcat:distribution ex:dist-3 ;
-    dct:spatial ex:dataset-invalid3 .
+ex:rights-1 a dct:RightsStatement .
 
-#ex:dist-1 a dcat:Distribution ;
-#   dcat:accessURL <http://example.org/download/dataset-001> .
-#
-#ex:dist-2 a dcat:Distribution ;
-#      dcat:accessURL <http://example.org/download/dataset-002> .
+############################################################
+# Invalid case 1: WRONG CLASS (foaf:Document instead of dct:Location)
+############################################################
+ex:dataset-spatial-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Invalid spatial - wrong class"@en ;
+  dct:description "dct:spatial points to foaf:Document, not dct:Location."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-101 ;
+  dct:spatial     ex:not-a-location-1 .
 
-ex:dist-3 a dcat:Distribution ;
-     dcat:accessURL <http://example.org/download/dataset-003> .
+ex:not-a-location-1 a foaf:Document ;
+  foaf:name "Not a Location"@en .
 
+ex:dist-101 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+
+############################################################
+# Invalid case 2: RESOURCE WITHOUT REQUIRED CLASS (no rdf:type dct:Location)
+############################################################
+ex:dataset-spatial-missing-type a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Invalid spatial - missing type"@en ;
+  dct:description "dct:spatial points to a node with no dct:Location type."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-102 ;
+  dct:spatial     ex:unknown-place-1 .
+
+# Note: ex:unknown-place-1 intentionally has NO rdf:type dct:Location
+ex:unknown-place-1 dct:title "Unknown place"@en .
+
+ex:dist-102 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+
+############################################################
+# Invalid case 3: LITERAL INSTEAD OF RESOURCE (must be dct:Location)
+############################################################
+ex:dataset-spatial-literal a dcat:Dataset ;
+  dct:identifier  "dataset-103" ;
+  dct:title       "Invalid spatial - literal value"@en ;
+  dct:description "dct:spatial is given as a literal, not a dct:Location resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-103 ;
+  dct:spatial     "Luxembourg"@en .
+
+ex:dist-103 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-103"^^rdfs:Resource .

@@ -1,13 +1,43 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-002 a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Dataset with invalid relation" ;
-    dct:description "Uses a literal instead of a URI for dct:relation." ;
-    dcat:distribution ex:dist-1 ;
-    dct:relation "just a string" .
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-ex:dist-1 a dcat:Distribution ;
-   dcat:accessURL <http://example.org/download/dataset-001> .
+ex:rights-1 a dct:RightsStatement .
+
+#################################################################
+# Invalid dataset 1: relation is an IRI (should be "..."^^rdfs:Resource)
+#################################################################
+ex:dataset-invalid-1 a dcat:Dataset ;
+  dct:identifier  "dataset-invalid-1" ;
+  dct:title       "Dataset with invalid relation (IRI)"@en ;
+  dct:description "dct:relation is an IRI, but shape requires a literal typed rdfs:Resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-i1 ;
+  dct:relation    <http://example.org/related/resource> .
+
+ex:dist-i1 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-invalid-1"^^rdfs:Resource .
+
+#################################################################
+# Invalid dataset 2: relation is a plain literal (missing ^^rdfs:Resource)
+#################################################################
+ex:dataset-invalid-2 a dcat:Dataset ;
+  dct:identifier  "dataset-invalid-2" ;
+  dct:title       "Dataset with invalid relation (plain literal)"@en ;
+  dct:description "dct:relation is a plain string; must be typed as rdfs:Resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-i2 ;
+  dct:relation    "just a string" .
+
+ex:dist-i2 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-invalid-2"^^rdfs:Resource .

@@ -58,16 +58,16 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-modified                        |                              1 |                                2|
       | dcat-Dataset-dct-provenance                      |                              1 |                                4 |
       | dcat-Dataset-dct-publisher                       |                              1 |                                5 |
-      | dcat-Dataset-dct-relation                        |                              2 |                                2 |
-      | dcat-Dataset-dct-source                          |                              1 |                                5 |
-      | dcat-Dataset-dct-spatial                         |                              1 |                                3 |
-      | dcat-Dataset-dct-temporal                        |                              1 |                                3 |
-      | dcat-Dataset-dct-title                           |                              1 |                                2 |
-      | dcat-Dataset-dct-type                            |                              1 |                                1 |
+      | dcat-Dataset-dct-relation                        |                              1git  |                                2 |
+      | dcat-Dataset-dct-source                          |                              0 |                                5 |
+      | dcat-Dataset-dct-spatial                         |                              0 |                                3 |
+      | dcat-Dataset-dct-temporal                        |                              0 |                                3 |
+      | dcat-Dataset-dct-title                           |                              0 |                                2 |
+      | dcat-Dataset-dct-type                            |                              0 |                                1 |
       | dcat-Dataset-dpv-hasData                         |                              1 |                                1 |
-      | dcat-Dataset-foaf-page                           |                              1 |                                2 |
-      | dcat-Dataset-prov-qualifiedAttribution           |                              0 |                                3 |
-      | dcat-Dataset-dcat-qualifiedRelation              |                              1 |                                3 |
+      | dcat-Dataset-foaf-page                           |                              0 |                                2 |
+      | dcat-Dataset-prov-qualifiedAttribution           |                              0 |                                1 |
+      | dcat-Dataset-dcat-qualifiedRelation              |                              0 |                                3 |
       | dcat-Dataset-prov-wasGeneratedBy                 |                              1 |                                4 |
       | dcat-DatasetSeries-dcat-contactPoint             |                              0 |                                2 |
       | dcat-DatasetSeries-dcatap-applicableLegislation  |                              0 |                                2 |

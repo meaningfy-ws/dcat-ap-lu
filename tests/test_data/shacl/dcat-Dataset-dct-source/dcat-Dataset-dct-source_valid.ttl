@@ -1,20 +1,38 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset1 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Derived dataset" ;
-    dct:description "Derived from another dataset." ;
-    dcat:distribution ex:dist-1 ;
-    dct:source ex:original-dataset .
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
+ex:rights-1 a dct:RightsStatement .
+
+# Source dataset (must also satisfy Dataset minCounts)
 ex:original-dataset a dcat:Dataset ;
-    dct:title "Original dataset" ;
-    dct:identifier "dataset-001" ;
-    dct:description "Derived from another dataset." ;
-    dcat:distribution ex:dist-1 .
+  dct:identifier  "dataset-original" ;
+  dct:title       "Original dataset"@en ;
+  dct:description "The source dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-original .
 
-ex:dist-1 a dcat:Distribution ;
-       dcat:accessURL <http://example.org/download/dataset-001> .
+ex:dist-original a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-original"^^rdfs:Resource .
 
+# Derived dataset (valid dct:source -> dcat:Dataset)
+ex:dataset-valid a dcat:Dataset ;
+  dct:identifier  "dataset-derived" ;
+  dct:title       "Derived dataset"@en ;
+  dct:description "Derived from another dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-derived ;
+  dct:source      ex:original-dataset .
+
+ex:dist-derived a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-derived"^^rdfs:Resource .
