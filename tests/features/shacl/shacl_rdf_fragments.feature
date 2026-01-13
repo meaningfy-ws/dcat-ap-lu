@@ -44,9 +44,9 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dcat-spatialResolutionInMeters      |                              1 |                                3 |
       | dcat-Dataset-dcat-temporalResolution             |                              1 |                                3 |
       | dcat-Dataset-dcat-theme                          |                              1 |                                3 |
-      | dcat-Dataset-dcatap-applicableLegislation        |                              0 |                                3 |
-      | dcat-Dataset-dct-rights                          |                              0 |                                3 |
-      | dcat-Dataset-dct-accrualPeriodicity              |                              0 |                                4 |
+      | dcat-Dataset-dcatap-applicableLegislation        |                              0 |                                4 |
+      | dcat-Dataset-dct-rights                          |                              0 |                                4 |
+      | dcat-Dataset-dct-accrualPeriodicity              |                              0 |                                5 |
       | dcat-Dataset-dct-conformsTo                      |                              0 |                                3 |
       | dcat-Dataset-dct-creator                         |                              0 |                                3 |
       | dcat-Dataset-dct-description                     |                              0 |                                2 |
@@ -55,7 +55,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-isReferencedBy                  |                              1 |                                2 |
       | dcat-Dataset-dct-issued                          |                              0 |                                2 |
       | dcat-Dataset-dct-language                        |                              0 |                                3 |
-      | dcat-Dataset-dct-modified                        |                              0 |                                2|
+      | dcat-Dataset-dct-modified                        |                              0 |                                1|
       | dcat-Dataset-dct-provenance                      |                              0 |                                4 |
       | dcat-Dataset-dct-publisher                       |                              0 |                                5 |
       | dcat-Dataset-dct-relation                        |                              0  |                                2 |

@@ -1,16 +1,30 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# Dataset (includes required base fields + valid theme)
 ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-valid" ;
-    dct:title "Dataset With Valid Theme"@en ;
-    dct:description "A dataset using a valid theme concept."@en ;
-    dcat:distribution ex:dist-1 ;
-    dcat:theme ex:theme1 .
+  dct:identifier  "dataset-valid" ;
+  dct:title       "Dataset With Valid Theme"@en ;
+  dct:description "A dataset using a valid theme concept."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+  dcat:theme      ex:theme1 .
 
 ex:theme1 a skos:Concept ;
-    skos:prefLabel "Health"@en .
+  skos:prefLabel "Health"@en .
+
+# Distribution (includes required rights + typed accessURL literal)
 ex:dist-1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .
