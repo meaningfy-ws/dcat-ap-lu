@@ -3,12 +3,13 @@
 @prefix ex: <http://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 ex:rights-1 a dcterms:RightsStatement .
 
 # Distribution with invalid adms:status values
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcterms:rights ex:rights-1 ;
     # 1. Literal value instead of object
     adms:status "COMPLETED" ;
