@@ -28,7 +28,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dct-language                   |                              0 |                                3 |
       | dcat-Distribution-dct-license                    |                              0 |                                5 |
       | dcat-Distribution-dct-modified                   |                              0 |                                2 |
-      | dcat-Distribution-dct-rights                     |                              0 |                                3 |
+      | dcat-Distribution-dct-rights                     |                              0 |                                4 |
       | dcat-Distribution-dct-title                      |                              0 |                                1 |
       | dcat-Distribution-foaf-page                      |                              0 |                                3 |
       | dcat-Distribution-odrl-hasPolicy                 |                              0 |                                4|
@@ -45,7 +45,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dcat-temporalResolution             |                              0 |                                3 |
       | dcat-Dataset-dcat-theme                          |                              0 |                                3 |
       | dcat-Dataset-dcatap-applicableLegislation        |                              0 |                                4 |
-      | dcat-Dataset-dct-rights                          |                              0 |                                3 |
+      | dcat-Dataset-dct-rights                          |                              0 |                                4 |
       | dcat-Dataset-dct-accrualPeriodicity              |                              0 |                                5 |
       | dcat-Dataset-dct-conformsTo                      |                              0 |                                3 |
       | dcat-Dataset-dct-creator                         |                              0 |                                3 |
