@@ -54,7 +54,13 @@ dct:publisher [
     dct:identifier      "dataset-001" ;
     dct:title           "Example DCAT Dataset" ;
     dct:description     "A minimal dataset with only mandatory properties." ;
+     dct:rights [ a dct:RightsStatement ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+        skos:prefLabel "Public"@en ] ;
+        dct:publisher [ a foaf:Agent ; foaf:name "Publishing Org"@en ] ;
+
     dcat:distribution   :dist-1 .
+
 
 
 :dist-1
@@ -73,7 +79,9 @@ dct:publisher [
     a dct:MediaType ;
     owl:sameAs <https://www.iana.org/assignments/media-types/application/y3gppHal+json>
   ] ;
-
+dct:rights [ a dct:RightsStatement ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+        skos:prefLabel "Public"@en ] ;
   # availability must be a skos:Concept
 dcatap:availability [
     a skos:Concept ;
