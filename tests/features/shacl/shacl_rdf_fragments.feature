@@ -20,13 +20,13 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
       | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
       | dcat-Distribution-dcat-temporalResolution        |                              1 |                                2 |
-      | dcat-Distribution-dcatap-applicableLegislation   |                              1 |                                3 |
+      | dcat-Distribution-dcatap-applicableLegislation   |                              0 |                                3 |
       | dcat-Distribution-dct-conformsTo                 |                              0 |                                3 |
       | dcat-Distribution-dct-description                |                              0 |                                1 |
       | dcat-Distribution-dct-format                     |                              0 |                                3 |
       | dcat-Distribution-dct-issued                     |                              0 |                                3 |
       | dcat-Distribution-dct-language                   |                              0 |                                3 |
-      | dcat-Distribution-dct-license                    |                              0 |                                8 |
+      | dcat-Distribution-dct-license                    |                              0 |                                5 |
       | dcat-Distribution-dct-modified                   |                              0 |                                2 |
       | dcat-Distribution-dct-rights                     |                              1 |                                5 |
       | dcat-Distribution-dct-title                      |                              0 |                                1 |

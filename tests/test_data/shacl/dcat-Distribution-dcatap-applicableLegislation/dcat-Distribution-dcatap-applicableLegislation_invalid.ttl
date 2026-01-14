@@ -6,10 +6,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
 ###########  INVALID: wrong class (not eli:LegalResource) ###########
+ex:rights-1 a dcterms:RightsStatement .
 
 ex:distribution1 a dcat:Distribution ;
     dcterms:rights ex:rights-1 ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcatap:applicableLegislation ex:notLegalResource .
 
 ex:notLegalResource a rdfs:Resource ;
