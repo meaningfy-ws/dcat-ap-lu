@@ -9,13 +9,13 @@ Feature: Validate RDF data fragments against SHACL shapes
 
     Examples:
       | test_case                                        | expected_valid_violation_count | expected_invalid_violation_count |
-      | dcat-Distribution-dcat-mediaType                 |                              0 |                                6 |
+      | dcat-Distribution-dcat-mediaType                 |                              0 |                                4 |
       | dcat-Distribution-dcatap-availability            |                              1 |                                6 |
-      | dcat-Distribution-adms-status                    |                              0 |                                5 |
+      | dcat-Distribution-adms-status                    |                              0 |                                4 |
       | dcat-Distribution-dcat-accessService             |                              0 |                                3 |
       | dcat-Distribution-dcat-accessURL                 |                              0 |                                1 |
       | dcat-Distribution-dcat-byteSize                  |                              1 |                                4 |
-      | dcat-Distribution-dcat-compressFormat            |                              0 |                                2 |
+      | dcat-Distribution-dcat-compressFormat            |                              0 |                                3 |
       | dcat-Distribution-dcat-downloadURL               |                              2 |                                2 |
       | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
       | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
