@@ -23,14 +23,14 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dcatap-applicableLegislation   |                              1 |                                3 |
       | dcat-Distribution-dct-conformsTo                 |                              0 |                                3 |
       | dcat-Distribution-dct-description                |                              0 |                                1 |
-      | dcat-Distribution-dct-format                     |                              0 |                                6 |
+      | dcat-Distribution-dct-format                     |                              0 |                                3 |
       | dcat-Distribution-dct-issued                     |                              0 |                                3 |
       | dcat-Distribution-dct-language                   |                              0 |                                3 |
       | dcat-Distribution-dct-license                    |                              0 |                                8 |
       | dcat-Distribution-dct-modified                   |                              0 |                                2 |
       | dcat-Distribution-dct-rights                     |                              1 |                                5 |
       | dcat-Distribution-dct-title                      |                              0 |                                1 |
-      | dcat-Distribution-foaf-page                      |                              0 |                                4 |
+      | dcat-Distribution-foaf-page                      |                              0 |                                3 |
       | dcat-Distribution-odrl-hasPolicy                 |                              0 |                                4|
       | dcat-Distribution-spdx-checksum                  |                              0 |                                8|
       | dcat-Dataset-adms-identifier                     |                              0 |                                4 |
