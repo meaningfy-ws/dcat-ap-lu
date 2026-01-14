@@ -1,20 +1,37 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Invalid Dataset" ;
-    dct:description "This dataset has incorrect versionNotes usage." ;
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# A valid distribution to avoid unrelated failures
+ex:dist1 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .
+
+############################################################
+# Invalid dataset: adms:versionNotes violations ONLY
+############################################################
+ex:dataset-invalid a dcat:Dataset ;
+    dct:identifier  "dataset-001" ;
+    dct:title       "Invalid Dataset"@en ;
+    dct:description "This dataset has incorrect versionNotes usage."@en ;
+    dct:publisher   ex:publisher-1 ;
+    dct:rights      ex:rights-1 ;
     dcat:distribution ex:dist1 ;
 
-  #  versionNotes is an IRI, not a literal
-    adms:versionNotes ex:NoteResource .
+    # Violation 1: versionNotes is a RESOURCE, not a literal
+    adms:versionNotes ex:NoteResource ;
 
-# An IRI used instead of a string literal
+    # Violation 2: second value (if sh:maxCount 1)
+    adms:versionNotes "Second note triggers maxCount."@en .
+
 ex:NoteResource a dct:ProvenanceStatement ;
-    dct:description "This should not be used as adms:versionNotes." .
-
-ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+    dct:description "This resource must not be used as adms:versionNotes."@en .

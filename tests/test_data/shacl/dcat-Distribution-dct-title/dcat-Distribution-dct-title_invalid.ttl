@@ -1,10 +1,15 @@
-@prefix dcat:    <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex:      <http://example.org/> .
-@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
+# Keep global Distribution requirements satisfied
+ex:rights-1 a dct:RightsStatement .
 
-# INVALID 2: Non-literal title
+# Non-literal title (should violate dcat-Distribution-dct-title)
 ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-0012> ;
-    dcterms:title ex:SomeOtherResource .
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-0012"^^rdfs:Resource ;
+    dct:title ex:SomeOtherResource .
+
+ex:SomeOtherResource a rdfs:Resource .

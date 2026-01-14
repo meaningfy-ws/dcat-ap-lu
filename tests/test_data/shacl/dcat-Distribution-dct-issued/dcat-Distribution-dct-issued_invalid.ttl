@@ -1,22 +1,35 @@
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:     <http://example.org/> .
 
-# INVALID: Wrong datatype (string instead of xsd:dateTime)
-ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcterms:issued "December 1st, 2024" .
+# Required for Distribution base constraints
+ex:rights-1 a dct:RightsStatement .
 
+############################################################
+# Invalid 1: WRONG DATATYPE (must be xsd:dateTime)
+############################################################
+ex:dist-issued-wrong-datatype a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/issued-wrong-dt"^^rdfs:Resource ;
+    dct:issued "December 1st, 2024" .
 
-# INVALID: Multiple issued dates (maxCount violation)
-ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
-    dcterms:issued "2024-12-01T09:30:00"^^xsd:dateTime ,
-                   "2024-12-02T10:00:00"^^xsd:dateTime .
+############################################################
+# Invalid 2: MAXCOUNT VIOLATION (two issued values)
+############################################################
+ex:dist-issued-too-many a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/issued-too-many"^^rdfs:Resource ;
+    dct:issued "2024-12-01T09:30:00"^^xsd:dateTime ,
+               "2024-12-02T10:00:00"^^xsd:dateTime .
 
-# this will trigger RDF parsing errors, validate with a validator like riot instead
-# #  INVALID: Malformed xsd:dateTime literal
-# ex:distribution3 a dcat:Distribution ;
-#     dcat:accessURL <http://example.org/download/dataset-003> ;
-#      dcterms:issued "2024-13-01T09:00:00"^^xsd:dateTime .  # Invalid month 13
+############################################################
+# Invalid 3: RESOURCE INSTEAD OF LITERAL (violates datatype)
+############################################################
+ex:someDateNode a rdfs:Resource .
+
+ex:dist-issued-non-literal a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/issued-non-literal"^^rdfs:Resource ;
+    dct:issued ex:someDateNode .

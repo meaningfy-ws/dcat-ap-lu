@@ -4,6 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 ex:distribution1 a dcat:Distribution ;
+    dcterms:rights ex:rights-1 ;
     dcat:accessURL <http://example.org/download/dataset-001> ;
     dcterms:conformsTo ex:notAStandard .
 
@@ -12,6 +13,7 @@ ex:notAStandard a rdfs:Resource ;
 
 ###########  INVALID: circular reference ###########
 ex:distribution2 a dcat:Distribution ;
+    dcterms:rights ex:rights-1 ;
     dcat:accessURL <http://example.org/download/dataset-002> ;
     dcterms:conformsTo ex:loop .
 ex:loop a dcterms:Standard ;

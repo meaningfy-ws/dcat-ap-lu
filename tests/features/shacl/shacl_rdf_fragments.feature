@@ -15,7 +15,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dcat-accessService             |                              1 |                                3 |
       | dcat-Distribution-dcat-accessURL                 |                              1 |                                1 |
       | dcat-Distribution-dcat-byteSize                  |                              1 |                                4 |
-      | dcat-Distribution-dcat-compressFormat            |                              1 |                                6 |
+      | dcat-Distribution-dcat-compressFormat            |                              0 |                                3 |
       | dcat-Distribution-dcat-downloadURL               |                              2 |                                2 |
       | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
       | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
@@ -24,25 +24,25 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dct-conformsTo                 |                              1 |                                4 |
       | dcat-Distribution-dct-description                |                              1 |                                2 |
       | dcat-Distribution-dct-format                     |                              1 |                                6 |
-      | dcat-Distribution-dct-issued                     |                              1 |                                4 |
-      | dcat-Distribution-dct-language                   |                              1 |                                5 |
-      | dcat-Distribution-dct-license                    |                              1 |                                8 |
-      | dcat-Distribution-dct-modified                   |                              1 |                                4 |
+      | dcat-Distribution-dct-issued                     |                              0 |                                3 |
+      | dcat-Distribution-dct-language                   |                              0 |                                3 |
+      | dcat-Distribution-dct-license                    |                              0 |                                8 |
+      | dcat-Distribution-dct-modified                   |                              0 |                                2 |
       | dcat-Distribution-dct-rights                     |                              1 |                                5 |
-      | dcat-Distribution-dct-title                      |                              1 |                                2 |
-      | dcat-Distribution-foaf-page                      |                              1 |                                6 |
-      | dcat-Distribution-odrl-hasPolicy                 |                              1 |                                6 |
-      | dcat-Distribution-spdx-checksum                  |                              1 |                                6 |
+      | dcat-Distribution-dct-title                      |                              0 |                                1 |
+      | dcat-Distribution-foaf-page                      |                              0 |                                4 |
+      | dcat-Distribution-odrl-hasPolicy                 |                              0 |                                4|
+      | dcat-Distribution-spdx-checksum                  |                              0 |                                 3|
       | dcat-Dataset-adms-identifier                     |                              1 |                                4 |
-      | dcat-Dataset-adms-sample                         |                              1 |                                5 |
-      | dcat-Dataset-adms-versionNotes                   |                              1 |                                2 |
-      | dcat-Dataset-dcat-contactPoint                   |                              1 |                                3 |
-      | dcat-Dataset-dcat-distribution                   |                              2 |                                3 |
-      | dcat-Dataset-dcat-inSeries                       |                              1 |                                3 |
+      | dcat-Dataset-adms-sample                         |                              0 |                                5 |
+      | dcat-Dataset-adms-versionNotes                   |                              0 |                                2 |
+      | dcat-Dataset-dcat-contactPoint                   |                              0 |                                3 |
+      | dcat-Dataset-dcat-distribution                   |                              0 |                                3 |
+      | dcat-Dataset-dcat-inSeries                       |                              0 |                                3 |
       | dcat-Dataset-dcat-keyword                        |                              1 |                                2 |
-      | dcat-Dataset-dcat-landingPage                    |                              1 |                                3 |
-      | dcat-Dataset-dcat-spatialResolutionInMeters      |                              1 |                                3 |
-      | dcat-Dataset-dcat-temporalResolution             |                              1 |                                3 |
+      | dcat-Dataset-dcat-landingPage                    |                              0 |                                3 |
+      | dcat-Dataset-dcat-spatialResolutionInMeters      |                              0 |                                3 |
+      | dcat-Dataset-dcat-temporalResolution             |                              0 |                                3 |
       | dcat-Dataset-dcat-theme                          |                              1 |                                3 |
       | dcat-Dataset-dcatap-applicableLegislation        |                              0 |                                4 |
       | dcat-Dataset-dct-rights                          |                              0 |                                4 |
@@ -50,10 +50,10 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-conformsTo                      |                              0 |                                3 |
       | dcat-Dataset-dct-creator                         |                              0 |                                3 |
       | dcat-Dataset-dct-description                     |                              0 |                                2 |
-      | dcat-Dataset-dcat-hasVersion                     |                              0 |                                3 |
+      | dcat-Dataset-dcat-hasVersion                     |                              0 |                                4 |
       | dcat-Dataset-dct-identifier                      |                              0 |                                2 |
       | dcat-Dataset-dct-isReferencedBy                  |                              1 |                                2 |
-      | dcat-Dataset-dct-issued                          |                              0 |                                2 |
+      | dcat-Dataset-dct-issued                          |                              0 |                                1 |
       | dcat-Dataset-dct-language                        |                              0 |                                3 |
       | dcat-Dataset-dct-modified                        |                              0 |                                1|
       | dcat-Dataset-dct-provenance                      |                              0 |                                4 |

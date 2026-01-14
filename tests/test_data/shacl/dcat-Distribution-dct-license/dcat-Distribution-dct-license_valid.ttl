@@ -1,13 +1,17 @@
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex:     <http://example.org/> .
-@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex:     <http://example.org/> .
+
+# Required supporting node
+ex:rights-1 a dct:RightsStatement .
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcterms:license [
-        a dcterms:LicenseDocument ;
-        rdfs:seeAlso <http://spdx.org/licenses/CC0-1.0>;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
+    dct:license [
+        a dct:LicenseDocument ;
+        rdfs:seeAlso <http://spdx.org/licenses/CC0-1.0> ;
         skos:prefLabel "CC0 1.0"@en
     ] .

@@ -1,14 +1,25 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
 ex:dataset-valid a dcat:Dataset ;
-    dct:identifier "dataset-valid" ;
-    dct:title "Valid Dataset" ;
-    dct:description "A dataset with correct versionNotes." ;
+    dct:identifier  "dataset-valid" ;
+    dct:title       "Valid Dataset"@en ;
+    dct:description "A dataset with correct versionNotes."@en ;
+    dct:publisher   ex:publisher-1 ;
+    dct:rights      ex:rights-1 ;
     dcat:distribution ex:dist1 ;
-    adms:versionNotes "This version includes updated metadata fields." .
+    adms:versionNotes "This version includes updated metadata fields."@en .
 
 ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .

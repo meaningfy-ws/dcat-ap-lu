@@ -1,42 +1,68 @@
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:    <http://example.org/> .
 
-#### 1. Literal instead of Resource
-#ex:dataset-literal a dcat:Dataset ;
-#    dcterms:identifier "dataset-literal" ;
-#    dcterms:title "Dataset with Literal Contact Point" ;
-#    dcterms:description "Invalid: contactPoint is a literal" ;
-#    dcat:distribution ex:dist-1 ;
-#    dcat:contactPoint "contact@example.org" .
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-### 1. Wrong class (foaf:Agent)
-ex:dataset-foaf a dcat:Dataset ;
-    dcterms:identifier "dataset-foaf" ;
-    dcterms:title "Dataset with foaf:Agent" ;
-    dcterms:description "Invalid: contactPoint is foaf:Agent instead of vcard:Kind" ;
-    dcat:distribution ex:dist-1 ;
-    dcat:contactPoint [
-        a foaf:Agent ;
-        foaf:name "Helpdesk"
-    ] .
+ex:rights-1 a dct:RightsStatement .
 
-
-### 2. Circular reference (loop)
-ex:dataset-loop a dcat:Dataset ;
-    dcterms:identifier "dataset-loop" ;
-    dcterms:title "Dataset with Circular Contact Point" ;
-    dcterms:description "Invalid: contactPoint is circular reference" ;
-    dcat:distribution ex:dist-1 ;
-    dcat:contactPoint ex:loop-contact .
-
-ex:loop-contact a vcard:Kind ;
-    dcat:contactPoint ex:dataset-loop ;
-    vcard:fn "Circular Team" .
-
-### Dummy distribution
+# Distributions (must be valid to avoid extra violations)
 ex:dist-1 a dcat:Distribution ;
-       dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+
+ex:dist-2 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+
+ex:dist-3 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-103"^^rdfs:Resource .
+
+############################################################
+# Invalid 1: contactPoint is a LITERAL
+############################################################
+ex:dataset-cp-literal a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Invalid contactPoint - literal"@en ;
+  dct:description "contactPoint must be a vcard:Kind node, not a literal."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+  dcat:contactPoint "helpdesk@example.org"@en .
+
+############################################################
+# Invalid 2: contactPoint has WRONG CLASS (foaf:Agent)
+############################################################
+ex:dataset-cp-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Invalid contactPoint - wrong class"@en ;
+  dct:description "contactPoint must be vcard:Kind, not foaf:Agent."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-2 ;
+  dcat:contactPoint ex:cp-agent .
+
+ex:cp-agent a foaf:Agent ;
+  foaf:name "Helpdesk"@en .
+
+############################################################
+# Invalid 3: 2-CYCLE (SPARQL) dataset <-> contactpoint
+############################################################
+ex:dataset-cp-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-103" ;
+  dct:title       "Invalid contactPoint - cycle"@en ;
+  dct:description "Dataset and contact point reference each other via dcat:contactPoint."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-3 ;
+  dcat:contactPoint ex:cp-cycle .
+
+ex:cp-cycle a vcard:Kind ;
+  vcard:fn "Circular Team"@en ;
+  dcat:contactPoint ex:dataset-cp-cycle .

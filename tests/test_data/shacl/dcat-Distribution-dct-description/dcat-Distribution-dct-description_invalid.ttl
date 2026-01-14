@@ -1,11 +1,24 @@
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:    <http://example.org/> .
 
-### Invalid 1: Missing accessURL entirely → minCount violation
-ex:distribution1 a dcat:Distribution ;
-    dcterms:description "A description"@en .
+# Required by your Distribution shapes
+ex:rights-1 a dct:RightsStatement .
 
-### Invalid 2: Wrong datatype → literal instead of IRI
-ex:dist-wrong-type a dcat:Distribution ;
-    dcat:accessURL "https://example.org/not-a-resource" .
+############################################################
+# Invalid 1: Missing description (minCount violation)
+############################################################
+ex:dist-missing-description a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dist-missing-description"^^rdfs:Resource .
+
+############################################################
+# Invalid 2: Description is not a literal (datatype violation)
+############################################################
+ex:dist-description-not-literal a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dist-description-not-literal"^^rdfs:Resource ;
+    dct:description ex:NonLiteral .
+
+ex:NonLiteral a rdfs:Resource .

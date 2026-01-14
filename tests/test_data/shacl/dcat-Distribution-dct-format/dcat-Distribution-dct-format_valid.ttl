@@ -1,9 +1,15 @@
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:     <http://example.org/> .
+
+# Required for Distribution base constraints
+ex:rights-1 a dct:RightsStatement .
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcterms:format ex:validFormat .
-ex:validFormat a dcterms:MediaTypeOrExtent ;
-    dcterms:title "application/xml" .
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
+    dct:format ex:validFormat .
+
+ex:validFormat a dct:MediaTypeOrExtent ;
+    dct:title "application/xml" .

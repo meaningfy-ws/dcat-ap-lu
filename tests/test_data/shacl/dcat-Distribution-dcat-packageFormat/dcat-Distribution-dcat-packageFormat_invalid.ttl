@@ -6,6 +6,7 @@
 ###########  INVALID: Too many values (maxCount violation) ###########
 
 ex:distribution1 a dcat:Distribution ;
+     dcterms:rights ex:rights-1 ;
     dcat:accessURL <http://example.org/download/dataset-001> ;
     dcat:packageFormat ex:format1, ex:format2 .
 
@@ -18,6 +19,7 @@ ex:format2 a dcterms:MediaType ;
 ###########  INVALID: Wrong class (not dcterms:MediaType) ###########
 
 ex:distribution-2 a dcat:Distribution ;
+      dcterms:rights ex:rights-1 ;
     dcat:accessURL <http://example.org/download/dataset-002> ;
     dcat:packageFormat ex:wrongType .
 
@@ -27,6 +29,7 @@ ex:wrongType a skos:Concept ;  # wrong class
 ########### INVALID: Circular reference (SPARQL rule violation) ###########
 
 ex:distribution-3 a dcat:Distribution ;
+     dcterms:rights ex:rights-1 ;
     dcat:accessURL <http://example.org/download/dataset-003> ;
     dcat:packageFormat ex:circularFormat .
 

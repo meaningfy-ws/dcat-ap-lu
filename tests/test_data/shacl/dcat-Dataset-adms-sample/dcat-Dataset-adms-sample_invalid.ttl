@@ -1,34 +1,56 @@
-@prefix dcat:   <http://www.w3.org/ns/dcat#> .
-@prefix dct:    <http://purl.org/dc/terms/> .
-@prefix adms:   <http://www.w3.org/ns/adms#> .
-@prefix ex:     <http://example.org/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-# Dataset with all mandatory fields
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Example DCAT Dataset" ;
-    dct:description "A minimal dataset with only mandatory properties." ;
-    dcat:distribution ex:dist-1 ;
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-    adms:sample ex:notADistribution ;
+ex:rights-1 a dct:RightsStatement .
 
-   adms:sample ex:circularSample ;
+# A valid distribution to satisfy Dataset's dcat:distribution requirement
+ex:dist-ok a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .
 
-    # Case 3: Literal value — not a URI at all
-    adms:sample "This is not a resource" .
+############################################################
+# Invalid dataset: only adms:sample violations
+############################################################
+ex:dataset-invalid a dcat:Dataset ;
+  dct:identifier  "dataset-invalid-001" ;
+  dct:title       "Dataset with invalid sample"@en ;
+  dct:description "Contains multiple adms:sample violations only."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-ok ;
 
+  # (1) WRONG CLASS target (not a dcat:Distribution)
+  adms:sample ex:not-a-distribution ;
 
-# Invalid sample (wrong class)
-ex:notADistribution a <http://example.org/OtherClass> .
+  # (2) LITERAL instead of resource (also violates sh:class)
+  adms:sample "not-a-resource"@en ;
 
-# Circular reference
-ex:circularSample a dcat:Distribution ;
-    adms:sample ex:dataset-001 ;
-    dcat:accessURL <http://example.org/sample.csv> .
+  # (3) RESOURCE but missing rdf:type dcat:Distribution
+  adms:sample ex:untyped-sample ;
 
+  # (4) SELF-CYCLE (SPARQL anti-pattern)
+  adms:sample ex:dataset-invalid ;
 
-# Valid distribution to satisfy MUST property
-ex:dist-1 a dcat:Distribution ;
-    dct:title "Valid distribution" ;
-    dcat:accessURL <http://example.org/sample1.csv> .
+  # (5) SYMMETRIC CYCLE: dataset-invalid <-> sample-cycle
+  adms:sample ex:sample-cycle .
 
+# (1) Wrong class node
+ex:not-a-distribution a foaf:Document ;
+  dct:title "Not a Distribution"@en .
+
+# (3) Untyped node (intentionally not a dcat:Distribution)
+ex:untyped-sample dct:title "Untyped sample node"@en .
+
+# (5) Create a symmetric cycle (if your SPARQL checks ?this adms:sample ?that ; ?that adms:sample ?this)
+ex:sample-cycle a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/sample-cycle.csv"^^rdfs:Resource ;
+  adms:sample ex:dataset-invalid .

@@ -1,36 +1,37 @@
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex:     <http://example.org/> .
 
+# Required for Distribution base constraints
+ex:rights-1 a dct:RightsStatement .
 
-#  INVALID: Wrong class (not a dcterms:MediaTypeOrExtent)
+############################################################
+# Invalid 1: Wrong class (not dct:MediaTypeOrExtent)
+############################################################
+ex:dist-format-wrong-class a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/format-wrong-class"^^rdfs:Resource ;
+    dct:format ex:notMediaType .
 
-ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-     dcterms:format ex:wrongFormat .
+ex:notMediaType a skos:Concept ;
+    skos:prefLabel "Not a MediaTypeOrExtent"@en .
 
-ex:wrongFormat a dcterms:TypoClass ;  # Should be dcterms:MediaTypeOrExtent
-    dcterms:title "text/csv" .
+############################################################
+# Invalid 2: Literal instead of resource (violates sh:class)
+############################################################
+ex:dist-format-literal a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/format-literal"^^rdfs:Resource ;
+    dct:format "application/xml" .
 
-#  INVALID: More than 1 value (maxCount violation)
+############################################################
+# Invalid 3: Untyped node (resource exists but no rdf:type)
+############################################################
+ex:dist-format-untyped a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/format-untyped"^^rdfs:Resource ;
+    dct:format ex:untypedFormat .
 
-ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
-    dcterms:format ex:format1, ex:format2 .
-
-ex:format1 a dcterms:MediaTypeOrExtent ;
-    dcterms:title "application/xml" .
-
-ex:format2 a dcterms:MediaTypeOrExtent ;
-    dcterms:title "application/pdf" .
-
-#  INVALID: Circular reference
-
-
-ex:distribution3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-003> ;
-    dcterms:format ex:circularFormat .
-
-ex:circularFormat a dcterms:MediaTypeOrExtent ;
-    dcterms:title "application/rdf+xml" ;
-    dcterms:format ex:distribution3 .  # Circular relationship
+ex:untypedFormat dct:title "text/csv" .

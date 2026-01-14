@@ -1,36 +1,85 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-#### 2. inSeries is a literal (not a resource)
-#ex:invalidDataset1 a dcat:Dataset ;
-#    dcterms:identifier "dataset-invalid-1" ;
-#    dcterms:title "Literal inSeries" ;
-#    dcterms:description "Invalid: inSeries is a literal." ;
-#    dcat:distribution ex:dist-1 ;
-#    dcat:inSeries "not-a-resource" .
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-### 1. inSeries points to something not a dcat:DatasetSeries
-ex:invalidDataset2 a dcat:Dataset ;
-    dcterms:identifier "dataset-invalid-2" ;
-    dcterms:title "Wrong Class" ;
-    dcterms:description "Invalid: inSeries is not a DatasetSeries." ;
-    dcat:distribution ex:dist-1 ;
-    dcat:inSeries [
-        a dcat:inDataset ;  # Wrong class
-        dcterms:title "Wrong type"
-    ] .
+ex:rights-1 a dct:RightsStatement .
 
-### 3. Circular reference
-ex:invalidDataset3 a dcat:Dataset ;
-    dcterms:identifier "dataset-invalid-3" ;
-    dcterms:title "Circular Series" ;
-    dcterms:description "Invalid: circular reference between dataset and series." ;
-    dcat:distribution ex:dist-1 ;
-    dcat:inSeries ex:seriesLoop .
+# Helper distributions (each distribution needs rights + typed accessURL)
+ex:dist-201 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
 
-ex:seriesLoop a dcat:DatasetSeries ;
-    dcat:inSeries ex:invalidDataset3 .  # Circular
+ex:dist-202 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
 
-ex:dist-1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+ex:dist-203 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-203"^^rdfs:Resource .
+
+ex:dist-204 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-204"^^rdfs:Resource .
+
+############################################################
+# Invalid 1 (1 violation): WRONG CLASS (not dcat:DatasetSeries)
+############################################################
+ex:dataset-inSeries-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid inSeries - wrong class"@en ;
+  dct:description "inSeries points to a non-DatasetSeries."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-201 ;
+  dcat:inSeries   ex:not-a-series .
+
+# Intentionally NOT a dcat:DatasetSeries
+ex:not-a-series a foaf:Document ;
+  dct:title "Not a DatasetSeries"@en .
+
+############################################################
+# Invalid 2 (1 violation): LITERAL VALUE (should be a node)
+############################################################
+ex:dataset-inSeries-literal a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid inSeries - literal"@en ;
+  dct:description "inSeries is given as a literal."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-202 ;
+  dcat:inSeries   "series-as-literal"@en .
+
+############################################################
+# Invalid 3 (1 violation): SPARQL CYCLE (A <-> B)
+############################################################
+ex:dataset-inSeries-a a dcat:Dataset ;
+  dct:identifier  "dataset-203" ;
+  dct:title       "Invalid inSeries - cycle A"@en ;
+  dct:description "A points to B and B points back to A."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-203 ;
+  dcat:inSeries   ex:series-cycle-b .
+
+ex:dataset-inSeries-b a dcat:Dataset ;
+  dct:identifier  "dataset-204" ;
+  dct:title       "Invalid inSeries - cycle B"@en ;
+  dct:description "B points back to A (cycle)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-204 ;
+  dcat:inSeries   ex:series-cycle-a .
+
+ex:series-cycle-a a dcat:DatasetSeries ;
+  dct:title "Cycle series A"@en ;
+  dcat:inSeries ex:series-cycle-b .
+
+ex:series-cycle-b a dcat:DatasetSeries ;
+  dct:title "Cycle series B"@en ;
+  dcat:inSeries ex:series-cycle-a .

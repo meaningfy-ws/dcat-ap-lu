@@ -1,32 +1,54 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-#### 1. Literal instead of URI node
-#ex:invalidDataset1 a dcat:Dataset ;
-#    dcterms:identifier "dataset-invalid-1" ;
-#    dcterms:title "Literal Distribution" ;
-#    dcterms:description "Invalid: dcat:distribution is a string" ;
-#    dcat:distribution "not-a-resource" .
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-### 1. Wrong RDF type (not dcat:Distribution)
-ex:dataset-001 a dcat:Dataset ;
-    dcterms:identifier "dataset-invalid-2" ;
-    dcterms:title "Wrong Type" ;
-    dcterms:description "Invalid: distribution is not of type dcat:Distribution" ;
-    dcat:distribution [
-        a dcat:NOTDataset ;
-        dcterms:title "Wrong class"
-    ] .
+ex:rights-1 a dct:RightsStatement .
 
-### 3. Circular reference
-ex:dataset-002 a dcat:Dataset ;
-    dcterms:identifier "dataset-invalid-3" ;
-    dcterms:title "Circular Distribution" ;
-    dcterms:description "Invalid: dataset and distribution reference each other" ;
-    dcat:distribution ex:circularDist .
+############################################################
+# Invalid 1 (1 violation): LITERAL instead of node
+############################################################
+ex:dataset-dist-literal a dcat:Dataset ;
+  dct:identifier  "dataset-invalid-1" ;
+  dct:title       "Invalid distribution - literal"@en ;
+  dct:description "dcat:distribution must be an IRI or blank node, not a literal."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution "not-a-resource"@en .
 
-ex:circularDist a dcat:Distribution ;
-    dcat:distribution ex:dataset-002 ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+############################################################
+# Invalid 2 (1 violation): WRONG CLASS (not a dcat:Distribution)
+############################################################
+ex:dataset-dist-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-invalid-2" ;
+  dct:title       "Invalid distribution - wrong class"@en ;
+  dct:description "dcat:distribution points to something not typed dcat:Distribution."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:not-a-distribution .
 
+# Note: intentionally NOT a dcat:Distribution
+ex:not-a-distribution a foaf:Document ;
+  dct:title "I am not a Distribution"@en .
+
+############################################################
+# Invalid 3 (1 violation): 2-cycle (SPARQL)
+# dataset -> distCycle AND distCycle -> dataset via dcat:distribution
+############################################################
+ex:dataset-dist-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-invalid-3" ;
+  dct:title       "Invalid distribution - cycle"@en ;
+  dct:description "Dataset and distribution reference each other via dcat:distribution."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:distCycle .
+
+ex:distCycle a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-cycle"^^rdfs:Resource ;
+  dcat:distribution ex:dataset-dist-cycle .
