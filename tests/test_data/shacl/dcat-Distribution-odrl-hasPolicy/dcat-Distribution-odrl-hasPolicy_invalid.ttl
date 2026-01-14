@@ -8,10 +8,14 @@
 ex:rights-1 a dct:RightsStatement .
 
 # Make each Distribution satisfy the global Distribution constraints
-ex:dist-1 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/1"^^rdfs:Resource .
-ex:dist-2 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/2"^^rdfs:Resource .
-ex:dist-3 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/3"^^rdfs:Resource .
-ex:dist-4 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/4"^^rdfs:Resource .
+ex:dist-1 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+dcat:accessURL "http://example.org/download/1"^^rdfs:Resource .
+ex:dist-2 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/2"^^rdfs:Resource .
+ex:dist-3 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/3"^^rdfs:Resource .
+ex:dist-4 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/4"^^rdfs:Resource .
 
 ############################################################
 # Invalid 1: maxCount violation (2 odrl:hasPolicy values)
