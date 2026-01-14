@@ -10,17 +10,17 @@ Feature: Validate RDF data fragments against SHACL shapes
     Examples:
       | test_case                                        | expected_valid_violation_count | expected_invalid_violation_count |
       | dcat-Distribution-dcat-mediaType                 |                              0 |                                4 |
-      | dcat-Distribution-dcatap-availability            |                              1 |                                6 |
+      | dcat-Distribution-dcatap-availability            |                              0 |                                3 |
       | dcat-Distribution-adms-status                    |                              0 |                                4 |
       | dcat-Distribution-dcat-accessService             |                              0 |                                3 |
       | dcat-Distribution-dcat-accessURL                 |                              0 |                                1 |
-      | dcat-Distribution-dcat-byteSize                  |                              1 |                                4 |
+      | dcat-Distribution-dcat-byteSize                  |                              0 |                                3 |
       | dcat-Distribution-dcat-compressFormat            |                              0 |                                3 |
-      | dcat-Distribution-dcat-downloadURL               |                              2 |                                2 |
-      | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
-      | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
-      | dcat-Distribution-dcat-temporalResolution        |                              1 |                                2 |
-      | dcat-Distribution-dcatap-applicableLegislation   |                              0 |                                3 |
+      | dcat-Distribution-dcat-downloadURL               |                              0 |                                1 |
+      | dcat-Distribution-dcat-packageFormat             |                              0 |                                3 |
+      | dcat-Distribution-dcat-spatialResolutionInMeters |                              0 |                                1 |
+      | dcat-Distribution-dcat-temporalResolution        |                              0 |                                1 |
+      | dcat-Distribution-dcatap-applicableLegislation   |                              0 |                                2 |
       | dcat-Distribution-dct-conformsTo                 |                              0 |                                3 |
       | dcat-Distribution-dct-description                |                              0 |                                1 |
       | dcat-Distribution-dct-format                     |                              0 |                                3 |
@@ -28,7 +28,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dct-language                   |                              0 |                                3 |
       | dcat-Distribution-dct-license                    |                              0 |                                5 |
       | dcat-Distribution-dct-modified                   |                              0 |                                2 |
-      | dcat-Distribution-dct-rights                     |                              1 |                                5 |
+      | dcat-Distribution-dct-rights                     |                              0 |                                3 |
       | dcat-Distribution-dct-title                      |                              0 |                                1 |
       | dcat-Distribution-foaf-page                      |                              0 |                                3 |
       | dcat-Distribution-odrl-hasPolicy                 |                              0 |                                4|
@@ -52,7 +52,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-description                     |                              0 |                                2 |
       | dcat-Dataset-dcat-hasVersion                     |                              0 |                                4 |
       | dcat-Dataset-dct-identifier                      |                              0 |                                2 |
-      | dcat-Dataset-dct-isReferencedBy                  |                              1 |                                2 |
+      | dcat-Dataset-dct-isReferencedBy                  |                              0 |                                2 |
       | dcat-Dataset-dct-issued                          |                              0 |                                1 |
       | dcat-Dataset-dct-language                        |                              0 |                                3 |
       | dcat-Dataset-dct-modified                        |                              0 |                                1|

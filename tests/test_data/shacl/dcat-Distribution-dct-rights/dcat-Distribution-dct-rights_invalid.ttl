@@ -1,9 +1,10 @@
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex:     <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
         dcterms:rights [
         a dcterms:RightsStatement ;
         dcterms:title "Public Domain"@en
@@ -11,7 +12,7 @@ ex:distribution1 a dcat:Distribution ;
 
 #  INVALID 1: Wrong class (uses foaf:Document)
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
         dcterms:rights [
         a <http://xmlns.com/foaf/0.1/Document> ;
         dcterms:title "Incorrect Type"@en
