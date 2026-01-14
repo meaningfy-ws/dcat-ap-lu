@@ -20,11 +20,11 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
       | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
       | dcat-Distribution-dcat-temporalResolution        |                              1 |                                2 |
-      | dcat-Distribution-dcatap-applicableLegislation   |                              1 |                                4 |
-      | dcat-Distribution-dct-conformsTo                 |                              1 |                                4 |
-      | dcat-Distribution-dct-description                |                              1 |                                2 |
-      | dcat-Distribution-dct-format                     |                              1 |                                6 |
-      | dcat-Distribution-dct-issued                     |                              0 |                                3 |
+      | dcat-Distribution-dcatap-applicableLegislation   |                              1 |                                3 |
+      | dcat-Distribution-dct-conformsTo                 |                              1 |                                3 |
+      | dcat-Distribution-dct-description                |                              0 |                                2 |
+      | dcat-Distribution-dct-format                     |                              0 |                                6 |
+      | dcat-Distribution-dct-issued                     |                              1 |                                3 |
       | dcat-Distribution-dct-language                   |                              0 |                                3 |
       | dcat-Distribution-dct-license                    |                              0 |                                8 |
       | dcat-Distribution-dct-modified                   |                              0 |                                2 |
@@ -34,16 +34,16 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Distribution-odrl-hasPolicy                 |                              0 |                                4|
       | dcat-Distribution-spdx-checksum                  |                              0 |                                8|
       | dcat-Dataset-adms-identifier                     |                              1 |                                4 |
-      | dcat-Dataset-adms-sample                         |                              0 |                                5 |
-      | dcat-Dataset-adms-versionNotes                   |                              0 |                                2 |
+      | dcat-Dataset-adms-sample                         |                              0 |                                6 |
+      | dcat-Dataset-adms-versionNotes                   |                              0 |                                1 |
       | dcat-Dataset-dcat-contactPoint                   |                              0 |                                3 |
       | dcat-Dataset-dcat-distribution                   |                              0 |                                3 |
-      | dcat-Dataset-dcat-inSeries                       |                              0 |                                3 |
-      | dcat-Dataset-dcat-keyword                        |                              1 |                                2 |
-      | dcat-Dataset-dcat-landingPage                    |                              0 |                                3 |
-      | dcat-Dataset-dcat-spatialResolutionInMeters      |                              0 |                                3 |
+      | dcat-Dataset-dcat-inSeries                       |                              0 |                                2 |
+      | dcat-Dataset-dcat-keyword                        |                              0 |                                2 |
+      | dcat-Dataset-dcat-landingPage                    |                              0 |                                2 |
+      | dcat-Dataset-dcat-spatialResolutionInMeters      |                              0 |                                2 |
       | dcat-Dataset-dcat-temporalResolution             |                              0 |                                3 |
-      | dcat-Dataset-dcat-theme                          |                              1 |                                3 |
+      | dcat-Dataset-dcat-theme                          |                              0 |                                3 |
       | dcat-Dataset-dcatap-applicableLegislation        |                              0 |                                4 |
       | dcat-Dataset-dct-rights                          |                              0 |                                4 |
       | dcat-Dataset-dct-accrualPeriodicity              |                              0 |                                5 |
