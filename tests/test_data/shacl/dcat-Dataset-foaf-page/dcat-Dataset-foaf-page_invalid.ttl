@@ -1,20 +1,31 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-# Dataset with invalid foaf:page values
+# Required supporting nodes (to avoid extra violations)
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# NOT a foaf:Document (so class constraint fails)
+# Also points back to dataset (so SPARQL circular constraint fails)
+ex:invalidPage a rdfs:Resource ;
+  foaf:page ex:dataset-invalid .
+
+# Invalid Dataset (only foaf:page should be wrong)
 ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Invalid Dataset" ;
-    dct:description "This dataset contains all invalid page cases" ;
-    dcat:distribution ex:dist-2 ;
-    #  Circular reference
-    foaf:page ex:dataset-invalid .
+  dct:identifier  "dataset-002" ;
+  dct:title       "Invalid Dataset"@en ;
+  dct:description "This dataset contains invalid foaf:page cases."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-2 ;
+  foaf:page       ex:invalidPage .
 
-   ex:invalidPage1 a skos:Concept ;
-    skos:prefLabel "Not a Document"@en .
-
+# Distribution requirements (kept valid to avoid extra violations)
 ex:dist-2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource .
