@@ -58,7 +58,7 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Dataset-dct-modified                        |                              0 |                                1|
       | dcat-Dataset-dct-provenance                      |                              0 |                                4 |
       | dcat-Dataset-dct-publisher                       |                              0 |                                5 |
-      | dcat-Dataset-dct-relation                        |                              0  |                                2 |
+      | dcat-Dataset-dct-relation                        |                              0  |                               2 |
       | dcat-Dataset-dct-source                          |                              0 |                                5 |
       | dcat-Dataset-dct-spatial                         |                              0 |                                3 |
       | dcat-Dataset-dct-temporal                        |                              0 |                                1 |
@@ -87,4 +87,5 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Catalog-dct-license                         |                              0 |                                3 |
       | dcat-Catalog-dct-publisher                       |                              0 |                                3 |
       | dct-PeriodOfTime-dcat-startDate                  |                              0 |                                1 |
+      | dcat-Dataset-dcat-version                        |                              0 |                                2 |
 

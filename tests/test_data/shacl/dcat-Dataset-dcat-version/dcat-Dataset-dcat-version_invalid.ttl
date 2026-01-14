@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
+
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example Publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# Required distribution (also satisfies Distribution mandatory constraints)
+ex:dist-1 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource .
+
+# Dataset with INVALID dcat:version:
+# - has two values (maxCount=1 violation)
+# - one value is an IRI (datatype rdfs:Literal violation)
+ex:dataset-002 a dcat:Dataset ;
+  dct:identifier  "dataset-002" ;
+  dct:title       "Invalid version dataset"@en ;
+  dct:description "Violates dcat:version datatype and maxCount."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+  dcat:version "1.0.0" , ex:VersionIRI .
