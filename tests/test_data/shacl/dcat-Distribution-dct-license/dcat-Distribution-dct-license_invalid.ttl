@@ -1,38 +1,60 @@
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex:     <http://example.org/> .
-@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix ex:     <http://example.org/> .
 
-# INVALID: Wrong class (should be dcterms:LicenseDocument
-ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcterms:license [
-        a skos:Concept ;  # wrong class
-        skos:prefLabel "CC0 1.0"@en
-    ] .
+############################################################
+# Shared required node (for base constraints)
+############################################################
+ex:rights-1 a dct:RightsStatement .
 
-# INVALID: Too many licenses
-ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
-    dcterms:license ex:lic1, ex:lic2 .
+############################################################
+# Invalid 1: WRONG CLASS (must be dct:LicenseDocument)
+############################################################
+ex:distribution-wrong-class a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-wrong-class"^^rdfs:Resource ;
+    dct:license ex:Concept1 .
 
-ex:lic1 a dcterms:LicenseDocument ;
-    skos:prefLabel "License A"@en .
 
-ex:lic2 a dcterms:LicenseDocument ;
-    skos:prefLabel "License B"@en .
+############################################################
+# Invalid 2: TOO MANY VALUES (maxCount = 1)
+############################################################
+ex:lic1 a dct:LicenseDocument ; skos:prefLabel "License A"@en .
+ex:lic2 a dct:LicenseDocument ; skos:prefLabel "License B"@en .
 
-# INVALID: Circular reference
-ex:distribution3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-003> ;
-    dcterms:license ex:loop-license .
+ex:distribution-too-many a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-too-many"^^rdfs:Resource ;
+    dct:license ex:lic1, ex:lic2 .            #
 
-ex:loop-license a dcterms:LicenseDocument ;
-    dcterms:license ex:distribution3 ;  # circular
-    skos:prefLabel "Recursive License"@en .
+############################################################
+# Invalid 3: LITERAL INSTEAD OF RESOURCE (violates sh:class)
+############################################################
+ex:distribution-literal a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-literal"^^rdfs:Resource ;
+    dct:license "CC-BY-4.0"@en .
 
-#  INVALID: Literal instead of resource
-ex:distribution4 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-004> ;
-    dcterms:license "CC-BY-4.0" .  # Should be a resource, not a string
+############################################################
+# Invalid 4: RESOURCE PRESENT BUT NOT TYPED AS dct:LicenseDocument
+############################################################
+ex:untyped-license skos:prefLabel "Untyped license"@en .
+ex:distribution-missing-type a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-missing-type"^^rdfs:Resource ;
+    dct:license ex:untyped-license .
+
+############################################################
+# Invalid 5: WRONG TYPE (explicitly not a LicenseDocument)
+############################################################
+ex:not-a-license a foaf:Document ;
+    foaf:name "Not a license document"@en .
+
+ex:distribution-not-license a dcat:Distribution ;
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-not-license"^^rdfs:Resource ;
+    dct:license ex:not-a-license .
+

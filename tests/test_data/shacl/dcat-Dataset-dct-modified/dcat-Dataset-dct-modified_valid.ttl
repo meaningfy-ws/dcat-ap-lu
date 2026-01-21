@@ -1,14 +1,23 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.org/> .
+
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ; foaf:name "Example publisher"@en .
+ex:rights-1 a dct:RightsStatement .
 
 ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Valid Dataset" ;
-    dct:description "A valid dataset with correct modified date." ;
-    dcat:distribution ex:dist1 ;
-    dct:modified "2024-12-31T12:00:00"^^xsd:dateTime .
+  dct:identifier  "dataset-001" ;
+  dct:title       "Valid Dataset"@en ;
+  dct:description "A valid dataset with correct modified date."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-001 ;
+  dct:modified    "2024-12-31T12:00:00"^^xsd:dateTime .
 
-ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+ex:dist-001 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .

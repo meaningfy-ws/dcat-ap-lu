@@ -1,21 +1,42 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-# Error 1: landingPage is an IRI instead of a foaf:Document instance
-# Error 2: Circular reference between dataset and landing page
-# Error 3: landingPage object has wrong class (skos:Concept)
+# Shared required supporting nodes (avoid noise)
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-ex:invalidDataset a dcat:Dataset ;
-    dct:identifier "dataset-999" ;
-    dct:title "Dataset with Invalid Landing Page"@en ;
-    dct:description "Landing page structure is incorrect."@en ;
-    dcat:distribution ex:dist-1 ;
-    dcat:landingPage ex:badLandingPage .
+ex:rights-1 a dct:RightsStatement .
 
-ex:badLandingPage a skos:Concept ;
-    skos:prefLabel "landingpage";
-    dcat:landingPage ex:invalidDataset .  # Circular reference
 ex:dist-1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-999"^^rdfs:Resource .
+
+############################################################
+# INVALID: dcat:landingPage should produce EXACTLY 3:
+#   1) wrong class (object not foaf:Document)
+#   2) maxCount violation (two values)
+#   3) SPARQL circular landingPage (dataset <-> page)
+############################################################
+
+ex:dataset-invalid a dcat:Dataset ;
+  dct:identifier  "dataset-999" ;
+  dct:title       "Dataset with Invalid Landing Page"@en ;
+  dct:description "Landing page structure is incorrect."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+
+  # (2) maxCount violation: TWO landing pages
+  dcat:landingPage ex:not-a-document , ex:circularPage .
+
+# (1) wrong class: skos:Concept instead of foaf:Document
+ex:not-a-document a skos:Concept ;
+  skos:prefLabel "Not a foaf:Document"@en .
+
+# (3) circular landingPage (SPARQL): dataset -> page, page -> dataset
+ex:circularPage a foaf:Document ;
+  dcat:landingPage ex:dataset-invalid .

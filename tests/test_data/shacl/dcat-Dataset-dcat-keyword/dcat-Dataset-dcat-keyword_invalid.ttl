@@ -1,21 +1,31 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-# Issue 1: dcat:keyword is an IRI, not a literal
-# Issue 2: dcat:keyword uses skos:Concept improperly
+# Required supporting nodes (avoid noise)
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-ex:validDataset a dcat:Dataset ;
-    dcterms:identifier "dataset-valid" ;
-    dcterms:title "Valid Dataset" ;
-    dcterms:description "This dataset has valid keyword(s)." ;
-    dcat:keyword ex:keywordConcept ;
-    dcat:distribution ex:distribution1.
+ex:rights-1 a dct:RightsStatement .
+
+ex:dataset-invalid a dcat:Dataset ;
+  dct:identifier  "dataset-invalid" ;
+  dct:title       "Invalid Dataset"@en ;
+  dct:description "This dataset violates keyword rules only."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:distribution1 ;
+
+  # Violation 1: keyword is NOT a literal (IRI instead)
+  dcat:keyword ex:kw1 ;
+
+  # Violation 2: keyword literal WITHOUT language tag (if lang is required)
+  dcat:keyword "biodiversity" .
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource .
 
-# The object of dcat:keyword should not be a resource
-ex:keywordConcept a skos:Concept ;
-    skos:prefLabel "biodiversity"@en .
+ex:kw1 a foaf:Document .

@@ -1,18 +1,26 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex:   <http://example.org/> .
 
 ex:dataset-valid a dcat:Dataset ;
-    dct:identifier "dataset-005" ;
-    dct:title "Dataset with Valid wasGeneratedBy" ;
+    dct:identifier  "dataset-005" ;
+    dct:title       "Dataset with Valid wasGeneratedBy" ;
     dct:description "This dataset links to a valid prov:Activity." ;
+    dct:publisher   ex:publisher-1 ;
+    dct:rights      ex:rights-1 ;
     dcat:distribution ex:dist-1 ;
     prov:wasGeneratedBy ex:activity-1 .
+
+ex:publisher-1 a foaf:Agent ;
+    foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
 
 ex:activity-1 a prov:Activity ;
     dct:description "Data processing activity for generating dataset." .
 
 ex:dist-1 a dcat:Distribution ;
-   dcat:accessURL <http://example.org/download/dataset-001> .
-
+    dct:rights ex:rights-1 ;
+    dcat:accessURL <http://example.org/download/dataset-001> .

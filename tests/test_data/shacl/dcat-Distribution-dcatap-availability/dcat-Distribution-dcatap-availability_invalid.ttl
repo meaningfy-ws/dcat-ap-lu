@@ -4,11 +4,14 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+ex:rights-1 a dcterms:RightsStatement .
 
 # wrong class
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcatap:availability ex:availability1 .
 
 ex:availability1 a skos:Concepto ;
@@ -16,7 +19,8 @@ ex:availability1 a skos:Concepto ;
 
 # too many values
 ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+     dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcatap:availability ex:availability2a , ex:availability2b .
 
 ex:availability2a a skos:Concept ;
@@ -27,7 +31,8 @@ ex:availability2b a skos:Concept ;
 
 # circular reference
 ex:distribution3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcatap:availability ex:availability3 .
 
 ex:availability3 a skos:Concept ;

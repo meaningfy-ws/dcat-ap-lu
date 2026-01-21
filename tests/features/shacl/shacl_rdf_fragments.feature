@@ -9,65 +9,65 @@ Feature: Validate RDF data fragments against SHACL shapes
 
     Examples:
       | test_case                                        | expected_valid_violation_count | expected_invalid_violation_count |
-      | dcat-Distribution-dcat-mediaType                 |                              1 |                                6 |
-      | dcat-Distribution-dcatap-availability            |                              1 |                                6 |
-      | dcat-Distribution-adms-status                    |                              1 |                                5 |
-      | dcat-Distribution-dcat-accessService             |                              1 |                                3 |
-      | dcat-Distribution-dcat-accessURL                 |                              1 |                                1 |
-      | dcat-Distribution-dcat-byteSize                  |                              1 |                                4 |
-      | dcat-Distribution-dcat-compressFormat            |                              1 |                                6 |
-      | dcat-Distribution-dcat-downloadURL               |                              2 |                                2 |
-      | dcat-Distribution-dcat-packageFormat             |                              1 |                                6 |
-      | dcat-Distribution-dcat-spatialResolutionInMeters |                              1 |                                2 |
-      | dcat-Distribution-dcat-temporalResolution        |                              1 |                                2 |
-      | dcat-Distribution-dcatap-applicableLegislation   |                              1 |                                4 |
-      | dcat-Distribution-dct-conformsTo                 |                              1 |                                4 |
-      | dcat-Distribution-dct-description                |                              1 |                                2 |
-      | dcat-Distribution-dct-format                     |                              1 |                                6 |
-      | dcat-Distribution-dct-issued                     |                              1 |                                4 |
-      | dcat-Distribution-dct-language                   |                              1 |                                5 |
-      | dcat-Distribution-dct-license                    |                              1 |                                8 |
-      | dcat-Distribution-dct-modified                   |                              1 |                                4 |
-      | dcat-Distribution-dct-rights                     |                              1 |                                5 |
-      | dcat-Distribution-dct-title                      |                              1 |                                2 |
-      | dcat-Distribution-foaf-page                      |                              1 |                                6 |
-      | dcat-Distribution-odrl-hasPolicy                 |                              1 |                                6 |
-      | dcat-Distribution-spdx-checksum                  |                              1 |                                6 |
-      | dcat-Dataset-adms-identifier                     |                              1 |                                4 |
-      | dcat-Dataset-adms-sample                         |                              1 |                                5 |
-      | dcat-Dataset-adms-versionNotes                   |                              1 |                                2 |
-      | dcat-Dataset-dcat-contactPoint                   |                              1 |                                3 |
-      | dcat-Dataset-dcat-distribution                   |                              2 |                                3 |
-      | dcat-Dataset-dcat-inSeries                       |                              1 |                                3 |
-      | dcat-Dataset-dcat-keyword                        |                              1 |                                2 |
-      | dcat-Dataset-dcat-landingPage                    |                              1 |                                3 |
-      | dcat-Dataset-dcat-spatialResolutionInMeters      |                              1 |                                3 |
-      | dcat-Dataset-dcat-temporalResolution             |                              1 |                                3 |
-      | dcat-Dataset-dcat-theme                          |                              1 |                                3 |
-      | dcat-Dataset-dcatap-applicableLegislation        |                              1 |                                3 |
-      | dcat-Dataset-dct-rights                          |                              1 |                                3 |
-      | dcat-Dataset-dct-accrualPeriodicity              |                              1 |                                4 |
-      | dcat-Dataset-dct-conformsTo                      |                              1 |                                3 |
-      | dcat-Dataset-dct-creator                         |                              1 |                                3 |
-      | dcat-Dataset-dct-description                     |                              1 |                                2 |
-      | dcat-Dataset-dcat-hasVersion                     |                              2 |                                3 |
-      | dcat-Dataset-dct-identifier                      |                              1 |                                2 |
-      | dcat-Dataset-dct-isReferencedBy                  |                              2 |                                2 |
-      | dcat-Dataset-dct-issued                          |                              1 |                                2 |
-      | dcat-Dataset-dct-language                        |                              1 |                                3 |
-      | dcat-Dataset-dct-modified                        |                              1 |                                 2|
-      | dcat-Dataset-dct-provenance                      |                              1 |                                4 |
-      | dcat-Dataset-dct-publisher                       |                              1 |                                5 |
-      | dcat-Dataset-dct-relation                        |                              2 |                                2 |
-      | dcat-Dataset-dct-source                          |                              1 |                                5 |
-      | dcat-Dataset-dct-spatial                         |                              1 |                                3 |
-      | dcat-Dataset-dct-temporal                        |                              1 |                                3 |
-      | dcat-Dataset-dct-title                           |                              1 |                                2 |
-      | dcat-Dataset-dct-type                            |                              1 |                                4 |
-      | dcat-Dataset-dpv-hasData                         |                              1 |                                3 |
-      | dcat-Dataset-foaf-page                           |                              1 |                                3 |
-      | dcat-Dataset-prov-qualifiedAttribution           |                              1 |                                3 |
-      | dcat-Dataset-dcat-qualifiedRelation              |                              1 |                                3 |
+      | dcat-Distribution-dcat-mediaType                 |                              0 |                                4 |
+      | dcat-Distribution-dcatap-availability            |                              0 |                                3 |
+      | dcat-Distribution-adms-status                    |                              0 |                                4 |
+      | dcat-Distribution-dcat-accessService             |                              0 |                                3 |
+      | dcat-Distribution-dcat-accessURL                 |                              0 |                                1 |
+      | dcat-Distribution-dcat-byteSize                  |                              0 |                                3 |
+      | dcat-Distribution-dcat-compressFormat            |                              0 |                                3 |
+      | dcat-Distribution-dcat-downloadURL               |                              0 |                                1 |
+      | dcat-Distribution-dcat-packageFormat             |                              0 |                                3 |
+      | dcat-Distribution-dcat-spatialResolutionInMeters |                              0 |                                1 |
+      | dcat-Distribution-dcat-temporalResolution        |                              0 |                                1 |
+      | dcat-Distribution-dcatap-applicableLegislation   |                              0 |                                2 |
+      | dcat-Distribution-dct-conformsTo                 |                              0 |                                3 |
+      | dcat-Distribution-dct-description                |                              0 |                                1 |
+      | dcat-Distribution-dct-format                     |                              0 |                                3 |
+      | dcat-Distribution-dct-issued                     |                              0 |                                3 |
+      | dcat-Distribution-dct-language                   |                              0 |                                3 |
+      | dcat-Distribution-dct-license                    |                              0 |                                5 |
+      | dcat-Distribution-dct-modified                   |                              0 |                                2 |
+      | dcat-Distribution-dct-rights                     |                              0 |                                4 |
+      | dcat-Distribution-dct-title                      |                              0 |                                1 |
+      | dcat-Distribution-foaf-page                      |                              0 |                                3 |
+      | dcat-Distribution-odrl-hasPolicy                 |                              0 |                                4|
+      | dcat-Distribution-spdx-checksum                  |                              0 |                                8|
+      | dcat-Dataset-adms-identifier                     |                              0 |                                4 |
+      | dcat-Dataset-adms-sample                         |                              0 |                                6 |
+      | dcat-Dataset-adms-versionNotes                   |                              0 |                                1 |
+      | dcat-Dataset-dcat-contactPoint                   |                              0 |                                3 |
+      | dcat-Dataset-dcat-distribution                   |                              0 |                                3 |
+      | dcat-Dataset-dcat-inSeries                       |                              0 |                                2 |
+      | dcat-Dataset-dcat-keyword                        |                              0 |                                1 |
+      | dcat-Dataset-dcat-landingPage                    |                              0 |                                2 |
+      | dcat-Dataset-dcat-spatialResolutionInMeters      |                              0 |                                2 |
+      | dcat-Dataset-dcat-temporalResolution             |                              0 |                                3 |
+      | dcat-Dataset-dcat-theme                          |                              0 |                                3 |
+      | dcat-Dataset-dcatap-applicableLegislation        |                              0 |                                4 |
+      | dcat-Dataset-dct-rights                          |                              0 |                                4 |
+      | dcat-Dataset-dct-accrualPeriodicity              |                              0 |                                5 |
+      | dcat-Dataset-dct-conformsTo                      |                              0 |                                3 |
+      | dcat-Dataset-dct-creator                         |                              0 |                                3 |
+      | dcat-Dataset-dct-description                     |                              0 |                                2 |
+      | dcat-Dataset-dcat-hasVersion                     |                              0 |                                4 |
+      | dcat-Dataset-dct-identifier                      |                              0 |                                2 |
+      | dcat-Dataset-dct-isReferencedBy                  |                              0 |                                2 |
+      | dcat-Dataset-dct-issued                          |                              0 |                                1 |
+      | dcat-Dataset-dct-language                        |                              0 |                                3 |
+      | dcat-Dataset-dct-modified                        |                              0 |                                1|
+      | dcat-Dataset-dct-provenance                      |                              0 |                                4 |
+      | dcat-Dataset-dct-publisher                       |                              0 |                                5 |
+      | dcat-Dataset-dct-relation                        |                              0  |                               2 |
+      | dcat-Dataset-dct-source                          |                              0 |                                5 |
+      | dcat-Dataset-dct-spatial                         |                              0 |                                3 |
+      | dcat-Dataset-dct-temporal                        |                              0 |                                1 |
+      | dcat-Dataset-dct-title                           |                              0 |                                2 |
+      | dcat-Dataset-dct-type                            |                              0 |                                1 |
+      | dcat-Dataset-dpv-hasData                         |                              0 |                                1 |
+      | dcat-Dataset-foaf-page                           |                              0 |                                2 |
+      | dcat-Dataset-prov-qualifiedAttribution           |                              0 |                                1 |
+      | dcat-Dataset-dcat-qualifiedRelation              |                              0 |                                1 |
       | dcat-Dataset-prov-wasGeneratedBy                 |                              1 |                                4 |
       | dcat-DatasetSeries-dcat-contactPoint             |                              0 |                                2 |
       | dcat-DatasetSeries-dcatap-applicableLegislation  |                              0 |                                2 |
@@ -87,4 +87,5 @@ Feature: Validate RDF data fragments against SHACL shapes
       | dcat-Catalog-dct-license                         |                              0 |                                3 |
       | dcat-Catalog-dct-publisher                       |                              0 |                                3 |
       | dct-PeriodOfTime-dcat-startDate                  |                              0 |                                1 |
+      | dcat-Dataset-dcat-version                        |                              0 |                                2 |
 

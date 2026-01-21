@@ -1,13 +1,43 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+#################################################################
+# Valid dataset 1
+#################################################################
 ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Dataset with valid relation" ;
-    dct:description "A dataset that links to a related resource." ;
-    dcat:distribution ex:dist-1 ;
-    dct:relation <http://example.org/related/resource> .
+  dct:identifier  "dataset-001" ;
+  dct:title       "Dataset with valid relation (1)"@en ;
+  dct:description "A dataset that links to a related resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+  dct:relation    "http://example.org/related/resource"^^rdfs:Resource .
 
 ex:dist-1 a dcat:Distribution ;
-   dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .
+
+#################################################################
+# Valid dataset 2
+#################################################################
+ex:dataset-002 a dcat:Dataset ;
+  dct:identifier  "dataset-002" ;
+  dct:title       "Dataset with valid relation (2)"@en ;
+  dct:description "Another dataset with a related resource link."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-2 ;
+  dct:relation    "http://example.org/related/another-resource"^^rdfs:Resource .
+
+ex:dist-2 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource .

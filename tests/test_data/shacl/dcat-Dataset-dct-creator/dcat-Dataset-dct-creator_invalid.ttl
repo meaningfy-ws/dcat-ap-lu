@@ -1,25 +1,69 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-008" ;
-    dct:title "Invalid Creator Dataset"@en ;
-    dct:description "Dataset with multiple and invalid creator entries."@en ;
-    dcat:distribution ex:dist1 ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-    #  Too many creators
-    dct:creator ex:wrong1, ex:wrong2 .
+ex:rights-1 a dct:RightsStatement .
 
-#  Wrong class (should be foaf:Agent)
-ex:wrong1 a skos:Concept ;
-    skos:prefLabel "Wrong class as creator"@en .
+# Valid distributions (so they don't add noise)
+ex:dist-201 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
 
-#  Circular reference (dataset points to creator, creator points back to dataset)
-ex:wrong2 a foaf:Agent ;
-    dct:creator ex:dataset-invalid ;
-    foaf:name "Circular Creator"@en .
-ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+ex:dist-202 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
+
+ex:dist-203 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-203"^^rdfs:Resource .
+
+############################################################
+# Invalid 1: WRONG CLASS (creator is not a foaf:Agent)
+############################################################
+ex:dataset-creator-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid creator - wrong class"@en ;
+  dct:description "Creator points to a skos:Concept, not a foaf:Agent."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-201 ;
+  dct:creator     ex:not-an-agent .
+
+ex:not-an-agent a skos:Concept ;
+  skos:prefLabel "Not an agent"@en .
+
+############################################################
+# Invalid 2: LITERAL value (fails sh:class foaf:Agent)
+############################################################
+ex:dataset-creator-literal a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid creator - literal"@en ;
+  dct:description "Creator is a literal; must be a foaf:Agent resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-202 ;
+  dct:creator     "A literal creator"@en .
+
+############################################################
+# Invalid 3: SYMMETRIC CYCLE caught by your SPARQL constraint
+# Dataset -> creator AND creator -> dataset via dct:creator
+############################################################
+ex:dataset-creator-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-203" ;
+  dct:title       "Invalid creator - symmetric cycle"@en ;
+  dct:description "Creator cycle: dataset creator points back to dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-203 ;
+  dct:creator     ex:cycle-agent .
+
+ex:cycle-agent a foaf:Agent ;
+  foaf:name "Cycle agent"@en ;
+  dct:creator ex:dataset-creator-cycle .

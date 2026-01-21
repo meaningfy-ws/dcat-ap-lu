@@ -1,17 +1,28 @@
 @prefix dcat:  <http://www.w3.org/ns/dcat#> .
 @prefix dct:   <http://purl.org/dc/terms/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix ex:    <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
 ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Valid Dataset" ;
-    dct:description "Dataset with a valid contact point." ;
-    dcat:distribution ex:dist1 ;
-   dcat:contactPoint [
+  dct:identifier  "dataset-001" ;
+  dct:title       "Valid Dataset"@en ;
+  dct:description "Dataset with a valid contact point."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist1 ;
+  dcat:contactPoint [
     a vcard:Kind, vcard:Organization ;
-    vcard:fn "Luxembourg National Data Service"@eng
+    vcard:fn "Luxembourg National Data Service"@en
   ] .
 
 ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .

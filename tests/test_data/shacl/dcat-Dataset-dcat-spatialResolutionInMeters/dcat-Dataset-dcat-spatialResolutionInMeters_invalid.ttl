@@ -1,18 +1,63 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.org/> .
 
-ex:invalidDataset a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Dataset with Invalid Spatial Resolution"@en ;
-    dct:description "This dataset breaks multiple rules for spatial resolution."@en ;
-    dcat:distribution ex:dist-1 ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-    #  Error 1: Not a decimal (string instead)
-    dcat:spatialResolutionInMeters "ten meters" ;
+ex:rights-1 a dct:RightsStatement .
 
-    #  Error 2: More than one value (violates maxCount = 1)
- dcat:spatialResolutionInMeters "10.5"^^xsd:decimal .
- ex:dist-1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+# Distributions (all base constraints satisfied to avoid noise)
+ex:dist-201 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
+
+ex:dist-202 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
+
+ex:dist-203 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-203"^^rdfs:Resource .
+
+############################################################
+# Invalid case 1: wrong datatype (string, not xsd:decimal)
+############################################################
+ex:dataset-sr-wrong-datatype a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid spatialResolutionInMeters - wrong datatype"@en ;
+  dct:description "spatialResolutionInMeters must be xsd:decimal."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-201 ;
+  dcat:spatialResolutionInMeters "ten meters"@en .
+
+############################################################
+# Invalid case 2: maxCount violation (two values)
+############################################################
+ex:dataset-sr-maxcount a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid spatialResolutionInMeters - maxCount"@en ;
+  dct:description "spatialResolutionInMeters appears twice."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-202 ;
+  dcat:spatialResolutionInMeters "10.5"^^xsd:decimal, "20.0"^^xsd:decimal .
+
+############################################################
+# Invalid case 3: wrong node kind (IRI instead of literal)
+############################################################
+ex:dataset-sr-iri a dcat:Dataset ;
+  dct:identifier  "dataset-203" ;
+  dct:title       "Invalid spatialResolutionInMeters - IRI"@en ;
+  dct:description "spatialResolutionInMeters must be a literal, not an IRI."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-203 ;
+  dcat:spatialResolutionInMeters ex:not-a-decimal .
+
+ex:not-a-decimal a rdfs:Resource .

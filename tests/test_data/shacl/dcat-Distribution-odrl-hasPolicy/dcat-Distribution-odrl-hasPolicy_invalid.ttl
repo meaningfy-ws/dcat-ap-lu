@@ -1,32 +1,45 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-# More than one hasPolicy value (violates sh:maxCount)
-ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcterms:title "Too many policies"@en ;
-    odrl:hasPolicy ex:policyA, ex:policyB .
+# Shared required node
+ex:rights-1 a dct:RightsStatement .
 
-ex:policyA a odrl:Policy ;
-    dcterms:title "Policy A"@en .
+# Make each Distribution satisfy the global Distribution constraints
+ex:dist-1 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+dcat:accessURL "http://example.org/download/1"^^rdfs:Resource .
+ex:dist-2 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/2"^^rdfs:Resource .
+ex:dist-3 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/3"^^rdfs:Resource .
+ex:dist-4 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/4"^^rdfs:Resource .
 
-ex:policyB a odrl:Policy ;
-    dcterms:title "Policy B"@en .
+############################################################
+# Invalid 1: maxCount violation (2 odrl:hasPolicy values)
+############################################################
+ex:dist-1 odrl:hasPolicy ex:pol-1a, ex:pol-1b .
+ex:pol-1a a odrl:Policy ; dct:title "Policy 1a"@en .
+ex:pol-1b a odrl:Policy ; dct:title "Policy 1b"@en .
 
-# Wrong class for hasPolicy
-ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
-    odrl:hasPolicy ex:notAPolicy .
+############################################################
+# Invalid 2: wrong class (object is NOT an odrl:Policy)
+############################################################
+ex:dist-2 odrl:hasPolicy ex:not-a-policy .
+ex:not-a-policy a ex:Dataset ;
+  dct:title "Not a policy"@en .
 
-ex:notAPolicy a dcat:Datas .  #  Invalid class
+############################################################
+# Invalid 3: literal instead of resource (violates sh:class)
+############################################################
+ex:dist-3 odrl:hasPolicy "policy-as-literal"@en .
+
+############################################################
+# Invalid 4: resource present but missing rdf:type odrl:Policy
+############################################################
+ex:dist-4 odrl:hasPolicy ex:untyped-policy .
+ex:untyped-policy dct:title "Untyped policy node"@en .
 
 
-###  Circular reference
-ex:distribution3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-003> ;
-    odrl:hasPolicy ex:policyC .
-
-ex:policyC a odrl:Policy ;
-    odrl:hasPolicy ex:distribution3 .  # Circular

@@ -1,22 +1,44 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex:   <http://example.org/> .
 
-# INVALID CASES:
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Invalid Dataset" ;
-    dct:description "This dataset has several issues with dct:issued." ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ; foaf:name "Example publisher"@en .
+ex:rights-1 a dct:RightsStatement .
 
-    #  Wrong datatype: string literal, not xsd:dateTime
-    dct:issued "2023-09-01" ;
-
-    #  Second occurrence (violates sh:maxCount = 1)
-    dct:issued "2024-01-01T00:00:00"^^xsd:dateTime ;
-
-    dcat:distribution ex:dist2 .
-
+# Valid distributions (avoid noise)
 ex:dist2 a dcat:Distribution ;
-  dcat:accessURL <http://example.org/download/dataset-002> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource .
 
+ex:dist3 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-003"^^rdfs:Resource .
+
+############################################################
+# Invalid 1: WRONG DATATYPE for dct:issued
+############################################################
+ex:dataset-issued-wrong-datatype a dcat:Dataset ;
+  dct:identifier  "dataset-002" ;
+  dct:title       "Invalid Dataset - issued wrong datatype"@en ;
+  dct:description "dct:issued must be xsd:dateTime."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist2 ;
+  dct:issued      "2023-09-01" .   # NOT xsd:dateTime
+
+############################################################
+# Invalid 2: MAXCOUNT violation for dct:issued (2 values)
+############################################################
+ex:dataset-issued-too-many a dcat:Dataset ;
+  dct:identifier  "dataset-003" ;
+  dct:title       "Invalid Dataset - issued too many"@en ;
+  dct:description "dct:issued appears twice (maxCount=1)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist3 ;
+  dct:issued      "2024-01-01T00:00:00"^^xsd:dateTime ;
+  dct:issued      "2025-01-01T00:00:00"^^xsd:dateTime .

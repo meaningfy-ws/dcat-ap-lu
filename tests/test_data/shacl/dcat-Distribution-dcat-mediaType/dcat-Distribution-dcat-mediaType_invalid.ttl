@@ -1,10 +1,14 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:rights-1 a dcterms:RightsStatement .
 
 # wrong class
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
+    dcterms:rights ex:rights-1 ;
     dcat:mediaType ex:mediaType1 .
 
 ex:mediaType1 a dcterms:MediaTypo ;
@@ -12,7 +16,8 @@ ex:mediaType1 a dcterms:MediaTypo ;
 
 # too many values
 ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource ;
     dcat:mediaType ex:mediaType2a, ex:mediaType2b .
 
 ex:mediaType2a a dcterms:MediaType ;
@@ -23,7 +28,7 @@ ex:mediaType2b a dcterms:MediaType ;
 
 # circular reference
 ex:distribution3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+  dcat:accessURL "http://example.org/download/dataset-003"^^rdfs:Resource ;
     dcat:mediaType ex:mediaType3 .
 
 ex:mediaType3 a dcterms:MediaType ;

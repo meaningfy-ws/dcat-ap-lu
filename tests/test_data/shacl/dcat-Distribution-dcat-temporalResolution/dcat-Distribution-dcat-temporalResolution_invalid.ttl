@@ -1,22 +1,15 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://example.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:rights-1 a dcterms:RightsStatement .
 
 ########### INVALID: untyped literal ###########
 
 ex:distribution-untyped a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcat:temporalResolution "P1D" .
-
-############ INVALID: wrong format ###########
-#
-#ex:distribution2 a dcat:Distribution ;
-#    dcat:accessURL <http://example.org/download/dataset-002> ;
-#    dcat:temporalResolution "1 day"^^xsd:string .
-#
-############  INVALID: incorrect datatype ###########
-#
-#ex:distribution3 a dcat:Distribution ;
-#    dcat:accessURL <http://example.org/download/dataset-002> ;
-#    dcat:temporalResolution "P1D"^^xsd:string .
 

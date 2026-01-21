@@ -2,29 +2,30 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-# Invalid dataset with all errors
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# WRONG: this is NOT a skos:Concept (so it should violate sh:class skos:Concept on dct:type)
+ex:not-a-concept a foaf:Agent ;
+  foaf:name "Not a Concept"@en .
+
+# Dataset: everything required is present; only dct:type is wrong
 ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Invalid Dataset with Type" ;
-    dct:description "Describes Invalid Dataset with Type." ;
+  dct:identifier  "dataset-002" ;
+  dct:title       "Invalid Dataset with Type"@en ;
+  dct:description "dct:type points to a non skos:Concept."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dct:type        ex:not-a-concept ;
+  dcat:distribution ex:dist-invalid .
 
-    # Too many values (violates maxCount 1)
-    dct:type ex:type2,ex:dataset-invalid ;
-
-    # Circular reference: dataset refers to itself via type
-    dct:type ex:dataset-invalid ;
-
-    dcat:distribution ex:dist-invalid .
-
-##  type1 is not a skos:Concept
-#ex:type1 a foaf:Document ;
-#    foaf:name "Wrong Class" .
-
-#  type2 is missing class altogether (not a skos:Concept)
-ex:type2 a skos:Concept ;
-    skos:prefLabel "Archived Data"@en .
-
+# Distribution: valid
 ex:dist-invalid a dcat:Distribution ;
-     dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource .

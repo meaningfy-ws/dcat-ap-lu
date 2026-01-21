@@ -4,11 +4,16 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix adms:   <http://www.w3.org/ns/adms#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+ex:rights-1 a dcterms:RightsStatement .
 
 ex:distribution1 a dcat:Distribution ;
- dcat:accessURL <http://example.org/download/dataset-001> .
+ dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .
 #    dcat:downloadURL <http://example.org/download/sownload-dataset-001> .
 # Case 2: Wrong value type – Literal instead of IRI
 ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+    dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
+    dcat:downloadURL <http://example.org/download/downlodad-url> .

@@ -255,7 +255,7 @@
                      <td>dcat:spatialResolutionInMeters</td>
                      <td>The minimum spatial separation resolvable in a dataset, measured in metres.	 The minimum spatial separation resolvable in a dataset distribution, measured in 
                         metres.</td>
-                     <td>xsd:decimal [0..1]<br>xsd:decimal [0..*]<br></td>
+                     <td>xsd:decimal [0..*]<br>xsd:decimal [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:PeriodOfTime</td>
@@ -267,7 +267,13 @@
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
                      <td>dcat:temporalResolution</td>
                      <td>The minimum time period resolvable in the dataset.	 The minimum time period resolvable in the dataset distribution.</td>
-                     <td>xsd:duration [0..1]<br>xsd:duration [0..*]<br></td>
+                     <td>xsd:duration [0..1]<br>xsd:duration [0..1]<br></td>
+                  </tr>
+                  <tr>
+                     <td>dcat:Dataset</td>
+                     <td>dcat:version</td>
+                     <td>The version indicator (name or identifier) of a resource.</td>
+                     <td>rdfs:Literal [0..1]</td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
@@ -399,7 +405,7 @@
                   <tr>
                      <td>dcat:distribution</td>
                      <td>An available Distribution for the Dataset.An available Distribution for the Dataset.</td>
-                     <td>dcat:Dataset -&gt; dcat:Distribution [0..*]</td>
+                     <td>dcat:Dataset -&gt; dcat:Distribution [1..*]</td>
                   </tr>
                   <tr>
                      <td>dcat:hasVersion</td>
@@ -545,7 +551,7 @@
                          An entity (organisation) responsible for making the Dataset available.
                         An entity (organisation) responsible for making the Dataset available.
                         </td>
-                     <td>dcat:Catalog -&gt; foaf:Agent [1..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [1..1]<br>dcat:Dataset -&gt; foaf:Agent [1..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:rights</td>
@@ -553,7 +559,7 @@
                         restrictions, or is not public. A statement that specifies rights associated with the Distribution.A statement that
                         specifies rights associated with the Distribution.
                         </td>
-                     <td>dcat:Dataset -&gt; dct:RightsStatement [0..1]<br>dcat:Distribution -&gt; dct:RightsStatement [0..1]<br></td>
+                     <td>dcat:Dataset -&gt; dct:RightsStatement [1..1]<br>dcat:Distribution -&gt; dct:RightsStatement [1..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:source</td>
@@ -581,7 +587,7 @@
                         A type of the Dataset. A type of licence, e.g. indicating 'public domain' or 'royalties required'.A type
                         of licence, e.g. indicating 'public domain' or 'royalties required'.
                          </td>
-                     <td>dcat:Dataset -&gt; skos:Concept [0..1]<br>dct:LicenseDocument -&gt; skos:Concept [0..*]<br>foaf:Agent -&gt; skos:Concept [0..1]<br></td>
+                     <td>dcat:Dataset -&gt; skos:Concept [0..*]<br>dct:LicenseDocument -&gt; skos:Concept [0..*]<br>foaf:Agent -&gt; skos:Concept [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dpv:hasData</td>

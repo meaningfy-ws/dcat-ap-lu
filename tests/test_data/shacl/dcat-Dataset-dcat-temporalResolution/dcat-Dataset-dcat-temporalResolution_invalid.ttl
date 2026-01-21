@@ -1,18 +1,63 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://example.org/> .
 
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Dataset With Invalid Temporal Resolution"@en ;
-    dct:description "This example contains all invalid situations for temporalResolution."@en ;
-    dcat:distribution ex:dist-1;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-    #  Error 1: Not an xsd:duration
-    dcat:temporalResolution "weekly" ;
+ex:rights-1 a dct:RightsStatement .
 
-    #  Error 2: Multiple values (maxCount = 1)
-    dcat:temporalResolution "P1D"^^xsd:duration .  # P1D = 1 day
-ex:dist-1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+# Distributions (all base constraints satisfied, so no noise)
+ex:dist-101 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+
+ex:dist-102 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+
+ex:dist-103 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-103"^^rdfs:Resource .
+
+############################################################
+# Invalid case 1: wrong datatype (plain string, not xsd:duration)
+############################################################
+ex:dataset-tr-wrong-datatype a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Invalid temporalResolution - wrong datatype"@en ;
+  dct:description "temporalResolution must be xsd:duration."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-101 ;
+  dcat:temporalResolution "weekly"@en .
+
+############################################################
+# Invalid case 2: maxCount violation (two values)
+############################################################
+ex:dataset-tr-maxcount a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Invalid temporalResolution - maxCount"@en ;
+  dct:description "temporalResolution appears twice."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-102 ;
+  dcat:temporalResolution "P1D"^^xsd:duration, "P7D"^^xsd:duration .
+
+############################################################
+# Invalid case 3: wrong node kind (IRI instead of literal)
+############################################################
+ex:dataset-tr-iri a dcat:Dataset ;
+  dct:identifier  "dataset-103" ;
+  dct:title       "Invalid temporalResolution - IRI"@en ;
+  dct:description "temporalResolution must be a literal, not an IRI."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-103 ;
+  dcat:temporalResolution ex:not-a-duration .
+
+ex:not-a-duration a rdfs:Resource .

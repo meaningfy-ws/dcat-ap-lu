@@ -1,17 +1,39 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-002 a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "Invalid Dataset" ;
-    dct:description "Invalid modified values." ;
-    dcat:distribution ex:dist2 ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ; foaf:name "Example publisher"@en .
+ex:rights-1 a dct:RightsStatement .
 
-    # Violation 1: Wrong class for dcat:accessURL for distribution below
-    # Violation 2: maxCount violation on dct:modified
-    dct:modified "2024-12-31" ;
-    dct:modified "2025-01-01T12:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+# Valid distributions (rights + typed accessURL)
+ex:dist-201 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
+ex:dist-202 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
 
-ex:dist2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+############################################################
+# Invalid 1: wrong datatype for dct:modified (expects xsd:dateTime)
+############################################################
+ex:dataset-modified-wrong-datatype a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid modified - wrong datatype"@en ;
+  dct:description "dct:modified is not xsd:dateTime."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-201 ;
+  dct:modified    "2024-12-31"^^xsd:date .
+
+############################################################
+# Invalid 2: maxCount violation (two modified values)
+############################################################
+ex:dataset-modified-too-many a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid modified - too many values"@en ;
+  dct:description "Two dct:modified values (should be max 1)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-202 ;
+  dct:modified    "2024-12-31T12:00:00"^^xsd:dateTime ;
+  dct:modified    "2025-01-01T12:00:00"^^xsd:dateTime .

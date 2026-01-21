@@ -1,41 +1,82 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-@prefix ex:   <http://example.org/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-# Case 1: Wrong class (not dcat:Dataset)
-ex:dataset-invalid1 a dcat:Dataset ;
-    dct:identifier "dataset-invalid-001" ;
-    dct:title "Dataset with wrong class as source" ;
-    dct:description "Invalid due to source not being dcat:Dataset." ;
-    dcat:distribution ex:dist-1 ;
-    dct:source ex:not-a-dataset .
+ex:rights-1 a dct:RightsStatement .
 
-ex:not-a-dataset a foaf:Document .
+# Helper distributions (each has rights + typed accessURL)
+ex:dist-201 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
+ex:dist-202 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
+ex:dist-204 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-204"^^rdfs:Resource .
+ex:dist-205 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-205"^^rdfs:Resource .
+ex:dist-206 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-206"^^rdfs:Resource .
 
-##  Case 2: Literal instead of IRI
-#ex:dataset-invalid2 a dcat:Dataset ;
-#    dct:identifier "dataset-invalid-002" ;
-#    dct:title "Dataset with literal source" ;
-#    dct:description "Invalid due to source being a literal." ;
-#    dcat:distribution ex:dist-2 ;
-#    dct:source "Some literal source" .
+############################################################
+# Invalid 1: WRONG CLASS (object is not a dcat:Dataset)
+############################################################
+ex:dataset-source-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid source - wrong class"@en ;
+  dct:description "dct:source points to a non-dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-201 ;
+  dct:source      ex:not-a-dataset .
 
-#  Case 3: Circular reference
-ex:dataset-invalid3 a dcat:Dataset ;
-    dct:identifier "dataset-invalid-003" ;
-    dct:title "Dataset with circular source" ;
-    dct:description "Invalid due to circular reference." ;
-    dcat:distribution ex:dist-3 ;
-    dct:source ex:dataset-invalid3 .
+ex:not-a-dataset a foaf:Document ;
+  foaf:name "Not a dataset"@en .
 
-ex:dist-1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> .
+############################################################
+# Invalid 2: LITERAL OBJECT (violates sh:class)
+############################################################
+ex:dataset-source-literal a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid source - literal"@en ;
+  dct:description "dct:source is a literal, but must be a dcat:Dataset resource."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-202 ;
+  dct:source      "Some literal source"@en .
 
-ex:dist-2 a dcat:Distribution ;
-   dcat:accessURL <http://example.org/download/dataset-002> .
-ex:dist-3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-003> .
+############################################################
+# Invalid 3+4: SYMMETRIC CYCLE (A <-> B) caught by sh:sparql
+# This yields TWO violations: one for A and one for B
+############################################################
+ex:dataset-source-a a dcat:Dataset ;
+  dct:identifier  "dataset-204" ;
+  dct:title       "Invalid source - symmetric cycle A"@en ;
+  dct:description "A sources B and B sources A."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-204 ;
+  dct:source      ex:dataset-source-b .
 
+ex:dataset-source-b a dcat:Dataset ;
+  dct:identifier  "dataset-205" ;
+  dct:title       "Invalid source - symmetric cycle B"@en ;
+  dct:description "B sources A and A sources B."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-205 ;
+  dct:source      ex:dataset-source-a .
+
+############################################################
+# Invalid 5: OBJECT RESOURCE PRESENT BUT NOT typed dcat:Dataset
+############################################################
+ex:dataset-source-missing-type a dcat:Dataset ;
+  dct:identifier  "dataset-206" ;
+  dct:title       "Invalid source - missing rdf:type"@en ;
+  dct:description "dct:source points to a node not typed as dcat:Dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-206 ;
+  dct:source      ex:untyped-node .
+
+# Intentionally NOT a dcat:Dataset
+ex:untyped-node dct:title "Untyped node"@en .

@@ -1,15 +1,56 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-002" ;
-    dct:title "An invalid dataset" ;
-    dct:description "This dataset breaks several dct:language constraints." ;
-    dcat:distribution ex:dist2 ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ; foaf:name "Example publisher"@en .
+ex:rights-1 a dct:RightsStatement .
 
-    #  Invalid: not a resource of class dct:LinguisticSystem and circular reference back to the dataset
-    dct:language ex:dataset-001 .
+# Distributions (all valid: rights + typed accessURL)
+ex:dist-101 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+ex:dist-102 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+ex:dist-103 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-103"^^rdfs:Resource .
 
-ex:dist2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+############################################################
+# Invalid 1: WRONG CLASS (foaf:Agent instead of dct:LinguisticSystem)
+############################################################
+ex:dataset-language-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Invalid language - wrong class"@en ;
+  dct:description "dct:language points to a foaf:Agent."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-101 ;
+  dct:language    ex:not-a-language .
+
+ex:not-a-language a foaf:Agent ;
+  foaf:name "Not a LinguisticSystem"@en .
+
+############################################################
+# Invalid 2: MISSING TYPE (resource exists but not typed as dct:LinguisticSystem)
+############################################################
+ex:dataset-language-missing-type a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Invalid language - missing type"@en ;
+  dct:description "dct:language points to an untyped node."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-102 ;
+  dct:language    ex:untyped-language-node .
+
+# Intentionally NOT a dct:LinguisticSystem
+ex:untyped-language-node rdfs:label "ENG (but untyped)"@en .
+
+############################################################
+# Invalid 3: LITERAL (fails sh:class dct:LinguisticSystem)
+############################################################
+ex:dataset-language-literal a dcat:Dataset ;
+  dct:identifier  "dataset-103" ;
+  dct:title       "Invalid language - literal"@en ;
+  dct:description "dct:language is a literal."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-103 ;
+  dct:language    "English"@en .

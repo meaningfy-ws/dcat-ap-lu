@@ -1,37 +1,37 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix spdx: <http://spdx.org/rdf/terms#> .
-@prefix ex: <http://example.org/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-# More than one checksum (violates maxCount)
-ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    spdx:checksum ex:checksum1, ex:checksum2 .
+# Shared required node
+ex:rights-1 a dct:RightsStatement .
 
-ex:checksum1 a spdx:Checksum ;
-    spdx:algorithm "SHA-1" ;
-    spdx:checksumValue "abc123" .
+# Helper: make every Distribution otherwise valid
+ex:dist-1 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+dcat:accessURL "http://example.org/download/1"^^rdfs:Resource .
+ex:dist-2 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/2"^^rdfs:Resource .
+ex:dist-3 a dcat:Distribution ; dct:rights ex:rights-1 ;     dct:rights ex:rights-1 ;
+ dcat:accessURL "http://example.org/download/3"^^rdfs:Resource .
 
-ex:checksum2 a spdx:Checksum ;
-    spdx:algorithm "SHA-512" ;
-    spdx:checksumValue "def456" .
+############################################################
+# Invalid 1: maxCount violation (2 values)
+############################################################
+ex:dist-1 spdx:checksum ex:cs-1a, ex:cs-1b .
+ex:cs-1a a spdx:Checksum ; spdx:algorithm "SHA-1" ;   spdx:checksumValue "aaa" .
+ex:cs-1b a spdx:Checksum ; spdx:algorithm "SHA-256" ; spdx:checksumValue "bbb" .
+
+############################################################
+# Invalid 2: wrong class (object not spdx:Checksum)
+############################################################
+ex:dist-2 spdx:checksum ex:not-a-checksum .
+ex:not-a-checksum a dcat:Dataset ;
+  dct:title "Not a checksum"@en .
+
+############################################################
+# Invalid 3: literal instead of resource (violates sh:class)
+############################################################
+ex:dist-3 spdx:checksum "checksum-as-literal"@en .
 
 
-# Wrong class (not a spdx:Checksum)
-ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
-    spdx:checksum ex:notAChecksum .
-
-ex:notAChecksum a dcat:Datas ;
-    spdx:algorithm "SHA-256" ;
-    spdx:checksumValue "zzz999" .
-
-
-# Circular reference
-ex:distribution3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-003> ;
-    spdx:checksum ex:circular-checksum .
-
-ex:circular-checksum a spdx:Checksum ;
-    spdx:checksum ex:distribution3 ;  # Circular reference
-    spdx:algorithm "SHA-256" ;
-    spdx:checksumValue "looplooploop" .

@@ -1,22 +1,69 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-invalid" ;
-    dct:title "Dataset With Invalid Theme"@en ;
-    dct:description "This example shows multiple SHACL violations for theme."@en ;
-    dcat:distribution ex:dist-1 ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-    #  Error 1: Theme is a literal, not a skos:Concept (violates sh:class)
-    dcat:theme "Health" ;
+ex:rights-1 a dct:RightsStatement .
 
-    #  Error 2: Circular reference (detected by SPARQL constraint)
-    dcat:theme ex:circularTheme .
+# Distributions (each must satisfy base constraints)
+ex:dist-1 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-101"^^rdfs:Resource .
+
+ex:dist-2 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-102"^^rdfs:Resource .
+
+ex:dist-3 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-103"^^rdfs:Resource .
+
+############################################################
+# Invalid case 1: WRONG CLASS (theme points to non skos:Concept)
+############################################################
+ex:dataset-theme-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-101" ;
+  dct:title       "Invalid theme - wrong class"@en ;
+  dct:description "Theme points to a non skos:Concept."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-1 ;
+  dcat:theme      ex:not-a-concept .
+
+ex:not-a-concept a foaf:Agent ;
+  foaf:name "Not a SKOS concept"@en .
+
+############################################################
+# Invalid case 2: LITERAL VALUE (violates sh:class by being a literal)
+############################################################
+ex:dataset-theme-literal a dcat:Dataset ;
+  dct:identifier  "dataset-102" ;
+  dct:title       "Invalid theme - literal"@en ;
+  dct:description "Theme is a literal, but must be a skos:Concept."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-2 ;
+  dcat:theme      "Health"@en .
+
+############################################################
+# Invalid case 3: CIRCULAR (caught by your SPARQL anti-cycle)
+# dataset -> concept ; concept -> dataset using the same predicate dcat:theme
+############################################################
+ex:dataset-theme-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-103" ;
+  dct:title       "Invalid theme - cycle"@en ;
+  dct:description "Theme cycle between dataset and concept."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-3 ;
+  dcat:theme      ex:circularTheme .
 
 ex:circularTheme a skos:Concept ;
-    skos:prefLabel "test circular";
-    dcat:theme ex:dataset-001  .  # Circular link back to dataset
-ex:dist-1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  skos:prefLabel "Circular theme"@en ;
+  dcat:theme ex:dataset-theme-cycle .

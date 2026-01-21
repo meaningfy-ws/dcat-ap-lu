@@ -1,26 +1,40 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-# Invalid: foaf:page points to a non-foaf:Document
-ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    foaf:page ex:notADocument .
+# Shared required node for all distributions
+ex:rights-1 a dct:RightsStatement .
 
-ex:notADocument a dcat:Datas .  #  Wrong class
+# Helper: each distribution is globally valid (rights + typed accessURL)
+ex:dist-1 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/1"^^rdfs:Resource .
+ex:dist-2 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/2"^^rdfs:Resource .
+ex:dist-3 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/3"^^rdfs:Resource .
+ex:dist-4 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/4"^^rdfs:Resource .
 
-# Invalid: Circular reference
-ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
-    foaf:page ex:circularDoc .
+############################################################
+# Invalid 1: wrong class (object is not foaf:Document)
+############################################################
+ex:dist-1 foaf:page ex:notADocument .
+ex:notADocument a ex:Dataset ;
+  dct:title "Not a FOAF document"@en .
 
-ex:circularDoc a foaf:Document ;
-    foaf:page ex:distribution2.  #  Circular link
+############################################################
+# Invalid 2: literal instead of resource (violates sh:class)
+############################################################
+ex:dist-2 foaf:page "http://example.org/page-as-literal"@en .
 
-### ⚠️ Invalid: foaf:page is missing rdf:type
-ex:distribution3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-003> ;
-    foaf:page ex:untaggedDoc .
+############################################################
+# Invalid 3: untyped node (missing rdf:type foaf:Document)
+############################################################
+ex:dist-3 foaf:page ex:untaggedDoc .
+ex:untaggedDoc dct:title "Untyped doc node"@en .
 
-# ex:untaggedDoc has no rdf:type defined → violates sh:class
+############################################################
+# Invalid 4: maxCount violation (two foaf:page values)
+############################################################
+ex:dist-4 foaf:page ex:doc4a, ex:doc4b .
+ex:doc4a a foaf:Document .
+ex:doc4b a foaf:Document .
+

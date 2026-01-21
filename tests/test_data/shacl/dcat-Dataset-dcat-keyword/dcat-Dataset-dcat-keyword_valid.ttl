@@ -1,13 +1,24 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
+
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
 
 ex:validDataset a dcat:Dataset ;
-    dcterms:identifier "dataset-valid" ;
-    dcterms:title "Valid Dataset" ;
-    dcterms:description "This dataset has valid keyword(s)." ;
-    dcat:keyword "environment"@en, "climate"@en ;
-    dcat:distribution ex:distribution1.
+  dct:identifier  "dataset-valid" ;
+  dct:title       "Valid Dataset"@en ;
+  dct:description "This dataset has valid keyword(s)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:keyword    "environment"@en, "climate"@en ;
+  dcat:distribution ex:distribution1 .
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .

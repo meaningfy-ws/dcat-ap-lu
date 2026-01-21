@@ -1,22 +1,72 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.org/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex:   <http://example.org/> .
 
-ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-004" ;
-    dct:title "Invalid Dataset"@en ;
-    dct:description "Dataset with broken accrual periodicity."@en ;
-    dcat:distribution ex:dist1 ;
+# Shared required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-#  Too many values (maxCount violation)
-    dct:accrualPeriodicity ex:freq1, ex:freq2 .
+ex:rights-1 a dct:RightsStatement .
 
-#  Wrong class (not dct:Frequency)
-ex:freq1 a dcat:Concept ;
-    dct:title "Weekly"@en .
+# Valid distributions (avoid unrelated Distribution violations)
+ex:dist-401 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-401"^^rdfs:Resource .
+ex:dist-402 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-402"^^rdfs:Resource .
+ex:dist-403 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-403"^^rdfs:Resource .
+ex:dist-404 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-404"^^rdfs:Resource .
 
-#  Circular reference
-ex:freq2 a dct:Frequency ;
-    dct:accrualPeriodicity ex:dataset-invalid .
-ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+############################################################
+# Invalid 1: WRONG CLASS (object is not dct:Frequency)
+############################################################
+ex:dataset-ap-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-401" ;
+  dct:title       "Invalid accrualPeriodicity - wrong class"@en ;
+  dct:description "accrualPeriodicity points to a skos:Concept (wrong class)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-401 ;
+  dct:accrualPeriodicity ex:not-a-frequency .
+
+ex:not-a-frequency a skos:Concept ;
+  skos:prefLabel "Weekly"@en .
+
+############################################################
+# Invalid 2: LITERAL value (fails sh:class dct:Frequency)
+############################################################
+ex:dataset-ap-literal a dcat:Dataset ;
+  dct:identifier  "dataset-402" ;
+  dct:title       "Invalid accrualPeriodicity - literal"@en ;
+  dct:description "accrualPeriodicity is a literal; must be a dct:Frequency node."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-402 ;
+  dct:accrualPeriodicity "Annual"@en .
+
+############################################################
+# Invalid 3: SELF-CYCLE (dataset refers to itself)
+############################################################
+ex:dataset-ap-self-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-403" ;
+  dct:title       "Invalid accrualPeriodicity - self cycle"@en ;
+  dct:description "Dataset points to itself as accrualPeriodicity."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-403 ;
+  dct:accrualPeriodicity ex:dataset-ap-self-cycle .
+
+############################################################
+# Invalid 4: TOO MANY VALUES (if your shape has sh:maxCount 1)
+############################################################
+ex:dataset-ap-too-many a dcat:Dataset ;
+  dct:identifier  "dataset-404" ;
+  dct:title       "Invalid accrualPeriodicity - too many"@en ;
+  dct:description "Two accrualPeriodicity values (maxCount=1 violation if enforced)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-404 ;
+  dct:accrualPeriodicity ex:freq-a , ex:freq-b .
+
+ex:freq-a a dct:Frequency ; dct:title "Annual"@en .
+ex:freq-b a dct:Frequency ; dct:title "Monthly"@en .

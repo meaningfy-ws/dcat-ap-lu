@@ -3,11 +3,14 @@
 @prefix eli:    <http://data.europa.eu/eli/ontology#> .
 @prefix ex:     <http://example.org/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
 ###########  INVALID: wrong class (not eli:LegalResource) ###########
+ex:rights-1 a dcterms:RightsStatement .
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcatap:applicableLegislation ex:notLegalResource .
 
 ex:notLegalResource a rdfs:Resource ;
@@ -16,7 +19,8 @@ ex:notLegalResource a rdfs:Resource ;
 ###########  INVALID: circular reference ###########
 
 ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
+    dcterms:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource ;
     dcatap:applicableLegislation ex:loop .
 
 ex:loop a eli:LegalResource ;

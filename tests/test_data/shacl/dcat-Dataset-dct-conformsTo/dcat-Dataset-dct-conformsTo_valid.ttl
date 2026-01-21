@@ -1,15 +1,29 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# Dataset: all required fields + valid conformsTo (dct:Standard)
 ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-005" ;
-    dct:title "Valid Dataset"@en ;
-    dct:description "Dataset with a standard it conforms to."@en ;
-    dcat:distribution ex:dist1 ;
-    dct:conformsTo ex:standard1 .
+  dct:identifier  "dataset-005" ;
+  dct:title       "Valid Dataset"@en ;
+  dct:description "Dataset with a standard it conforms to."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist1 ;
+  dct:conformsTo  ex:standard1 .
 
 ex:standard1 a dct:Standard ;
-    dct:title "ISO 19115"@en .
+  dct:title "ISO 19115"@en .
+
+# Distribution: required rights + accessURL typed as rdfs:Resource
 ex:dist1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-005"^^rdfs:Resource .

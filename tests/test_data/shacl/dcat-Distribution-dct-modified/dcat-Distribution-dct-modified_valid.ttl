@@ -1,8 +1,13 @@
-@prefix dcat:   <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex:     <http://example.org/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
+
+# Required by your Distribution shapes
+ex:rights-1 a dct:RightsStatement .
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
-    dcterms:modified "2023-10-12T12:00:00Z"^^xsd:dateTime .
+    dct:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
+    dct:modified "2023-10-12T12:00:00Z"^^xsd:dateTime .

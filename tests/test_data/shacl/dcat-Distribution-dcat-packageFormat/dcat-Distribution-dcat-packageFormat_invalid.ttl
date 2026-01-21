@@ -2,11 +2,15 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:rights-1 a dcterms:RightsStatement .
 
 ###########  INVALID: Too many values (maxCount violation) ###########
 
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+     dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcat:packageFormat ex:format1, ex:format2 .
 
 ex:format1 a dcterms:MediaType ;
@@ -18,7 +22,8 @@ ex:format2 a dcterms:MediaType ;
 ###########  INVALID: Wrong class (not dcterms:MediaType) ###########
 
 ex:distribution-2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> ;
+      dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-002"^^rdfs:Resource ;
     dcat:packageFormat ex:wrongType .
 
 ex:wrongType a skos:Concept ;  # wrong class
@@ -27,7 +32,8 @@ ex:wrongType a skos:Concept ;  # wrong class
 ########### INVALID: Circular reference (SPARQL rule violation) ###########
 
 ex:distribution-3 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-003> ;
+     dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-003"^^rdfs:Resource ;
     dcat:packageFormat ex:circularFormat .
 
 ex:circularFormat a dcterms:MediaType ;

@@ -1,11 +1,16 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+ex:rights-1 a dcterms:RightsStatement .
 
 # Distribution with compressFormat but:
 # - compressFormat points to a resource that is not a dcterms:MediaType (violation of sh:class)
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+  dcat:accessURL "http://example.org/download/dataset-005"^^rdfs:Resource ;
+    dcterms:rights ex:rights-1 ;
     dcat:compressFormat ex:gzipFormat .
 
 # gzipFormat has wrong class (should be dcterms:MediaType)

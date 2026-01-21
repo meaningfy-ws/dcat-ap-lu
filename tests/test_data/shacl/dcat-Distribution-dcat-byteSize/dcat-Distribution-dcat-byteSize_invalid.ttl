@@ -1,10 +1,15 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix ex: <http://example.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:rights-1 a dcterms:RightsStatement .
 
 # Case 1: Wrong datatype (plain literal, not typed)
 ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> ;
+    dcterms:rights ex:rights-1 ;
+    dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource ;
     dcat:byteSize "123456" .
 
 # this will trigger RDF parsing errors, validate with a validator like riot instead
@@ -16,5 +21,6 @@ ex:distribution1 a dcat:Distribution ;
 # Case 3: Too many values (violates maxCount=1)
 ex:distribution3 a dcat:Distribution ;
      dcat:accessURL <http://example.org/download/dataset-003> ;
+     dcterms:rights ex:rights-1 ;
     dcat:byteSize "123456"^^xsd:nonNegativeInteger ;
     dcat:byteSize "7890"^^xsd:nonNegativeInteger .

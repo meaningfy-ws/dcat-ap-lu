@@ -1,15 +1,31 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
+
+ex:rights-1 a dct:RightsStatement .
+
+# WRONG target for prov:wasGeneratedBy (must be prov:Activity per your SHACL)
+ex:not-an-activity a foaf:Agent ;
+  foaf:name "Not an Activity"@en .
+
+# Dataset is otherwise valid, but wasGeneratedBy points to wrong class => violation
 ex:dataset-invalid a dcat:Dataset ;
-    dct:identifier "dataset-004" ;
-    dct:title "Dataset with Invalid Qualified Relation" ;
-    dct:description "Uses wrong class and circular reference for qualifiedRelation." ;
-    dcat:distribution ex:dist-2 ;
-        dcat:qualifiedRelation ex:dataset-invalid .  #  Circular reference and  Wrong class
+  dct:identifier  "dataset-006" ;
+  dct:title       "Invalid wasGeneratedBy - wrong class"@en ;
+  dct:description "prov:wasGeneratedBy points to a foaf:Agent (invalid)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-2 ;
+  prov:wasGeneratedBy ex:not-an-activity .
 
+# Distribution is valid (no extra violations)
 ex:dist-2 a dcat:Distribution ;
-       dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-006"^^rdfs:Resource .

@@ -1,20 +1,39 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
-ex:dataset-v1 a dcat:Dataset ;
-    dct:identifier "dataset-v1" ;
-    dct:title "Dataset Version 1"@en ;
-    dct:description "Version 1 of the dataset."@en ;
-    dcat:distribution ex:dist-v1 ;
-    dcat:hasVersion ex:dataset-v2 .
+# Shared required nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
+ex:rights-1 a dct:RightsStatement .
+
+# Dataset v1 (valid)
+ex:dataset-v1 a dcat:Dataset ;
+  dct:identifier  "dataset-v1" ;
+  dct:title       "Dataset Version 1"@en ;
+  dct:description "Version 1 of the dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-v1 ;
+  dcat:hasVersion ex:dataset-v2 .
+
+# Dataset v2 (also valid)
 ex:dataset-v2 a dcat:Dataset ;
-    dct:identifier "dataset-v2" ;
-    dct:title "Dataset Version 2"@en ;
-    dct:description "Version 2 of the dataset."@en ;
-    dcat:distribution ex:dist-v2 .
+  dct:identifier  "dataset-v2" ;
+  dct:title       "Dataset Version 2"@en ;
+  dct:description "Version 2 of the dataset."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-v2 .
+
+# Distributions (must have rights + typed accessURL)
 ex:dist-v1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-v1"^^rdfs:Resource .
+
 ex:dist-v2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> .
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-v2"^^rdfs:Resource .

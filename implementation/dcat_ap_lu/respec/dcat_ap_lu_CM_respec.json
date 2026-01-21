@@ -522,7 +522,7 @@
       ],
       "properties": [
         {
-          "cardinality": "0..1",
+          "cardinality": "1..1",
           "description": {
             "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public."
           },
@@ -722,7 +722,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..*",
+          "cardinality": "1..*",
           "description": {
             "en": "An available Distribution for the Dataset."
           },
@@ -747,7 +747,7 @@
             }
           ],
           "tags": {
-            "dal:reuse": "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.datasetdistribution\">A</a>",
+            "dal:reuse": "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.datasetdistribution\">E</a>",
             "dct:references": "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution\">Link</a>",
             "skos:prefLabel": "dataset distribution"
           },
@@ -1224,7 +1224,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..1",
+          "cardinality": "1..1",
           "description": {
             "en": "An entity (organisation) responsible for making the Dataset available."
           },
@@ -1455,7 +1455,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "description": {
             "en": "The minimum spatial separation resolvable in a dataset, measured in metres."
           },
@@ -1622,7 +1622,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "description": {
             "en": "A type of the Dataset."
           },
@@ -1653,6 +1653,39 @@
             "skos:prefLabel": "type"
           },
           "uri": "http://purl.org/dc/terms/type",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The version indicator (name or identifier) of a resource."
+          },
+          "domain": [
+            {
+              "name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "label": {
+            "en": "version"
+          },
+          "name": "dcat:version",
+          "range": [
+            {
+              "range_curie": "rdfs:Literal",
+              "range_label": {
+                "en": "Literal"
+              },
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "tags": {
+            "dal:reuse": "<a href'\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.version\">A</a>",
+            "dct:references": "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.version\">Link</a>",
+            "skos:prefLabel": "version"
+          },
+          "uri": "http://www.w3.org/ns/dcat#version",
           "usage": {}
         },
         {
@@ -1945,7 +1978,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..1",
+          "cardinality": "1..1",
           "description": {
             "en": "A statement that specifies rights associated with the Distribution."
           },
@@ -2578,7 +2611,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..*",
+          "cardinality": "0..1",
           "description": {
             "en": "The minimum spatial separation resolvable in a dataset distribution, measured in metres."
           },
@@ -2645,7 +2678,7 @@
           "usage": {}
         },
         {
-          "cardinality": "0..*",
+          "cardinality": "0..1",
           "description": {
             "en": "The minimum time period resolvable in the dataset distribution."
           },

@@ -81,12 +81,16 @@ dct:publisher [
     dcat:hasVersion :dataset-full-v2 ;
     dct:isReferencedBy <https://example.org/pub/1> ;
     adms:identifier :identifier-001 ;
+    dct:rights [ a dct:RightsStatement ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+        skos:prefLabel "Public"@en ] ;
  dct:publisher [ a foaf:Agent ; foaf:name "Publishing Org"@en ;
                    dct:type [
     a skos:Concept ;
     rdfs:seeAlso <https://publications.europa.eu/resource/authority/corporate-body/WP_DP> ;
     skos:prefLabel "WP_DP"@eng
   ] ] .
+
 :identifier-001
     a adms:Identifier ;
     skos:notation "ID-001" .
@@ -102,12 +106,20 @@ dct:publisher [
     a dcat:Dataset ;
     dct:identifier "dataset-002" ;
     dct:title "Parent Dataset"@en ;
+    dct:rights [ a dct:RightsStatement ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+        skos:prefLabel "Public"@en ] ;
+        dct:publisher [ a foaf:Agent ; foaf:name "Publishing Org"@en ] ;
     dct:description "A parent version of dataset-full."@en .
 
 :dataset-full-v2
     a dcat:Dataset ;
     dct:identifier "dataset-full-v2" ;
     dct:title "Next Version of Full Dataset"@en ;
+    dct:rights [ a dct:RightsStatement ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+        skos:prefLabel "Public"@en ] ;
+        dct:publisher [ a foaf:Agent ; foaf:name "Publishing Org"@en ] ;
     dct:description "A newer version of dataset-full."@en .
 
 #################################################################
@@ -134,6 +146,9 @@ dct:publisher [
         rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/gzip> ;
         skos:prefLabel "application/gzip"@en ] ;
     dcat:keyword"CSV format"@en ;
+    dct:rights [ a dct:RightsStatement ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+        skos:prefLabel "Public"@en ] ;
     dcat:packageFormat [ a dct:MediaType ;
         rdfs:seeAlso <https://www.iana.org/assignments/media-types/application/zip> ;
         skos:prefLabel "application/zip"@en ].
@@ -143,6 +158,9 @@ dct:publisher [
     dct:title "Full JSON Export"@en ;
     dct:description "JSON format of dataset-full."@en ;
     dct:identifier "dist-full-json" ;
+    dct:rights [ a dct:RightsStatement ;
+        rdfs:seeAlso <https://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+        skos:prefLabel "Public"@en ] ;
     dcat:accessURL <https://example.org/data/full.json> ;
     dcat:downloadURL <https://example.org/data/full.json/download> ;
     dcat:mediaType [ a dct:MediaType ;

@@ -1,33 +1,78 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix ex: <http://example.org/> .
-@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <http://example.org/> .
 
-#  Violation 1: Not an instance of adms:Identifier
-ex:dataset2 a dcat:Dataset ;
-    adms:identifier ex:notAnIdentifier ;
-     dct:title           "Example DCAT Dataset" ;
-    dct:description     "A minimal dataset with only mandatory properties." ;
-    dct:identifier      "dataset-001" ;
-    dcat:distribution   ex:distribution1 .
+# Shared mandatory supporting nodes
+ex:publisher-1 a foaf:Agent ;
+  foaf:name "Example publisher"@en .
 
-ex:notAnIdentifier a skos:Concep .
+ex:rights-1 a dct:RightsStatement .
 
-#  Violation 2: Circular reference (identifier points back to dataset)
-ex:dataset3 a dcat:Dataset ;
-    adms:identifier ex:loop ;
-    dct:title           "Example DCAT Dataset" ;
-    dct:description     "A minimal dataset with only mandatory properties." ;
-    dct:identifier      "dataset-001" ;
-    dcat:distribution   ex:distribution2 .
+# Helper distributions (all valid: rights + typed accessURL)
+ex:dist-201 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-201"^^rdfs:Resource .
+ex:dist-202 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-202"^^rdfs:Resource .
+ex:dist-203 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-203"^^rdfs:Resource .
+ex:dist-204 a dcat:Distribution ; dct:rights ex:rights-1 ; dcat:accessURL "http://example.org/download/dataset-204"^^rdfs:Resource .
 
+############################################################
+# Invalid 1: WRONG CLASS (object is not an adms:Identifier)
+############################################################
+ex:dataset-id-wrong-class a dcat:Dataset ;
+  dct:identifier  "dataset-201" ;
+  dct:title       "Invalid adms:identifier - wrong class"@en ;
+  dct:description "adms:identifier points to a non-adms:Identifier."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-201 ;
+  adms:identifier ex:not-an-identifier .
 
-ex:loop a adms:Identifier ;
-         adms:identifier ex:dataset3 .
+ex:not-an-identifier a skos:Concept ;
+  skos:prefLabel "Not an Identifier"@en .
 
-ex:distribution1 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-001> .
+############################################################
+# Invalid 2: LITERAL instead of resource (violates sh:class)
+############################################################
+ex:dataset-id-literal a dcat:Dataset ;
+  dct:identifier  "dataset-202" ;
+  dct:title       "Invalid adms:identifier - literal"@en ;
+  dct:description "adms:identifier must be a resource of class adms:Identifier."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-202 ;
+  adms:identifier "ID-LITERAL-202"@en .
 
-ex:distribution2 a dcat:Distribution ;
-    dcat:accessURL <http://example.org/download/dataset-002> .
+############################################################
+# Invalid 3: RESOURCE but missing rdf:type adms:Identifier
+############################################################
+ex:dataset-id-missing-type a dcat:Dataset ;
+  dct:identifier  "dataset-203" ;
+  dct:title       "Invalid adms:identifier - missing rdf:type"@en ;
+  dct:description "Points to a node not typed as adms:Identifier."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-203 ;
+  adms:identifier ex:untyped-identifier .
+
+# Intentionally NOT a adms:Identifier
+ex:untyped-identifier skos:notation "ID-UNTYPED-203" .
+
+############################################################
+# Invalid 4: CYCLE (SPARQL anti-pattern like your other shapes)
+# dataset -> identifier AND identifier -> dataset using adms:identifier
+############################################################
+ex:dataset-id-cycle a dcat:Dataset ;
+  dct:identifier  "dataset-204" ;
+  dct:title       "Invalid adms:identifier - cycle"@en ;
+  dct:description "Identifier links back to the dataset (cycle)."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-204 ;
+  adms:identifier ex:identifier-cycle .
+
+ex:identifier-cycle a adms:Identifier ;
+  skos:notation "ID-CYCLE-204" ;
+  adms:identifier ex:dataset-id-cycle .

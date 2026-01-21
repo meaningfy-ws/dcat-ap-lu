@@ -1,18 +1,28 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex:   <http://example.org/> .
 
+# Required supporting nodes
+ex:publisher-1 a foaf:Agent ; foaf:name "Example publisher"@en .
+ex:rights-1 a dct:RightsStatement .
+
+# Provenance statement (correct class)
+ex:prov-1 a dct:ProvenanceStatement ;
+  dct:description "Derived from 2020 national survey data."@en .
+
+# Dataset (meets required dataset constraints + provenance)
 ex:dataset-001 a dcat:Dataset ;
-    dct:identifier "dataset-001" ;
-    dct:title "Dataset with Provenance" ;
-    dct:description "Includes correct provenance." ;
-    dcat:distribution ex:dist1 ;
-    dct:provenance ex:provenance1 .
+  dct:identifier  "dataset-001" ;
+  dct:title       "Dataset with Provenance"@en ;
+  dct:description "Includes correct provenance."@en ;
+  dct:publisher   ex:publisher-1 ;
+  dct:rights      ex:rights-1 ;
+  dcat:distribution ex:dist-001 ;
+  dct:provenance  ex:prov-1 .
 
-ex:dist1 a dcat:Distribution ;
-     dcat:accessURL <http://example.org/download/dataset-001> .
-
-
-ex:provenance1 a dct:ProvenanceStatement ;
-    dct:description "Derived from 2020 national survey data." .
-
+# Distribution (meets required distribution constraints)
+ex:dist-001 a dcat:Distribution ;
+  dct:rights ex:rights-1 ;
+  dcat:accessURL "http://example.org/download/dataset-001"^^rdfs:Resource .

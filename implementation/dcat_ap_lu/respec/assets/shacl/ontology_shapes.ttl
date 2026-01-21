@@ -77,6 +77,7 @@ core-res:dcat-DatasetShape a sh:NodeShape ;
         core-res:dcat-Dataset-dcat-spatialResolutionInMeters,
         core-res:dcat-Dataset-dcat-temporalResolution,
         core-res:dcat-Dataset-dcat-theme,
+        core-res:dcat-Dataset-dcat-version,
         core-res:dcat-Dataset-dcatap-applicableLegislation,
         core-res:dcat-Dataset-dct-accrualPeriodicity,
         core-res:dcat-Dataset-dct-conformsTo,
@@ -375,6 +376,7 @@ core-res:dcat-Dataset-dcat-distribution a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class dcat:Distribution ;
     sh:description "An available Distribution for the Dataset." ;
+    sh:minCount 1 ;
     sh:name "Distribution" ;
     sh:path dcat:distribution ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#distribution> ?that . ?that <http://www.w3.org/ns/dcat#distribution> ?this .}" ] .
@@ -422,7 +424,6 @@ core-res:dcat-Dataset-dcat-spatialResolutionInMeters a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:datatype xsd:decimal ;
     sh:description "The minimum spatial separation resolvable in a dataset, measured in metres." ;
-    sh:maxCount 1 ;
     sh:name "Spatial resolution in meters" ;
     sh:path dcat:spatialResolutionInMeters .
 
@@ -441,6 +442,14 @@ core-res:dcat-Dataset-dcat-theme a sh:PropertyShape ;
     sh:name "Theme" ;
     sh:path dcat:theme ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/dcat#theme> ?that . ?that <http://www.w3.org/ns/dcat#theme> ?this .}" ] .
+
+core-res:dcat-Dataset-dcat-version a sh:PropertyShape ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:datatype rdfs:Literal ;
+    sh:description "The version indicator (name or identifier) of a resource." ;
+    sh:maxCount 1 ;
+    sh:name "Version" ;
+    sh:path dcat:version .
 
 core-res:dcat-Dataset-dcatap-applicableLegislation a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -533,6 +542,7 @@ core-res:dcat-Dataset-dct-publisher a sh:PropertyShape ;
     sh:class foaf:Agent ;
     sh:description "An entity (organisation) responsible for making the Dataset available." ;
     sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:name "Publisher" ;
     sh:path dcterms:publisher ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/publisher> ?that . ?that <http://purl.org/dc/terms/publisher> ?this .}" ] .
@@ -549,6 +559,7 @@ core-res:dcat-Dataset-dct-rights a sh:PropertyShape ;
     sh:class dcterms:RightsStatement ;
     sh:description "Information that indicates whether the Dataset is publicly accessible, has access restrictions, or is not public." ;
     sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:name "Rights" ;
     sh:path dcterms:rights ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/rights> ?that . ?that <http://purl.org/dc/terms/rights> ?this .}" ] .
@@ -589,7 +600,6 @@ core-res:dcat-Dataset-dct-type a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class skos:Concept ;
     sh:description "A type of the Dataset." ;
-    sh:maxCount 1 ;
     sh:name "Type" ;
     sh:path dcterms:type ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/type> ?that . ?that <http://purl.org/dc/terms/type> ?this .}" ] .
@@ -730,6 +740,7 @@ core-res:dcat-Distribution-dcat-spatialResolutionInMeters a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:datatype xsd:decimal ;
     sh:description "The minimum spatial separation resolvable in a dataset distribution, measured in metres." ;
+    sh:maxCount 1 ;
     sh:name "Spatial resolution in meters" ;
     sh:path dcat:spatialResolutionInMeters .
 
@@ -737,6 +748,7 @@ core-res:dcat-Distribution-dcat-temporalResolution a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:datatype xsd:duration ;
     sh:description "The minimum time period resolvable in the dataset distribution." ;
+    sh:maxCount 1 ;
     sh:name "Temporal resolution" ;
     sh:path dcat:temporalResolution .
 
@@ -819,6 +831,7 @@ core-res:dcat-Distribution-dct-rights a sh:PropertyShape ;
     sh:class dcterms:RightsStatement ;
     sh:description "A statement that specifies rights associated with the Distribution." ;
     sh:maxCount 1 ;
+    sh:minCount 1 ;
     sh:name "Rights" ;
     sh:path dcterms:rights ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/rights> ?that . ?that <http://purl.org/dc/terms/rights> ?this .}" ] .
@@ -925,13 +938,13 @@ core-res:core-shape a owl:Ontology ;
     dcterms:description """This artefact provides the generic datashape specifications for the DCAT-AP-LU.
         The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency."""@en ;
-    dcterms:issued "2026-01-07"^^xsd:date ;
+    dcterms:issued "2026-01-21"^^xsd:date ;
     dcterms:license "Copyright 2025 Ministère de la Digitalisation, Luxembourg. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned." ;
     dcterms:publisher "https://mindig_lu.gitlab.io/DCAT-AP-LU" ;
     dcterms:title "DCAT-AP-LU shapes"@en ;
     vann:preferredNamespacePrefix "dal" ;
     vann:preferredNamespaceUri "https://mindig_lu.gitlab.io/DCAT-AP-LU/#" ;
-    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2026-01-07" ;
+    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2026-01-21" ;
     rdfs:seeAlso <https://mindig_lu.gitlab.io/DCAT-AP-LU/> ;
     owl:imports dcterms:,
         skos:,
