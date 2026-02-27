@@ -1,10 +1,17 @@
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcat:distribution rdfs:domain dcat:Dataset ;
+    rdfs:range dcat:Distribution .
+
+dcat:keyword rdfs:domain dcat:Dataset ;
+    rdfs:range rdfs:Literal .
 
 core-res:core-restriction a owl:Ontology ;
     rdfs:label """This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.
@@ -34,4 +41,27 @@ core-res:core-restriction a owl:Ontology ;
     owl:priorVersion "https://mindig_lu.gitlab.io/DCAT-AP-LU#core-restriction-1.0.0" ;
     owl:versionIRI core-res:core-restriction-1.1.0 ;
     owl:versionInfo "1.1.0" .
+
+dcterms:description rdfs:domain dcat:Dataset ;
+    rdfs:range rdfs:Literal .
+
+dcterms:title rdfs:domain dcat:Dataset ;
+    rdfs:range rdfs:Literal .
+
+dcat:accessURL rdfs:domain dcat:Distribution ;
+    rdfs:range rdfs:Resource .
+
+dcat:Distribution rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality 1 ;
+            owl:onDataRange rdfs:Resource ;
+            owl:onProperty dcat:accessURL ] .
+
+dcat:Dataset rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality 1 ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty dcterms:title ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality 1 ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty dcterms:description ] .
 

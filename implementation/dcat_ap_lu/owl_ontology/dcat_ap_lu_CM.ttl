@@ -1,4 +1,6 @@
+@prefix : <https://mindig_lu.gitlab.io/DCAT-AP-LU/#> .
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -6,12 +8,51 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+dcterms:description a owl:DatatypeProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description\">Link</a>"@en ;
+    skos:definition "A free-text account of the Dataset. (dcat:Dataset)"@en ;
+    skos:prefLabel "description"@en ;
+    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/#Dataset.description\">A</a>"@en .
+
+dcterms:title a owl:DatatypeProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title\">Link</a>"@en ;
+    skos:definition "A name given to the Dataset (dcat:Dataset)"@en ;
+    skos:prefLabel "title"@en ;
+    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/#Dataset.title\">A</a>"@en .
+
 rdfs:Literal a rdfs:Datatype ;
     skos:definition "A literal value such as a string or integer. Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 4715 [[RFC5646]]."@en ;
     skos:prefLabel "Literal"@en .
 
 rdfs:Resource a rdfs:Datatype ;
     skos:prefLabel "Resource"@en .
+
+dcat:Dataset a owl:Class ;
+    skos:definition "A conceptual entity that represents the information published."@en ;
+    skos:prefLabel "Dataset"@en .
+
+dcat:Distribution a owl:Class ;
+    skos:definition "A physical embodiment of the Dataset in a particular format."@en ;
+    skos:prefLabel "Distribution"@en .
+
+dcat:accessURL a owl:DatatypeProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url\">Link</a>"@en ;
+    skos:definition "A URL that gives access to a Distribution of the Dataset. (dcat:Distribution)"@en ;
+    skos:prefLabel "access URL"@en ;
+    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/#Distribution.accessURL\">A</a>"@en .
+
+dcat:distribution a owl:ObjectProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution\">Link</a>"@en ;
+    skos:definition "An available Distribution for the Dataset."@en ;
+    skos:prefLabel "dataset distribution"@en,
+        "distribution"@en ;
+    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/#Dataset.datasetdistribution\">A</a>"@en .
+
+dcat:keyword a owl:DatatypeProperty ;
+    dcterms:references "<a href=\"https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page\">Link</a>"@en ;
+    skos:definition "A keyword or tag describing the Dataset. (dcat:Dataset)"@en ;
+    skos:prefLabel "keyword"@en ;
+    :reuse "<a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/#Dataset.keyword\">A</a>"@en .
 
 core-res:core a owl:Ontology ;
     rdfs:label """This artefact provides the definitions for the DCAT-AP-LU.
