@@ -706,33 +706,33 @@
             profile
             include:
 
-            <ul>
-                <li><a href="#Dataset.identifier">Dataset.identifier</a>: This property is mandatory to promote
-                    interoperability and data governance best practice. For the Luxembourg public sector, an identifier
-                    strategy is under development.
-                </li>
-                <li><a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>: This new property is
-                    applicable in
-                    the [[DGA]] context only (see below).
-                </li>
-                <li><a href="#Dataset.inseries">Dataset.inSeries</a>: This property was upgraded from optional to
-                    recommended. More guidance to follow.
-                </li>
-                <li><a href="#Dataset.accessrights">Dataset.rights</a>: The accepted values for this property are
-                    restricted to "public" and "non-public".
-                </li>
-                <li><a href="#Dataset.type">Dataset.type</a>: The accepted values for this property have been adapted as
-                    described in [[[#controlled-vocs]]].
-                </li>
-                <li><a href="#Distribution.mediatype">Distribution.mediaType</a>: This property was upgraded from
-                    optional
-                    to recommended due to the greater granularity of the associated vocabulary compared to <a
-                            href="#Distribution.mediatype">Distribution.mediaType</a>.
-                </li>
-                <li><a href="#Distribution.haspolicy">Distribution.hasPolicy</a>: DCAT-AP-LU provides extended usage
-                    guidance for expressing data use restrictions using [[ODRL]] and [[DUO]].
-                </li>
-            </ul>
+{#            <ul>#}
+{#                <li><a href="#Dataset.identifier">Dataset.identifier</a>: This property is mandatory to promote#}
+{#                    interoperability and data governance best practice. For the Luxembourg public sector, an identifier#}
+{#                    strategy is under development.#}
+{#                </li>#}
+{#                <li><a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>: This new property is#}
+{#                    applicable in#}
+{#                    the [[DGA]] context only (see below).#}
+{#                </li>#}
+{#                <li><a href="#Dataset.inseries">Dataset.inSeries</a>: This property was upgraded from optional to#}
+{#                    recommended. More guidance to follow.#}
+{#                </li>#}
+{#                <li><a href="#Dataset.accessrights">Dataset.rights</a>: The accepted values for this property are#}
+{#                    restricted to "public" and "non-public".#}
+{#                </li>#}
+{#                <li><a href="#Dataset.type">Dataset.type</a>: The accepted values for this property have been adapted as#}
+{#                    described in [[[#controlled-vocs]]].#}
+{#                </li>#}
+{#                <li><a href="#Distribution.mediatype">Distribution.mediaType</a>: This property was upgraded from#}
+{#                    optional#}
+{#                    to recommended due to the greater granularity of the associated vocabulary compared to <a#}
+{#                            href="#Distribution.mediatype">Distribution.mediaType</a>.#}
+{#                </li>#}
+{#                <li><a href="#Distribution.haspolicy">Distribution.hasPolicy</a>: DCAT-AP-LU provides extended usage#}
+{#                    guidance for expressing data use restrictions using [[ODRL]] and [[DUO]].#}
+{#                </li>#}
+{#            </ul>#}
 
             Except for the properties in the list above, the property type (mandatory, recommended or optional) was
             adopted
@@ -746,42 +746,42 @@
 
             <h3>Usage guide for the [[DGA]] context</h3>
 
-            <h4 id="dataprotection_guidance">
-                <a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>
-            </h4>
-
-            Any metadata record for a protected dataset published in the context of the [[DGA]] must include at least one of
-            the
-            6 controlled vocabulary terms listed in [[[#controlled-vocs]]] (:PersonalData,
-            :CommerciallyConfidentialData,
-            :IntellectualPropertyData, :StatisticallyConfidentialData, :SpecialCategoryPersonalData,
-            :ProfessionalConfidentialData). These properties originate from, and are maintained by, the Data
-Privacy Vocabulary [[DPV]].
-			
-			<h4 id="legislation_guidance"><a href="#Dataset.applicablelegislation">Dataset.applicableLegislation</a>
-            </h4>
-
-           Any metadata record for a dataset published in the context of "access and reuse",
-            as defined in art. 2, points 2) and 13) of the Data Governance Act [[DGA]] (REGULATION (EU) 2022/868),
-            can include links to said article. A metadata record that does not include at least one of these references 
-			will not be considered valid. Exact [[ELI]] compliant URIs for the different contexts will be included here 
-			once the law text has been officially adopted and published
-
-
-            <h4 id="sample_guidance"><a href="#Dataset.sample">Dataset.sample</a></h4>
-
-            In order to facilitate the creation and assessment of data access requests for datasets in the [[DGA]] context,
-            the
-            associated metadata record should include data dictionaries whenever possible. Data dictionaries should be
-            included via a special type of distribution referenced from the <a href="#Dataset.sample">Dataset.sample</a>
-            property. This guidance reuses the implementation model proposed by the
-            <a href="https://healthdcat-ap.github.io/#sample-distribution">HealthDCAT-AP</a> metadata profile.
-            <br>
-            No specific format is imposed for the data dictionary. Machine-readable tabular formats such as CSV or TSV
-            are
-            preferred. A minimal set of properties to be included in a data dictionary is under development and will be
-            made
-            available in due course.
+{#            <h4 id="dataprotection_guidance">#}
+{#                <a href="#Dataset.dataprotectiontype">Dataset.dataProtectionType</a>#}
+{#            </h4>#}
+{##}
+{#            Any metadata record for a protected dataset published in the context of the [[DGA]] must include at least one of#}
+{#            the#}
+{#            6 controlled vocabulary terms listed in [[[#controlled-vocs]]] (:PersonalData,#}
+{#            :CommerciallyConfidentialData,#}
+{#            :IntellectualPropertyData, :StatisticallyConfidentialData, :SpecialCategoryPersonalData,#}
+{#            :ProfessionalConfidentialData). These properties originate from, and are maintained by, the Data#}
+{#Privacy Vocabulary [[DPV]].#}
+{#			#}
+{#			<h4 id="legislation_guidance"><a href="#Dataset.applicablelegislation">Dataset.applicableLegislation</a>#}
+{#            </h4>#}
+{##}
+{#           Any metadata record for a dataset published in the context of "access and reuse",#}
+{#            as defined in art. 2, points 2) and 13) of the Data Governance Act [[DGA]] (REGULATION (EU) 2022/868),#}
+{#            can include links to said article. A metadata record that does not include at least one of these references #}
+{#			will not be considered valid. Exact [[ELI]] compliant URIs for the different contexts will be included here #}
+{#			once the law text has been officially adopted and published#}
+{##}
+{##}
+{#            <h4 id="sample_guidance"><a href="#Dataset.sample">Dataset.sample</a></h4>#}
+{##}
+{#            In order to facilitate the creation and assessment of data access requests for datasets in the [[DGA]] context,#}
+{#            the#}
+{#            associated metadata record should include data dictionaries whenever possible. Data dictionaries should be#}
+{#            included via a special type of distribution referenced from the <a href="#Dataset.sample">Dataset.sample</a>#}
+{#            property. This guidance reuses the implementation model proposed by the#}
+{#            <a href="https://healthdcat-ap.github.io/#sample-distribution">HealthDCAT-AP</a> metadata profile.#}
+{#            <br>#}
+{#            No specific format is imposed for the data dictionary. Machine-readable tabular formats such as CSV or TSV#}
+{#            are#}
+{#            preferred. A minimal set of properties to be included in a data dictionary is under development and will be#}
+{#            made#}
+{#            available in due course.#}
 
             <h4 id="accessurl_guidance"><a href="#Distribution.accessurl">Distribution.accessURL</a>
             </h4>
@@ -791,18 +791,18 @@ Privacy Vocabulary [[DPV]].
 		   published shortly and will be automatically included in metadata records submitted through the official channels 
 		   for this context.
 
-            <h4 id="bytesize_guidance"><a href="#Distribution.bytesize">Distribution.byteSize</a>
-            </h4>
-
-           Any metadata record for a protected distribution published in the context of the [[DGA]] must contain this information.
-
-           <h4 id="format_guidance"><a href="#Distribution.format">Distribution.format</a>
-           </h4>
-
-           Any metadata record for a protected distribution published in the context of the [[DGA]] must contain this information.
-
-
-            <h4 id="policy_guidance"><a href="#Distribution.haspolicy">Distribution.hasPolicy</a></h4>
+{#            <h4 id="bytesize_guidance"><a href="#Distribution.bytesize">Distribution.byteSize</a>#}
+{#            </h4>#}
+{##}
+{#           Any metadata record for a protected distribution published in the context of the [[DGA]] must contain this information.#}
+{##}
+{#           <h4 id="format_guidance"><a href="#Distribution.format">Distribution.format</a>#}
+{#           </h4>#}
+{##}
+{#           Any metadata record for a protected distribution published in the context of the [[DGA]] must contain this information.#}
+{##}
+{##}
+{#            <h4 id="policy_guidance"><a href="#Distribution.haspolicy">Distribution.hasPolicy</a></h4>#}
 
             DCAT-AP-LU leverages existing mechanisms from [[ODRL]] and [[DUO]] to enable data holders to specify
             additional
