@@ -1,3 +1,4 @@
+@prefix : <https://mindig_lu.gitlab.io/DCAT-AP-LU/#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -128,8 +129,8 @@ core-res:dcat-DistributionShape a sh:NodeShape ;
         core-res:dcat-Distribution-dct-modified,
         core-res:dcat-Distribution-dct-rights,
         core-res:dcat-Distribution-dct-title,
-        core-res:dcat-Distribution-foaf-page,
         core-res:dcat-Distribution-odrl-hasPolicy,
+        core-res:dcat-Distribution-page,
         core-res:dcat-Distribution-spdx-checksum ;
     sh:targetClass dcat:Distribution .
 
@@ -216,11 +217,6 @@ core-res:dpv-DataShape a sh:NodeShape ;
     rdfs:comment "A broad concept representing 'data' or 'information'." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:targetClass dpv:Data .
-
-core-res:dpv-ServiceProviderShape a sh:NodeShape ;
-    rdfs:label "Service provider" ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:targetClass dpv:ServiceProvider .
 
 core-res:eli-LegalResourceShape a sh:NodeShape ;
     rdfs:label "Legal resource" ;
@@ -848,14 +844,6 @@ core-res:dcat-Distribution-dct-title a sh:PropertyShape ;
     sh:name "Title" ;
     sh:path dcterms:title .
 
-core-res:dcat-Distribution-foaf-page a sh:PropertyShape ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:class foaf:Document ;
-    sh:description "A page or document about this Distribution." ;
-    sh:name "Page" ;
-    sh:path foaf:page ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://xmlns.com/foaf/0.1/page> ?that . ?that <http://xmlns.com/foaf/0.1/page> ?this .}" ] .
-
 core-res:dcat-Distribution-odrl-hasPolicy a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class odrl:Policy ;
@@ -864,6 +852,14 @@ core-res:dcat-Distribution-odrl-hasPolicy a sh:PropertyShape ;
     sh:name "Has policy" ;
     sh:path odrl:hasPolicy ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/odrl/2/hasPolicy> ?that . ?that <http://www.w3.org/ns/odrl/2/hasPolicy> ?this .}" ] .
+
+core-res:dcat-Distribution-page a sh:PropertyShape ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:class foaf:Document ;
+    sh:description "A page or document about this Distribution." ;
+    sh:name "Page" ;
+    sh:path :page ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <https://mindig_lu.gitlab.io/DCAT-AP-LU/#page> ?that . ?that <https://mindig_lu.gitlab.io/DCAT-AP-LU/#page> ?this .}" ] .
 
 core-res:dcat-Distribution-spdx-checksum a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
@@ -943,13 +939,13 @@ core-res:core-shape a owl:Ontology ;
     dcterms:description """This artefact provides the generic datashape specifications for the DCAT-AP-LU.
         The DCAT-AP-LU describes objects and concepts, with definitions, attributes and relationships which are used for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe.
         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency."""@en ;
-    dcterms:issued "2026-03-02"^^xsd:date ;
+    dcterms:issued "2026-03-03"^^xsd:date ;
     dcterms:license "Copyright 2025 Ministère de la Digitalisation, Luxembourg. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned." ;
     dcterms:publisher "https://mindig_lu.gitlab.io/DCAT-AP-LU" ;
     dcterms:title "DCAT-AP-LU shapes"@en ;
     vann:preferredNamespacePrefix "dal" ;
     vann:preferredNamespaceUri "https://mindig_lu.gitlab.io/DCAT-AP-LU/#" ;
-    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2026-03-02" ;
+    rdfs:comment "This version is automatically generated from dcat_ap_lu_CM.xml on 2026-03-03" ;
     rdfs:seeAlso <https://mindig_lu.gitlab.io/DCAT-AP-LU/> ;
     owl:imports dcterms:,
         skos:,
