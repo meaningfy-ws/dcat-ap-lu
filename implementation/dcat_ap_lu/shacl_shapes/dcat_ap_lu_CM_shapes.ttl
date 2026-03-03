@@ -1,4 +1,3 @@
-@prefix : <https://mindig_lu.gitlab.io/DCAT-AP-LU/#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix core-res: <https://mindig_lu.gitlab.io/DCAT-AP-LU#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -129,8 +128,8 @@ core-res:dcat-DistributionShape a sh:NodeShape ;
         core-res:dcat-Distribution-dct-modified,
         core-res:dcat-Distribution-dct-rights,
         core-res:dcat-Distribution-dct-title,
+        core-res:dcat-Distribution-foaf-page,
         core-res:dcat-Distribution-odrl-hasPolicy,
-        core-res:dcat-Distribution-page,
         core-res:dcat-Distribution-spdx-checksum ;
     sh:targetClass dcat:Distribution .
 
@@ -217,6 +216,11 @@ core-res:dpv-DataShape a sh:NodeShape ;
     rdfs:comment "A broad concept representing 'data' or 'information'." ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:targetClass dpv:Data .
+
+core-res:dpv-ServiceProviderShape a sh:NodeShape ;
+    rdfs:label "Service provider" ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:targetClass dpv:ServiceProvider .
 
 core-res:eli-LegalResourceShape a sh:NodeShape ;
     rdfs:label "Legal resource" ;
@@ -844,6 +848,14 @@ core-res:dcat-Distribution-dct-title a sh:PropertyShape ;
     sh:name "Title" ;
     sh:path dcterms:title .
 
+core-res:dcat-Distribution-foaf-page a sh:PropertyShape ;
+    rdfs:isDefinedBy core-res:core-shape ;
+    sh:class foaf:Document ;
+    sh:description "A page or document about this Distribution." ;
+    sh:name "Page" ;
+    sh:path foaf:page ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://xmlns.com/foaf/0.1/page> ?that . ?that <http://xmlns.com/foaf/0.1/page> ?this .}" ] .
+
 core-res:dcat-Distribution-odrl-hasPolicy a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
     sh:class odrl:Policy ;
@@ -852,14 +864,6 @@ core-res:dcat-Distribution-odrl-hasPolicy a sh:PropertyShape ;
     sh:name "Has policy" ;
     sh:path odrl:hasPolicy ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/odrl/2/hasPolicy> ?that . ?that <http://www.w3.org/ns/odrl/2/hasPolicy> ?this .}" ] .
-
-core-res:dcat-Distribution-page a sh:PropertyShape ;
-    rdfs:isDefinedBy core-res:core-shape ;
-    sh:class foaf:Document ;
-    sh:description "A page or document about this Distribution." ;
-    sh:name "Page" ;
-    sh:path :page ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <https://mindig_lu.gitlab.io/DCAT-AP-LU/#page> ?that . ?that <https://mindig_lu.gitlab.io/DCAT-AP-LU/#page> ?this .}" ] .
 
 core-res:dcat-Distribution-spdx-checksum a sh:PropertyShape ;
     rdfs:isDefinedBy core-res:core-shape ;
