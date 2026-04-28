@@ -70,13 +70,7 @@
                   <tr>
                      <td>dcat:DatasetSeries</td>
                      <td>A collection of datasets that are published separately, but share some characteristics
-                        that group them.
-                        
-                        Usage Note
-                        It is recommended to avoid Dataset Series without a dataset in the collection. Therefore
-                        at least one Dataset should refer to a Dataset Series using the property in series
-                        (dcat:inSeries).
-                        </td>
+                        that group them.</td>
                   </tr>
                   <tr>
                      <td>dcat:Distribution</td>
@@ -261,7 +255,7 @@
                      <td>dcat:spatialResolutionInMeters</td>
                      <td>The minimum spatial separation resolvable in a dataset, measured in metres.	 The minimum spatial separation resolvable in a dataset distribution, measured in 
                         metres.</td>
-                     <td>xsd:decimal [0..1]<br>xsd:decimal [0..*]<br></td>
+                     <td>xsd:decimal [0..*]<br>xsd:decimal [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:PeriodOfTime</td>
@@ -273,7 +267,13 @@
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
                      <td>dcat:temporalResolution</td>
                      <td>The minimum time period resolvable in the dataset.	 The minimum time period resolvable in the dataset distribution.</td>
-                     <td>xsd:duration [0..1]<br>xsd:duration [0..*]<br></td>
+                     <td>xsd:duration [0..1]<br>xsd:duration [0..1]<br></td>
+                  </tr>
+                  <tr>
+                     <td>dcat:Dataset</td>
+                     <td>dcat:version</td>
+                     <td>The version indicator (name or identifier) of a resource.</td>
+                     <td>rdfs:Literal [0..1]</td>
                   </tr>
                   <tr>
                      <td>dcat:Dataset<br>dcat:Distribution<br></td>
@@ -405,7 +405,7 @@
                   <tr>
                      <td>dcat:distribution</td>
                      <td>An available Distribution for the Dataset.An available Distribution for the Dataset.</td>
-                     <td>dcat:Dataset -&gt; dcat:Distribution [0..*]</td>
+                     <td>dcat:Dataset -&gt; dcat:Distribution [1..*]</td>
                   </tr>
                   <tr>
                      <td>dcat:hasVersion</td>
@@ -418,11 +418,6 @@
                      <td>A dataset series of which the dataset is part.A dataset series of which the dataset
                         is part.</td>
                      <td>dcat:Dataset -&gt; dcat:DatasetSeries [0..*]</td>
-                  </tr>
-                  <tr>
-                     <td>dcat:isVersionOf</td>
-                     <td></td>
-                     <td>dcat:Dataset -&gt; dcat:Dataset [0..*]</td>
                   </tr>
                   <tr>
                      <td>dcat:landingPage</td>
@@ -460,17 +455,19 @@
                   </tr>
                   <tr>
                      <td>dcat:record</td>
-                     <td></td>
+                     <td>A Catalogue Record that is part of the Catalogue.A Catalogue Record that is part of
+                        the Catalogue.</td>
                      <td>dcat:Catalog -&gt; dcat:CatalogRecord [0..*]</td>
                   </tr>
                   <tr>
                      <td>dcat:servesDataset</td>
-                     <td></td>
+                     <td>This property refers to a collection of data that this data service can distribute.</td>
                      <td>dcat:DataService -&gt; dcat:Dataset []</td>
                   </tr>
                   <tr>
                      <td>dcat:service</td>
-                     <td></td>
+                     <td>A site or end-point (Data Service) that is listed in the Catalogue.A site or end-point
+                        (Data Service) that is listed in the Catalogue.</td>
                      <td>dcat:Catalog -&gt; dcat:DataService [0..*]</td>
                   </tr>
                   <tr>
@@ -516,7 +513,8 @@
                   </tr>
                   <tr>
                      <td>dct:creator</td>
-                     <td> An entity responsible for producing the dataset.An entity responsible for producing
+                     <td>An entity responsible for the creation of the catalogue.An entity responsible for
+                        the creation of the catalogue. An entity responsible for producing the dataset.An entity responsible for producing
                         the dataset.</td>
                      <td>dcat:Catalog -&gt; foaf:Agent [0..1]<br>dcat:Dataset -&gt; foaf:Agent [0..*]<br></td>
                   </tr>
@@ -534,7 +532,8 @@
                   </tr>
                   <tr>
                      <td>dct:license</td>
-                     <td> A licence under which the Distribution is made available.A licence under which the
+                     <td>A licence under which the Catalogue can be used or reused.A licence under which the
+                        Catalogue can be used or reused. A licence under which the Distribution is made available.A licence under which the
                         Distribution is made available.</td>
                      <td>dcat:Catalog -&gt; dct:LicenseDocument [0..1]<br>dcat:Distribution -&gt; dct:LicenseDocument [0..1]<br></td>
                   </tr>
@@ -546,12 +545,13 @@
                   </tr>
                   <tr>
                      <td>dct:publisher</td>
-                     <td> An entity (organisation) responsible for making the Dataset available.An entity (organisation)
+                     <td>An entity (organisation) responsible for making the Catalogue available.An entity
+                        (organisation) responsible for making the Catalogue available. An entity (organisation) responsible for making the Dataset available.An entity (organisation)
                         responsible for making the Dataset available.
                          An entity (organisation) responsible for making the Dataset available.
                         An entity (organisation) responsible for making the Dataset available.
                         </td>
-                     <td>dcat:Catalog -&gt; foaf:Agent [1..1]<br>dcat:Dataset -&gt; foaf:Agent [0..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
+                     <td>dcat:Catalog -&gt; foaf:Agent [1..1]<br>dcat:Dataset -&gt; foaf:Agent [1..1]<br>dcat:DatasetSeries -&gt; foaf:Agent [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:rights</td>
@@ -559,7 +559,7 @@
                         restrictions, or is not public. A statement that specifies rights associated with the Distribution.A statement that
                         specifies rights associated with the Distribution.
                         </td>
-                     <td>dcat:Dataset -&gt; dct:RightsStatement [0..1]<br>dcat:Distribution -&gt; dct:RightsStatement [0..1]<br></td>
+                     <td>dcat:Dataset -&gt; dct:RightsStatement [1..1]<br>dcat:Distribution -&gt; dct:RightsStatement [1..1]<br></td>
                   </tr>
                   <tr>
                      <td>dct:source</td>
@@ -587,7 +587,7 @@
                         A type of the Dataset. A type of licence, e.g. indicating 'public domain' or 'royalties required'.A type
                         of licence, e.g. indicating 'public domain' or 'royalties required'.
                          </td>
-                     <td>dcat:Dataset -&gt; skos:Concept [0..1]<br>dct:LicenseDocument -&gt; skos:Concept [0..*]<br>foaf:Agent -&gt; skos:Concept [0..1]<br></td>
+                     <td>dcat:Dataset -&gt; skos:Concept [0..*]<br>dct:LicenseDocument -&gt; skos:Concept [0..*]<br>foaf:Agent -&gt; skos:Concept [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>dpv:hasData</td>
@@ -608,7 +608,8 @@
                   </tr>
                   <tr>
                      <td>foaf:primaryTopic</td>
-                     <td></td>
+                     <td>A link to the Dataset, Data service or Catalog described in the record.A link to the
+                        Dataset, Data service or Catalog described in the record.</td>
                      <td>dcat:CatalogRecord -&gt; dcat:Resource [1..1]</td>
                   </tr>
                   <tr>
